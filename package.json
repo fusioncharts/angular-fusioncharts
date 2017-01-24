@@ -1,38 +1,50 @@
 {
   "name": "angular2-fusioncharts",
   "version": "0.0.0",
+  "description": "Angular2 FusionCharts directive",
+  "main": "./dist/bundle.js",
+  "typings": "./lib/index.d.ts",
+  "module": "./lib/index.js",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "tsc": "rm -rf lib && tsc",
+    "tsc:w": "rm -rf lib && tsc -w",
+    "webpack": "webpack",
+    "webpack:w": "webpack -w"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohitkr/angular2-fusioncharts.git"
+  },
+  "keywords": [
+    "Angular",
+    "2",
+    "Library"
+  ],
+  "author": "rohit.kr001@gmail.com",
   "license": "MIT",
-  "dependencies": {
-    "@angular/common":  "2.0.0-rc.3",
-    "@angular/compiler":  "2.0.0-rc.3",
-    "@angular/core":  "2.0.0-rc.3",
-    "@angular/forms": "0.1.1",
-    "@angular/http":  "2.0.0-rc.3",
-    "@angular/platform-browser":  "2.0.0-rc.3",
-    "@angular/platform-browser-dynamic":  "2.0.0-rc.3",
-    "@angular/router":  "3.0.0-alpha.7",
-    "@angular/router-deprecated":  "2.0.0-rc.2",
-    "@angular/upgrade":  "2.0.0-rc.3",
-    "systemjs": "0.19.27",
-    "core-js": "^2.4.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
-    "angular2-in-memory-web-api": "0.0.12",
-    "bootstrap": "^3.3.6"
+  "bugs": {
+    "url": "https://github.com/rohitkr/angular2-fusioncharts/issues"
   },
+  "homepage": "https://github.com/rohitkr/angular2-fusioncharts#readme",
   "devDependencies": {
-    "concurrently": "^2.0.0",
-    "lite-server": "^2.2.0",
-    "typescript": "^1.8.10",
-    "typings":"^1.0.4"
+    "clean-webpack-plugin": "^0.1.15",
+    "lite-server": "^2.2.2",
+    "ts-loader": "^1.3.3",
+    "typescript": "^2.1.5",
+    "webpack": "^1.14.0"
+  },
+  "dependencies": {
+    "@angular/common": "^2.4.4",
+    "@angular/compiler": "^2.4.4",
+    "@angular/compiler-cli": "^2.4.4",
+    "@angular/core": "^2.4.4",
+    "@angular/http": "^2.4.4",
+    "@angular/platform-browser": "^2.4.4",
+    "@angular/platform-browser-dynamic": "^2.4.4",
+    "fusioncharts": "^3.11.3-sr.1",
+    "rxjs": "^5.0.3",
+    "zone": "^0.3.4"
   }
 }

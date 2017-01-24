@@ -1,2 +1,22 @@
-node_modules/
-typings/
+# - Do not allow installed node modules to be committed. Doing `npm install -d` will bring them in root or other places.
+node_modules
+
+# - Do not commit any log file from anywhere
+*.log
+
+# - Prevent addition of OS specific file explorer files
+Thumbs.db
+.DS_Store
+
+# - Prevent Sublime text IDE files from being commited to repository
+*.sublime-*
+
+# - Prevent NetBeans IDE files from being commited to repository
+nbproject/
+
+# - Prevent diff backups from SourceTree from showing as commit.
+*.BACKUP.*
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
+*.orig
