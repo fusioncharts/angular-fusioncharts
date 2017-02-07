@@ -8,18 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var FusionChartsDirective = (function () {
     function FusionChartsDirective(el) {
         this.el = el;
     }
-    FusionChartsDirective = __decorate([
-        core_1.Directive({
-            selector: '[fusionchartsDirective]'
-        }), 
-        __metadata('design:paramtypes', [core_1.ElementRef])
-    ], FusionChartsDirective);
     return FusionChartsDirective;
 }());
+FusionChartsDirective = __decorate([
+    core_1.Directive({
+        selector: '[fusionchartsDirective]'
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
+], FusionChartsDirective);
 exports.FusionChartsDirective = FusionChartsDirective;
 //# sourceMappingURL=fusioncharts.directive.js.map

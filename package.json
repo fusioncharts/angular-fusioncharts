@@ -6,16 +6,21 @@
     "lint": "tslint src/**/*.ts",
     "test": "tsc && karma start",
     "prepublish": "tsc",
-    "tsc": "tsc"
+    "tsc": "rm -rf ./dist && tsc"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular2-fusioncharts"
   },
   "author": {
-    "name": "Rohit Kumar",
-    "email": "rohit.kr001@gmail.com"
+    "name": "FusionCharts",
+    "email": "support@fusioncharts.com"
   },
+  "contributors": [{
+      "name": "Rohit Kumar",
+      "email": "rohit.kr001@gmail.com",
+      "url": "https://github.com/rohitkr"
+  }],
   "keywords": [
     "angular"
   ],
@@ -29,22 +34,22 @@
     "fusioncharts": "^3.11.3-sr.1"
   },
   "devDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.4.5",
-    "@angular/compiler-cli": "^2.4.5",
-    "@angular/platform-server": "^2.4.5",
-    "codelyzer": "^0.0.28",
-    "rxjs": "^5.0.1",
-    "tslint": "^3.15.1",
-    "typescript": "2.0.2",
-    "zone.js": "0.7.2",
+    "@angular/common": "^2.4.6",
+    "@angular/compiler": "^2.4.6",
+    "@angular/compiler-cli": "^2.4.6",
+    "@angular/core": "^2.4.6",
+    "@angular/platform-server": "^2.4.6",
     "@types/es6-shim": "^0.31.32",
+    "@types/jasmine": "^2.5.41",
     "@types/protractor": "^4.0.0",
-    "@types/jasmine": "^2.5.40",
-    "@types/selenium-webdriver": "^2.53.39"
+    "@types/selenium-webdriver": "^2.53.39",
+    "codelyzer": "^2.0.0-beta.4",
+    "rxjs": "^5.1.0",
+    "tslint": "^4.4.2",
+    "typescript": "^2.1.5",
+    "zone.js": "^0.7.6"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=4.4.1"
   }
 }
