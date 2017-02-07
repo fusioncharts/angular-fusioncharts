@@ -66,7 +66,3 @@ To lint all `*.ts` files:
 ```bash
 $ npm run lint
 ```
-
-## License
-
-MIT © [Rohit Kumar](mailto:rohit.kr001@gmail.com)
