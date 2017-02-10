@@ -1,13 +1,23 @@
-import {Component, Input, ElementRef, AfterViewInit} from '@angular/core';
+// import {Component, Input, ElementRef, AfterViewInit, OnInit, KeyValueDiffers, SimpleChange} from '@angular/core';
+import {Component, Input, ElementRef, OnInit, KeyValueDiffers} from '@angular/core';
+// import {Observable} from 'rxjs/Observable';
+// import {Observer} from 'rxjs/Observer';
+
 import * as FusionCharts from 'fusioncharts';
+
 
 @Component({
     selector: 'fusioncharts',
-    template: `<div>FusionCharts will render here</div>`
+    template: `<div>FusionCharts will render here</div>
+    `
 })
-export class FusionChartsComponent implements AfterViewInit {
+export class FusionChartsComponent implements OnInit {
 
     chartObj: any;
+
+    @Input() dataSource: any;
+
+    private oldDataSource:any = this.dataSource;
 
     @Input() type: string;
     @Input() id: string;
@@ -15,7 +25,6 @@ export class FusionChartsComponent implements AfterViewInit {
     @Input() height: string;
     @Input() renderAt: string;
     @Input() dataFormat: string;
-    @Input() dataSource: string;
     @Input() events: string;
     @Input() link: string;
     @Input() showDataLoadingMessage: boolean;
@@ -67,7 +76,48 @@ export class FusionChartsComponent implements AfterViewInit {
     @Input() loadMessageImageScale: number;
     @Input() chartConfig: string;
 
-    constructor(public element: ElementRef) {
+    constructor(private differs: KeyValueDiffers, public element: ElementRef) {
+
+    }
+
+
+    ngOnInit() {
+        this.oldDataSource = (JSON.stringify(this.dataSource));
+    }
+
+
+    // ngOnChanges(changes: {[propName: string]: SimpleChange}, hi) {
+    ngOnChanges(changes: any) {
+        for (let i in changes) {
+            let key = i.charAt(0).toUpperCase() + i.slice(1);
+            this[`update${key}`] && this[`update${key}`]();
+        }
+    }
+
+
+    ngDoCheck() {
+        let data = JSON.stringify(this.dataSource);
+        if (this.oldDataSource === data) {
+        } else {
+            this.updateChartData();
+            this.oldDataSource = data;
+        }
+    }
+
+    updateChartData() {
+        this.chartObj && this.chartObj.setJSONData(this.dataSource);
+    }
+
+    updateWidth() {
+        this.chartObj && this.chartObj.resizeTo({
+            w: this.width
+        })
+    }
+
+    updateHeight() {
+        this.chartObj && this.chartObj.resizeTo({
+            h: this.height
+        })
     }
 
     ngAfterViewInit() {
@@ -95,6 +145,17 @@ export class FusionChartsComponent implements AfterViewInit {
 
             _this.chartObj.render(element.childNodes[0]);
         }
+    }
+
+    getDataSource() {
+        if(this.dataSource && this.dataSource.data) {
+            return this.dataSource.data;
+        }
+    }
+
+    ngOnDestroy() {
+        console.log('Destroy: ', this.chartObj);
+        this.chartObj.dispose();
     }
 
 }

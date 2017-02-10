@@ -8,12 +8,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// import {Component, Input, ElementRef, AfterViewInit, OnInit, KeyValueDiffers, SimpleChange} from '@angular/core';
 var core_1 = require("@angular/core");
+// import {Observable} from 'rxjs/Observable';
+// import {Observer} from 'rxjs/Observer';
 var FusionCharts = require("fusioncharts");
 var FusionChartsComponent = (function () {
-    function FusionChartsComponent(element) {
+    function FusionChartsComponent(differs, element) {
+        this.differs = differs;
         this.element = element;
+        this.oldDataSource = this.dataSource;
     }
+    FusionChartsComponent.prototype.ngOnInit = function () {
+        this.oldDataSource = (JSON.stringify(this.dataSource));
+    };
+    // ngOnChanges(changes: {[propName: string]: SimpleChange}, hi) {
+    FusionChartsComponent.prototype.ngOnChanges = function (changes) {
+        for (var i in changes) {
+            var key = i.charAt(0).toUpperCase() + i.slice(1);
+            this["update" + key] && this["update" + key]();
+        }
+    };
+    FusionChartsComponent.prototype.ngDoCheck = function () {
+        var data = JSON.stringify(this.dataSource);
+        if (this.oldDataSource === data) {
+        }
+        else {
+            this.updateChartData();
+            this.oldDataSource = data;
+        }
+    };
+    FusionChartsComponent.prototype.updateChartData = function () {
+        this.chartObj && this.chartObj.setJSONData(this.dataSource);
+    };
+    FusionChartsComponent.prototype.updateWidth = function () {
+        this.chartObj && this.chartObj.resizeTo({
+            w: this.width
+        });
+    };
+    FusionChartsComponent.prototype.updateHeight = function () {
+        this.chartObj && this.chartObj.resizeTo({
+            h: this.height
+        });
+    };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
         var _this = this, element = _this.element.nativeElement, _chartConfig = _this.chartConfig || {}, configObj;
         if (typeof _chartConfig === 'string') {
@@ -32,8 +69,21 @@ var FusionChartsComponent = (function () {
             _this.chartObj.render(element.childNodes[0]);
         }
     };
+    FusionChartsComponent.prototype.getDataSource = function () {
+        if (this.dataSource && this.dataSource.data) {
+            return this.dataSource.data;
+        }
+    };
+    FusionChartsComponent.prototype.ngOnDestroy = function () {
+        console.log('Destroy: ', this.chartObj);
+        this.chartObj.dispose();
+    };
     return FusionChartsComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], FusionChartsComponent.prototype, "dataSource", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
@@ -58,10 +108,6 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataFormat", void 0);
-__decorate([
-    core_1.Input(),
-    __metadata("design:type", String)
-], FusionChartsComponent.prototype, "dataSource", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", String)
@@ -265,9 +311,9 @@ __decorate([
 FusionChartsComponent = __decorate([
     core_1.Component({
         selector: 'fusioncharts',
-        template: "<div>FusionCharts will render here</div>"
+        template: "<div>FusionCharts will render here</div>\n    "
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
+    __metadata("design:paramtypes", [core_1.KeyValueDiffers, core_1.ElementRef])
 ], FusionChartsComponent);
 exports.FusionChartsComponent = FusionChartsComponent;
 //# sourceMappingURL=fusioncharts.component.js.map

@@ -1,14 +1,16 @@
-import { ElementRef, AfterViewInit } from '@angular/core';
-export declare class FusionChartsComponent implements AfterViewInit {
+import { ElementRef, OnInit, KeyValueDiffers } from '@angular/core';
+export declare class FusionChartsComponent implements OnInit {
+    private differs;
     element: ElementRef;
     chartObj: any;
+    dataSource: any;
+    private oldDataSource;
     type: string;
     id: string;
     width: string;
     height: string;
     renderAt: string;
     dataFormat: string;
-    dataSource: string;
     events: string;
     link: string;
     showDataLoadingMessage: boolean;
@@ -59,6 +61,14 @@ export declare class FusionChartsComponent implements AfterViewInit {
     loadMessageImageAlpha: number;
     loadMessageImageScale: number;
     chartConfig: string;
-    constructor(element: ElementRef);
+    constructor(differs: KeyValueDiffers, element: ElementRef);
+    ngOnInit(): void;
+    ngOnChanges(changes: any): void;
+    ngDoCheck(): void;
+    updateChartData(): void;
+    updateWidth(): void;
+    updateHeight(): void;
     ngAfterViewInit(): void;
+    getDataSource(): any;
+    ngOnDestroy(): void;
 }
