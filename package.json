@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "ngc -p tsconfig.json",
-    "lint": "tslint src/**/*.ts",
+    "lint": "tslint src/*.ts",
     "test": "tsc && karma start",
     "prepublish": "tsc",
     "tsc": "rm -rf ./dist && tsc"
@@ -16,11 +16,13 @@
     "name": "FusionCharts",
     "email": "support@fusioncharts.com"
   },
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Rohit Kumar",
       "email": "rohit.kr001@gmail.com",
       "url": "https://github.com/rohitkr"
-  }],
+    }
+  ],
   "keywords": [
     "angular"
   ],
@@ -46,7 +48,8 @@
     "codelyzer": "^2.0.0-beta.4",
     "rxjs": "^5.1.0",
     "tslint": "^4.4.2",
-    "typescript": "^2.1.5",
+    "typescript": "^2.1.6",
+    "zone": "^0.3.4",
     "zone.js": "^0.7.6"
   },
   "engines": {

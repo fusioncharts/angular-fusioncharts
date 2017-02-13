@@ -1,10 +1,9 @@
-import { ElementRef, OnInit, KeyValueDiffers } from '@angular/core';
-export declare class FusionChartsComponent implements OnInit {
+import { ElementRef, OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy, KeyValueDiffers } from '@angular/core';
+export declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
     private differs;
     element: ElementRef;
     chartObj: any;
     dataSource: any;
-    private oldDataSource;
     type: string;
     id: string;
     width: string;
@@ -61,6 +60,10 @@ export declare class FusionChartsComponent implements OnInit {
     loadMessageImageAlpha: number;
     loadMessageImageScale: number;
     chartConfig: string;
+    private containerId;
+    private configObj;
+    private oldDataSource;
+    private constructerParams;
     constructor(differs: KeyValueDiffers, element: ElementRef);
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
@@ -68,7 +71,7 @@ export declare class FusionChartsComponent implements OnInit {
     updateChartData(): void;
     updateWidth(): void;
     updateHeight(): void;
+    updateType(): void;
     ngAfterViewInit(): void;
-    getDataSource(): any;
     ngOnDestroy(): void;
 }

@@ -8,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// import {Component, Input, ElementRef, AfterViewInit, OnInit, KeyValueDiffers, SimpleChange} from '@angular/core';
+// import {Component, Input, ElementRef, OnInit, OnChanges, DoCheck, AfterViewInit,
+// OnDestroy, KeyValueDiffers, ViewChild} from '@angular/core';
 var core_1 = require("@angular/core");
 // import {Observable} from 'rxjs/Observable';
 // import {Observer} from 'rxjs/Observer';
@@ -18,15 +19,77 @@ var FusionChartsComponent = (function () {
         this.differs = differs;
         this.element = element;
         this.oldDataSource = this.dataSource;
+        this.constructerParams = {
+            type: true,
+            id: true,
+            width: true,
+            height: true,
+            renderAt: true,
+            dataFormat: true,
+            dataSource: true,
+            events: true,
+            link: true,
+            showDataLoadingMessage: true,
+            showChartLoadingMessage: true,
+            baseChartMessageFont: true,
+            baseChartMessageFontSize: true,
+            baseChartMessageColor: true,
+            dataLoadStartMessage: true,
+            dataLoadErrorMessage: true,
+            dataInvalidMessage: true,
+            dataEmptyMessage: true,
+            typeNotSupportedMessage: true,
+            loadMessage: true,
+            renderErrorMessage: true,
+            containerBackgroundColor: true,
+            containerBackgroundOpacity: true,
+            containerClassName: true,
+            baseChartMessageImageHAlign: true,
+            baseChartMessageImageVAlign: true,
+            baseChartMessageImageAlpha: true,
+            baseChartMessageImageScale: true,
+            typeNotSupportedMessageImageHAlign: true,
+            typeNotSupportedMessageImageVAlign: true,
+            typeNotSupportedMessageImageAlpha: true,
+            typeNotSupportedMessageImageScale: true,
+            dataLoadErrorMessageImageHAlign: true,
+            dataLoadErrorMessageImageVAlign: true,
+            dataLoadErrorMessageImageAlpha: true,
+            dataLoadErrorMessageImageScale: true,
+            dataLoadStartMessageImageHAlign: true,
+            dataLoadStartMessageImageVAlign: true,
+            dataLoadStartMessageImageAlpha: true,
+            dataLoadStartMessageImageScale: true,
+            dataInvalidMessageImageHAlign: true,
+            dataInvalidMessageImageVAlign: true,
+            dataInvalidMessageImageAlpha: true,
+            dataInvalidMessageImageScale: true,
+            dataEmptyMessageImageHAlign: true,
+            dataEmptyMessageImageVAlign: true,
+            dataEmptyMessageImageAlpha: true,
+            dataEmptyMessageImageScale: true,
+            renderErrorMessageImageHAlign: true,
+            renderErrorMessageImageVAlign: true,
+            renderErrorMessageImageAlpha: true,
+            renderErrorMessageImageScale: true,
+            loadMessageImageHAlign: true,
+            loadMessageImageVAlign: true,
+            loadMessageImageAlpha: true,
+            loadMessageImageScale: true,
+            chartConfig: true
+        };
     }
+    // @ViewChild('samplediv') chartContainer: ElementRef;
     FusionChartsComponent.prototype.ngOnInit = function () {
-        this.oldDataSource = (JSON.stringify(this.dataSource));
+        this.oldDataSource = JSON.stringify(this.dataSource);
     };
-    // ngOnChanges(changes: {[propName: string]: SimpleChange}, hi) {
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
-        for (var i in changes) {
+        for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
+            var i = _a[_i];
             var key = i.charAt(0).toUpperCase() + i.slice(1);
-            this["update" + key] && this["update" + key]();
+            if (this["update" + key]) {
+                this["update" + key]();
+            }
         }
     };
     FusionChartsComponent.prototype.ngDoCheck = function () {
@@ -39,43 +102,54 @@ var FusionChartsComponent = (function () {
         }
     };
     FusionChartsComponent.prototype.updateChartData = function () {
-        this.chartObj && this.chartObj.setJSONData(this.dataSource);
+        var dataFormat = this.configObj.dataFormat || 'json', data = this.dataSource;
+        if (this.chartObj) {
+            this.chartObj.setChartData(data, dataFormat);
+        }
     };
     FusionChartsComponent.prototype.updateWidth = function () {
-        this.chartObj && this.chartObj.resizeTo({
-            w: this.width
-        });
+        if (this.chartObj) {
+            this.chartObj.resizeTo({
+                w: this.width
+            });
+        }
     };
     FusionChartsComponent.prototype.updateHeight = function () {
-        this.chartObj && this.chartObj.resizeTo({
-            h: this.height
-        });
+        if (this.chartObj) {
+            this.chartObj.resizeTo({
+                h: this.height
+            });
+        }
+    };
+    FusionChartsComponent.prototype.updateType = function () {
+        if (this.chartObj) {
+            this.chartObj.chartType(this.type);
+        }
     };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
-        var _this = this, element = _this.element.nativeElement, _chartConfig = _this.chartConfig || {}, configObj;
+        var _this = this, 
+        // element = _this.element.nativeElement,
+        _chartConfig = _this.chartConfig || {}, params = _this.constructerParams, configObj = _this.configObj || (_this.configObj = {});
         if (typeof _chartConfig === 'string') {
             _chartConfig = JSON.parse(_chartConfig);
         }
-        configObj = {
-            type: _this.type || _chartConfig['type'],
-            height: _this.height || _chartConfig['height'],
-            width: _this.width || _chartConfig['width'],
-            id: _this.id || (_chartConfig && _chartConfig['id']),
-            dataFormat: _this.dataFormat || _chartConfig['dataFormat'],
-            dataSource: _this.dataSource || _chartConfig['dataSource']
-        };
-        if (configObj.type) {
-            _this.chartObj = new FusionCharts(configObj);
-            _this.chartObj.render(element.childNodes[0]);
+        for (var _i = 0, _a = Object.keys(params); _i < _a.length; _i++) {
+            var i = _a[_i];
+            var value = _this[i] || _chartConfig[i];
+            if (value) {
+                configObj[i] = value;
+            }
         }
-    };
-    FusionChartsComponent.prototype.getDataSource = function () {
-        if (this.dataSource && this.dataSource.data) {
-            return this.dataSource.data;
+        if (configObj['type']) {
+            _this.chartObj = new FusionCharts(configObj);
+            configObj['renderAt'] = 'container-' + _this.chartObj.id;
+            _this.containerId = _this.chartObj.id;
+            setTimeout(function () {
+                _this.chartObj.render(_this.configObj['renderAt']);
+            }, 1);
         }
     };
     FusionChartsComponent.prototype.ngOnDestroy = function () {
-        console.log('Destroy: ', this.chartObj);
         this.chartObj.dispose();
     };
     return FusionChartsComponent;
@@ -311,7 +385,7 @@ __decorate([
 FusionChartsComponent = __decorate([
     core_1.Component({
         selector: 'fusioncharts',
-        template: "<div>FusionCharts will render here</div>\n    "
+        template: "<div attr.id=\"container-{{containerId}}\" >FusionCharts will render here</div>\n    "
     }),
     __metadata("design:paramtypes", [core_1.KeyValueDiffers, core_1.ElementRef])
 ], FusionChartsComponent);
