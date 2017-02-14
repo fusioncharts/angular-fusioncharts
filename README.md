@@ -8,14 +8,6 @@ To install this library, run:
 $ npm install angular2-fusioncharts --save
 ```
 
-## Consuming your library
-
-Once you have published your library to npm, you can import your library in any Angular application by running:
-
-```bash
-$ npm install angular2-fusioncharts
-```
-
 and then from your Angular `AppModule`:
 
 ```typescript
