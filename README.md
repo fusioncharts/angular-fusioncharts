@@ -25,11 +25,12 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { FusionChartsModule } from 'angular2-fusioncharts';
+import { FusionChartsComponent } from 'angular2-fusioncharts';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FusionChartsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,41 @@ Once your library is imported, you can use its components, directives and pipes 
 <h1>
   {{title}}
 </h1>
-<fusioncharts></fusioncharts>
+<fusioncharts
+    width="600"
+    height="350"
+    type="Column2D"
+    dataFormat="JSON"
+    dataSource=`{
+          "chart": {
+              "caption": "Harry's SuperMart",
+              "subCaption": "Top 5 stores in last month by revenue"
+          },
+          "data": [
+              {
+                  "label": "Bakersfield Central",
+                  "value": "880000"
+              },
+              {
+                  "label": "Garden Groove harbour",
+                  "value": "730000"
+              },
+              {
+                  "label": "Los Angeles Topanga",
+                  "value": "590000"
+              },
+              {
+                  "label": "Compton-Rancho Dom",
+                  "value": "520000"
+              },
+              {
+                  "label": "Daly City Serramonte",
+                  "value": "330000"
+              }
+          ]
+      }
+    `
+></fusioncharts>
 ```
 
 ## Development
@@ -66,3 +101,4 @@ To lint all `*.ts` files:
 ```bash
 $ npm run lint
 ```
+### [Demos and Documentation](http://fusioncharts.github.io/angular2-fusioncharts/)
