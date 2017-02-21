@@ -2,7 +2,7 @@
   "name": "angular2-fusioncharts",
   "version": "1.0.1",
   "scripts": {
-    "build": "ngc -p tsconfig.json",
+    "build": "rm -rf ./dist && ngc -p tsconfig.json",
     "lint": "tslint src/*.ts",
     "test": "tsc && karma start",
     "prepublish": "tsc",

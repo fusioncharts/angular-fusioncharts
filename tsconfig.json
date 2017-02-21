@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "noImplicitAny": false,
@@ -12,6 +13,10 @@
       "node_modules/@types"
     ]
   },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*"
+  ],
   "files": [
     "index.ts"
   ],
@@ -21,6 +26,8 @@
     "**/*.spec.ts"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "genDir": "dist/",
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true
   }
 }
