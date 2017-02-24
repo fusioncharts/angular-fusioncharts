@@ -1,19 +1,19 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
-import {CommonModule} from '@angular/common';
+
 import {FusionChartsComponent} from './src/fusioncharts.component';
 import {FusionChartsDirective} from './src/fusioncharts.directive';
 import {FusionChartsPipe} from './src/fusioncharts.pipe';
-import {FusionChartsService} from './src/fusioncharts.service';
+import {FusionChartsStatic} from './src/fusioncharts.service';
 
-export * from './src/fusioncharts.component';
-export * from './src/fusioncharts.directive';
-export * from './src/fusioncharts.pipe';
-export * from './src/fusioncharts.service';
+
+export {
+    FusionChartsComponent,
+    FusionChartsDirective,
+    FusionChartsPipe
+};
+
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
   declarations: [
     FusionChartsComponent,
     FusionChartsDirective,
@@ -26,10 +26,19 @@ export * from './src/fusioncharts.service';
   ]
 })
 export class FusionChartsModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: FusionChartsModule,
-      providers: [FusionChartsService]
-    };
-  }
+    static forRoot(FusionChartsConstructor: any, ...fusionchartsModules: Array<Function>): ModuleWithProviders {
+        fusionchartsModules.forEach((FusionChartsModules) => {
+            FusionChartsModules(FusionChartsConstructor)
+        });
+
+        return {
+            ngModule: FusionChartsModule,
+            providers: [{ 
+              provide: FusionChartsStatic,
+              useValue: FusionChartsConstructor
+            }]
+        }
+    }
+
 }
+

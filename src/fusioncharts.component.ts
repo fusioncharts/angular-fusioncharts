@@ -1,18 +1,16 @@
-// import {Component, Input, ElementRef, OnInit, OnChanges, DoCheck, AfterViewInit,
-    // OnDestroy, KeyValueDiffers, ViewChild} from '@angular/core';
 import {Component, Input, ElementRef, OnInit,
     OnChanges, DoCheck, AfterViewInit, OnDestroy,
     KeyValueDiffers, ViewChild} from '@angular/core';
-// import {Observable} from 'rxjs/Observable';
-// import {Observer} from 'rxjs/Observer';
 
-import * as FusionCharts from 'fusioncharts';
+import { FusionChartsService } from './fusioncharts.service';
+import { FusionChartsConstructor } from './fusioncharts.constructor';
 
 
 @Component({
     selector: 'fusioncharts',
     template: `<div attr.id="container-{{containerId}}" >FusionCharts will render here</div>
-    `
+    `,
+    providers: [FusionChartsService],
 })
 export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
 
@@ -138,9 +136,12 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
         loadMessageImageScale: true,
         chartConfig: true
     };
+    element: ElementRef;
+    fusionchartsService: FusionChartsService;
 
-
-    constructor(private differs: KeyValueDiffers, public element: ElementRef) {
+    constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers) {
+        this.element = element;
+        this.fusionchartsService = fusionchartsService;
     }
 
     // @ViewChild('samplediv') chartContainer: ElementRef;
@@ -212,6 +213,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
             params = _this.constructerParams,
             configObj = _this.configObj || (_this.configObj = {});
 
+
         if (typeof _chartConfig === 'string') {
             _chartConfig = JSON.parse(_chartConfig);
         }
@@ -224,7 +226,9 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
         }
 
         if (configObj['type']) {
-            _this.chartObj = new FusionCharts(configObj);
+
+            _this.chartObj = FusionChartsConstructor(this.fusionchartsService, configObj);
+
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
 
@@ -240,3 +244,4 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     }
 
 }
+

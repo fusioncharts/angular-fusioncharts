@@ -1,3 +1,7 @@
+export declare class FusionChartsStatic {
+}
 export declare class FusionChartsService {
-    constructor();
+    _fusionchartsStatice: FusionChartsStatic;
+    constructor(FusionChartsStatic: FusionChartsStatic);
+    getFusionChartsStatic(): FusionChartsStatic;
 }

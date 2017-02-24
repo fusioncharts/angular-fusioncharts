@@ -9,27 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var FusionChartsStatic = (function () {
-    function FusionChartsStatic() {
-    }
-    return FusionChartsStatic;
-}());
-FusionChartsStatic = __decorate([
-    core_1.Injectable()
-], FusionChartsStatic);
-exports.FusionChartsStatic = FusionChartsStatic;
 var FusionChartsService = (function () {
-    function FusionChartsService(FusionChartsStatic) {
-        this._fusionchartsStatice = FusionChartsStatic;
+    function FusionChartsService() {
     }
-    FusionChartsService.prototype.getFusionChartsStatic = function () {
-        return this._fusionchartsStatice;
-    };
     return FusionChartsService;
 }());
 FusionChartsService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [FusionChartsStatic])
+    __metadata("design:paramtypes", [])
 ], FusionChartsService);
 exports.FusionChartsService = FusionChartsService;
 //# sourceMappingURL=fusioncharts.service.js.map

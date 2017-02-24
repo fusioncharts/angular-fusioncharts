@@ -1,8 +1,8 @@
 import { ModuleWithProviders } from '@angular/core';
-export * from './src/fusioncharts.component';
-export * from './src/fusioncharts.directive';
-export * from './src/fusioncharts.pipe';
-export * from './src/fusioncharts.service';
+import { FusionChartsComponent } from './src/fusioncharts.component';
+import { FusionChartsDirective } from './src/fusioncharts.directive';
+import { FusionChartsPipe } from './src/fusioncharts.pipe';
+export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe };
 export declare class FusionChartsModule {
-    static forRoot(): ModuleWithProviders;
+    static forRoot(FusionChartsConstructor: any, ...fusionchartsModules: Array<Function>): ModuleWithProviders;
 }
