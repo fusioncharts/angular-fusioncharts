@@ -8,12 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// import {Component, Input, ElementRef, OnInit, OnChanges, DoCheck, AfterViewInit,
+// OnDestroy, KeyValueDiffers, ViewChild} from '@angular/core';
 var core_1 = require("@angular/core");
-var fusioncharts_service_1 = require("./fusioncharts.service");
-var fusioncharts_constructor_1 = require("./fusioncharts.constructor");
+// import {Observable} from 'rxjs/Observable';
+// import {Observer} from 'rxjs/Observer';
+var FusionCharts = require("fusioncharts");
 var FusionChartsComponent = (function () {
-    function FusionChartsComponent(element, fusionchartsService, differs) {
+    function FusionChartsComponent(differs, element) {
         this.differs = differs;
+        this.element = element;
         this.oldDataSource = this.dataSource;
         this.constructerParams = {
             type: true,
@@ -74,8 +78,6 @@ var FusionChartsComponent = (function () {
             loadMessageImageScale: true,
             chartConfig: true
         };
-        this.element = element;
-        this.fusionchartsService = fusionchartsService;
     }
     // @ViewChild('samplediv') chartContainer: ElementRef;
     FusionChartsComponent.prototype.ngOnInit = function () {
@@ -139,7 +141,7 @@ var FusionChartsComponent = (function () {
             }
         }
         if (configObj['type']) {
-            _this.chartObj = fusioncharts_constructor_1.FusionChartsConstructor(this.fusionchartsService, configObj);
+            _this.chartObj = new FusionCharts(configObj);
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
             setTimeout(function () {
@@ -383,10 +385,9 @@ __decorate([
 FusionChartsComponent = __decorate([
     core_1.Component({
         selector: 'fusioncharts',
-        template: "<div attr.id=\"container-{{containerId}}\" >FusionCharts will render here</div>\n    ",
-        providers: [fusioncharts_service_1.FusionChartsService],
+        template: "<div attr.id=\"container-{{containerId}}\" >FusionCharts will render here</div>\n    "
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef, fusioncharts_service_1.FusionChartsService, core_1.KeyValueDiffers])
+    __metadata("design:paramtypes", [core_1.KeyValueDiffers, core_1.ElementRef])
 ], FusionChartsComponent);
 exports.FusionChartsComponent = FusionChartsComponent;
 //# sourceMappingURL=fusioncharts.component.js.map

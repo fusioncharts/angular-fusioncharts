@@ -1,7 +1,7 @@
 import { ElementRef, OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy, KeyValueDiffers } from '@angular/core';
+import { FusionChartsService } from './fusioncharts.service';
 export declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
     private differs;
-    element: ElementRef;
     chartObj: any;
     dataSource: any;
     type: string;
@@ -64,7 +64,9 @@ export declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck
     private configObj;
     private oldDataSource;
     private constructerParams;
-    constructor(differs: KeyValueDiffers, element: ElementRef);
+    element: ElementRef;
+    fusionchartsService: FusionChartsService;
+    constructor(element: ElementRef, fusionchartsService: FusionChartsService, differs: KeyValueDiffers);
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
     ngDoCheck(): void;

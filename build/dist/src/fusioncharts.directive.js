@@ -9,27 +9,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var FusionChartsStatic = (function () {
-    function FusionChartsStatic() {
+var FusionChartsDirective = (function () {
+    function FusionChartsDirective(el) {
+        this.el = el;
     }
-    return FusionChartsStatic;
+    return FusionChartsDirective;
 }());
-FusionChartsStatic = __decorate([
-    core_1.Injectable()
-], FusionChartsStatic);
-exports.FusionChartsStatic = FusionChartsStatic;
-var FusionChartsService = (function () {
-    function FusionChartsService(FusionChartsStatic) {
-        this._fusionchartsStatice = FusionChartsStatic;
-    }
-    FusionChartsService.prototype.getFusionChartsStatic = function () {
-        return this._fusionchartsStatice;
-    };
-    return FusionChartsService;
-}());
-FusionChartsService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [FusionChartsStatic])
-], FusionChartsService);
-exports.FusionChartsService = FusionChartsService;
-//# sourceMappingURL=fusioncharts.service.js.map
+FusionChartsDirective = __decorate([
+    core_1.Directive({
+        selector: '[fusionchartsDirective]'
+    }),
+    __metadata("design:paramtypes", [core_1.ElementRef])
+], FusionChartsDirective);
+exports.FusionChartsDirective = FusionChartsDirective;
+//# sourceMappingURL=fusioncharts.directive.js.map
