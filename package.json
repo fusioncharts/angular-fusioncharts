@@ -1,6 +1,6 @@
 {
   "name": "angular2-fusioncharts",
-  "version": "1.0.2-rc.1",
+  "version": "1.0.2-rc.2",
   "scripts": {
     "build": "rm -rf ./dist && ngc -p tsconfig.json",
     "lint": "tslint src/*.ts",
