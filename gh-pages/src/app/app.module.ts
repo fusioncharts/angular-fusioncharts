@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
-import { GithubService } from './github/shared/github.service';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -23,15 +23,9 @@ import { Ex9 } from './fusioncharts/ex9/ex9';
 // import { Ex10 } from './fusioncharts/ex10/ex10';
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
-import { AboutComponent } from './about/about.component';
-import { HomeComponent } from './home/home.component';
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
 import { FusionChartsModule } from 'angular2-fusioncharts';
-import { RepoBrowserComponent } from './github/repo-browser/repo-browser.component';
-import { RepoListComponent } from './github/repo-list/repo-list.component';
-import { RepoDetailComponent } from './github/repo-detail/repo-detail.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { ContactComponent } from './contact/contact.component';
 
 // Load FusionCharts
 import * as FusionCharts from 'fusioncharts';
@@ -58,13 +52,7 @@ import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
     CodePrev,
     AppComponent,
-    AboutComponent,
-    RepoBrowserComponent,
-    RepoListComponent,
-    RepoDetailComponent,
-    HomeComponent,
-    FusionChartsSample,
-    ContactComponent
+    FusionChartsSample
   ],
   imports: [
     BrowserModule,
@@ -76,7 +64,6 @@ import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [
-    GithubService,
 
     NavService
   ],
