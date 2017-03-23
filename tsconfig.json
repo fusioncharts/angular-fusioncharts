@@ -17,6 +17,7 @@
   ],
   "exclude": [
     "node_modules",
+    "./gh-pages",
     "dist",
     "**/*.spec.ts"
   ],
