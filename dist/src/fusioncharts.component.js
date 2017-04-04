@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var fusioncharts_service_1 = require("./fusioncharts.service");
 var fusioncharts_constructor_1 = require("./fusioncharts.constructor");
@@ -84,9 +85,9 @@ var FusionChartsComponent = (function () {
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
         for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
             var i = _a[_i];
-            var key = i.charAt(0).toUpperCase() + i.slice(1);
-            if (this["update" + key]) {
-                this["update" + key]();
+            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update" + key;
+            if (THIS[fnName]) {
+                THIS[fnName]();
             }
         }
     };

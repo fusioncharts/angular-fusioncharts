@@ -60,6 +60,7 @@ export declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck
     loadMessageImageAlpha: number;
     loadMessageImageScale: number;
     chartConfig: string;
+    [key: string]: any;
     private containerId;
     private configObj;
     private oldDataSource;

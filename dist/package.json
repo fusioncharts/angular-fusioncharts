@@ -29,7 +29,9 @@
   "bugs": {
     "url": "https://github.com/fusioncharts/angular2-fusioncharts/issues"
   },
-  "main": "./dist/index.js",
+  "main": "index.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
   "dependencies": {
     "@types/fusioncharts": "^3.11.0",
     "fusioncharts": "^3.11.3-sr.1"

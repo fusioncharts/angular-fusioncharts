@@ -8,7 +8,7 @@ import {Injectable, PipeTransform, Pipe} from '@angular/core';
 })
 @Injectable()
 export class FusionChartsPipe implements PipeTransform {
-  transform(value: any, args: any[] = null): string {
+  transform(value: any, args?: any[]): string {
     return value;
   }
 }
