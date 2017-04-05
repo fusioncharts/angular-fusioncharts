@@ -14,36 +14,22 @@ exports.FusionChartsDirective = fusioncharts_directive_1.FusionChartsDirective;
 var fusioncharts_pipe_1 = require("./src/fusioncharts.pipe");
 exports.FusionChartsPipe = fusioncharts_pipe_1.FusionChartsPipe;
 var fusioncharts_service_1 = require("./src/fusioncharts.service");
-var FusionCharts = require("fusioncharts");
 var FusionChartsModule = FusionChartsModule_1 = (function () {
     function FusionChartsModule() {
     }
-    // static forRoot(...fusionchartsModules: Array<Function>): ModuleWithProviders {
-    // fusionchartsModules.forEach((FusionChartsModules: any) => {
-    //     FusionChartsModules(FusionCharts)
-    // });
-    // static forRoot(...config: any[]): ModuleWithProviders {
-    //   // console.log(config);
-    //   // if (config) {
-    //   //   for (var i in config['modules']) {
-    //   //     config['modules'](config['core'])
-    //   //   }        
-    //   // }
-    //   return {
-    //     ngModule: FusionChartsModule,
-    //     providers: [{ 
-    //       provide: FusionChartsStatic,
-    //       useValue: FusionCharts
-    //     }]
-    //   };
-    // }
-    FusionChartsModule.forRoot = function (routes, config) {
-        // static forRoot(): ModuleWithProviders {
+    FusionChartsModule.forRoot = function (fcCore) {
+        var fcModules = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            fcModules[_i - 1] = arguments[_i];
+        }
         return {
             ngModule: FusionChartsModule_1,
             providers: [{
                     provide: fusioncharts_service_1.FusionChartsStatic,
-                    useValue: FusionCharts
+                    useValue: {
+                        core: fcCore,
+                        modules: fcModules
+                    }
                 }]
         };
     };
@@ -64,6 +50,5 @@ FusionChartsModule = FusionChartsModule_1 = __decorate([
     })
 ], FusionChartsModule);
 exports.FusionChartsModule = FusionChartsModule;
-exports.default = FusionCharts;
 var FusionChartsModule_1;
 //# sourceMappingURL=index.js.map

@@ -5,7 +5,7 @@
     "transpile": "ngc",
     "package": "rollup -c",
     "minify": "uglifyjs dist/bundles/amazing.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/amazing.umd.min.js",
-    "build": "npm run transpile && npm run package && npm run minify"
+    "build": "rm -rf ./dist && npm run transpile && npm run package && npm run minify && cp dist_package.json ./dist/package.json"
   },
   "repository": {
     "type": "git",
