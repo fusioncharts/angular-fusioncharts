@@ -16,7 +16,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     chartObj: any;
 
-    @Input() dataSource: any;
+    @Input() dataSource: Object;
     @Input() type: string;
     @Input() id: string;
     @Input() width: string;
@@ -73,6 +73,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     @Input() loadMessageImageAlpha: number;
     @Input() loadMessageImageScale: number;
     @Input() chartConfig: string;
+    [key: string]: any;
 
     private containerId: string;
     private configObj: any;
@@ -153,9 +154,11 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     ngOnChanges(changes: any) {
         for (let i of Object.keys(changes)) {
-            let key = i.charAt(0).toUpperCase() + i.slice(1);
-            if (this[`update${key}`]) {
-                this[`update${key}`]();
+            let key = i.charAt(0).toUpperCase() + i.slice(1),
+                THIS = this,
+                fnName = `update${key}`;
+            if (THIS[fnName]) {
+                THIS[fnName]();
             }
         }
     }
@@ -209,7 +212,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     ngAfterViewInit() {
         let _this = this,
             // element = _this.element.nativeElement,
-            _chartConfig = _this.chartConfig || {},
+            _chartConfig:any = _this.chartConfig || {},
             params = _this.constructerParams,
             configObj = _this.configObj || (_this.configObj = {});
 
@@ -227,7 +230,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
         if (configObj['type']) {
 
-            _this.chartObj = FusionChartsConstructor(this.fusionchartsService, configObj);
+            _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
 
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;

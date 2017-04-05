@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "noImplicitAny": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "module": "commonjs",
     "target": "ES5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
+    "stripInternal": true,
+    "skipLibCheck": true,
     "declaration": true,
     "outDir": "./dist",
     "typeRoots": [
@@ -21,6 +24,7 @@
     "**/*.spec.ts"
   ],
   "angularCompilerOptions": {
-    "strictMetadataEmit": true
+    "strictMetadataEmit": true,
+    "genDir": "./aot"
   }
 }

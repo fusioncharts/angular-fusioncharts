@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,9 +7,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var fusioncharts_service_1 = require("./fusioncharts.service");
-var fusioncharts_constructor_1 = require("./fusioncharts.constructor");
+import { Component, Input, ElementRef, KeyValueDiffers } from '@angular/core';
+import { FusionChartsService } from './fusioncharts.service';
+import { FusionChartsConstructor } from './fusioncharts.constructor';
 var FusionChartsComponent = (function () {
     function FusionChartsComponent(element, fusionchartsService, differs) {
         this.differs = differs;
@@ -84,9 +83,9 @@ var FusionChartsComponent = (function () {
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
         for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
             var i = _a[_i];
-            var key = i.charAt(0).toUpperCase() + i.slice(1);
-            if (this["update" + key]) {
-                this["update" + key]();
+            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update" + key;
+            if (THIS[fnName]) {
+                THIS[fnName]();
             }
         }
     };
@@ -139,7 +138,7 @@ var FusionChartsComponent = (function () {
             }
         }
         if (configObj['type']) {
-            _this.chartObj = fusioncharts_constructor_1.FusionChartsConstructor(this.fusionchartsService, configObj);
+            _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
             setTimeout(function () {
@@ -153,240 +152,239 @@ var FusionChartsComponent = (function () {
     return FusionChartsComponent;
 }());
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Object)
 ], FusionChartsComponent.prototype, "dataSource", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "type", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "id", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "width", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "height", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "renderAt", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataFormat", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "events", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "link", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Boolean)
 ], FusionChartsComponent.prototype, "showDataLoadingMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Boolean)
 ], FusionChartsComponent.prototype, "showChartLoadingMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "baseChartMessageFont", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "baseChartMessageFontSize", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "baseChartMessageColor", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadStartMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadErrorMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataInvalidMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataEmptyMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "typeNotSupportedMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "loadMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "renderErrorMessage", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "containerBackgroundColor", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "containerBackgroundOpacity", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "containerClassName", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "baseChartMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "baseChartMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "baseChartMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "baseChartMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "typeNotSupportedMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "typeNotSupportedMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "typeNotSupportedMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "typeNotSupportedMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadErrorMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadErrorMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataLoadErrorMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataLoadErrorMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadStartMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataLoadStartMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataLoadStartMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataLoadStartMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataInvalidMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataInvalidMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataInvalidMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataInvalidMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataEmptyMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "dataEmptyMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataEmptyMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "dataEmptyMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "renderErrorMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "renderErrorMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "renderErrorMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "renderErrorMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "loadMessageImageHAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "loadMessageImageVAlign", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "loadMessageImageAlpha", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", Number)
 ], FusionChartsComponent.prototype, "loadMessageImageScale", void 0);
 __decorate([
-    core_1.Input(),
+    Input(),
     __metadata("design:type", String)
 ], FusionChartsComponent.prototype, "chartConfig", void 0);
 FusionChartsComponent = __decorate([
-    core_1.Component({
+    Component({
         selector: 'fusioncharts',
         template: "<div attr.id=\"container-{{containerId}}\" >FusionCharts will render here</div>\n    ",
-        providers: [fusioncharts_service_1.FusionChartsService],
+        providers: [FusionChartsService],
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef, fusioncharts_service_1.FusionChartsService, core_1.KeyValueDiffers])
+    __metadata("design:paramtypes", [ElementRef, FusionChartsService, KeyValueDiffers])
 ], FusionChartsComponent);
-exports.FusionChartsComponent = FusionChartsComponent;
-//# sourceMappingURL=fusioncharts.component.js.map
+export { FusionChartsComponent };
