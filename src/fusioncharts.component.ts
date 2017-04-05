@@ -16,7 +16,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     chartObj: any;
 
-    @Input() dataSource: any;
+    @Input() dataSource: Object;
     @Input() type: string;
     @Input() id: string;
     @Input() width: string;
@@ -230,7 +230,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
         if (configObj['type']) {
 
-            _this.chartObj = FusionChartsConstructor(this.fusionchartsService, configObj);
+            _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
 
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
