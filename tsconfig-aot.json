@@ -13,7 +13,6 @@
   },
 
   "files": [
-    // "src/app/app.module.ts",
     "./index.ts"
   ],
 
