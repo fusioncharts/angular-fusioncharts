@@ -2,10 +2,10 @@
   "name": "angular2-fusioncharts",
   "version": "1.0.2-rc.2",
   "scripts": {
-    "transpile": "ngc",
+    "transpile": "ngc -p tsconfig-aot.json",
     "package": "rollup -c",
     "minify": "uglifyjs dist/bundles/fusioncharts.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/fusioncharts.umd.min.js",
-    "build": "rm -rf ./dist && npm run transpile && npm run package && npm run minify && cp dist_package.json ./dist/package.json"
+    "build": "rm -rf ./dist && npm run transpile"
   },
   "repository": {
     "type": "git",
