@@ -3,9 +3,10 @@
   "version": "1.0.2-rc.2",
   "scripts": {
     "transpile": "ngc -p tsconfig-aot.json",
+    "tsc": "tsc",
     "package": "rollup -c",
     "minify": "uglifyjs dist/bundles/fusioncharts.umd.js --screw-ie8 --compress --mangle --comments --output dist/bundles/fusioncharts.umd.min.js",
-    "build": "rm -rf ./dist && npm run transpile"
+    "build": "rm -rf ./dist && npm run tsc"
   },
   "repository": {
     "type": "git",
