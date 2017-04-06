@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7,7 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-import { Directive, ElementRef } from '@angular/core';
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
 var FusionChartsDirective = (function () {
     function FusionChartsDirective(el) {
         this.el = el;
@@ -15,9 +17,9 @@ var FusionChartsDirective = (function () {
     return FusionChartsDirective;
 }());
 FusionChartsDirective = __decorate([
-    Directive({
+    core_1.Directive({
         selector: '[fusionchartsDirective]'
     }),
-    __metadata("design:paramtypes", [ElementRef])
+    __metadata("design:paramtypes", [core_1.ElementRef])
 ], FusionChartsDirective);
-export { FusionChartsDirective };
+exports.FusionChartsDirective = FusionChartsDirective;
