@@ -1,6 +1,6 @@
 {
   "name": "angular2-fusioncharts",
-  "version": "1.0.2-rc.2",
+  "version": "1.0.2-rc.3",
   "scripts": {
     "transpile": "ngc -p tsconfig-aot.json",
     "package": "rollup -c",
