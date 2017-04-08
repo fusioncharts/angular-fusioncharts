@@ -3,8 +3,8 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class FusionChartsStatic {
-	core: any;
-	modules: Function[];
+    core: any;
+    modules: Function[];
 }
 
 @Injectable()
@@ -12,10 +12,13 @@ export class FusionChartsService {
     _fusionchartsStatice: FusionChartsStatic;
 
     constructor(FusionChartsStatic: FusionChartsStatic) {
-        this._fusionchartsStatice = FusionChartsStatic.core;
+        const fcStatic = FusionChartsStatic;
 
-        FusionChartsStatic.modules && FusionChartsStatic.modules.forEach((FusionChartsModules: any) => {
-            FusionChartsModules(FusionChartsStatic.core);
+        this._fusionchartsStatice = (typeof fcStatic.core == 'function' && fcStatic.core.id === 'FusionCharts') ?
+            fcStatic.core : fcStatic.core();
+
+        fcStatic.modules && fcStatic.modules.forEach && fcStatic.modules.forEach((FusionChartsModules: any) => {
+            FusionChartsModules(fcStatic.core);
         });
     }
 

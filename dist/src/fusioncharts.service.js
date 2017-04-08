@@ -21,9 +21,11 @@ FusionChartsStatic = __decorate([
 exports.FusionChartsStatic = FusionChartsStatic;
 var FusionChartsService = (function () {
     function FusionChartsService(FusionChartsStatic) {
-        this._fusionchartsStatice = FusionChartsStatic.core;
-        FusionChartsStatic.modules && FusionChartsStatic.modules.forEach(function (FusionChartsModules) {
-            FusionChartsModules(FusionChartsStatic.core);
+        var fcStatic = FusionChartsStatic;
+        this._fusionchartsStatice = (typeof fcStatic.core == 'function' && fcStatic.core.id === 'FusionCharts') ?
+            fcStatic.core : fcStatic.core();
+        fcStatic.modules && fcStatic.modules.forEach && fcStatic.modules.forEach(function (FusionChartsModules) {
+            FusionChartsModules(fcStatic.core);
         });
     }
     FusionChartsService.prototype.getFusionChartsStatic = function () {
