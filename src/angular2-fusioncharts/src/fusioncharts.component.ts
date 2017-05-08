@@ -73,9 +73,8 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     @Input() loadMessageImageAlpha: number;
     @Input() loadMessageImageScale: number;
     @Input() chartConfig: string;
-    [key: string]: any;
 
-    private containerId: string;
+    containerId: string;
     private configObj: any;
     private oldDataSource: any = this.dataSource;
     private constructerParams = {
@@ -153,8 +152,8 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
 
     ngOnChanges(changes: any) {
-        for (let i of Object.keys(changes)) {
-            let key = i.charAt(0).toUpperCase() + i.slice(1),
+        for (const i of Object.keys(changes)) {
+            const key = i.charAt(0).toUpperCase() + i.slice(1),
                 THIS = this,
                 fnName = `update${key}`;
             if (THIS[fnName]) {
@@ -165,7 +164,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
 
     ngDoCheck() {
-        let data = JSON.stringify(this.dataSource);
+        const data = JSON.stringify(this.dataSource);
         if (this.oldDataSource === data) {
         } else {
             this.updateChartData();
@@ -175,7 +174,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
 
     updateChartData() {
-        let dataFormat = this.configObj.dataFormat || 'json',
+        const dataFormat = this.configObj.dataFormat || 'json',
             data = this.dataSource;
 
         if (this.chartObj) {
@@ -210,19 +209,20 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
 
     ngAfterViewInit() {
-        let _this = this,
-            // element = _this.element.nativeElement,
-            _chartConfig:any = _this.chartConfig || {},
+        const _this = this,
             params = _this.constructerParams,
             configObj = _this.configObj || (_this.configObj = {});
+
+
+        let _chartConfig: any = _this.chartConfig || {};
 
 
         if (typeof _chartConfig === 'string') {
             _chartConfig = JSON.parse(_chartConfig);
         }
 
-        for (let i of Object.keys(params)) {
-            let value = _this[i] || _chartConfig[i];
+        for (const i of Object.keys(params)) {
+            const value = _this[i] || _chartConfig[i];
             if (value) {
                 configObj[i] = value;
             }
@@ -232,11 +232,11 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
             _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
 
-            configObj['renderAt'] = 'container-' + _this.chartObj.id;
-            _this.containerId = _this.chartObj.id;
+            // configObj['renderAt'] = 'container-' + _this.chartObj.id;
+            // _this.containerId = _this.chartObj.id;
 
             setTimeout(() => {
-                _this.chartObj.render(_this.configObj['renderAt']);
+                _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
             }, 1);
 
         }

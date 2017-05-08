@@ -1,116 +1,28 @@
-# angular2-fusioncharts
+# Ng2Fc
 
-## Installation
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
-To install `angular2-fusioncharts` library, run:
+## Development server
 
-```bash
-$ npm install angular2-fusioncharts --save
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-And then in your Angular `AppModule`:
+## Code scaffolding
 
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
 
-import { AppComponent } from './app.component';
+## Build
 
-// Import angular2-fusioncharts
-import { FusionChartsModule } from 'angular2-fusioncharts';
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-// Import FusionCharts library
-import * as FusionCharts from 'fusioncharts';
-// Import FusionCharts Charts module
-import * as Charts from 'fusioncharts/fusioncharts.charts';
+## Running unit tests
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    FusionChartsComponent
-  ],
-  imports: [
-    BrowserModule,
-    // Specify FusionChartsModule as an import 
-    // and pass FusionCharts and Charts as a dependency
-    FusionChartsModule.forRoot(FusionCharts, Charts),
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Once the library is imported, you can use its components, directives in your Angular application:
+## Running end-to-end tests
 
-In your Angular AppComponent:
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
 
-```javascript
-import {Component} from '@angular/core';
+## Further help
 
-@Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html'
-})
-export class AppComponent {
-  dataSource: Object;
-  title: string;
-
-  constructor() {
-    this.title = "Angular 2 FusionCharts Sample";
-
-    this.dataSource = {
-      "chart": {
-        "caption": "Harry's SuperMart",
-        "subCaption": "Top 5 stores in last month by revenue"
-      },
-      "data": [{
-        "label": "Bakersfield Central",
-         "value": "880000"
-      }, {
-        "label": "Garden Groove harbour",
-        "value": "730000"
-      }, {
-        "label": "Los Angeles Topanga",
-        "value": "590000"
-      }, {
-        "label": "Compton-Rancho Dom",
-        "value": "520000"
-      }, {
-        "label": "Daly City Serramonte",
-        "value": "330000"
-      }]
-    }
-  }
-}
-```
-
-    
-```xml
-<!-- You can now use fusioncharts component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<fusioncharts
-    width="600"
-    height="350"
-    type="Column2D"
-    dataFormat="JSON"
-    [dataSource]="dataSource"
-></fusioncharts>
-```
-
-## Development
-
-To generate all `*.js`, `*.js.map` and `*.d.ts` files:
-
-```bash
-$ npm run tsc
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
-```
-### [Demos and Documentation](http://fusioncharts.github.io/angular2-fusioncharts/)
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
