@@ -14,6 +14,7 @@ exports.FusionChartsDirective = fusioncharts_directive_1.FusionChartsDirective;
 var fusioncharts_pipe_1 = require("./src/fusioncharts.pipe");
 exports.FusionChartsPipe = fusioncharts_pipe_1.FusionChartsPipe;
 var fusioncharts_service_1 = require("./src/fusioncharts.service");
+exports.FusionChartsStatic = fusioncharts_service_1.FusionChartsStatic;
 var FusionChartsModule = FusionChartsModule_1 = (function () {
     function FusionChartsModule() {
     }

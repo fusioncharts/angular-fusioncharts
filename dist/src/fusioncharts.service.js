@@ -21,10 +21,13 @@ FusionChartsStatic = __decorate([
 exports.FusionChartsStatic = FusionChartsStatic;
 var FusionChartsService = (function () {
     function FusionChartsService(FusionChartsStatic) {
-        this._fusionchartsStatice = FusionChartsStatic.core;
-        FusionChartsStatic.modules && FusionChartsStatic.modules.forEach(function (FusionChartsModules) {
-            FusionChartsModules(FusionChartsStatic.core);
-        });
+        /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
+        this._fusionchartsStatice = FusionChartsStatic.core || FusionCharts;
+        if (FusionChartsStatic && FusionChartsStatic.modules) {
+            FusionChartsStatic.modules.forEach(function (FusionChartsModules) {
+                FusionChartsModules(FusionChartsStatic.core);
+            });
+        }
     }
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;

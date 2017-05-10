@@ -18,7 +18,7 @@ var FusionChartsDirective = (function () {
 }());
 FusionChartsDirective = __decorate([
     core_1.Directive({
-        selector: '[fusionchartsDirective]'
+        selector: '[appFusionchartsDirective]'
     }),
     __metadata("design:paramtypes", [core_1.ElementRef])
 ], FusionChartsDirective);
