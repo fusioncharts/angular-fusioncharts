@@ -8,7 +8,7 @@ import { FusionChartsConstructor } from './fusioncharts.constructor';
 
 @Component({
     selector: 'fusioncharts',
-    template: `<div attr.id="container-{{containerId}}" >FusionCharts will render here</div>
+    template: `<div attr.id="container-{{containerId}}" >{{placeholder}}</div>
     `,
     providers: [FusionChartsService],
 })
@@ -16,6 +16,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     chartObj: any;
 
+    @Input() placeholder: string;
     @Input() dataSource: Object;
     @Input() type: string;
     @Input() id: string;
@@ -149,6 +150,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     ngOnInit() {
         this.oldDataSource = JSON.stringify(this.dataSource);
+        this.placeholder = this.placeholder || 'FusionCharts will render here';
     }
 
 

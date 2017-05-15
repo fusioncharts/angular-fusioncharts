@@ -20,6 +20,7 @@ FusionChartsDirective = __decorate([
     core_1.Directive({
         selector: '[fusionchartsDirective]'
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef])
+    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object])
 ], FusionChartsDirective);
 exports.FusionChartsDirective = FusionChartsDirective;
+var _a;
