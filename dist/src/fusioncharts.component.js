@@ -143,9 +143,11 @@ var FusionChartsComponent = (function () {
             _this.chartObj = fusioncharts_constructor_1.FusionChartsConstructor(_this.fusionchartsService, configObj);
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
-            setTimeout(function () {
-                _this.chartObj.render(_this.configObj['renderAt']);
-            }, 1);
+            this.zone.runOutsideAngular(function () {
+                setTimeout(function () {
+                    _this.chartObj.render(_this.configObj['renderAt']);
+                }, 1);
+            });
         }
     };
     FusionChartsComponent.prototype.ngOnDestroy = function () {

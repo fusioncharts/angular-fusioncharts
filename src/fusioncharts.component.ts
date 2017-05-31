@@ -1,6 +1,6 @@
 import {Component, Input, ElementRef, OnInit,
     OnChanges, DoCheck, AfterViewInit, OnDestroy,
-    KeyValueDiffers, ViewChild} from '@angular/core';
+    KeyValueDiffers, ViewChild, NgZone} from '@angular/core';
 
 import { FusionChartsService } from './fusioncharts.service';
 import { FusionChartsConstructor } from './fusioncharts.constructor';
@@ -235,10 +235,11 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
             configObj['renderAt'] = 'container-' + _this.chartObj.id;
             _this.containerId = _this.chartObj.id;
 
-            setTimeout(() => {
-                _this.chartObj.render(_this.configObj['renderAt']);
-            }, 1);
-
+            this.zone.runOutsideAngular(() => {
+                setTimeout(() => {
+                    _this.chartObj.render(_this.configObj['renderAt']);
+                }, 1);
+            })
         }
     }
 
