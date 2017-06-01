@@ -81,6 +81,7 @@ var FusionChartsComponent = (function () {
     // @ViewChild('samplediv') chartContainer: ElementRef;
     FusionChartsComponent.prototype.ngOnInit = function () {
         this.oldDataSource = JSON.stringify(this.dataSource);
+        this.placeholder = this.placeholder || 'FusionCharts will render here';
     };
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
         for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
@@ -153,6 +154,10 @@ var FusionChartsComponent = (function () {
     };
     return FusionChartsComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], FusionChartsComponent.prototype, "placeholder", void 0);
 __decorate([
     core_1.Input(),
     __metadata("design:type", Object)
@@ -384,9 +389,10 @@ __decorate([
 FusionChartsComponent = __decorate([
     core_1.Component({
         selector: 'fusioncharts',
-        template: "<div attr.id=\"container-{{containerId}}\" >FusionCharts will render here</div>\n    ",
+        template: "<div attr.id=\"container-{{containerId}}\" >{{placeholder}}</div>\n    ",
         providers: [fusioncharts_service_1.FusionChartsService],
     }),
-    __metadata("design:paramtypes", [core_1.ElementRef, fusioncharts_service_1.FusionChartsService, core_1.KeyValueDiffers])
+    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, fusioncharts_service_1.FusionChartsService, typeof (_b = typeof core_1.KeyValueDiffers !== "undefined" && core_1.KeyValueDiffers) === "function" && _b || Object])
 ], FusionChartsComponent);
 exports.FusionChartsComponent = FusionChartsComponent;
+var _a, _b;
