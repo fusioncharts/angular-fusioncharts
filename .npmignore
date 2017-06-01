@@ -28,5 +28,7 @@ Desktop.ini
 
 # Source files
 src/
-docs-dist/
 aot/
+
+# Docs generated directory
+gh-pages/
