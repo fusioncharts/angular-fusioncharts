@@ -1,6 +1,6 @@
 import {Component, Input, ElementRef, OnInit,
     OnChanges, DoCheck, AfterViewInit, OnDestroy,
-    KeyValueDiffers, ViewChild} from '@angular/core';
+    KeyValueDiffers, ViewChild, NgZone} from '@angular/core';
 
 import { FusionChartsService } from './fusioncharts.service';
 import { FusionChartsConstructor } from './fusioncharts.constructor';
@@ -8,7 +8,7 @@ import { FusionChartsConstructor } from './fusioncharts.constructor';
 
 @Component({
     selector: 'fusioncharts',
-    template: `<div attr.id="container-{{containerId}}" >FusionCharts will render here</div>
+    template: `<div attr.id="container-{{containerId}}" >{{placeholder}}</div>
     `,
     providers: [FusionChartsService],
 })
@@ -16,6 +16,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     chartObj: any;
 
+    @Input() placeholder: string;
     @Input() dataSource: Object;
     @Input() type: string;
     @Input() id: string;
@@ -139,7 +140,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     element: ElementRef;
     fusionchartsService: FusionChartsService;
 
-    constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers) {
+    constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers, private zone: NgZone) {
         this.element = element;
         this.fusionchartsService = fusionchartsService;
     }
@@ -148,6 +149,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
 
     ngOnInit() {
         this.oldDataSource = JSON.stringify(this.dataSource);
+        this.placeholder = this.placeholder || 'FusionCharts will render here';
     }
 
 
@@ -235,10 +237,11 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
             // _this.containerId = _this.chartObj.id;
 
-            setTimeout(() => {
-                _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
-            }, 1);
-
+            this.zone.runOutsideAngular(() => {
+                setTimeout(() => {
+                    _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
+                }, 1);
+            })
         }
     }
 
