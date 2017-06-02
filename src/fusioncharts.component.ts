@@ -140,7 +140,7 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     element: ElementRef;
     fusionchartsService: FusionChartsService;
 
-    constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers) {
+    constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers, private zone: NgZone) {
         this.element = element;
         this.fusionchartsService = fusionchartsService;
     }
