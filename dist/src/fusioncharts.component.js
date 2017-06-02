@@ -13,8 +13,9 @@ var core_1 = require("@angular/core");
 var fusioncharts_service_1 = require("./fusioncharts.service");
 var fusioncharts_constructor_1 = require("./fusioncharts.constructor");
 var FusionChartsComponent = (function () {
-    function FusionChartsComponent(element, fusionchartsService, differs) {
+    function FusionChartsComponent(element, fusionchartsService, differs, zone) {
         this.differs = differs;
+        this.zone = zone;
         this.oldDataSource = this.dataSource;
         this.constructerParams = {
             type: true,
@@ -127,9 +128,8 @@ var FusionChartsComponent = (function () {
         }
     };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
-        var _this = this, 
-        // element = _this.element.nativeElement,
-        _chartConfig = _this.chartConfig || {}, params = _this.constructerParams, configObj = _this.configObj || (_this.configObj = {});
+        var _this = this, params = _this.constructerParams, configObj = _this.configObj || (_this.configObj = {});
+        var _chartConfig = _this.chartConfig || {};
         if (typeof _chartConfig === 'string') {
             _chartConfig = JSON.parse(_chartConfig);
         }
@@ -142,11 +142,11 @@ var FusionChartsComponent = (function () {
         }
         if (configObj['type']) {
             _this.chartObj = fusioncharts_constructor_1.FusionChartsConstructor(_this.fusionchartsService, configObj);
-            configObj['renderAt'] = 'container-' + _this.chartObj.id;
-            _this.containerId = _this.chartObj.id;
+            // configObj['renderAt'] = 'container-' + _this.chartObj.id;
+            // _this.containerId = _this.chartObj.id;
             this.zone.runOutsideAngular(function () {
                 setTimeout(function () {
-                    _this.chartObj.render(_this.configObj['renderAt']);
+                    _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             });
         }
@@ -394,7 +394,6 @@ FusionChartsComponent = __decorate([
         template: "<div attr.id=\"container-{{containerId}}\" >{{placeholder}}</div>\n    ",
         providers: [fusioncharts_service_1.FusionChartsService],
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.ElementRef !== "undefined" && core_1.ElementRef) === "function" && _a || Object, fusioncharts_service_1.FusionChartsService, typeof (_b = typeof core_1.KeyValueDiffers !== "undefined" && core_1.KeyValueDiffers) === "function" && _b || Object])
+    __metadata("design:paramtypes", [core_1.ElementRef, fusioncharts_service_1.FusionChartsService, core_1.KeyValueDiffers, core_1.NgZone])
 ], FusionChartsComponent);
 exports.FusionChartsComponent = FusionChartsComponent;
-var _a, _b;

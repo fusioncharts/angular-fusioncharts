@@ -9,7 +9,8 @@ import {FusionChartsStatic} from './src/fusioncharts.service';
 export {
     FusionChartsComponent,
     FusionChartsDirective,
-    FusionChartsPipe
+    FusionChartsPipe,
+    FusionChartsStatic
 };
 
 
@@ -28,16 +29,17 @@ export {
 
 
 export class FusionChartsModule {
-    static forRoot(fcCore: any, ...fcModules: any[]): ModuleWithProviders {
+    static forRoot(fcCore?: any, ...fcModules: any[]): ModuleWithProviders {
         return {
             ngModule: FusionChartsModule,
-            providers: [{ 
+            providers: [{
               provide: FusionChartsStatic,
               useValue: {
                   core: fcCore,
                   modules: fcModules
               }
             }]
-        }
+        };
     }
 }
+
