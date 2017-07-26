@@ -21,8 +21,11 @@ import { FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
 import * as FusionCharts from 'fusioncharts';
-// Import FusionCharts Charts module
-import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Load FusionCharts Charts module
+let Charts = require('fusioncharts/fusioncharts.charts');
+
+// Resolve charts dependency
+Charts(FusionCharts);
 
 @NgModule({
   declarations: [
@@ -31,9 +34,9 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
   ],
   imports: [
     BrowserModule,
-    // Specify FusionChartsModule as an import 
-    // and pass FusionCharts and Charts as a dependency
-    FusionChartsModule.forRoot(FusionCharts, Charts),
+    // Specify FusionChartsModule as import
+    // and pass FusionCharts as a dependency
+    FusionChartsModule.forRoot(FusionCharts)
   ],
   providers: [],
   bootstrap: [AppComponent]
