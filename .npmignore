@@ -31,4 +31,4 @@ src/
 aot/
 
 # Docs generated directory
-gh-pages/
+docs/
