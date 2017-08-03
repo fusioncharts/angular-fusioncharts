@@ -13,9 +13,18 @@ export class Ex1 implements AfterViewInit {
     demoId = 'ex1';
     sampleCode = fcDemos;
     dataSource: Object;
+    chartConfig: Object;
 
     constructor() {
         this.sampleCode = fcDemos;
+
+        this.chartConfig = {
+            width: "600",
+            height: "400",
+            type: "column3d",
+            dataFormat: "json",
+            creditLabel: 'false'
+        };
 
         this.dataSource = {
             chart: {

@@ -1,8 +1,5 @@
 import {Injectable} from '@angular/core';
 
-/* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-declare var FusionCharts: any;
-
 @Injectable()
 export class FusionChartsStatic {
     core: any;
@@ -13,13 +10,19 @@ export class FusionChartsStatic {
 export class FusionChartsService {
     _fusionchartsStatice: FusionChartsStatic;
 
-    constructor(FusionChartsStatic: FusionChartsStatic) {
+    constructor(FCStatic: FusionChartsStatic) {
 
         /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-        this._fusionchartsStatice = FusionChartsStatic.core || FusionCharts;
-        if (FusionChartsStatic && FusionChartsStatic.modules) {
-            FusionChartsStatic.modules.forEach((FusionChartsModules: any) => {
-                    FusionChartsModules(FusionChartsStatic.core);
+        if (FCStatic.core && FCStatic.core.getCurrentRenderer &&
+            FCStatic.core.getCurrentRenderer() === 'javascript') {
+            this._fusionchartsStatice = FCStatic.core;
+        } else {
+            this._fusionchartsStatice = FCStatic.core();
+        }
+
+        if (FCStatic && FCStatic.modules) {
+            FCStatic.modules.forEach((FusionChartsModules: any) => {
+                    FusionChartsModules(FCStatic.core);
                 });
         }
     }

@@ -29,25 +29,36 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // Load FusionCharts
 import * as FusionCharts from 'fusioncharts';
-declare const require: any;
+
 // Load charts module
-const Charts = require('fusioncharts/fusioncharts.charts');
+let Charts = require('fusioncharts/fusioncharts.charts');
+// import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Load PowerCharts module
+let PowerCharts = require('fusioncharts/fusioncharts.powercharts');
+// import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
+// Load Widgets module
+let Widgets = require('fusioncharts/fusioncharts.widgets');
+// import * as Widgets from 'fusioncharts/fusioncharts.widgets';
+// Load Maps module
+let Maps = require('fusioncharts/fusioncharts.maps');
+// import * as Maps from 'fusioncharts/fusioncharts.maps';
+// Load WorldMap module
+let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+// import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // Load Ocean theme
-const Ocean = require('fusioncharts/themes/fusioncharts.theme.ocean');
+let Ocean = require('fusioncharts/themes/fusioncharts.theme.ocean');
+// import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 
-const PowerCharts = require('fusioncharts/fusioncharts.powercharts');
-const Widgets = require('fusioncharts/fusioncharts.widgets');
-const Maps = require('fusioncharts/fusioncharts.maps');
-const World = require('fusioncharts/maps/fusioncharts.world');
-const fint = require('fusioncharts/themes/fusioncharts.theme.fint');
-
-Charts(FusionCharts);
-Ocean(FusionCharts);
-PowerCharts(FusionCharts);
-Widgets(FusionCharts);
-Maps(FusionCharts);
-World(FusionCharts);
+export function FusionChartsProvider () {
+    Charts(FusionCharts);
+    Ocean(FusionCharts);
+    PowerCharts(FusionCharts);
+    Widgets(FusionCharts);
+    Maps(FusionCharts);
+    WorldMap(FusionCharts);
+    return FusionCharts;
+}
 
 @NgModule({
   declarations: [
@@ -74,7 +85,7 @@ World(FusionCharts);
     ReactiveFormsModule,
     HttpModule,
     TabsModule,
-    FusionChartsModule.forRoot(FusionCharts),
+    FusionChartsModule.forRoot(FusionChartsProvider),
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [

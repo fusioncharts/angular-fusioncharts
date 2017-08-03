@@ -135,9 +135,19 @@ import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
 import * as FusionCharts from 'fusioncharts';
-// Import FusionCharts Charts module
-import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Load FusionCharts Charts module
+let Charts = require('fusioncharts/fusioncharts.charts');
  
+// Create FusionCharts provider function
+export function FusionChartsProvider () {{ '{' }}
+  // Resolve charts dependency
+  // You can pass all other FusionCharts modules such as Charts, PowerCharts
+  // Maps, Widgets e.t.c.
+  Charts(FusionCharts);
+
+  return FusionCharts;
+}
+
 @NgModule({{ '{' }}
   declarations: [
     AppComponent
@@ -145,10 +155,8 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
   imports: [
     BrowserModule, 
     // Specify FusionChartsModule as an import 
-    // and pass FusionCharts and Charts as a dependency
-    // You can pass all other FusionCharts modules such as Charts, PowerCharts
-    // Maps, Widgets e.t.c. after FusionCharts
-    FusionChartsModule.forRoot(FusionCharts, Charts)
+    // and pass FusionChartsProvider as a dependency
+    FusionChartsModule.forRoot(FusionChartsProvider)
   ],
   bootstrap: [AppComponent]
 })
@@ -203,11 +211,22 @@ import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
 import * as FusionCharts from 'fusioncharts';
-// Import FusionMaps Maps module
-import * as FusionMaps from 'fusioncharts/fusioncharts.maps';
-// Import WorldMap map definition module
-import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
- 
+// Load FusionCharts Maps module
+let FusionMaps = require('fusioncharts/fusioncharts.maps');
+// Load WorldMap map definition module
+let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+
+// Create FusionCharts provider function
+export function FusionChartsProvider () {{ '{' }}
+  // Resolve Maps dependency
+  // You can pass all other FusionCharts modules such as Charts, PowerCharts
+  // Maps, Widgets e.t.c.
+  FusionMaps(FusionCharts);
+  WorldMap(FusionCharts);
+
+  return FusionCharts;
+}
+
 @NgModule({{ '{' }}
   declarations: [
     AppComponent
@@ -215,10 +234,8 @@ import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
   imports: [
     BrowserModule, 
     // Specify FusionChartsModule as an import 
-    // and pass FusionCharts and Charts as a dependency
-    // You can pass all other FusionCharts modules such as Charts, PowerCharts
-    // Maps, Widgets etc. after FusionCharts
-    FusionChartsModule.forRoot(FusionCharts, FusionMaps, WorldMap)
+    // and pass FusionChartsProvider as a dependency
+    FusionChartsModule.forRoot(FusionChartsProvider)
   ],
   bootstrap: [AppComponent]
 })

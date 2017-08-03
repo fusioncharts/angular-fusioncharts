@@ -1,31 +1,28 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = require("@angular/core");
+import { Injectable } from '@angular/core';
 var FusionChartsStatic = (function () {
     function FusionChartsStatic() {
     }
     return FusionChartsStatic;
 }());
-FusionChartsStatic = __decorate([
-    core_1.Injectable()
-], FusionChartsStatic);
-exports.FusionChartsStatic = FusionChartsStatic;
+export { FusionChartsStatic };
+FusionChartsStatic.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+FusionChartsStatic.ctorParameters = function () { return []; };
 var FusionChartsService = (function () {
-    function FusionChartsService(FusionChartsStatic) {
+    function FusionChartsService(FCStatic) {
         /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-        this._fusionchartsStatice = FusionChartsStatic.core || FusionCharts;
-        if (FusionChartsStatic && FusionChartsStatic.modules) {
-            FusionChartsStatic.modules.forEach(function (FusionChartsModules) {
-                FusionChartsModules(FusionChartsStatic.core);
+        if (FCStatic.core && FCStatic.core.getCurrentRenderer &&
+            FCStatic.core.getCurrentRenderer() === 'javascript') {
+            this._fusionchartsStatice = FCStatic.core;
+        }
+        else {
+            this._fusionchartsStatice = FCStatic.core();
+        }
+        if (FCStatic && FCStatic.modules) {
+            FCStatic.modules.forEach(function (FusionChartsModules) {
+                FusionChartsModules(FCStatic.core);
             });
         }
     }
@@ -34,8 +31,12 @@ var FusionChartsService = (function () {
     };
     return FusionChartsService;
 }());
-FusionChartsService = __decorate([
-    core_1.Injectable(),
-    __metadata("design:paramtypes", [FusionChartsStatic])
-], FusionChartsService);
-exports.FusionChartsService = FusionChartsService;
+export { FusionChartsService };
+FusionChartsService.decorators = [
+    { type: Injectable },
+];
+/** @nocollapse */
+FusionChartsService.ctorParameters = function () { return [
+    { type: FusionChartsStatic, },
+]; };
+//# sourceMappingURL=fusioncharts.service.js.map
