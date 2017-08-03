@@ -1,23 +1,40 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "sourceMap": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": ["es2015", "dom"],
-    "noImplicitAny": true,
-    "outDir": "./dist",
-    "suppressImplicitAnyIndexErrors": true
-  },
-
-  "files": [
-    "./index.ts"
-  ],
-
-  "angularCompilerOptions": {
-   "genDir": "aot",
-   "skipMetadataEmit" : true
- }
+	"compilerOptions": {
+		"baseUrl": "",
+		"declaration": true,
+		"stripInternal": true,
+		"experimentalDecorators": true,
+		"strictNullChecks": true,
+		"noImplicitAny": false,
+		"module": "es2015",
+		"moduleResolution": "node",
+		"paths": {
+			"@angular/core": [
+				"node_modules/@angular/core"
+			],
+			"@angular/common": [
+				"node_modules/@angular/common"
+			],
+			"rxjs/*": [
+				"node_modules/rxjs/*"
+			]
+		},
+		"rootDir": "src/angular2-fusioncharts",
+		"outDir": "dist",
+		"sourceMap": true,
+		"inlineSources": true,
+		"target": "es5",
+		"skipLibCheck": true,
+		"lib": [
+			"es2015",
+			"dom"
+		]
+	},
+	"files": [
+		"./src/angular2-fusioncharts/index.ts"
+	],
+	"angularCompilerOptions": {
+		"strictMetadataEmit": true,
+		"genDir": ".tmp"
+	}
 }
