@@ -1,0 +1,253 @@
+<div class="container">
+    <div class="row">
+        <div class="masthead">
+            <ul class="nav nav-pills pull-right">
+                <li><a href="http://fusioncharts.com/">FusionCharts Home</a></li>
+            </ul>
+            <h3><a href="http://fusioncharts.github.io/angular2-fusioncharts/"><img src="http://www.fusioncharts.com/theme/210x38xlogo.png.pagespeed.ic.KZD9tJ7qIK.png" class="logo"></a></h3>
+        </div>
+        <div class="jumbotron">
+            <img src="./assets/images/ng-fc-logo.png" class="logo">
+            <h1>Angular2-FusionCharts</h1>
+            <p>Simple and effective AngularJS bindings for FusionCharts JavaScript Charting Library.</p>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <h3>About Angular2-FusionCharts</h3>
+                <p>
+                This Angular 2 component provides bindings for <a href="http://fusioncharts.com">FusionCharts JavaScript Charting Library</a>. It easily adds rich and interactive charting to your Angular JS Projects.
+                </p>
+            </div>
+            <div class="col-md-4 ">
+                <h3>Features</h3>
+                <!-- <p> -->
+                    <ul>
+                        <li>Add a chart using just a single directive.</li>
+                        <li>Auto-updates the chart object on modifying scope.</li>
+                        <li>Angular-friendly events allow you to call controller functions directly from the chart.</li>
+                        <li>Offers advanced control by giving you access to full FusionCharts object.</li>
+                        <li>Provides variety of ways to add a chart, from JSON URL to Scope Array Binding.</li>
+                    </ul>
+                <!-- </p> -->
+            </div>
+            <div class="col-md-4">
+                <h3>Community</h3>
+                <!-- <p> -->
+                    <ul>
+                        <li><a href="http://github.com/fusioncharts/angular2-fusioncharts">Github Repo</a></li>
+                        <li><a href="http://github.com/fusioncharts/angular2-fusioncharts/issues">Issues</a></li>
+                        <li><a href="http://twitter.com/fusioncharts">FusionCharts Twitter</a></li>
+                        <li><a href="http://stackoverflow.com/questions/tagged/fusioncharts">Stack Overflow</a></li>
+                    </ul>
+                <!-- </p> -->
+                <h3>Support</h3>
+                <p>Simply open up <a href="https://github.com/fusioncharts/angular2-fusioncharts/issues/new">a github issue</a> with your question/bug report/suggestion.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="list-group" role="tablist">
+            <nav>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex1']" href="#/demos/ex1" class="list-group-item" (click)="updateId('ex1')">
+                    <h4>A Simple Chart</h4>
+                    <p>A simple chart with all data embedded into the directive</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex2']" href="#/demos/ex2" class="list-group-item" (click)="updateId('ex2')">
+                    <h4>A 3D Pie Chart</h4>
+                    <p>A 3D pie chart using the datasource attribute from scope</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex3']" href="#/demos/ex3" class="list-group-item" (click)="updateId('ex3')">
+                    <h4>A Column, Line and Area Combi Chart</h4>
+                    <p>A column, line and area combination chart using the datasource attribute</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex4']" href="#/demos/ex4" class="list-group-item" (click)="updateId('ex4')">
+                    <h4>Different ways to use the directive</h4>
+                    <p>Use the fc-chart as a tag or as an attribute</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex5']" href="#/demos/ex5" class="list-group-item" (click)="updateId('ex5')">
+                    <h4>Fetch data from a JSON URL</h4>
+                    <p>Fetch data remotely from a JSON file or URL</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex5a']" href="#/demos/ex5a" class="list-group-item" (click)="updateId('ex5a')">
+                    <h4>Fetch data from a XML URL</h4>
+                    <p>Fetch data remotely from a XML file or URL</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex6']" href="#/demos/ex6" class="list-group-item" (click)="updateId('ex6')">
+                    <h4>Update chart data from scope</h4>
+                    <p>Change the data dynamically in the scope and watch the chart update automatically</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex7']" href="#/demos/ex7" class="list-group-item" (click)="updateId('ex7')">
+                    <h4>Trigger scope event from chart</h4>
+                    <p>Click on a chart to trigger an event in the controller, and update the scope</p>
+                </a>
+            
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex8']" href="#/demos/ex8" class="list-group-item" (click)="updateId('ex8')">
+                    <h4>Update chart attribute from scope</h4>
+                    <p>Change a parameter in the scope variable and see it automatically update the chart</p>
+                </a>
+<!--             
+                <a [routerLink]="['/ex9']"  href="#/demos/ex9" class="list-group-item" (click)="updateId('ex9')">
+                    <h4>Separate objects for attributes</h4>
+                    <p>Separate objects for chart attributes, dataset and categories</p>
+                </a>
+ -->   
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex9']"  href="#/demos/ex9" class="list-group-item" (click)="updateId('ex9')">
+                    <h4>Percentage Calculation</h4>
+                    <p>Click on a plot to see the percentage value with respect to total</p>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="col-md-9" ng-controller="DemoController">
+        <router-outlet></router-outlet>
+    </div>
+
+
+    
+    <div class="row">
+        <div class="col-md-12">
+            <h2>QuickStart</h2>
+
+            <h3>Step 1: Install <code>angular2-fusioncharts</code></h3>
+            <p>In the terminal run the following command:</p>
+            <pre class="code-tab language-javascript"><code>$ npm install angular2-fusioncharts --save</code></pre>
+
+
+            <h3>Step 2: Import <code>angular2-fusioncharts</code> in the root @NgModule </h3>
+            <p>In the root Angular <code>@NgModule</code> import <code>FusionChartsModule</code> from <code>angular2-fusioncharts</code> and add the FusionChartsModule as a dependency.</p>
+            <pre class="code-tab language-javascript"><code>import {{ '{' }} NgModule } from '@angular/core';
+import {{ '{' }} BrowserModule } from '@angular/platform-browser';
+// Import the library
+import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
+import {{ '{' }} AppComponent } from './app.component';
+
+// Import angular2-fusioncharts
+import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+// Load FusionCharts Charts module
+let Charts = require('fusioncharts/fusioncharts.charts');
+ 
+// Create FusionCharts provider function
+export function FusionChartsProvider () {{ '{' }}
+  // Resolve charts dependency
+  // You can pass all other FusionCharts modules such as Charts, PowerCharts
+  // Maps, Widgets e.t.c.
+  Charts(FusionCharts);
+
+  return FusionCharts;
+}
+
+@NgModule({{ '{' }}
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, 
+    // Specify FusionChartsModule as an import 
+    // and pass FusionChartsProvider as a dependency
+    FusionChartsModule.forRoot(FusionChartsProvider)
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {{ '{' }} }</code></pre>
+
+            
+            <h3>Step 3: Add the <code>fusioncharts</code> directive</h3>
+            <p>In the template, add a <code>&lt;fusioncharts&gt;</code> directive in the section where you wish to render the chart. We are assuming it's <code>AppComponent</code> which would change based on your usage.</p>
+            <pre class="code-tab language-javascript"><code class="ng-binding">import {{ '{' }} Component } from '@angular/core';
+
+@Component({{ '{' }}
+    selector: 'my-app',
+    template: `&lt;fusioncharts
+      width="500" 
+      height="300"
+      type="column2d"
+      dataFormat="json"
+      [dataSource]="data" >
+    &lt;/fusioncharts>
+  `,
+})
+export class AppComponent {{ '{' }}
+  data: Object;
+  
+  constructor() {{ '{' }}
+    this.data = {{ '{' }}
+      chart: {{ '{' }} },
+      data: [
+        {{ '{' }}value: 500},
+        {{ '{' }}value: 600},
+        {{ '{' }}value: 700}
+      ]
+    };
+  }
+}
+</code></pre>
+            <p>The chart will render when you load the page.</p>
+            <p><a href="http://plnkr.co/edit/eNdpQL?p=preview">Live Example</a></p>
+
+
+            <h3>Render FusionMaps</h3>
+            <p>To render a map, import the FusionMaps module along with the map definition. Then pass as a dependency to <code>FusionChartsModule</code> in the <code>@NgModule</code>:
+
+            <pre class="code-tab language-javascript"><code class="ng-binding">import {{ '{' }} NgModule } from '@angular/core';
+import {{ '{' }} BrowserModule } from '@angular/platform-browser';
+// Import the library
+import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
+import {{ '{' }} AppComponent } from './app.component';
+
+// Import angular2-fusioncharts
+import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
+
+// Import FusionCharts library
+import * as FusionCharts from 'fusioncharts';
+// Load FusionCharts Maps module
+let FusionMaps = require('fusioncharts/fusioncharts.maps');
+// Load WorldMap map definition module
+let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+
+// Create FusionCharts provider function
+export function FusionChartsProvider () {{ '{' }}
+  // Resolve Maps dependency
+  // You can pass all other FusionCharts modules such as Charts, PowerCharts
+  // Maps, Widgets e.t.c.
+  FusionMaps(FusionCharts);
+  WorldMap(FusionCharts);
+
+  return FusionCharts;
+}
+
+@NgModule({{ '{' }}
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule, 
+    // Specify FusionChartsModule as an import 
+    // and pass FusionChartsProvider as a dependency
+    FusionChartsModule.forRoot(FusionChartsProvider)
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule {{ '{' }} }
+</code></pre>
+            <p>The World map will render when you load the page.</p>
+            <p><a href="http://plnkr.co/edit/BJVZEu?p=preview">Live Example</a></p>
+
+            <h3>Licensing</h3>
+            <p>Angular-FusionCharts is open-source and distributed under the terms of the MIT/X11 License. You will still need to download and include FusionCharts in your page. This project provides no direct functionality. You can <a href="http://fusioncharts.com/download/">Download an evaluation</a>. You will need to purchase a FusionCharts license to use in a commercial environment (FusionCharts is <a href="http://www.fusioncharts.com/download/free/">free for non-commercial and personal use</a>).</p>
+
+        </div>
+    </div>
+
+</div>

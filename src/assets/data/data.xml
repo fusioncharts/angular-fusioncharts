@@ -1,0 +1,7 @@
+<chart caption="Harry&#39;s SuperMart" subcaption="Top 5 stores in last month by revenue" numberprefix="$" theme="ocean">
+    <set label="Bakersfield Central" value="880000" />
+    <set label="Garden Groove harbour" value="730000" />
+    <set label="Los Angeles Topanga" value="590000" />
+    <set label="Compton-Rancho Dom" value="520000" />
+    <set label="Daly City Serramonte" value="330000" />
+</chart>

@@ -1,0 +1,46 @@
+{
+  "name": "angular2-fusioncharts",
+  "version": "1.0.2-rc.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fusioncharts/angular2-fusioncharts"
+  },
+  "author": {
+    "name": "FusionCharts",
+    "email": "support@fusioncharts.com"
+  },
+  "contributors": [
+    {
+      "name": "Rohit Kumar",
+      "email": "rohit.kr001@gmail.com",
+      "url": "https://github.com/rohitkr"
+    }
+  ],
+  "keywords": [
+    "angular",
+    "angular2",
+    "angular 2",
+    "FusionCharts"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fusioncharts/angular2-fusioncharts/issues"
+  },
+  "main": "bundles/npm-module-seed.umd.min.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
+  "dependencies": {
+    "@types/fusioncharts": "^3.11.0",
+    "fusioncharts": "^3.12.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "^5.0.1",
+    "zone.js": "^0.8.16"
+  },
+  "engines": {
+    "node": ">=4.4.1"
+  }
+}

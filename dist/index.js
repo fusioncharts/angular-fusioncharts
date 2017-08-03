@@ -1,51 +1,45 @@
-"use strict";
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-var core_1 = require("@angular/core");
-var common_1 = require("@angular/common");
-var fusioncharts_component_1 = require("./src/fusioncharts.component");
-var fusioncharts_directive_1 = require("./src/fusioncharts.directive");
-var fusioncharts_pipe_1 = require("./src/fusioncharts.pipe");
-var fusioncharts_service_1 = require("./src/fusioncharts.service");
-__export(require("./src/fusioncharts.component"));
-__export(require("./src/fusioncharts.directive"));
-__export(require("./src/fusioncharts.pipe"));
-__export(require("./src/fusioncharts.service"));
-var FusionChartsModule = FusionChartsModule_1 = (function () {
+import { NgModule } from '@angular/core';
+import { FusionChartsComponent } from './src/fusioncharts.component';
+import { FusionChartsDirective } from './src/fusioncharts.directive';
+import { FusionChartsPipe } from './src/fusioncharts.pipe';
+import { FusionChartsStatic } from './src/fusioncharts.service';
+export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic };
+var FusionChartsModule = (function () {
     function FusionChartsModule() {
     }
-    FusionChartsModule.forRoot = function () {
+    FusionChartsModule.forRoot = function (fcCore) {
+        var fcModules = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            fcModules[_i - 1] = arguments[_i];
+        }
         return {
-            ngModule: FusionChartsModule_1,
-            providers: [fusioncharts_service_1.FusionChartsService]
+            ngModule: FusionChartsModule,
+            providers: [{
+                    provide: FusionChartsStatic,
+                    useValue: {
+                        core: fcCore,
+                        modules: fcModules
+                    }
+                }]
         };
     };
     return FusionChartsModule;
 }());
-FusionChartsModule = FusionChartsModule_1 = __decorate([
-    core_1.NgModule({
-        imports: [
-            common_1.CommonModule
-        ],
-        declarations: [
-            fusioncharts_component_1.FusionChartsComponent,
-            fusioncharts_directive_1.FusionChartsDirective,
-            fusioncharts_pipe_1.FusionChartsPipe
-        ],
-        exports: [
-            fusioncharts_component_1.FusionChartsComponent,
-            fusioncharts_directive_1.FusionChartsDirective,
-            fusioncharts_pipe_1.FusionChartsPipe
-        ]
-    })
-], FusionChartsModule);
-exports.FusionChartsModule = FusionChartsModule;
-var FusionChartsModule_1;
+export { FusionChartsModule };
+FusionChartsModule.decorators = [
+    { type: NgModule, args: [{
+                declarations: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ],
+                exports: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ]
+            },] },
+];
+/** @nocollapse */
+FusionChartsModule.ctorParameters = function () { return []; };
 //# sourceMappingURL=index.js.map
