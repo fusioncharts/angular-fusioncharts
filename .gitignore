@@ -1,7 +1,6 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
 /tmp
 /out-tsc
 
@@ -43,3 +42,6 @@ Thumbs.db
 
 # Docs generated directory
 gh-pages/
+
+# rollup tmp files
+.tmp/

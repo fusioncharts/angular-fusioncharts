@@ -49,12 +49,16 @@ let WorldMap = require('fusioncharts/maps/fusioncharts.world');
 let Ocean = require('fusioncharts/themes/fusioncharts.theme.ocean');
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
-Charts(FusionCharts);
-Ocean(FusionCharts);
-PowerCharts(FusionCharts);
-Widgets(FusionCharts);
-Maps(FusionCharts);
-WorldMap(FusionCharts);
+
+export function FusionChartsProvider () {
+    Charts(FusionCharts);
+    Ocean(FusionCharts);
+    PowerCharts(FusionCharts);
+    Widgets(FusionCharts);
+    Maps(FusionCharts);
+    WorldMap(FusionCharts);
+    return FusionCharts;
+}
 
 @NgModule({
   declarations: [
@@ -81,7 +85,7 @@ WorldMap(FusionCharts);
     ReactiveFormsModule,
     HttpModule,
     TabsModule,
-    FusionChartsModule.forRoot(FusionCharts),
+    FusionChartsModule.forRoot(FusionChartsProvider),
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [

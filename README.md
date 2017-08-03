@@ -24,8 +24,13 @@ import * as FusionCharts from 'fusioncharts';
 // Load FusionCharts Charts module
 let Charts = require('fusioncharts/fusioncharts.charts');
 
-// Resolve charts dependency
-Charts(FusionCharts);
+// Create FusionCharts provider function
+export function FusionChartsProvider () {
+  // Resolve charts dependency
+  Charts(FusionCharts);
+
+  return FusionCharts;
+}
 
 @NgModule({
   declarations: [
@@ -35,8 +40,8 @@ Charts(FusionCharts);
   imports: [
     BrowserModule,
     // Specify FusionChartsModule as import
-    // and pass FusionCharts as a dependency
-    FusionChartsModule.forRoot(FusionCharts)
+    // and pass FusionChartsProvider as a dependency
+    FusionChartsModule.forRoot(FusionChartsProvider)
   ],
   providers: [],
   bootstrap: [AppComponent]
