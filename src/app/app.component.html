@@ -134,9 +134,9 @@ import {{ '{' }} AppComponent } from './app.component';
 import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
-import * as FusionCharts from 'fusioncharts';
-// Load FusionCharts Charts module
-let Charts = require('fusioncharts/fusioncharts.charts');
+import FusionCharts from 'fusioncharts';
+// Import FusionCharts Charts module
+import Charts from 'fusioncharts/fusioncharts.charts';
  
 // Create FusionCharts provider function
 export function FusionChartsProvider () {{ '{' }}
@@ -210,11 +210,11 @@ import {{ '{' }} AppComponent } from './app.component';
 import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
-import * as FusionCharts from 'fusioncharts';
-// Load FusionCharts Maps module
-let FusionMaps = require('fusioncharts/fusioncharts.maps');
-// Load WorldMap map definition module
-let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+import FusionCharts from 'fusioncharts';
+// Import FusionMaps Maps module
+import FusionMaps from 'fusioncharts/fusioncharts.maps';
+// Import WorldMap map definition module
+import WorldMap from 'fusioncharts/maps/fusioncharts.world';
 
 // Create FusionCharts provider function
 export function FusionChartsProvider () {{ '{' }}
