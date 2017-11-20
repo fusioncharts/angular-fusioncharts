@@ -16,25 +16,48 @@ FusionChartsStatic.decorators = [
 FusionChartsStatic.ctorParameters = function () { return []; };
 var FusionChartsService = (function () {
     function FusionChartsService(FCStatic) {
-        /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-        if (FCStatic.core && FCStatic.core.getCurrentRenderer &&
-            FCStatic.core.getCurrentRenderer() === 'javascript') {
-            this._fusionchartsStatice = FCStatic.core;
+        console.log(FCStatic);
+        var fcRoot;
+        if (FusionChartsService.isFCRootSet()) {
+            fcRoot = FusionChartsService.getFCRoot();
         }
         else {
-            this._fusionchartsStatice = FCStatic.core();
+            fcRoot = {
+                core: FCStatic.core,
+                modules: FCStatic.modules
+            };
         }
-        if (FCStatic && FCStatic.modules) {
-            FCStatic.modules.forEach(function (FusionChartsModules) {
-                FusionChartsModules(FCStatic.core);
+        this.resolveFusionCharts(fcRoot.core, fcRoot.modules);
+    }
+    FusionChartsService.setFCRoot = function (fcRoot) {
+        FusionChartsService._fcRoot = fcRoot;
+    };
+    FusionChartsService.getFCRoot = function () {
+        return FusionChartsService._fcRoot;
+    };
+    FusionChartsService.isFCRootSet = function () {
+        return !!FusionChartsService._fcRoot;
+    };
+    FusionChartsService.prototype.resolveFusionCharts = function (core, modules) {
+        if (core && core.getCurrentRenderer &&
+            core.getCurrentRenderer() === 'javascript') {
+            this._fusionchartsStatice = core;
+        }
+        else {
+            this._fusionchartsStatice = core();
+        }
+        if (modules) {
+            modules.forEach(function (FusionChartsModules) {
+                FusionChartsModules(core);
             });
         }
-    }
+    };
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;
     };
     return FusionChartsService;
 }());
+FusionChartsService._fcRoot = null;
 FusionChartsService.decorators = [
     { type: _angular_core.Injectable },
 ];
@@ -306,6 +329,7 @@ FusionChartsPipe.ctorParameters = function () { return []; };
 var FusionChartsModule = (function () {
     function FusionChartsModule() {
     }
+    // Keep this for backward compatible
     FusionChartsModule.forRoot = function (fcCore) {
         var fcModules = [];
         for (var _i = 1; _i < arguments.length; _i++) {
@@ -322,6 +346,16 @@ var FusionChartsModule = (function () {
                 }]
         };
     };
+    FusionChartsModule.fcRoot = function (fcCore) {
+        var fcModules = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            fcModules[_i - 1] = arguments[_i];
+        }
+        FusionChartsService.setFCRoot({
+            core: fcCore,
+            modules: fcModules
+        });
+    };
     return FusionChartsModule;
 }());
 FusionChartsModule.decorators = [
@@ -335,6 +369,10 @@ FusionChartsModule.decorators = [
                     FusionChartsComponent,
                     FusionChartsDirective,
                     FusionChartsPipe
+                ],
+                providers: [
+                    FusionChartsService,
+                    FusionChartsStatic
                 ]
             },] },
 ];
