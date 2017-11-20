@@ -12,7 +12,6 @@ FusionChartsStatic.decorators = [
 FusionChartsStatic.ctorParameters = function () { return []; };
 var FusionChartsService = (function () {
     function FusionChartsService(FCStatic) {
-        console.log(FCStatic);
         var fcRoot;
         if (FusionChartsService.isFCRootSet()) {
             fcRoot = FusionChartsService.getFCRoot();
