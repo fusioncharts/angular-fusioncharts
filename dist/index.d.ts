@@ -6,4 +6,5 @@ import { FusionChartsStatic } from './src/fusioncharts.service';
 export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic };
 export declare class FusionChartsModule {
     static forRoot(fcCore?: any, ...fcModules: any[]): ModuleWithProviders;
+    static fcRoot(fcCore?: any, ...fcModules: any[]): void;
 }

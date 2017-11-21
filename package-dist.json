@@ -1,6 +1,6 @@
 {
   "name": "angular2-fusioncharts",
-  "version": "1.0.2-rc.5",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular2-fusioncharts"
@@ -14,6 +14,11 @@
       "name": "Rohit Kumar",
       "email": "rohit.kr001@gmail.com",
       "url": "https://github.com/rohitkr"
+    },
+    {
+      "name": "Rousan Ali",
+      "email": "rousanali786@gmail.com",
+      "url": "https://github.com/ariyankhan"
     }
   ],
   "keywords": [

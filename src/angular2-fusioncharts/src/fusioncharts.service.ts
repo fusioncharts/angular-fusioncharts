@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FusionChartsStatic {
@@ -8,22 +8,46 @@ export class FusionChartsStatic {
 
 @Injectable()
 export class FusionChartsService {
+    static _fcRoot: any = null;
     _fusionchartsStatice: FusionChartsStatic;
 
-    constructor(FCStatic: FusionChartsStatic) {
+    static setFCRoot(fcRoot: any) {
+        FusionChartsService._fcRoot = fcRoot;
+    }
 
-        /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-        if (FCStatic.core && FCStatic.core.getCurrentRenderer &&
-            FCStatic.core.getCurrentRenderer() === 'javascript') {
-            this._fusionchartsStatice = FCStatic.core;
+    static getFCRoot(): any {
+        return FusionChartsService._fcRoot;
+    }
+
+    static isFCRootSet() {
+        return !!FusionChartsService._fcRoot;
+    }
+
+    constructor(FCStatic: FusionChartsStatic) {
+        let fcRoot: any;
+        if (FusionChartsService.isFCRootSet()) {
+            fcRoot = FusionChartsService.getFCRoot();
         } else {
-            this._fusionchartsStatice = FCStatic.core();
+            fcRoot = {
+                core: FCStatic.core,
+                modules: FCStatic.modules
+            };
+        }
+        this.resolveFusionCharts(fcRoot.core, fcRoot.modules);
+    }
+
+    resolveFusionCharts(core: any, modules: any[]) {
+        if (core && core.getCurrentRenderer &&
+            core.getCurrentRenderer() === 'javascript') {
+            this._fusionchartsStatice = core;
+        } else {
+            this._fusionchartsStatice = core();
         }
 
-        if (FCStatic && FCStatic.modules) {
-            FCStatic.modules.forEach((FusionChartsModules: any) => {
-                    FusionChartsModules(FCStatic.core);
-                });
+        if (modules) {
+            modules.forEach((FusionChartsModules: any) => {
+                FusionChartsModules(core);
+            });
         }
     }
 

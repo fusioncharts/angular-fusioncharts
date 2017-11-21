@@ -19,18 +19,13 @@ import { AppComponent } from './app.component';
 // Import angular2-fusioncharts
 import { FusionChartsModule } from 'angular2-fusioncharts';
 
-// Import FusionCharts library
+// Import FusionCharts library and chart modules
 import * as FusionCharts from 'fusioncharts';
-// Load FusionCharts Charts module
-let Charts = require('fusioncharts/fusioncharts.charts');
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 
-// Create FusionCharts provider function
-export function FusionChartsProvider () {
-  // Resolve charts dependency
-  Charts(FusionCharts);
-
-  return FusionCharts;
-}
+// Pass the fusioncharts library and chart modules
+FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 @NgModule({
   declarations: [
@@ -40,8 +35,7 @@ export function FusionChartsProvider () {
   imports: [
     BrowserModule,
     // Specify FusionChartsModule as import
-    // and pass FusionChartsProvider as a dependency
-    FusionChartsModule.forRoot(FusionChartsProvider)
+    FusionChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

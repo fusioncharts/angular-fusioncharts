@@ -1,6 +1,8 @@
-import {Component, Input, ElementRef, OnInit,
+import {
+    Component, Input, ElementRef, OnInit,
     OnChanges, DoCheck, AfterViewInit, OnDestroy,
-    KeyValueDiffers, ViewChild, NgZone} from '@angular/core';
+    KeyValueDiffers, ViewChild, NgZone
+} from '@angular/core';
 
 import { FusionChartsService } from './fusioncharts.service';
 import { FusionChartsConstructor } from './fusioncharts.constructor';
