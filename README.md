@@ -29,8 +29,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FusionChartsComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
