@@ -37,8 +37,8 @@ export class FusionChartsService {
     }
 
     resolveFusionCharts(core: any, modules: any[]) {
-        if (core && core.getCurrentRenderer &&
-            core.getCurrentRenderer() === 'javascript') {
+        if (core && core.id &&
+            core.id === 'FusionCharts') {
             this._fusionchartsStatice = core;
         } else {
             this._fusionchartsStatice = core();
