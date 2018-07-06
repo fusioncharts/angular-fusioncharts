@@ -1,20 +1,21 @@
 import {
     Component, Input, ElementRef, OnInit,
     OnChanges, DoCheck, AfterViewInit, OnDestroy,
-    KeyValueDiffers, ViewChild, NgZone
+    KeyValueDiffers, ViewChild, NgZone, Output, EventEmitter
 } from '@angular/core';
 
 import { FusionChartsService } from './fusioncharts.service';
 import { FusionChartsConstructor } from './fusioncharts.constructor';
-
-
+import FusionChartsEvent from '../interfaces/FusionChartsEvent';
+import FusionChartInstance from '../interfaces/FusionChartInstance';
+import EventsList from '../events/events';
 @Component({
     selector: 'fusioncharts',
     template: `<div attr.id="container-{{containerId}}" >{{placeholder}}</div>
     `,
     providers: [FusionChartsService],
 })
-export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
+class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
 
     chartObj: any;
 
@@ -76,6 +77,149 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     @Input() loadMessageImageAlpha: number;
     @Input() loadMessageImageScale: number;
     @Input() chartConfig: string;
+    
+    /**
+     * All Events List
+     */
+
+    private eventList:Array<string> = EventsList;
+
+    /**
+     * All events emitter
+     */
+    @Output() beforeLinkedItemOpen = new EventEmitter<FusionChartsEvent>();
+    @Output() linkedItemOpened = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeLinkedItemClose = new EventEmitter<FusionChartsEvent>();
+    @Output() linkedItemClosed = new EventEmitter<FusionChartsEvent>();
+    @Output() printReadyStateChange = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoadRequestCompleted = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoadError = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoadCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoadRequestCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() dataUpdated = new EventEmitter<FusionChartsEvent>();
+    @Output() dataUpdateCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoadRequested = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeDataUpdate = new EventEmitter<FusionChartsEvent>();
+    @Output() realTimeUpdateComplete = new EventEmitter<FusionChartsEvent>();
+    @Output() chartCleared = new EventEmitter<FusionChartsEvent>();
+    @Output() slicingEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() slicingStart = new EventEmitter<FusionChartsEvent>();
+    @Output() entityRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() entityRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() entityClick = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorClick = new EventEmitter<FusionChartsEvent>();
+    @Output() markerRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() markerRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() markerClick = new EventEmitter<FusionChartsEvent>();
+    @Output() pageNavigated = new EventEmitter<FusionChartsEvent>();
+    @Output() rotationEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() rotationStart = new EventEmitter<FusionChartsEvent>();
+    @Output() centerLabelRollover = new EventEmitter<FusionChartsEvent>();
+    @Output() centerLabelRollout = new EventEmitter<FusionChartsEvent>();
+    @Output() centerLabelClick = new EventEmitter<FusionChartsEvent>();
+    @Output() centerLabelChanged = new EventEmitter<FusionChartsEvent>();
+    @Output() chartClick = new EventEmitter<FusionChartsEvent>();
+    @Output() chartMouseMove = new EventEmitter<FusionChartsEvent>();
+    @Output() chartRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() chartRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() backgroundLoaded = new EventEmitter<FusionChartsEvent>();
+    @Output() backgroundLoadError = new EventEmitter<FusionChartsEvent>();
+    @Output() legendItemClicked = new EventEmitter<FusionChartsEvent>();
+    @Output() legendItemRollover = new EventEmitter<FusionChartsEvent>();
+    @Output() legendItemRollout = new EventEmitter<FusionChartsEvent>();
+    @Output() logoRollover = new EventEmitter<FusionChartsEvent>();
+    @Output() logoRollout = new EventEmitter<FusionChartsEvent>();
+    @Output() logoClick = new EventEmitter<FusionChartsEvent>();
+    @Output() logoLoaded = new EventEmitter<FusionChartsEvent>();
+    @Output() logoLoadError = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeExport = new EventEmitter<FusionChartsEvent>();
+    @Output() exported = new EventEmitter<FusionChartsEvent>();
+    @Output() exportCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() beforePrint = new EventEmitter<FusionChartsEvent>();
+    @Output() printComplete = new EventEmitter<FusionChartsEvent>();
+    @Output() printCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLabelClick = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLabelRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLabelRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() scrollStart = new EventEmitter<FusionChartsEvent>();
+    @Output() scrollEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() onScroll = new EventEmitter<FusionChartsEvent>();
+    @Output() zoomReset = new EventEmitter<FusionChartsEvent>();
+    @Output() zoomedOut = new EventEmitter<FusionChartsEvent>();
+    @Output() zoomedIn = new EventEmitter<FusionChartsEvent>();
+    @Output() zoomed = new EventEmitter<FusionChartsEvent>();
+    @Output() zoomModeChanged = new EventEmitter<FusionChartsEvent>();
+    @Output() pinned = new EventEmitter<FusionChartsEvent>();
+    @Output() dataRestored = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeDataSubmit = new EventEmitter<FusionChartsEvent>();
+    @Output() dataSubmitError = new EventEmitter<FusionChartsEvent>();
+    @Output() dataSubmitted = new EventEmitter<FusionChartsEvent>();
+    @Output() dataSubmitCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() chartUpdated = new EventEmitter<FusionChartsEvent>();
+    @Output() nodeAdded = new EventEmitter<FusionChartsEvent>();
+    @Output() nodeUpdated = new EventEmitter<FusionChartsEvent>();
+    @Output() nodeDeleted = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorAdded = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorUpdated = new EventEmitter<FusionChartsEvent>();
+    @Output() connectorDeleted = new EventEmitter<FusionChartsEvent>();
+    @Output() labelAdded = new EventEmitter<FusionChartsEvent>();
+    @Output() labelDeleted = new EventEmitter<FusionChartsEvent>();
+    @Output() selectionRemoved = new EventEmitter<FusionChartsEvent>();
+    @Output() selectionStart = new EventEmitter<FusionChartsEvent>();
+    @Output() selectionEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() labelClick = new EventEmitter<FusionChartsEvent>();
+    @Output() labelRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() labelRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() labelDragStart = new EventEmitter<FusionChartsEvent>();
+    @Output() labelDragEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() dataplotDragStart = new EventEmitter<FusionChartsEvent>();
+    @Output() dataplotDragEnd = new EventEmitter<FusionChartsEvent>();
+    @Output() processClick = new EventEmitter<FusionChartsEvent>();
+    @Output() processRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() processRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() categoryClick = new EventEmitter<FusionChartsEvent>();
+    @Output() categoryRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() categoryRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() milestoneClick = new EventEmitter<FusionChartsEvent>();
+    @Output() milestoneRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() milestoneRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() chartTypeChanged = new EventEmitter<FusionChartsEvent>();
+    @Output() overlayButtonClick = new EventEmitter<FusionChartsEvent>();
+    @Output() loaded = new EventEmitter<FusionChartsEvent>();
+    @Output() rendered = new EventEmitter<FusionChartsEvent>();
+    @Output() drawComplete = new EventEmitter<FusionChartsEvent>();
+    @Output() renderComplete = new EventEmitter<FusionChartsEvent>();
+    @Output() dataInvalid = new EventEmitter<FusionChartsEvent>();
+    @Output() dataXMLInvalid = new EventEmitter<FusionChartsEvent>();
+    @Output() dataLoaded = new EventEmitter<FusionChartsEvent>();
+    @Output() noDataToDisplay = new EventEmitter<FusionChartsEvent>();
+    @Output() legendPointerDragStart = new EventEmitter<FusionChartsEvent>();
+    @Output() legendPointerDragStop = new EventEmitter<FusionChartsEvent>();
+    @Output() legendRangeUpdated = new EventEmitter<FusionChartsEvent>();
+    @Output() alertComplete = new EventEmitter<FusionChartsEvent>();
+    @Output() realTimeUpdateError = new EventEmitter<FusionChartsEvent>();
+    @Output() dataplotRollOver = new EventEmitter<FusionChartsEvent>();
+    @Output() dataplotRollOut = new EventEmitter<FusionChartsEvent>();
+    @Output() dataplotClick = new EventEmitter<FusionChartsEvent>();
+    @Output() linkClicked = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeRender = new EventEmitter<FusionChartsEvent>();
+    @Output() renderCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeResize = new EventEmitter<FusionChartsEvent>();
+    @Output() resized = new EventEmitter<FusionChartsEvent>();
+    @Output() resizeCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeDispose = new EventEmitter<FusionChartsEvent>();
+    @Output() disposed = new EventEmitter<FusionChartsEvent>();
+    @Output() disposeCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() linkedChartInvoked = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeDrillDown = new EventEmitter<FusionChartsEvent>();
+    @Output() drillDown = new EventEmitter<FusionChartsEvent>();
+    @Output() beforeDrillUp = new EventEmitter<FusionChartsEvent>();
+    @Output() drillUp = new EventEmitter<FusionChartsEvent>();
+    @Output() drillDownCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() drillUpCancelled = new EventEmitter<FusionChartsEvent>();
+    @Output() initialized = new EventEmitter<FusionChartInstance>();
 
     containerId: string;
     private configObj: any;
@@ -211,6 +355,20 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
         }
     }
 
+    attachChartEventListener(chartObj: any, eventName: string){
+        chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
+            let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
+            if(eventObj) fEventObj.eventObj  = eventObj;
+            if(dataObj) fEventObj.dataObj = dataObj; 
+            this[eventName].emit(fEventObj);
+        });
+    }
+
+    attachAllChartEvents(chartObj:any, eventList:Array<string>){
+        eventList.forEach(eventName => {
+            this.attachChartEventListener(chartObj, eventName);
+        });
+    }
 
     ngAfterViewInit() {
         const _this = this,
@@ -235,12 +393,13 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
         if (configObj['type']) {
 
             _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
-
+            this.initialized.emit({ chart: _this.chartObj });
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
             // _this.containerId = _this.chartObj.id;
 
             this.zone.runOutsideAngular(() => {
                 setTimeout(() => {
+                    _this.attachAllChartEvents(_this.chartObj, _this.eventList);
                     _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             })
@@ -252,4 +411,4 @@ export class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterV
     }
 
 }
-
+export { FusionChartsComponent } ;
