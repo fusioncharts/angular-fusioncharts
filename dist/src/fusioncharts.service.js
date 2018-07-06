@@ -34,8 +34,8 @@ var FusionChartsService = (function () {
         return !!FusionChartsService._fcRoot;
     };
     FusionChartsService.prototype.resolveFusionCharts = function (core, modules) {
-        if (core && core.getCurrentRenderer &&
-            core.getCurrentRenderer() === 'javascript') {
+        if (core && core.id &&
+            core.id === 'FusionCharts') {
             this._fusionchartsStatice = core;
         }
         else {
@@ -43,7 +43,12 @@ var FusionChartsService = (function () {
         }
         if (modules) {
             modules.forEach(function (FusionChartsModules) {
-                FusionChartsModules(core);
+                if (FusionChartsModules.getName || FusionChartsModules.name) {
+                    core.addDep(FusionChartsModules);
+                }
+                else {
+                    FusionChartsModules(core);
+                }
             });
         }
     };
