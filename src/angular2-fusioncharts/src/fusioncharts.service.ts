@@ -36,6 +36,8 @@ export class FusionChartsService {
         this.resolveFusionCharts(fcRoot.core, fcRoot.modules);
     }
 
+
+
     resolveFusionCharts(core: any, modules: any[]) {
         if (core && core.id &&
             core.id === 'FusionCharts') {
@@ -46,7 +48,11 @@ export class FusionChartsService {
 
         if (modules) {
             modules.forEach((FusionChartsModules: any) => {
-                FusionChartsModules(core);
+                if (FusionChartsModules.getName || FusionChartsModules.name) {
+                    core.addDep(FusionChartsModules);
+                } else {
+                    FusionChartsModules(core);
+                }
             });
         }
     }
