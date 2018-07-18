@@ -1,8 +1,10 @@
-
 <fusioncharts
-    [chartConfig]=chartConfig
-    [dataSource]=dataSource >
-</fusioncharts>
+ type="column2d"
+ width="700"
+ height="500"
+ dataFormat="json"
+ [dataSource]="dataSource"
+></fusioncharts>
 
 <tabs>
     <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>

@@ -24,6 +24,7 @@ import { Ex10 } from './fusioncharts/ex10/ex10';
 import { Ex11 } from './fusioncharts/ex11/ex11';
 import { Ex12 } from "./fusioncharts/ex12/ex12";
 import { Ex13 } from "./fusioncharts/ex13/ex13";
+import { Ex14 } from "./fusioncharts/ex14/ex14";
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
@@ -50,12 +51,13 @@ import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // Load Ocean theme
 import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
+import * as Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
-let Fusion = require('./themes/fusioncharts.theme.fusion.js');
 
+require('./themes/fusioncharts.theme.fusion.js');
 
-FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap)
+FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap, Fint)
 
 @NgModule({
   declarations: [
@@ -73,6 +75,7 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Map
     Ex11,
     Ex12,
     Ex13,
+    Ex14,
     Navigation, ObservingComponent, MyAppComponent,
 
     CodePrev,
