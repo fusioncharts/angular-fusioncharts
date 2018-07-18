@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, enableProdMode } from '@angular/core'
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
@@ -20,7 +20,8 @@ import { Ex6 } from './fusioncharts/ex6/ex6';
 import { Ex7 } from './fusioncharts/ex7/ex7';
 import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
-// import { Ex10 } from './fusioncharts/ex10/ex10';
+import { Ex10 } from './fusioncharts/ex10/ex10';
+import { Ex11 } from './fusioncharts/ex11/ex11';
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
@@ -31,24 +32,25 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import * as FusionCharts from 'fusioncharts';
 
 // Load charts module
-let Charts = require('fusioncharts/fusioncharts.charts');
+import * as Charts from 'fusioncharts/fusioncharts.charts';
 // import * as Charts from 'fusioncharts/fusioncharts.charts';
 // Load PowerCharts module
-let PowerCharts = require('fusioncharts/fusioncharts.powercharts');
+import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 // import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 // Load Widgets module
-let Widgets = require('fusioncharts/fusioncharts.widgets');
+import * as Widgets from 'fusioncharts/fusioncharts.widgets';
 // import * as Widgets from 'fusioncharts/fusioncharts.widgets';
 // Load Maps module
-let Maps = require('fusioncharts/fusioncharts.maps');
+import * as Maps from 'fusioncharts/fusioncharts.maps';
 // import * as Maps from 'fusioncharts/fusioncharts.maps';
 // Load WorldMap module
-let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // Load Ocean theme
-let Ocean = require('fusioncharts/themes/fusioncharts.theme.ocean');
+import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
+let Fusion = require('./themes/fusioncharts.theme.fusion.js');
 
 export function FusionChartsProvider () {
     Charts(FusionCharts);
@@ -72,7 +74,8 @@ export function FusionChartsProvider () {
     Ex7,
     Ex8,
     Ex9,
-    
+    Ex10,
+    Ex11,
     Navigation, ObservingComponent, MyAppComponent,
 
     CodePrev,

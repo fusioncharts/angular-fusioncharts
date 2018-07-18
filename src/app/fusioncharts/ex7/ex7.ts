@@ -1,4 +1,4 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, NgZone} from '@angular/core';
 
 import fcDemos from '../samplecode';
 
@@ -11,7 +11,6 @@ declare var Prism;
           '../ex.css'
       ]
 })
-
 export class Ex7 {
     demoId = 'ex7';
 
@@ -22,7 +21,7 @@ export class Ex7 {
             caption: "Harry's SuperMart",
             subCaption: "Top 5 stores in last month by revenue",
             numberPrefix: "$",
-            theme: "ocean"
+            theme: "fusion"
         },
         data:[{
             label: "Bakersfield Central",
@@ -46,22 +45,22 @@ export class Ex7 {
         }]
     };
     
-    selectedValue: string = "nothing";
+    selectedValue = "";
 
     update() {
-        var _this = this;
-        return (eve, arg) => {
-            _this.selectedValue = arg.displayValue;
+        return (eve, arg) => {            
+            this.zone.run(() => {
+                this.selectedValue = arg.displayValue;
+            })
         }
     }
-
+    
     events = {
-        dataPlotRollOver: this.update()
+        dataplotRollover: this.update()
     }
 
-    constructor () {
+    constructor(private zone:NgZone){}
 
-    }
     ngAfterViewInit() {
         Prism && Prism.highlightAll();
     }

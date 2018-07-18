@@ -6,7 +6,8 @@ import '../../node_modules/prismjs/prism.js';
   	styleUrls: [
   		'./app.component.css',
   		'../../node_modules/bootstrap/dist/css/bootstrap.css',
-  		'../../node_modules/prismjs/themes/prism.css'
+			'../../node_modules/prismjs/themes/prism.css',
+			'./themes/fusioncharts.theme.fusion.css'
 	],
     encapsulation: ViewEncapsulation.None,
   	templateUrl: './app.component.html',

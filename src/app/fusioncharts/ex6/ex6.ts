@@ -21,7 +21,9 @@ export class Ex6 {
             caption: "Harry's SuperMart",
             subCaption: "Top 5 stores in last month by revenue",
             numberPrefix: "$",
-            theme: "ocean"
+            theme: "fusion",
+            animation:"1",
+            updateAnimDuration:"0.5"
         },
         data:[{
             label: "Bakersfield Central",

@@ -1,4 +1,4 @@
-import { Component, AfterViewInit} from '@angular/core';
+import { Component, AfterViewInit, NgZone} from '@angular/core';
 
 import fcDemos from '../samplecode';
 
@@ -17,12 +17,11 @@ export class Ex9 {
 
     dataSource = {
         "chart": {
-            "caption": "Monthly r    ue for last year",
+            "caption": "Monthly revenue for last year",
             "subCaption": "Harry's SuperMart",
             "xAxisName": "Month",
             "yAxisName": "Revenues (In USD)",
             "numberPrefix": "$",
-            "paletteColors": "#0075c2",
             "bgColor": "#ffffff",
             "borderAlpha": "20",
             "canvasBorderAlpha": "0",
@@ -37,7 +36,8 @@ export class Ex9 {
             "divLineIsDashed": "1",
             "showAlternateHGridColor": "0",
             "subcaptionFontBold": "0",
-            "subcaptionFontSize": "14"
+            "subcaptionFontSize": "14",
+            "theme":"fusion"
         },            
         "data": [
             {
@@ -106,10 +106,13 @@ export class Ex9 {
     total: number;
 
     getPercentValue() {
-        let _this = this;
+     
         return (eve,  arg) => {
-            let value = (arg.value / _this.total * 100).toFixed(2);
-            _this.logMessage = "Percentage is  " + value + "% of the total";
+            this.zone.run(() => {
+                let value = (arg.value / this.total * 100).toFixed(2);
+                this.logMessage = "Percentage is  " + value + "% of the total";
+            })
+           
         }
     }
 
@@ -117,7 +120,7 @@ export class Ex9 {
         dataPlotRollOver: this.getPercentValue()
     }
 
-    constructor () {
+    constructor (private zone:NgZone) {
         let myData = this.dataSource.data;
 
         this.total = 0;
