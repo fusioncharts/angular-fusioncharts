@@ -22,6 +22,8 @@ import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
 import { Ex10 } from './fusioncharts/ex10/ex10';
 import { Ex11 } from './fusioncharts/ex11/ex11';
+import { Ex12 } from "./fusioncharts/ex12/ex12";
+import { Ex13 } from "./fusioncharts/ex13/ex13";
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
@@ -52,15 +54,8 @@ import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 let Fusion = require('./themes/fusioncharts.theme.fusion.js');
 
-export function FusionChartsProvider () {
-    Charts(FusionCharts);
-    Ocean(FusionCharts);
-    PowerCharts(FusionCharts);
-    Widgets(FusionCharts);
-    Maps(FusionCharts);
-    WorldMap(FusionCharts);
-    return FusionCharts;
-}
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap)
 
 @NgModule({
   declarations: [
@@ -76,6 +71,8 @@ export function FusionChartsProvider () {
     Ex9,
     Ex10,
     Ex11,
+    Ex12,
+    Ex13,
     Navigation, ObservingComponent, MyAppComponent,
 
     CodePrev,
@@ -88,7 +85,7 @@ export function FusionChartsProvider () {
     ReactiveFormsModule,
     HttpModule,
     TabsModule,
-    FusionChartsModule.forRoot(FusionChartsProvider),
+    FusionChartsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: true })
   ],
   providers: [

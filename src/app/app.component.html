@@ -114,6 +114,15 @@
                     <h4>Drill Down Chart</h4>
                     <p>Click on the plot to drill down chart</p>
                 </a>
+
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex12']"  href="#/demos/ex12" class="list-group-item" (click)="updateId('ex12')">
+                    <h4>Render a widget</h4>
+                    <p>A simple widget with data embedded in the component</p>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex13']"  href="#/demos/ex13" class="list-group-item" (click)="updateId('ex13')">
+                    <h4>Render a map</h4>
+                    <p>A simple map with embedded data </p>
+                </a>
             </nav>
         </div>
     </div>

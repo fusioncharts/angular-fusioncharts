@@ -12,6 +12,8 @@ import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
 import { Ex10 } from "./fusioncharts/ex10/ex10";
 import { Ex11 } from './fusioncharts/ex11/ex11';
+import { Ex12 } from './fusioncharts/ex12/ex12';
+import { Ex13 } from './fusioncharts/ex13/ex13';
 // import { Ex10 } from './fusioncharts/ex10/ex10';
 import { MyAppComponent } from './observable/observable.component';
 
@@ -32,6 +34,8 @@ export const rootRouterConfig: Routes = [
   { path: 'ex9', component: Ex9 },
   { path: 'ex10', component: Ex10 },
   { path: 'ex11', component: Ex11 },
+  { path: 'ex12', component: Ex12 },
+  { path: 'ex13', component: Ex13 },
   { path: 'fusioncharts', component: MyAppComponent },
 
   { path: 'fusioncharts', component: FusionChartsSample }
