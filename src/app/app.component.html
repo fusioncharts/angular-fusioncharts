@@ -56,7 +56,7 @@
             
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex2']" href="#/demos/ex2" class="list-group-item" (click)="updateId('ex2')">
                     <h4>A 3D Pie Chart</h4>
-                    <p>A 3D pie chart using the datasource attribute from scope</p>
+                    <p>A 3D pie chart using the datasource attribute from components scope</p>
                 </a>
             
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex3']" href="#/demos/ex3" class="list-group-item" (click)="updateId('ex3')">
@@ -80,18 +80,18 @@
                 </a>
             
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex6']" href="#/demos/ex6" class="list-group-item" (click)="updateId('ex6')">
-                    <h4>Update chart data from scope</h4>
-                    <p>Change the data dynamically in the scope and watch the chart update automatically</p>
+                    <h4>Update chart data from component</h4>
+                    <p>Change the data dynamically in the component and watch the chart update automatically</p>
                 </a>
             
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex7']" href="#/demos/ex7" class="list-group-item" (click)="updateId('ex7')">
-                    <h4>Trigger scope event from chart</h4>
-                    <p>Click on a chart to trigger an event in the controller, and update the scope</p>
+                    <h4>Trigger events from chart</h4>
+                    <p>Hover on a plot to trigger an event in the component, and update variables</p>
                 </a>
             
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex8']" href="#/demos/ex8" class="list-group-item" (click)="updateId('ex8')">
-                    <h4>Update chart attribute from scope</h4>
-                    <p>Change a parameter in the scope variable and see it automatically update the chart</p>
+                    <h4>Update chart attribute from component</h4>
+                    <p>Change a parameter in the components variable and see it automatically update the chart</p>
                 </a>
 <!--             
                 <a [routerLink]="['/ex9']"  href="#/demos/ex9" class="list-group-item" (click)="updateId('ex9')">
@@ -101,12 +101,12 @@
  -->   
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex9']"  href="#/demos/ex9" class="list-group-item" (click)="updateId('ex9')">
                     <h4>Percentage Calculation</h4>
-                    <p>Click on a plot to see the percentage value with respect to total</p>
+                    <p>Hover on a plot to see the percentage value with respect to total</p>
                 </a>
 
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex10']"  href="#/demos/ex10" class="list-group-item" (click)="updateId('ex10')">
                     <h4>Export Chart</h4>
-                    <p>Click on the button to export the chart</p>
+                    <p>Click on the button to export the chart in pdf</p>
                 </a>
 
 
