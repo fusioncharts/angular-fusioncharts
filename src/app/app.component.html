@@ -4,18 +4,18 @@
             <ul class="nav nav-pills pull-right">
                 <li><a href="http://fusioncharts.com/">FusionCharts Home</a></li>
             </ul>
-            <h3><a href="http://fusioncharts.github.io/angular2-fusioncharts/"><img src="http://www.fusioncharts.com/theme/210x38xlogo.png.pagespeed.ic.KZD9tJ7qIK.png" class="logo"></a></h3>
+            <h3><a href="http://fusioncharts.github.io/angular-fusioncharts/"><img src="http://www.fusioncharts.com/theme/210x38xlogo.png.pagespeed.ic.KZD9tJ7qIK.png" class="logo"></a></h3>
         </div>
         <div class="jumbotron">
             <img src="./assets/images/ng-fc-logo.png" class="logo">
-            <h1>Angular2-FusionCharts</h1>
-            <p>Simple and effective AngularJS bindings for FusionCharts JavaScript Charting Library.</p>
+            <h1>Angular FusionCharts</h1>
+            <p>Simple and effective Angular wrapper for FusionCharts JavaScript Charting Library.</p>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <h3>About Angular2-FusionCharts</h3>
+                <h3>About Angular FusionCharts</h3>
                 <p>
-                This Angular 2 component provides bindings for <a href="http://fusioncharts.com">FusionCharts JavaScript Charting Library</a>. It easily adds rich and interactive charting to your Angular JS Projects.
+                This Angular component provides bindings for <a href="http://fusioncharts.com">FusionCharts JavaScript Charting Library</a>. It easily adds rich and interactive charting to your Angular ( 2 and onwards) Projects.
                 </p>
             </div>
             <div class="col-md-4 ">
@@ -23,10 +23,9 @@
                 <!-- <p> -->
                     <ul>
                         <li>Add a chart using just a single directive.</li>
-                        <li>Auto-updates the chart object on modifying scope.</li>
-                        <li>Angular-friendly events allow you to call controller functions directly from the chart.</li>
+                        <li>Auto-updates the chart object on modifying component.</li>
+                        <li>Angular friendly events(emitters) allow you to call component functions directly from the chart.</li>
                         <li>Offers advanced control by giving you access to full FusionCharts object.</li>
-                        <li>Provides variety of ways to add a chart, from JSON URL to Scope Array Binding.</li>
                     </ul>
                 <!-- </p> -->
             </div>
@@ -34,14 +33,14 @@
                 <h3>Community</h3>
                 <!-- <p> -->
                     <ul>
-                        <li><a href="http://github.com/fusioncharts/angular2-fusioncharts">Github Repo</a></li>
-                        <li><a href="http://github.com/fusioncharts/angular2-fusioncharts/issues">Issues</a></li>
+                        <li><a href="http://github.com/fusioncharts/angular-fusioncharts">Github Repo</a></li>
+                        <li><a href="http://github.com/fusioncharts/angular-fusioncharts/issues">Issues</a></li>
                         <li><a href="http://twitter.com/fusioncharts">FusionCharts Twitter</a></li>
                         <li><a href="http://stackoverflow.com/questions/tagged/fusioncharts">Stack Overflow</a></li>
                     </ul>
                 <!-- </p> -->
                 <h3>Support</h3>
-                <p>Simply open up <a href="https://github.com/fusioncharts/angular2-fusioncharts/issues/new">a github issue</a> with your question/bug report/suggestion.</p>
+                <p>Simply open up <a href="https://github.com/fusioncharts/angular-fusioncharts/issues/new">a github issue</a> with your question/bug report/suggestion.</p>
             </div>
         </div>
     </div>
@@ -141,46 +140,42 @@
         <div class="col-md-12">
             <h2>QuickStart</h2>
 
-            <h3>Step 1: Install <code>angular2-fusioncharts</code></h3>
+            <h3>Step 1: Install <code>angular-fusioncharts</code></h3>
             <p>In the terminal run the following command:</p>
-            <pre class="code-tab language-javascript"><code>$ npm install angular2-fusioncharts --save</code></pre>
+            <pre class="code-tab language-javascript"><code>$ npm install angular-fusioncharts --save</code></pre>
 
 
-            <h3>Step 2: Import <code>angular2-fusioncharts</code> in the root @NgModule </h3>
-            <p>In the root Angular <code>@NgModule</code> import <code>FusionChartsModule</code> from <code>angular2-fusioncharts</code> and add the FusionChartsModule as a dependency.</p>
+            <h3>Step 2: Import <code>angular-fusioncharts</code> in the root @NgModule </h3>
+            <p>In the root Angular <code>@NgModule</code> import <code>FusionChartsModule</code> from <code>angular-fusioncharts</code> and add the FusionChartsModule as a dependency.</p>
             <pre class="code-tab language-javascript"><code>import {{ '{' }} NgModule } from '@angular/core';
 import {{ '{' }} BrowserModule } from '@angular/platform-browser';
-// Import the library
-import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
-import {{ '{' }} AppComponent } from './app.component';
 
-// Import angular2-fusioncharts
-import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
+// Import angular-fusioncharts
+import {{ '{' }} FusionChartsModule } from 'angular-fusioncharts';
 
 // Import FusionCharts library
 import * as FusionCharts from 'fusioncharts';
-// Load FusionCharts Charts module
-let Charts = require('fusioncharts/fusioncharts.charts');
- 
-// Create FusionCharts provider function
-export function FusionChartsProvider () {{ '{' }}
-  // Resolve charts dependency
-  // You can pass all other FusionCharts modules such as Charts, PowerCharts
-  // Maps, Widgets e.t.c.
-  Charts(FusionCharts);
 
-  return FusionCharts;
-}
+// Load FusionCharts Charts module
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+// Add other dependecies like Themes, other charts, maps
+// import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
+// import * as World from 'fusioncharts/maps/fusioncharts.world';
+
+
+
+// Use fcRoot function to inject FusionCharts library, and the modules 
+// you want to use
+//FusionChartsModule.fcRoot(FusionCharts, [Comma separated modules]) 
+FusionChartsModule.fcRoot(FusionCharts, Charts)
 
 @NgModule({{ '{' }}
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule, 
-    // Specify FusionChartsModule as an import 
-    // and pass FusionChartsProvider as a dependency
-    FusionChartsModule.forRoot(FusionChartsProvider)
+    BrowserModule,
+    FusionChartsModule // Include in imports
   ],
   bootstrap: [AppComponent]
 })
@@ -226,30 +221,23 @@ export class AppComponent {{ '{' }}
 
             <pre class="code-tab language-javascript"><code class="ng-binding">import {{ '{' }} NgModule } from '@angular/core';
 import {{ '{' }} BrowserModule } from '@angular/platform-browser';
-// Import the library
-import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 import {{ '{' }} AppComponent } from './app.component';
 
-// Import angular2-fusioncharts
+// Import FusionChartsModule from angular-fusioncharts
 import {{ '{' }} FusionChartsModule } from 'angular2-fusioncharts';
 
 // Import FusionCharts library
 import * as FusionCharts from 'fusioncharts';
+
+
 // Load FusionCharts Maps module
-let FusionMaps = require('fusioncharts/fusioncharts.maps');
+import * as Maps from 'fusioncharts/fusioncharts.maps';
+
 // Load WorldMap map definition module
-let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+import * as World from 'fusioncharts/maps/fusioncharts.world';
 
-// Create FusionCharts provider function
-export function FusionChartsProvider () {{ '{' }}
-  // Resolve Maps dependency
-  // You can pass all other FusionCharts modules such as Charts, PowerCharts
-  // Maps, Widgets e.t.c.
-  FusionMaps(FusionCharts);
-  WorldMap(FusionCharts);
-
-  return FusionCharts;
-}
+// Use FusionChartsModule.fcRoot(FusionCharts, [Comma separated modules])
+FusionChartsModule.fcRoot(FusionCharts, Maps, World)
 
 @NgModule({{ '{' }}
   declarations: [
@@ -257,9 +245,7 @@ export function FusionChartsProvider () {{ '{' }}
   ],
   imports: [
     BrowserModule, 
-    // Specify FusionChartsModule as an import 
-    // and pass FusionChartsProvider as a dependency
-    FusionChartsModule.forRoot(FusionChartsProvider)
+    FusionChartsModule // Include in the imports
   ],
   bootstrap: [AppComponent]
 })
