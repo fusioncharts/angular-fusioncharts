@@ -1,13 +1,26 @@
-<fusioncharts
-    width="600" 
-    height="400"
-    type="column2d"
-    [dataSource]="dataSource" >
-</fusioncharts>
+<style >
+        .btn { font-family: 'Source Sans Pro'; }
+        .btn.btn-primary { background: #4a4d8c;  transition: all 300ms;}
+        .btn.btn-primary:hover{ background: #5c62b5; }
+        .btn.btn-primary:active{ background:#4a4d8c }
+        div>a{
+            margin: 0px 10px;
+        }
+    </style>
 
-<p><a class="btn btn-default" (click)="changeBackgroundColor()">Change chart background color</a>
-	<a class="btn btn-default" (click)="changeCaptionTextAlignment()">Make Caption text left-aligned</a>
-</p>
+<div style="display: flex; justify-content: center">
+    <fusioncharts
+        width="600" 
+        height="400"
+        type="column2d"
+        [dataSource]="dataSource" >
+    </fusioncharts>
+</div>
+
+<div style="display: flex; justify-content: center">
+    <a class="btn btn-primary" (click)="changeBackgroundColor()">Change chart background color</a>
+    <a class="btn btn-primary" (click)="changeCaptionTextAlignment()">Make Caption text left-aligned</a>
+</div>
 
 <tabs>
     <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>

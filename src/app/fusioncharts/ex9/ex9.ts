@@ -56,8 +56,9 @@ export class Ex9 {
     getPercentValue() {
         return (eve,  arg) => {
             this.zone.run(() => {
+                
                 let value = (arg.value / this.total * 100).toFixed(2);
-                this.logMessage = "Percentage is  " + value + "% of the total";
+                this.logMessage = arg.categoryLabel + " is  " + value + "% of the total";
             })
         }
     }

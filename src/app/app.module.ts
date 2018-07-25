@@ -56,6 +56,7 @@ import * as Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
 
 
 require('./themes/fusioncharts.theme.fusion.js');
+require('./themes/fusioncharts.theme.gammel.js');
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap, Fint)
 

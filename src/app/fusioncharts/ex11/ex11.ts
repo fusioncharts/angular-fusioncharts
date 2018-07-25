@@ -24,7 +24,7 @@ export class Ex11 {
         type: "pie2d",
         width: "500",
         overlayButton: {
-            message: 'close',
+            message: 'Back',
             fontColor: '880000',
             bgColor: 'FFEEEE',
             borderColor: '660000'
@@ -34,8 +34,8 @@ export class Ex11 {
 
     dataSource = {
       "chart": {
-          "caption": "Top 3 Juice Flavors",
-          "subcaption": "Last year",
+          "caption": "Sales of top 3 juice flavors last year",
+          "subcaption": "Click on a column to see details",
           "xaxisname": "Flavor",
           "yaxisname": "Amount (In USD)",
           "numberprefix": "$",
@@ -54,7 +54,7 @@ export class Ex11 {
           "link": "newchart-xml-cranberry"
         },
         {
-          "label": "Grapes",
+          "label": "Grape",
           "value": "350000",
           "link": "newchart-xml-grapes"
         }],
@@ -118,7 +118,7 @@ export class Ex11 {
             "id": "grapes",
             "linkedchart": {
                 "chart": {
-                    "caption": "Grapes Juice - Quarterly Sales",
+                    "caption": "Grape Juice - Quarterly Sales",
                     "subcaption": "Last year",
                     "numberprefix": "$",
                     "theme": "fusion",

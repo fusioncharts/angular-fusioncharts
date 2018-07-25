@@ -52,11 +52,14 @@ export class Ex7 {
         }]
     };
     
+    selectedLabel = "";
     selectedValue = "";
 
     update() {
         return (eve, arg) => {            
             this.zone.run(() => {
+                
+                this.selectedLabel = arg.categoryLabel;
                 this.selectedValue = arg.displayValue;
             })
         }

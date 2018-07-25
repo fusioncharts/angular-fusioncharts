@@ -1,3 +1,12 @@
+<style >
+    .btn { font-family: 'Source Sans Pro'; }
+    .btn.btn-primary { background: #4a4d8c;  transition: all 300ms;}
+    .btn.btn-primary:hover{ background: #5c62b5; }
+    .btn.btn-primary:active{ background:#4a4d8c }
+    div>a{
+        margin: 0px 10px;
+    }
+</style>
 
 <fusioncharts
    width="700"
@@ -10,12 +19,14 @@
 <fusioncharts
    width="600"
    height="600"
-   type="bar2d"
+   type="stackedcolumn2d"
    dataFormat="json"
-   [dataSource]="barDataSource">
+   [dataSource]="stackedColumnData">
 </fusioncharts>
 
-<button (click)="exportChart($event)">Export chart in pdf</button>
+<div style="display: flex;justify-content: center">
+    <button (click)="exportChart($event)" class="btn btn-primary">Export both charts as a single PDF</button>
+</div>
 
 <tabs>
     <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>
