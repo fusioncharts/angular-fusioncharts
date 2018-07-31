@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 
 import fcDemos from '../samplecode';
+import SelectedSingleton from '../services/selected.singleton';
 
 declare var Prism;
 
@@ -17,12 +18,13 @@ export class Ex1 implements AfterViewInit {
   sampleCode = fcDemos;
   dataSource: Object;
   chartConfig: Object;
+  tabOptions:string[];
 
   constructor() {
     this.sampleCode = fcDemos;
 
     this.chartConfig = {
-      width: '700',
+      width: '100%',
       height: '400',
       type: "column2d",
       dataFormat: "json",
@@ -66,6 +68,13 @@ export class Ex1 implements AfterViewInit {
     };
 
   }
+
+  ngOnInit(){
+    setTimeout(() => {
+      SelectedSingleton.change(this.sampleCode['ex1'].title);
+    })
+  }
+
   ngAfterViewInit() {
     Prism && Prism.highlightAll();
   }

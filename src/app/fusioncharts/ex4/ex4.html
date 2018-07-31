@@ -1,21 +1,17 @@
-<fusioncharts
-    width="300" 
-    height="200"
-    type="column2d"
-    class="chart1"
-    [dataSource]=dataSource>
-</fusioncharts>
+<div class="card shadow">
+  <div class="card-body chart-wrapper">
+    <div class="chart-wrapper-inner">
+      <fusioncharts width="300" height="200" type="column2d" class="chart1" [dataSource]=dataSource>
+      </fusioncharts>
 
-<fusioncharts
-    width="300" 
-    height="200"
-    type="column2d"
-    [dataSource]=dataSource>
-</fusioncharts>
+      <fusioncharts width="300" height="200" type="column2d" [dataSource]=dataSource>
+      </fusioncharts>
+    </div>
+  </div>
+</div>
 
-<tabs>
-    <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>
-    <tab tabTitle="Component"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].component }}</ng-prism></tab>
-    <tab tabTitle="Template" ><ng-prism class="codepreview language-html" >{{ sampleCode[demoId].template }}</ng-prism></tab>
-</tabs>
-    
+<tabbed-code 
+    moduleCode="{{sampleCode[demoId].module}}"
+    componentCode="{{sampleCode[demoId].component}}"
+    templateCode="{{sampleCode[demoId].template}}">
+</tabbed-code>

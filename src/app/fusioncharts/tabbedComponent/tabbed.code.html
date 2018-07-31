@@ -1,0 +1,49 @@
+<div class="code-view mt-2">
+    <div class="card-shadow" style="background: #03040B;">
+      <div class="code-nav-btns btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'module' && 'selected'" (click)='selectCode("module")'>Module</button>
+        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'component' && 'selected'" (click)='selectCode("component")'>Component</button>
+        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'template' && 'selected'" (click)='selectCode("template")'>Template</button>
+      </div>
+      <div class="card-body p-0">
+        <div class="code-panel">
+          <div class="code-panel-header">
+            <div id="chartCode">
+              <div [ngSwitch]="cSelected">
+                <div *ngSwitchCase="'module'">
+                  <ngx-codemirror [(ngModel)]="moduleCode" [options]="{ 
+                      lineNumbers: true,
+                      theme:'dracula', 
+                      tabSize: '4',
+                      smartIndent: true,
+                      readOnly: true,
+                      mode:'javascript'
+                  }"></ngx-codemirror>
+                </div>
+                <div *ngSwitchCase="'component'">
+                    <ngx-codemirror [(ngModel)]="componentCode" [options]="{ 
+                      lineNumbers: true,
+                      theme:'dracula', 
+                      tabSize: '4',
+                      smartIndent: true,
+                      readOnly: true,
+                      mode:'javascript'
+                  }"></ngx-codemirror>
+                </div>
+                <div *ngSwitchCase="'template'">
+                  <ngx-codemirror [(ngModel)]="templateCode" [options]="{ 
+                      lineNumbers: true,
+                      theme:'dracula', 
+                      tabSize: '4',
+                      smartIndent: true,
+                      readOnly: true,
+                      mode:'htmlembedded'
+                  }"></ngx-codemirror>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

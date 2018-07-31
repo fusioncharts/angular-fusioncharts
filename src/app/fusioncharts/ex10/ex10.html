@@ -1,36 +1,48 @@
 <style >
-    .btn { font-family: 'Source Sans Pro'; }
-    .btn.btn-primary { background: #4a4d8c;  transition: all 300ms;}
-    .btn.btn-primary:hover{ background: #5c62b5; }
-    .btn.btn-primary:active{ background:#4a4d8c }
+    .btn.btn-outline-secondary.btn-sm:hover{
+        color:white;
+    }
+    .btn.btn-outline-secondary.btn-sm:active{
+        color:gray;
+    }
     div>a{
         margin: 0px 10px;
     }
 </style>
 
-<fusioncharts
-   width="600"
-   height="400"
-   type="column2D"
-   [dataSource]="dataSource"
-   >
-</fusioncharts>
+<div class="card shadow">
+    <div class="card-body chart-wrapper">
+        <div class="chart-wrapper-inner">
+            <fusioncharts
+                width="800"
+                height="400"
+                type="column2D"
+                [dataSource]="dataSource">
+            </fusioncharts>
 
-<fusioncharts
-   width="600"
-   height="400"
-   type="stackedcolumn2d"
-   dataFormat="json"
-   [dataSource]="stackedColumnData">
-</fusioncharts>
+            <fusioncharts
+                width="800"
+                height="400"
+                type="stackedcolumn2d"
+                dataFormat="json"
+                [dataSource]="stackedColumnData">
+            </fusioncharts>
 
-<div style="display: flex;justify-content: center">
-    <button (click)="exportChart($event)" class="btn btn-primary">Export both charts as a single PDF</button>
+            <div style="display: flex;justify-content: center">
+                <button (click)="exportChart($event)" class="btn btn-outline-secondary btn-sm">
+                    Export both charts as a single PDF
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<tabs>
-    <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>
-    <tab tabTitle="Component"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].component }}</ng-prism></tab>
-    <tab tabTitle="Template" ><ng-prism class="codepreview language-html" >{{ sampleCode[demoId].template }}</ng-prism></tab>
-</tabs>
+
+
+
+<tabbed-code 
+    moduleCode="{{sampleCode[demoId].module}}"
+    componentCode="{{sampleCode[demoId].component}}"
+    templateCode="{{sampleCode[demoId].template}}">
+</tabbed-code>
 

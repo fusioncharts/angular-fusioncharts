@@ -1,13 +1,19 @@
-<fusioncharts
- type="angulargauge"
- width="450"
- height="300"
- dataFormat="json"
- [dataSource]="dataSource"
-></fusioncharts>
+<div class="card shadow">
+    <div class="card-body chart-wrapper">
+        <div class="chart-wrapper-inner">
+            <fusioncharts
+            type="angulargauge"
+            width="100%"
+            height="400"
+            dataFormat="json"
+            [dataSource]="dataSource">
+            </fusioncharts>
+        </div>
+    </div>
+</div>
 
-<tabs>
-    <tab tabTitle="Module"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].module }}</ng-prism></tab>
-    <tab tabTitle="Component"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].component }}</ng-prism></tab>
-    <tab tabTitle="Template" ><ng-prism class="codepreview language-html" >{{ sampleCode[demoId].template }}</ng-prism></tab>
-</tabs>
+<tabbed-code 
+    moduleCode="{{sampleCode[demoId].module}}"
+    componentCode="{{sampleCode[demoId].component}}"
+    templateCode="{{sampleCode[demoId].template}}">
+</tabbed-code>

@@ -1,90 +1,91 @@
 import { Component, AfterViewInit} from '@angular/core';
 import fcDemos from '../samplecode';
 import * as FusionCharts from 'fusioncharts';
+import SelectedSingleton from '../services/selected.singleton';
 declare var Prism;
 
 @Component({
-    selector: 'chart',
-    templateUrl: 'ex10.html',
-      styleUrls: [
-          '../ex.css'
-      ]
+  selector: 'chart',
+  templateUrl: 'ex10.html',
+  styleUrls: [
+    '../ex.css'
+  ]
 })
 
 export class Ex10 {
-    demoId = 'ex10';
-    sampleCode = fcDemos;
-    dataSource = {
-        "chart": {
-          "caption": "Countries With Most Oil Reserves [2017-18]",
-          "subCaption": "In MMbbl = One Million barrels",
-          "xAxisName": "Country",
-          "yAxisName": "Reserves (MMbbl)",
-          "numberSuffix": "K",
-          "theme": "fusion",
-        },
-        "data": [{
-          "label": "Venezuela",
-          "value": "290"
-        }, {
-          "label": "Saudi",
-          "value": "260"
-        }, {
-          "label": "Canada",
-          "value": "180"
-        }, {
-          "label": "Iran",
-          "value": "140"
-        }, {
-          "label": "Russia",
-          "value": "115"
-        }, {
-          "label": "UAE",
-          "value": "100"
-        }, {
-          "label": "US",
-          "value": "30"
-        }, {
-          "label": "China",
-          "value": "30"
-        }]
-    };
-
-    stackedColumnData = {
-      chart: {
-        caption: "Yearly Energy Production Rate",
-        subCaption: " Top 5 Developed Countries",
-        numbersuffix: " TWh",
-        showSum: "1",
-        plotToolText:
-          "$label produces <b>$dataValue</b> of energy from $seriesName",
-        theme: "fusion"
-      },
-      categories: [
-        {
-          category: [
-            {
-              label: "Canada"
-            },
-            {
-              label: "China"
-            },
-            {
-              label: "Russia"
-            },
-            {
-              label: "Australia"
-            },
-            {
-              label: "United States"
-            },
-            {
-              label: "France"
-            }
-          ]
-        }
-      ],
-      dataSet: [
+  demoId = 'ex10';
+  sampleCode = fcDemos;
+  dataSource = {
+    "chart": {
+      "caption": "Countries With Most Oil Reserves [2017-18]",
+      "subCaption": "In MMbbl = One Million barrels",
+      "xAxisName": "Country",
+      "yAxisName": "Reserves (MMbbl)",
+      "numberSuffix": "K",
+      "theme": "fusion",
+    },
+    "data": [{
+      "label": "Venezuela",
+      "value": "290"
+    }, {
+      "label": "Saudi",
+      "value": "260"
+    }, {
+      "label": "Canada",
+      "value": "180"
+    }, {
+      "label": "Iran",
+      "value": "140"
+    }, {
+      "label": "Russia",
+      "value": "115"
+    }, {
+      "label": "UAE",
+      "value": "100"
+    }, {
+      "label": "US",
+      "value": "30"
+    }, {
+      "label": "China",
+      "value": "30"
+    }]
+  };
+  
+  stackedColumnData = {
+    chart: {
+      caption: "Yearly Energy Production Rate",
+      subCaption: " Top 5 Developed Countries",
+      numbersuffix: " TWh",
+      showSum: "1",
+      plotToolText:
+      "$label produces <b>$dataValue</b> of energy from $seriesName",
+      theme: "fusion"
+    },
+    categories: [
+      {
+        category: [
+          {
+            label: "Canada"
+          },
+          {
+            label: "China"
+          },
+          {
+            label: "Russia"
+          },
+          {
+            label: "Australia"
+          },
+          {
+            label: "United States"
+          },
+          {
+            label: "France"
+          }
+        ]
+      }
+    ],
+    dataSet: [
         {
           seriesName: "Coal",
           data: [
@@ -202,24 +203,30 @@ export class Ex10 {
         }
       ]
     }
-
+    
 
     getChartInstance(e){
       
       
     }
-
+    
     exportChart(e){
       
       FusionCharts.batchExport({
         exportFormat:'pdf'
       })
     }
-
+    
     constructor () {
-
+      
+    }
+    ngOnInit(){
+      setTimeout(() => {
+        SelectedSingleton.change(this.sampleCode['ex10'].title);
+      })
     }
     ngAfterViewInit() {
-        Prism && Prism.highlightAll();
+      Prism && Prism.highlightAll();
     }
-}
+  }
+  

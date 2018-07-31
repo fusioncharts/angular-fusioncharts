@@ -3,6 +3,7 @@ import { Component, AfterViewInit} from '@angular/core';
 import fcDemos from '../samplecode';
 
 declare var Prism;
+import SelectedSingleton from '../services/selected.singleton';
 
 @Component({
     selector: 'chart',
@@ -41,7 +42,12 @@ export class Ex2 {
     }
 
     constructor () {
-
+      
+    }
+    ngOnInit(){
+      setTimeout(() => {
+        SelectedSingleton.change(this.sampleCode['ex2'].title);
+      })
     }
     ngAfterViewInit() {
         Prism && Prism.highlightAll();
