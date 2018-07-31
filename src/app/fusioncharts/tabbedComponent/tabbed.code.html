@@ -11,7 +11,7 @@
             <div id="chartCode">
               <div [ngSwitch]="cSelected">
                 <div *ngSwitchCase="'module'">
-                  <ngx-codemirror [(ngModel)]="moduleCode" [options]="{ 
+                  <ngx-codemirror [(ngModel)]="moduleCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',
@@ -21,7 +21,7 @@
                   }"></ngx-codemirror>
                 </div>
                 <div *ngSwitchCase="'component'">
-                    <ngx-codemirror [(ngModel)]="componentCode" [options]="{ 
+                    <ngx-codemirror [(ngModel)]="componentCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',
@@ -31,7 +31,7 @@
                   }"></ngx-codemirror>
                 </div>
                 <div *ngSwitchCase="'template'">
-                  <ngx-codemirror [(ngModel)]="templateCode" [options]="{ 
+                  <ngx-codemirror [(ngModel)]="templateCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',

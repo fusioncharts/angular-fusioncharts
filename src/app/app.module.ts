@@ -9,7 +9,7 @@ import { HttpModule } from '@angular/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
 import { TabsModule } from "angularjs2-tabs";
-import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { CodemirrorModule } from '@nomadreservations/ngx-codemirror';
 
 import { Ex1 } from './fusioncharts/ex1/ex1';
 import { Ex2 } from './fusioncharts/ex2/ex2';
