@@ -11,34 +11,34 @@
             <div id="chartCode">
               <div [ngSwitch]="cSelected">
                 <div *ngSwitchCase="'module'">
-                  <ngx-codemirror [(ngModel)]="moduleCode" [config]="{ 
+                  <codemirror [(ngModel)]="moduleCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',
                       smartIndent: true,
                       readOnly: true,
                       mode:'javascript'
-                  }"></ngx-codemirror>
+                  }"></codemirror>
                 </div>
                 <div *ngSwitchCase="'component'">
-                    <ngx-codemirror [(ngModel)]="componentCode" [config]="{ 
+                    <codemirror [(ngModel)]="componentCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',
                       smartIndent: true,
                       readOnly: true,
                       mode:'javascript'
-                  }"></ngx-codemirror>
+                  }"></codemirror>
                 </div>
                 <div *ngSwitchCase="'template'">
-                  <ngx-codemirror [(ngModel)]="templateCode" [config]="{ 
+                  <codemirror [(ngModel)]="templateCode" [config]="{ 
                       lineNumbers: true,
                       theme:'dracula', 
                       tabSize: '4',
                       smartIndent: true,
                       readOnly: true,
                       mode:'htmlembedded'
-                  }"></ngx-codemirror>
+                  }"></codemirror>
                 </div>
               </div>
             </div>

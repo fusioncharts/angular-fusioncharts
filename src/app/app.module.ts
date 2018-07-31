@@ -8,8 +8,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
-import { TabsModule } from "angularjs2-tabs";
-import { CodemirrorModule } from '@nomadreservations/ngx-codemirror';
+// import { TabsModule } from "angularjs2-tabs";
+import { CodemirrorModule } from 'ng2-codemirror';
 
 import { Ex1 } from './fusioncharts/ex1/ex1';
 import { Ex2 } from './fusioncharts/ex2/ex2';
@@ -92,7 +92,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Map
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    TabsModule,
     FusionChartsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: true }),
     CodemirrorModule

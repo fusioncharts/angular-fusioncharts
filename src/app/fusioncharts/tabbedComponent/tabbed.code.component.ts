@@ -3,7 +3,6 @@ import {
   Input
 } from '@angular/core';
 
-import { CodemirrorService } from '@nomadreservations/ngx-codemirror';
 
 
 @Component({
@@ -16,10 +15,9 @@ export default class TabbedCode {
   @Input() templateCode;
   cSelected = 'component';
 
-  constructor (private _codeMirror: CodemirrorService) {}
+  constructor () {}
 
   ngOnInit(){
-    // this._codeMirror.instance$.subscribe( )
   }
 
   selectCode(type){
