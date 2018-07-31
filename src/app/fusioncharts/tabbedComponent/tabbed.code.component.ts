@@ -9,7 +9,7 @@ import {
   selector:'tabbed-code',
   templateUrl: './tabbed.code.html'
 })
-export default class TabbedCode {
+export class TabbedCode {
   @Input() moduleCode;
   @Input() componentCode;
   @Input() templateCode;

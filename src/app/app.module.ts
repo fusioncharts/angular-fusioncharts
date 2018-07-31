@@ -8,7 +8,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
-// import { TabsModule } from "angularjs2-tabs";
 import { CodemirrorModule } from 'ng2-codemirror';
 
 import { Ex1 } from './fusioncharts/ex1/ex1';
@@ -26,7 +25,7 @@ import { Ex11 } from './fusioncharts/ex11/ex11';
 import { Ex12 } from "./fusioncharts/ex12/ex12";
 import { Ex13 } from "./fusioncharts/ex13/ex13";
 import { Ex14 } from "./fusioncharts/ex14/ex14";
-import TabbedCode from "./fusioncharts/tabbedComponent/tabbed.code.component";
+import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component";
 
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
@@ -81,7 +80,6 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Map
     Ex13,
     Ex14,
     Navigation, ObservingComponent, MyAppComponent,
-
     CodePrev,
     AppComponent,
     FusionChartsSample,
