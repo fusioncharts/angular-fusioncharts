@@ -1,9 +1,9 @@
 {
-  "name": "angular2-fusioncharts",
-  "version": "1.0.3",
+  "name": "angular-fusioncharts",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fusioncharts/angular2-fusioncharts"
+    "url": "https://github.com/fusioncharts/angular-fusioncharts"
   },
   "author": {
     "name": "FusionCharts",
@@ -19,6 +19,11 @@
       "name": "Rousan Ali",
       "email": "rousanali786@gmail.com",
       "url": "https://github.com/ariyankhan"
+    },
+    {
+      "name": "Ashok Mandal",
+      "email": "askipop@gmail.com",
+      "url": "https://github.com/ashok1994"
     }
   ],
   "keywords": [
@@ -29,7 +34,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fusioncharts/angular2-fusioncharts/issues"
+    "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
   "main": "dist/index.js",
   "module": "index.js",

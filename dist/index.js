@@ -4,7 +4,7 @@ import { FusionChartsDirective } from './src/fusioncharts.directive';
 import { FusionChartsPipe } from './src/fusioncharts.pipe';
 import { FusionChartsStatic, FusionChartsService } from './src/fusioncharts.service';
 export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic };
-var FusionChartsModule = (function () {
+var FusionChartsModule = /** @class */ (function () {
     function FusionChartsModule() {
     }
     // Keep this for backward compatible
@@ -34,27 +34,27 @@ var FusionChartsModule = (function () {
             modules: fcModules
         });
     };
+    FusionChartsModule.decorators = [
+        { type: NgModule, args: [{
+                    declarations: [
+                        FusionChartsComponent,
+                        FusionChartsDirective,
+                        FusionChartsPipe
+                    ],
+                    exports: [
+                        FusionChartsComponent,
+                        FusionChartsDirective,
+                        FusionChartsPipe
+                    ],
+                    providers: [
+                        FusionChartsService,
+                        FusionChartsStatic
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    FusionChartsModule.ctorParameters = function () { return []; };
     return FusionChartsModule;
 }());
 export { FusionChartsModule };
-FusionChartsModule.decorators = [
-    { type: NgModule, args: [{
-                declarations: [
-                    FusionChartsComponent,
-                    FusionChartsDirective,
-                    FusionChartsPipe
-                ],
-                exports: [
-                    FusionChartsComponent,
-                    FusionChartsDirective,
-                    FusionChartsPipe
-                ],
-                providers: [
-                    FusionChartsService,
-                    FusionChartsStatic
-                ]
-            },] },
-];
-/** @nocollapse */
-FusionChartsModule.ctorParameters = function () { return []; };
 //# sourceMappingURL=index.js.map

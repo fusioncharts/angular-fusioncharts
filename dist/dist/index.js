@@ -1,20 +1,20 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
 	typeof define === 'function' && define.amd ? define(['exports', '@angular/core'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng['angular2-fusioncharts'] = {}),global.ng.core));
+	(factory((global.ng = global.ng || {}, global.ng['angular-fusioncharts'] = {}),global.ng.core));
 }(this, (function (exports,_angular_core) { 'use strict';
 
-var FusionChartsStatic = (function () {
+var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
+    FusionChartsStatic.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsStatic.ctorParameters = function () { return []; };
     return FusionChartsStatic;
 }());
-FusionChartsStatic.decorators = [
-    { type: _angular_core.Injectable },
-];
-/** @nocollapse */
-FusionChartsStatic.ctorParameters = function () { return []; };
-var FusionChartsService = (function () {
+var FusionChartsService = /** @class */ (function () {
     function FusionChartsService(FCStatic) {
         var fcRoot;
         if (FusionChartsService.isFCRootSet()) {
@@ -59,16 +59,16 @@ var FusionChartsService = (function () {
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;
     };
+    FusionChartsService._fcRoot = null;
+    FusionChartsService.decorators = [
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsService.ctorParameters = function () { return [
+        { type: FusionChartsStatic, },
+    ]; };
     return FusionChartsService;
 }());
-FusionChartsService._fcRoot = null;
-FusionChartsService.decorators = [
-    { type: _angular_core.Injectable },
-];
-/** @nocollapse */
-FusionChartsService.ctorParameters = function () { return [
-    { type: FusionChartsStatic, },
-]; };
 
 function FusionChartsConstructor(fusionchartsService, chartConfig) {
     var FusionCharts = fusionchartsService.getFusionChartsStatic();
@@ -210,7 +210,7 @@ var eventList = [
     "drillUpCancelled",
 ];
 
-var FusionChartsComponent = (function () {
+var FusionChartsComponent = /** @class */ (function () {
     function FusionChartsComponent(element, fusionchartsService, differs, zone) {
         this.differs = differs;
         this.zone = zone;
@@ -466,20 +466,20 @@ var FusionChartsComponent = (function () {
         }
     };
     FusionChartsComponent.prototype.attachChartEventListener = function (chartObj, eventName) {
-        var _this = this;
+        var _this_1 = this;
         chartObj.addEventListener(eventName, function (eventObj, dataObj) {
             var fEventObj = { eventObj: {}, dataObj: {} };
             if (eventObj)
                 fEventObj.eventObj = eventObj;
             if (dataObj)
                 fEventObj.dataObj = dataObj;
-            _this[eventName].emit(fEventObj);
+            _this_1[eventName].emit(fEventObj);
         });
     };
     FusionChartsComponent.prototype.attachAllChartEvents = function (chartObj, eventList$$1) {
-        var _this = this;
+        var _this_1 = this;
         eventList$$1.forEach(function (eventName) {
-            _this.attachChartEventListener(chartObj, eventName);
+            _this_1.attachChartEventListener(chartObj, eventName);
         });
     };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
@@ -511,253 +511,253 @@ var FusionChartsComponent = (function () {
     FusionChartsComponent.prototype.ngOnDestroy = function () {
         this.chartObj.dispose();
     };
+    FusionChartsComponent.decorators = [
+        { type: _angular_core.Component, args: [{
+                    selector: 'fusioncharts',
+                    template: "<div attr.id=\"container-{{containerId}}\" >{{placeholder}}</div>\n    ",
+                    providers: [FusionChartsService],
+                },] },
+    ];
+    /** @nocollapse */
+    FusionChartsComponent.ctorParameters = function () { return [
+        { type: _angular_core.ElementRef, },
+        { type: FusionChartsService, },
+        { type: _angular_core.KeyValueDiffers, },
+        { type: _angular_core.NgZone, },
+    ]; };
+    FusionChartsComponent.propDecorators = {
+        'placeholder': [{ type: _angular_core.Input },],
+        'dataSource': [{ type: _angular_core.Input },],
+        'type': [{ type: _angular_core.Input },],
+        'id': [{ type: _angular_core.Input },],
+        'width': [{ type: _angular_core.Input },],
+        'height': [{ type: _angular_core.Input },],
+        'renderAt': [{ type: _angular_core.Input },],
+        'dataFormat': [{ type: _angular_core.Input },],
+        'events': [{ type: _angular_core.Input },],
+        'link': [{ type: _angular_core.Input },],
+        'showDataLoadingMessage': [{ type: _angular_core.Input },],
+        'showChartLoadingMessage': [{ type: _angular_core.Input },],
+        'baseChartMessageFont': [{ type: _angular_core.Input },],
+        'baseChartMessageFontSize': [{ type: _angular_core.Input },],
+        'baseChartMessageColor': [{ type: _angular_core.Input },],
+        'dataLoadStartMessage': [{ type: _angular_core.Input },],
+        'dataLoadErrorMessage': [{ type: _angular_core.Input },],
+        'dataInvalidMessage': [{ type: _angular_core.Input },],
+        'dataEmptyMessage': [{ type: _angular_core.Input },],
+        'typeNotSupportedMessage': [{ type: _angular_core.Input },],
+        'loadMessage': [{ type: _angular_core.Input },],
+        'renderErrorMessage': [{ type: _angular_core.Input },],
+        'containerBackgroundColor': [{ type: _angular_core.Input },],
+        'containerBackgroundOpacity': [{ type: _angular_core.Input },],
+        'containerClassName': [{ type: _angular_core.Input },],
+        'baseChartMessageImageHAlign': [{ type: _angular_core.Input },],
+        'baseChartMessageImageVAlign': [{ type: _angular_core.Input },],
+        'baseChartMessageImageAlpha': [{ type: _angular_core.Input },],
+        'baseChartMessageImageScale': [{ type: _angular_core.Input },],
+        'typeNotSupportedMessageImageHAlign': [{ type: _angular_core.Input },],
+        'typeNotSupportedMessageImageVAlign': [{ type: _angular_core.Input },],
+        'typeNotSupportedMessageImageAlpha': [{ type: _angular_core.Input },],
+        'typeNotSupportedMessageImageScale': [{ type: _angular_core.Input },],
+        'dataLoadErrorMessageImageHAlign': [{ type: _angular_core.Input },],
+        'dataLoadErrorMessageImageVAlign': [{ type: _angular_core.Input },],
+        'dataLoadErrorMessageImageAlpha': [{ type: _angular_core.Input },],
+        'dataLoadErrorMessageImageScale': [{ type: _angular_core.Input },],
+        'dataLoadStartMessageImageHAlign': [{ type: _angular_core.Input },],
+        'dataLoadStartMessageImageVAlign': [{ type: _angular_core.Input },],
+        'dataLoadStartMessageImageAlpha': [{ type: _angular_core.Input },],
+        'dataLoadStartMessageImageScale': [{ type: _angular_core.Input },],
+        'dataInvalidMessageImageHAlign': [{ type: _angular_core.Input },],
+        'dataInvalidMessageImageVAlign': [{ type: _angular_core.Input },],
+        'dataInvalidMessageImageAlpha': [{ type: _angular_core.Input },],
+        'dataInvalidMessageImageScale': [{ type: _angular_core.Input },],
+        'dataEmptyMessageImageHAlign': [{ type: _angular_core.Input },],
+        'dataEmptyMessageImageVAlign': [{ type: _angular_core.Input },],
+        'dataEmptyMessageImageAlpha': [{ type: _angular_core.Input },],
+        'dataEmptyMessageImageScale': [{ type: _angular_core.Input },],
+        'renderErrorMessageImageHAlign': [{ type: _angular_core.Input },],
+        'renderErrorMessageImageVAlign': [{ type: _angular_core.Input },],
+        'renderErrorMessageImageAlpha': [{ type: _angular_core.Input },],
+        'renderErrorMessageImageScale': [{ type: _angular_core.Input },],
+        'loadMessageImageHAlign': [{ type: _angular_core.Input },],
+        'loadMessageImageVAlign': [{ type: _angular_core.Input },],
+        'loadMessageImageAlpha': [{ type: _angular_core.Input },],
+        'loadMessageImageScale': [{ type: _angular_core.Input },],
+        'chartConfig': [{ type: _angular_core.Input },],
+        'beforeLinkedItemOpen': [{ type: _angular_core.Output },],
+        'linkedItemOpened': [{ type: _angular_core.Output },],
+        'beforeLinkedItemClose': [{ type: _angular_core.Output },],
+        'linkedItemClosed': [{ type: _angular_core.Output },],
+        'printReadyStateChange': [{ type: _angular_core.Output },],
+        'dataLoadRequestCompleted': [{ type: _angular_core.Output },],
+        'dataLoadError': [{ type: _angular_core.Output },],
+        'dataLoadCancelled': [{ type: _angular_core.Output },],
+        'dataLoadRequestCancelled': [{ type: _angular_core.Output },],
+        'dataUpdated': [{ type: _angular_core.Output },],
+        'dataUpdateCancelled': [{ type: _angular_core.Output },],
+        'dataLoadRequested': [{ type: _angular_core.Output },],
+        'beforeDataUpdate': [{ type: _angular_core.Output },],
+        'realTimeUpdateComplete': [{ type: _angular_core.Output },],
+        'chartCleared': [{ type: _angular_core.Output },],
+        'slicingEnd': [{ type: _angular_core.Output },],
+        'slicingStart': [{ type: _angular_core.Output },],
+        'entityRollOut': [{ type: _angular_core.Output },],
+        'entityRollOver': [{ type: _angular_core.Output },],
+        'entityClick': [{ type: _angular_core.Output },],
+        'connectorRollOver': [{ type: _angular_core.Output },],
+        'connectorRollOut': [{ type: _angular_core.Output },],
+        'connectorClick': [{ type: _angular_core.Output },],
+        'markerRollOver': [{ type: _angular_core.Output },],
+        'markerRollOut': [{ type: _angular_core.Output },],
+        'markerClick': [{ type: _angular_core.Output },],
+        'pageNavigated': [{ type: _angular_core.Output },],
+        'rotationEnd': [{ type: _angular_core.Output },],
+        'rotationStart': [{ type: _angular_core.Output },],
+        'centerLabelRollover': [{ type: _angular_core.Output },],
+        'centerLabelRollout': [{ type: _angular_core.Output },],
+        'centerLabelClick': [{ type: _angular_core.Output },],
+        'centerLabelChanged': [{ type: _angular_core.Output },],
+        'chartClick': [{ type: _angular_core.Output },],
+        'chartMouseMove': [{ type: _angular_core.Output },],
+        'chartRollOver': [{ type: _angular_core.Output },],
+        'chartRollOut': [{ type: _angular_core.Output },],
+        'backgroundLoaded': [{ type: _angular_core.Output },],
+        'backgroundLoadError': [{ type: _angular_core.Output },],
+        'legendItemClicked': [{ type: _angular_core.Output },],
+        'legendItemRollover': [{ type: _angular_core.Output },],
+        'legendItemRollout': [{ type: _angular_core.Output },],
+        'logoRollover': [{ type: _angular_core.Output },],
+        'logoRollout': [{ type: _angular_core.Output },],
+        'logoClick': [{ type: _angular_core.Output },],
+        'logoLoaded': [{ type: _angular_core.Output },],
+        'logoLoadError': [{ type: _angular_core.Output },],
+        'beforeExport': [{ type: _angular_core.Output },],
+        'exported': [{ type: _angular_core.Output },],
+        'exportCancelled': [{ type: _angular_core.Output },],
+        'beforePrint': [{ type: _angular_core.Output },],
+        'printComplete': [{ type: _angular_core.Output },],
+        'printCancelled': [{ type: _angular_core.Output },],
+        'dataLabelClick': [{ type: _angular_core.Output },],
+        'dataLabelRollOver': [{ type: _angular_core.Output },],
+        'dataLabelRollOut': [{ type: _angular_core.Output },],
+        'scrollStart': [{ type: _angular_core.Output },],
+        'scrollEnd': [{ type: _angular_core.Output },],
+        'onScroll': [{ type: _angular_core.Output },],
+        'zoomReset': [{ type: _angular_core.Output },],
+        'zoomedOut': [{ type: _angular_core.Output },],
+        'zoomedIn': [{ type: _angular_core.Output },],
+        'zoomed': [{ type: _angular_core.Output },],
+        'zoomModeChanged': [{ type: _angular_core.Output },],
+        'pinned': [{ type: _angular_core.Output },],
+        'dataRestored': [{ type: _angular_core.Output },],
+        'beforeDataSubmit': [{ type: _angular_core.Output },],
+        'dataSubmitError': [{ type: _angular_core.Output },],
+        'dataSubmitted': [{ type: _angular_core.Output },],
+        'dataSubmitCancelled': [{ type: _angular_core.Output },],
+        'chartUpdated': [{ type: _angular_core.Output },],
+        'nodeAdded': [{ type: _angular_core.Output },],
+        'nodeUpdated': [{ type: _angular_core.Output },],
+        'nodeDeleted': [{ type: _angular_core.Output },],
+        'connectorAdded': [{ type: _angular_core.Output },],
+        'connectorUpdated': [{ type: _angular_core.Output },],
+        'connectorDeleted': [{ type: _angular_core.Output },],
+        'labelAdded': [{ type: _angular_core.Output },],
+        'labelDeleted': [{ type: _angular_core.Output },],
+        'selectionRemoved': [{ type: _angular_core.Output },],
+        'selectionStart': [{ type: _angular_core.Output },],
+        'selectionEnd': [{ type: _angular_core.Output },],
+        'labelClick': [{ type: _angular_core.Output },],
+        'labelRollOver': [{ type: _angular_core.Output },],
+        'labelRollOut': [{ type: _angular_core.Output },],
+        'labelDragStart': [{ type: _angular_core.Output },],
+        'labelDragEnd': [{ type: _angular_core.Output },],
+        'dataplotDragStart': [{ type: _angular_core.Output },],
+        'dataplotDragEnd': [{ type: _angular_core.Output },],
+        'processClick': [{ type: _angular_core.Output },],
+        'processRollOver': [{ type: _angular_core.Output },],
+        'processRollOut': [{ type: _angular_core.Output },],
+        'categoryClick': [{ type: _angular_core.Output },],
+        'categoryRollOver': [{ type: _angular_core.Output },],
+        'categoryRollOut': [{ type: _angular_core.Output },],
+        'milestoneClick': [{ type: _angular_core.Output },],
+        'milestoneRollOver': [{ type: _angular_core.Output },],
+        'milestoneRollOut': [{ type: _angular_core.Output },],
+        'chartTypeChanged': [{ type: _angular_core.Output },],
+        'overlayButtonClick': [{ type: _angular_core.Output },],
+        'loaded': [{ type: _angular_core.Output },],
+        'rendered': [{ type: _angular_core.Output },],
+        'drawComplete': [{ type: _angular_core.Output },],
+        'renderComplete': [{ type: _angular_core.Output },],
+        'dataInvalid': [{ type: _angular_core.Output },],
+        'dataXMLInvalid': [{ type: _angular_core.Output },],
+        'dataLoaded': [{ type: _angular_core.Output },],
+        'noDataToDisplay': [{ type: _angular_core.Output },],
+        'legendPointerDragStart': [{ type: _angular_core.Output },],
+        'legendPointerDragStop': [{ type: _angular_core.Output },],
+        'legendRangeUpdated': [{ type: _angular_core.Output },],
+        'alertComplete': [{ type: _angular_core.Output },],
+        'realTimeUpdateError': [{ type: _angular_core.Output },],
+        'dataplotRollOver': [{ type: _angular_core.Output },],
+        'dataplotRollOut': [{ type: _angular_core.Output },],
+        'dataplotClick': [{ type: _angular_core.Output },],
+        'linkClicked': [{ type: _angular_core.Output },],
+        'beforeRender': [{ type: _angular_core.Output },],
+        'renderCancelled': [{ type: _angular_core.Output },],
+        'beforeResize': [{ type: _angular_core.Output },],
+        'resized': [{ type: _angular_core.Output },],
+        'resizeCancelled': [{ type: _angular_core.Output },],
+        'beforeDispose': [{ type: _angular_core.Output },],
+        'disposed': [{ type: _angular_core.Output },],
+        'disposeCancelled': [{ type: _angular_core.Output },],
+        'linkedChartInvoked': [{ type: _angular_core.Output },],
+        'beforeDrillDown': [{ type: _angular_core.Output },],
+        'drillDown': [{ type: _angular_core.Output },],
+        'beforeDrillUp': [{ type: _angular_core.Output },],
+        'drillUp': [{ type: _angular_core.Output },],
+        'drillDownCancelled': [{ type: _angular_core.Output },],
+        'drillUpCancelled': [{ type: _angular_core.Output },],
+        'initialized': [{ type: _angular_core.Output },],
+    };
     return FusionChartsComponent;
 }());
-FusionChartsComponent.decorators = [
-    { type: _angular_core.Component, args: [{
-                selector: 'fusioncharts',
-                template: "<div attr.id=\"container-{{containerId}}\" >{{placeholder}}</div>\n    ",
-                providers: [FusionChartsService],
-            },] },
-];
-/** @nocollapse */
-FusionChartsComponent.ctorParameters = function () { return [
-    { type: _angular_core.ElementRef, },
-    { type: FusionChartsService, },
-    { type: _angular_core.KeyValueDiffers, },
-    { type: _angular_core.NgZone, },
-]; };
-FusionChartsComponent.propDecorators = {
-    'placeholder': [{ type: _angular_core.Input },],
-    'dataSource': [{ type: _angular_core.Input },],
-    'type': [{ type: _angular_core.Input },],
-    'id': [{ type: _angular_core.Input },],
-    'width': [{ type: _angular_core.Input },],
-    'height': [{ type: _angular_core.Input },],
-    'renderAt': [{ type: _angular_core.Input },],
-    'dataFormat': [{ type: _angular_core.Input },],
-    'events': [{ type: _angular_core.Input },],
-    'link': [{ type: _angular_core.Input },],
-    'showDataLoadingMessage': [{ type: _angular_core.Input },],
-    'showChartLoadingMessage': [{ type: _angular_core.Input },],
-    'baseChartMessageFont': [{ type: _angular_core.Input },],
-    'baseChartMessageFontSize': [{ type: _angular_core.Input },],
-    'baseChartMessageColor': [{ type: _angular_core.Input },],
-    'dataLoadStartMessage': [{ type: _angular_core.Input },],
-    'dataLoadErrorMessage': [{ type: _angular_core.Input },],
-    'dataInvalidMessage': [{ type: _angular_core.Input },],
-    'dataEmptyMessage': [{ type: _angular_core.Input },],
-    'typeNotSupportedMessage': [{ type: _angular_core.Input },],
-    'loadMessage': [{ type: _angular_core.Input },],
-    'renderErrorMessage': [{ type: _angular_core.Input },],
-    'containerBackgroundColor': [{ type: _angular_core.Input },],
-    'containerBackgroundOpacity': [{ type: _angular_core.Input },],
-    'containerClassName': [{ type: _angular_core.Input },],
-    'baseChartMessageImageHAlign': [{ type: _angular_core.Input },],
-    'baseChartMessageImageVAlign': [{ type: _angular_core.Input },],
-    'baseChartMessageImageAlpha': [{ type: _angular_core.Input },],
-    'baseChartMessageImageScale': [{ type: _angular_core.Input },],
-    'typeNotSupportedMessageImageHAlign': [{ type: _angular_core.Input },],
-    'typeNotSupportedMessageImageVAlign': [{ type: _angular_core.Input },],
-    'typeNotSupportedMessageImageAlpha': [{ type: _angular_core.Input },],
-    'typeNotSupportedMessageImageScale': [{ type: _angular_core.Input },],
-    'dataLoadErrorMessageImageHAlign': [{ type: _angular_core.Input },],
-    'dataLoadErrorMessageImageVAlign': [{ type: _angular_core.Input },],
-    'dataLoadErrorMessageImageAlpha': [{ type: _angular_core.Input },],
-    'dataLoadErrorMessageImageScale': [{ type: _angular_core.Input },],
-    'dataLoadStartMessageImageHAlign': [{ type: _angular_core.Input },],
-    'dataLoadStartMessageImageVAlign': [{ type: _angular_core.Input },],
-    'dataLoadStartMessageImageAlpha': [{ type: _angular_core.Input },],
-    'dataLoadStartMessageImageScale': [{ type: _angular_core.Input },],
-    'dataInvalidMessageImageHAlign': [{ type: _angular_core.Input },],
-    'dataInvalidMessageImageVAlign': [{ type: _angular_core.Input },],
-    'dataInvalidMessageImageAlpha': [{ type: _angular_core.Input },],
-    'dataInvalidMessageImageScale': [{ type: _angular_core.Input },],
-    'dataEmptyMessageImageHAlign': [{ type: _angular_core.Input },],
-    'dataEmptyMessageImageVAlign': [{ type: _angular_core.Input },],
-    'dataEmptyMessageImageAlpha': [{ type: _angular_core.Input },],
-    'dataEmptyMessageImageScale': [{ type: _angular_core.Input },],
-    'renderErrorMessageImageHAlign': [{ type: _angular_core.Input },],
-    'renderErrorMessageImageVAlign': [{ type: _angular_core.Input },],
-    'renderErrorMessageImageAlpha': [{ type: _angular_core.Input },],
-    'renderErrorMessageImageScale': [{ type: _angular_core.Input },],
-    'loadMessageImageHAlign': [{ type: _angular_core.Input },],
-    'loadMessageImageVAlign': [{ type: _angular_core.Input },],
-    'loadMessageImageAlpha': [{ type: _angular_core.Input },],
-    'loadMessageImageScale': [{ type: _angular_core.Input },],
-    'chartConfig': [{ type: _angular_core.Input },],
-    'beforeLinkedItemOpen': [{ type: _angular_core.Output },],
-    'linkedItemOpened': [{ type: _angular_core.Output },],
-    'beforeLinkedItemClose': [{ type: _angular_core.Output },],
-    'linkedItemClosed': [{ type: _angular_core.Output },],
-    'printReadyStateChange': [{ type: _angular_core.Output },],
-    'dataLoadRequestCompleted': [{ type: _angular_core.Output },],
-    'dataLoadError': [{ type: _angular_core.Output },],
-    'dataLoadCancelled': [{ type: _angular_core.Output },],
-    'dataLoadRequestCancelled': [{ type: _angular_core.Output },],
-    'dataUpdated': [{ type: _angular_core.Output },],
-    'dataUpdateCancelled': [{ type: _angular_core.Output },],
-    'dataLoadRequested': [{ type: _angular_core.Output },],
-    'beforeDataUpdate': [{ type: _angular_core.Output },],
-    'realTimeUpdateComplete': [{ type: _angular_core.Output },],
-    'chartCleared': [{ type: _angular_core.Output },],
-    'slicingEnd': [{ type: _angular_core.Output },],
-    'slicingStart': [{ type: _angular_core.Output },],
-    'entityRollOut': [{ type: _angular_core.Output },],
-    'entityRollOver': [{ type: _angular_core.Output },],
-    'entityClick': [{ type: _angular_core.Output },],
-    'connectorRollOver': [{ type: _angular_core.Output },],
-    'connectorRollOut': [{ type: _angular_core.Output },],
-    'connectorClick': [{ type: _angular_core.Output },],
-    'markerRollOver': [{ type: _angular_core.Output },],
-    'markerRollOut': [{ type: _angular_core.Output },],
-    'markerClick': [{ type: _angular_core.Output },],
-    'pageNavigated': [{ type: _angular_core.Output },],
-    'rotationEnd': [{ type: _angular_core.Output },],
-    'rotationStart': [{ type: _angular_core.Output },],
-    'centerLabelRollover': [{ type: _angular_core.Output },],
-    'centerLabelRollout': [{ type: _angular_core.Output },],
-    'centerLabelClick': [{ type: _angular_core.Output },],
-    'centerLabelChanged': [{ type: _angular_core.Output },],
-    'chartClick': [{ type: _angular_core.Output },],
-    'chartMouseMove': [{ type: _angular_core.Output },],
-    'chartRollOver': [{ type: _angular_core.Output },],
-    'chartRollOut': [{ type: _angular_core.Output },],
-    'backgroundLoaded': [{ type: _angular_core.Output },],
-    'backgroundLoadError': [{ type: _angular_core.Output },],
-    'legendItemClicked': [{ type: _angular_core.Output },],
-    'legendItemRollover': [{ type: _angular_core.Output },],
-    'legendItemRollout': [{ type: _angular_core.Output },],
-    'logoRollover': [{ type: _angular_core.Output },],
-    'logoRollout': [{ type: _angular_core.Output },],
-    'logoClick': [{ type: _angular_core.Output },],
-    'logoLoaded': [{ type: _angular_core.Output },],
-    'logoLoadError': [{ type: _angular_core.Output },],
-    'beforeExport': [{ type: _angular_core.Output },],
-    'exported': [{ type: _angular_core.Output },],
-    'exportCancelled': [{ type: _angular_core.Output },],
-    'beforePrint': [{ type: _angular_core.Output },],
-    'printComplete': [{ type: _angular_core.Output },],
-    'printCancelled': [{ type: _angular_core.Output },],
-    'dataLabelClick': [{ type: _angular_core.Output },],
-    'dataLabelRollOver': [{ type: _angular_core.Output },],
-    'dataLabelRollOut': [{ type: _angular_core.Output },],
-    'scrollStart': [{ type: _angular_core.Output },],
-    'scrollEnd': [{ type: _angular_core.Output },],
-    'onScroll': [{ type: _angular_core.Output },],
-    'zoomReset': [{ type: _angular_core.Output },],
-    'zoomedOut': [{ type: _angular_core.Output },],
-    'zoomedIn': [{ type: _angular_core.Output },],
-    'zoomed': [{ type: _angular_core.Output },],
-    'zoomModeChanged': [{ type: _angular_core.Output },],
-    'pinned': [{ type: _angular_core.Output },],
-    'dataRestored': [{ type: _angular_core.Output },],
-    'beforeDataSubmit': [{ type: _angular_core.Output },],
-    'dataSubmitError': [{ type: _angular_core.Output },],
-    'dataSubmitted': [{ type: _angular_core.Output },],
-    'dataSubmitCancelled': [{ type: _angular_core.Output },],
-    'chartUpdated': [{ type: _angular_core.Output },],
-    'nodeAdded': [{ type: _angular_core.Output },],
-    'nodeUpdated': [{ type: _angular_core.Output },],
-    'nodeDeleted': [{ type: _angular_core.Output },],
-    'connectorAdded': [{ type: _angular_core.Output },],
-    'connectorUpdated': [{ type: _angular_core.Output },],
-    'connectorDeleted': [{ type: _angular_core.Output },],
-    'labelAdded': [{ type: _angular_core.Output },],
-    'labelDeleted': [{ type: _angular_core.Output },],
-    'selectionRemoved': [{ type: _angular_core.Output },],
-    'selectionStart': [{ type: _angular_core.Output },],
-    'selectionEnd': [{ type: _angular_core.Output },],
-    'labelClick': [{ type: _angular_core.Output },],
-    'labelRollOver': [{ type: _angular_core.Output },],
-    'labelRollOut': [{ type: _angular_core.Output },],
-    'labelDragStart': [{ type: _angular_core.Output },],
-    'labelDragEnd': [{ type: _angular_core.Output },],
-    'dataplotDragStart': [{ type: _angular_core.Output },],
-    'dataplotDragEnd': [{ type: _angular_core.Output },],
-    'processClick': [{ type: _angular_core.Output },],
-    'processRollOver': [{ type: _angular_core.Output },],
-    'processRollOut': [{ type: _angular_core.Output },],
-    'categoryClick': [{ type: _angular_core.Output },],
-    'categoryRollOver': [{ type: _angular_core.Output },],
-    'categoryRollOut': [{ type: _angular_core.Output },],
-    'milestoneClick': [{ type: _angular_core.Output },],
-    'milestoneRollOver': [{ type: _angular_core.Output },],
-    'milestoneRollOut': [{ type: _angular_core.Output },],
-    'chartTypeChanged': [{ type: _angular_core.Output },],
-    'overlayButtonClick': [{ type: _angular_core.Output },],
-    'loaded': [{ type: _angular_core.Output },],
-    'rendered': [{ type: _angular_core.Output },],
-    'drawComplete': [{ type: _angular_core.Output },],
-    'renderComplete': [{ type: _angular_core.Output },],
-    'dataInvalid': [{ type: _angular_core.Output },],
-    'dataXMLInvalid': [{ type: _angular_core.Output },],
-    'dataLoaded': [{ type: _angular_core.Output },],
-    'noDataToDisplay': [{ type: _angular_core.Output },],
-    'legendPointerDragStart': [{ type: _angular_core.Output },],
-    'legendPointerDragStop': [{ type: _angular_core.Output },],
-    'legendRangeUpdated': [{ type: _angular_core.Output },],
-    'alertComplete': [{ type: _angular_core.Output },],
-    'realTimeUpdateError': [{ type: _angular_core.Output },],
-    'dataplotRollOver': [{ type: _angular_core.Output },],
-    'dataplotRollOut': [{ type: _angular_core.Output },],
-    'dataplotClick': [{ type: _angular_core.Output },],
-    'linkClicked': [{ type: _angular_core.Output },],
-    'beforeRender': [{ type: _angular_core.Output },],
-    'renderCancelled': [{ type: _angular_core.Output },],
-    'beforeResize': [{ type: _angular_core.Output },],
-    'resized': [{ type: _angular_core.Output },],
-    'resizeCancelled': [{ type: _angular_core.Output },],
-    'beforeDispose': [{ type: _angular_core.Output },],
-    'disposed': [{ type: _angular_core.Output },],
-    'disposeCancelled': [{ type: _angular_core.Output },],
-    'linkedChartInvoked': [{ type: _angular_core.Output },],
-    'beforeDrillDown': [{ type: _angular_core.Output },],
-    'drillDown': [{ type: _angular_core.Output },],
-    'beforeDrillUp': [{ type: _angular_core.Output },],
-    'drillUp': [{ type: _angular_core.Output },],
-    'drillDownCancelled': [{ type: _angular_core.Output },],
-    'drillUpCancelled': [{ type: _angular_core.Output },],
-    'initialized': [{ type: _angular_core.Output },],
-};
 
-var FusionChartsDirective = (function () {
+var FusionChartsDirective = /** @class */ (function () {
     function FusionChartsDirective(el) {
         this.el = el;
     }
+    FusionChartsDirective.decorators = [
+        { type: _angular_core.Directive, args: [{
+                    selector: '[appFusionchartsDirective]'
+                },] },
+    ];
+    /** @nocollapse */
+    FusionChartsDirective.ctorParameters = function () { return [
+        { type: _angular_core.ElementRef, },
+    ]; };
     return FusionChartsDirective;
 }());
-FusionChartsDirective.decorators = [
-    { type: _angular_core.Directive, args: [{
-                selector: '[appFusionchartsDirective]'
-            },] },
-];
-/** @nocollapse */
-FusionChartsDirective.ctorParameters = function () { return [
-    { type: _angular_core.ElementRef, },
-]; };
 
 /**
  * Transforms any input value
  */
-var FusionChartsPipe = (function () {
+var FusionChartsPipe = /** @class */ (function () {
     function FusionChartsPipe() {
     }
     FusionChartsPipe.prototype.transform = function (value, args) {
         return value;
     };
+    FusionChartsPipe.decorators = [
+        { type: _angular_core.Pipe, args: [{
+                    name: 'fusionchartsPipe'
+                },] },
+        { type: _angular_core.Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsPipe.ctorParameters = function () { return []; };
     return FusionChartsPipe;
 }());
-FusionChartsPipe.decorators = [
-    { type: _angular_core.Pipe, args: [{
-                name: 'fusionchartsPipe'
-            },] },
-    { type: _angular_core.Injectable },
-];
-/** @nocollapse */
-FusionChartsPipe.ctorParameters = function () { return []; };
 
-var FusionChartsModule = (function () {
+var FusionChartsModule = /** @class */ (function () {
     function FusionChartsModule() {
     }
     // Keep this for backward compatible
@@ -787,28 +787,28 @@ var FusionChartsModule = (function () {
             modules: fcModules
         });
     };
+    FusionChartsModule.decorators = [
+        { type: _angular_core.NgModule, args: [{
+                    declarations: [
+                        FusionChartsComponent,
+                        FusionChartsDirective,
+                        FusionChartsPipe
+                    ],
+                    exports: [
+                        FusionChartsComponent,
+                        FusionChartsDirective,
+                        FusionChartsPipe
+                    ],
+                    providers: [
+                        FusionChartsService,
+                        FusionChartsStatic
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    FusionChartsModule.ctorParameters = function () { return []; };
     return FusionChartsModule;
 }());
-FusionChartsModule.decorators = [
-    { type: _angular_core.NgModule, args: [{
-                declarations: [
-                    FusionChartsComponent,
-                    FusionChartsDirective,
-                    FusionChartsPipe
-                ],
-                exports: [
-                    FusionChartsComponent,
-                    FusionChartsDirective,
-                    FusionChartsPipe
-                ],
-                providers: [
-                    FusionChartsService,
-                    FusionChartsStatic
-                ]
-            },] },
-];
-/** @nocollapse */
-FusionChartsModule.ctorParameters = function () { return []; };
 
 exports.FusionChartsComponent = FusionChartsComponent;
 exports.FusionChartsDirective = FusionChartsDirective;

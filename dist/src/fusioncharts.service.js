@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-var FusionChartsStatic = (function () {
+var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
+    FusionChartsStatic.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsStatic.ctorParameters = function () { return []; };
     return FusionChartsStatic;
 }());
 export { FusionChartsStatic };
-FusionChartsStatic.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-FusionChartsStatic.ctorParameters = function () { return []; };
-var FusionChartsService = (function () {
+var FusionChartsService = /** @class */ (function () {
     function FusionChartsService(FCStatic) {
         var fcRoot;
         if (FusionChartsService.isFCRootSet()) {
@@ -55,15 +55,15 @@ var FusionChartsService = (function () {
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;
     };
+    FusionChartsService._fcRoot = null;
+    FusionChartsService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsService.ctorParameters = function () { return [
+        { type: FusionChartsStatic, },
+    ]; };
     return FusionChartsService;
 }());
 export { FusionChartsService };
-FusionChartsService._fcRoot = null;
-FusionChartsService.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-FusionChartsService.ctorParameters = function () { return [
-    { type: FusionChartsStatic, },
-]; };
 //# sourceMappingURL=fusioncharts.service.js.map
