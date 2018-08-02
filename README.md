@@ -22,10 +22,10 @@ import { FusionChartsModule } from 'angular-fusioncharts';
 // Import FusionCharts library and chart modules
 import FusionCharts from 'fusioncharts/core';
 import Column2d from 'fusioncharts/viz/column2d';
-import FintTheme from 'fusioncharts/themes/es/fusioncharts.theme.fint';
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
 
 // Pass the fusioncharts library and chart modules
-FusionChartsModule.fcRoot(FusionCharts, Column2d, FintTheme);
+FusionChartsModule.fcRoot(FusionCharts, Column2d, FusionTheme);
 
 @NgModule({
   declarations: [
