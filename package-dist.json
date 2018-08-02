@@ -35,8 +35,7 @@
   "module": "index.js",
   "typings": "index.d.ts",
   "dependencies": {
-    "@types/fusioncharts": "^3.11.0",
-    "fusioncharts": "^3.12.1"
+    "@types/fusioncharts": "^3.11.0"
   },
   "devDependencies": {},
   "peerDependencies": {
