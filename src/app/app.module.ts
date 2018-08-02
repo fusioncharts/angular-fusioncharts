@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, enableProdMode } from '@angular/core'
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
@@ -8,7 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
-import { TabsModule } from "angularjs2-tabs";
+import { CodemirrorModule } from 'ng2-codemirror';
 
 import { Ex1 } from './fusioncharts/ex1/ex1';
 import { Ex2 } from './fusioncharts/ex2/ex2';
@@ -20,7 +20,13 @@ import { Ex6 } from './fusioncharts/ex6/ex6';
 import { Ex7 } from './fusioncharts/ex7/ex7';
 import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
-// import { Ex10 } from './fusioncharts/ex10/ex10';
+import { Ex10 } from './fusioncharts/ex10/ex10';
+import { Ex11 } from './fusioncharts/ex11/ex11';
+import { Ex12 } from "./fusioncharts/ex12/ex12";
+import { Ex13 } from "./fusioncharts/ex13/ex13";
+import { Ex14 } from "./fusioncharts/ex14/ex14";
+import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component";
+
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
@@ -31,34 +37,30 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import * as FusionCharts from 'fusioncharts';
 
 // Load charts module
-let Charts = require('fusioncharts/fusioncharts.charts');
+import * as Charts from 'fusioncharts/fusioncharts.charts';
 // import * as Charts from 'fusioncharts/fusioncharts.charts';
 // Load PowerCharts module
-let PowerCharts = require('fusioncharts/fusioncharts.powercharts');
+import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 // import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
 // Load Widgets module
-let Widgets = require('fusioncharts/fusioncharts.widgets');
+import * as Widgets from 'fusioncharts/fusioncharts.widgets';
 // import * as Widgets from 'fusioncharts/fusioncharts.widgets';
 // Load Maps module
-let Maps = require('fusioncharts/fusioncharts.maps');
+import * as Maps from 'fusioncharts/fusioncharts.maps';
 // import * as Maps from 'fusioncharts/fusioncharts.maps';
 // Load WorldMap module
-let WorldMap = require('fusioncharts/maps/fusioncharts.world');
+import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // Load Ocean theme
-let Ocean = require('fusioncharts/themes/fusioncharts.theme.ocean');
+import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
+import * as Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 
-export function FusionChartsProvider () {
-    Charts(FusionCharts);
-    Ocean(FusionCharts);
-    PowerCharts(FusionCharts);
-    Widgets(FusionCharts);
-    Maps(FusionCharts);
-    WorldMap(FusionCharts);
-    return FusionCharts;
-}
+require('./themes/fusioncharts.theme.fusion.js');
+require('./themes/fusioncharts.theme.gammel.js');
+
+FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap, Fint)
 
 @NgModule({
   declarations: [
@@ -72,21 +74,25 @@ export function FusionChartsProvider () {
     Ex7,
     Ex8,
     Ex9,
-    
+    Ex10,
+    Ex11,
+    Ex12,
+    Ex13,
+    Ex14,
     Navigation, ObservingComponent, MyAppComponent,
-
     CodePrev,
     AppComponent,
-    FusionChartsSample
+    FusionChartsSample,
+    TabbedCode
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    TabsModule,
-    FusionChartsModule.forRoot(FusionChartsProvider),
-    RouterModule.forRoot(rootRouterConfig, { useHash: true })
+    FusionChartsModule,
+    RouterModule.forRoot(rootRouterConfig, { useHash: true }),
+    CodemirrorModule
   ],
   providers: [
     NavService

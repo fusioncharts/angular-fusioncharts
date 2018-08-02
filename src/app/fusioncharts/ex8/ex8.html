@@ -1,16 +1,37 @@
-<fusioncharts
-    width="600" 
-    height="400"
-    type="column2d"
-    [dataSource]="dataSource" >
-</fusioncharts>
+<style >
+.btn.btn-outline-secondary.btn-sm:hover{
+    color:white;
+}
+.btn.btn-outline-secondary.btn-sm:active{
+    color:gray;
+}
+.btn{
+    margin-left:10px;
+}
+</style>
 
-<p><a class="btn btn-default" (click)="changeBackgroundColor()">Change chart background color</a>
-	<a class="btn btn-default" (click)="changeCaptionTextAlignment()">Make Caption text left-aligned</a>
-</p>
+<div class="card shadow">
+    <div class="card-body chart-wrapper">
+        <div class="chart-wrapper-inner">
+            <fusioncharts
+                width="100%" 
+                height="400"
+                type="column2d"
+                [dataSource]="dataSource" >
+            </fusioncharts>
+            <div style="display: flex; justify-content: center">
+                <a class="btn btn-outline-secondary btn-sm" (click)="changeBackgroundColor()">Change chart background color</a>
+                <a class="btn btn-outline-secondary btn-sm" (click)="changeCaptionTextAlignment()">Make Caption text left-aligned</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-<tabs>
-    <tab tabTitle="JavaScript" title="JavaScript"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].js }}</ng-prism></tab>
-    <tab tabTitle="HTML" title="HTML"><ng-prism class="codepreview language-html" >{{ sampleCode[demoId].html }}</ng-prism></tab>
-    <tab tabTitle="Live" ><iframe style="width: 100%; height: 600px" src="https://embed.plnkr.co/3FkjKt" frameborder="0" allowfullscren="allowfullscren"></iframe></tab>
-</tabs>
+
+
+<tabbed-code 
+    moduleCode="{{sampleCode[demoId].module}}"
+    componentCode="{{sampleCode[demoId].component}}"
+    templateCode="{{sampleCode[demoId].template}}">
+</tabbed-code>
+

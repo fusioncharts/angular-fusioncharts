@@ -1,63 +1,82 @@
-import { Component, AfterViewInit} from '@angular/core';
+import {
+  Component,
+  AfterViewInit
+} from '@angular/core';
 
 import fcDemos from '../samplecode';
+import SelectedSingleton from '../services/selected.singleton';
 
 declare var Prism;
 
 @Component({
-    selector: 'chart',
-    templateUrl: 'ex1.html'
+  selector: 'chart',
+  templateUrl: 'ex1.html'
 })
 
 export class Ex1 implements AfterViewInit {
-    demoId = 'ex1';
-    sampleCode = fcDemos;
-    dataSource: Object;
-    chartConfig: Object;
+  demoId = 'ex1';
+  sampleCode = fcDemos;
+  dataSource: Object;
+  chartConfig: Object;
+  tabOptions:string[];
 
-    constructor() {
-        this.sampleCode = fcDemos;
+  constructor() {
+    this.sampleCode = fcDemos;
 
-        this.chartConfig = {
-            width: "600",
-            height: "400",
-            type: "column3d",
-            dataFormat: "json",
-            creditLabel: 'false'
-        };
+    this.chartConfig = {
+      width: '100%',
+      height: '400',
+      type: "column2d",
+      dataFormat: "json",
+      creditLabel: 'false'
+    };
 
-        this.dataSource = {
-            chart: {
-                caption: "Harry's SuperMart",
-                subCaption: "Top 5 stores in last month by revenue",
-                numberPrefix: "$",
-                theme: "ocean"
-            },
-            data:[{
-                label: "Bakersfield Central",
-                value: "880000"
-            },
-            {
-                label: "Garden Groove harbour",
-                value: "730000"
-            },
-            {
-                label: "Los Angeles Topanga",
-                value: "590000"
-            },
-            {
-                label: "Compton-Rancho Dom",
-                value: "520000"
-            },
-            {
-                label: "Daly City Serramonte",
-                value: "330000"
-            }]
-        };
+    this.dataSource = {
+      "chart": {
+        "caption": "Countries With Most Oil Reserves [2017-18]",
+        "subCaption": "In MMbbl = One Million barrels",
+        "xAxisName": "Country",
+        "yAxisName": "Reserves (MMbbl)",
+        "numberSuffix": "K",
+        "theme": "fusion",
+      },
+      "data": [{
+        "label": "Venezuela",
+        "value": "290"
+      }, {
+        "label": "Saudi",
+        "value": "260"
+      }, {
+        "label": "Canada",
+        "value": "180"
+      }, {
+        "label": "Iran",
+        "value": "140"
+      }, {
+        "label": "Russia",
+        "value": "115"
+      }, {
+        "label": "UAE",
+        "value": "100"
+      }, {
+        "label": "US",
+        "value": "30"
+      }, {
+        "label": "China",
+        "value": "30"
+      }]
+    };
 
-    }
-    ngAfterViewInit() {
-        Prism && Prism.highlightAll();
-    }
+  }
+
+  ngOnInit(){
+    setTimeout(() => {
+      SelectedSingleton.change(this.sampleCode['ex1'].title);
+    })
+  }
+
+  ngAfterViewInit() {
+    Prism && Prism.highlightAll();
+  }
 
 }
