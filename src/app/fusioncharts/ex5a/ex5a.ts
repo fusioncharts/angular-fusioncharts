@@ -1,7 +1,7 @@
 import { Component, AfterViewInit} from '@angular/core';
 
 import fcDemos from '../samplecode';
-
+import SelectedSingleton from '../services/selected.singleton';
 declare var Prism;
 
 @Component({
@@ -12,10 +12,17 @@ declare var Prism;
 export class Ex5a {
     demoId = 'ex5a';
     sampleCode = fcDemos;
-
+    
     constructor () {
-
+        
     }
+    ngOnInit(){
+        setTimeout(() => {
+            SelectedSingleton.change(this.sampleCode['ex5a'].title);
+        })
+    }
+
+
     ngAfterViewInit() {
         Prism && Prism.highlightAll();
     }
