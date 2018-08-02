@@ -8,6 +8,10 @@ To install `angular-fusioncharts` library, run:
 $ npm install angular-fusioncharts --save
 ```
 
+To install `fusioncharts` library:
+```bash
+$ npm install fusioncharts --save
+```
 And then in your Angular `AppModule`:
 
 ```typescript
