@@ -1,8 +1,8 @@
-# angular2-fusioncharts
+# angular-fusioncharts
 
 ## Installation
 
-To install `angular2-fusioncharts` library, run:
+To install `angular-fusioncharts` library, run:
 
 ```bash
 $ npm install angular-fusioncharts --save
@@ -16,7 +16,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-// Import angular2-fusioncharts
+// Import angular-fusioncharts
 import { FusionChartsModule } from 'angular-fusioncharts';
 
 // Import FusionCharts library and chart modules
@@ -58,7 +58,7 @@ export class AppComponent {
   title: string;
 
   constructor() {
-    this.title = "Angular 2 FusionCharts Sample";
+    this.title = "Angular  FusionCharts Sample";
 
     this.dataSource = {
       "chart": {
