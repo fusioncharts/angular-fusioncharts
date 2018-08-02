@@ -1,13 +1,17 @@
-# angular2-fusioncharts
+# angular-fusioncharts
 
 ## Installation
 
-To install `angular2-fusioncharts` library, run:
+To install `angular-fusioncharts` library, run:
 
 ```bash
-$ npm install angular2-fusioncharts --save
+$ npm install angular-fusioncharts --save
 ```
 
+To install `fusioncharts` library:
+```bash
+$ npm install fusioncharts --save
+```
 And then in your Angular `AppModule`:
 
 ```typescript
@@ -16,16 +20,16 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-// Import angular2-fusioncharts
-import { FusionChartsModule } from 'angular2-fusioncharts';
+// Import angular-fusioncharts
+import { FusionChartsModule } from 'angular-fusioncharts';
 
 // Import FusionCharts library and chart modules
-import * as FusionCharts from 'fusioncharts';
-import * as Charts from 'fusioncharts/fusioncharts.charts';
-import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
+import FusionCharts from 'fusioncharts/core';
+import Column2d from 'fusioncharts/viz/column2d';
+import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
 
 // Pass the fusioncharts library and chart modules
-FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
+FusionChartsModule.fcRoot(FusionCharts, Column2d, FusionTheme);
 
 @NgModule({
   declarations: [
@@ -58,30 +62,28 @@ export class AppComponent {
   title: string;
 
   constructor() {
-    this.title = "Angular 2 FusionCharts Sample";
+    this.title = "Angular  FusionCharts Sample";
 
     this.dataSource = {
       "chart": {
-        "caption": "Harry's SuperMart",
-        "subCaption": "Top 5 stores in last month by revenue"
+        "caption": "Countries With Most Oil Reserves [2017-18]",
+        "subCaption": "In MMbbl = One Million barrels",
+        "xAxisName": "Country",
+        "yAxisName": "Reserves (MMbbl)",
+        "numberSuffix": "K",
+        "theme": "fusion",
       },
-      "data": [{
-        "label": "Bakersfield Central",
-         "value": "880000"
-      }, {
-        "label": "Garden Groove harbour",
-        "value": "730000"
-      }, {
-        "label": "Los Angeles Topanga",
-        "value": "590000"
-      }, {
-        "label": "Compton-Rancho Dom",
-        "value": "520000"
-      }, {
-        "label": "Daly City Serramonte",
-        "value": "330000"
-      }]
-    }
+      "data": [
+        { "label": "Venezuela", "value": "290" },
+        { "label": "Saudi", "value": "260" },
+        { "label": "Canada", "value": "180" },
+        { "label": "Iran", "value": "140" },
+        { "label": "Russia", "value": "115" },
+        { "label": "UAE", "value": "100" },
+        { "label": "US", "value": "30" },
+        { "label": "China", "value": "30" }
+      ]
+    };
   }
 }
 ```
@@ -114,4 +116,4 @@ To lint all `*.ts` files:
 ```bash
 $ npm run lint
 ```
-### [Demos and Documentation](http://fusioncharts.github.io/angular2-fusioncharts/)
+### [Demos and Documentation](http://fusioncharts.github.io/angular-fusioncharts/)

@@ -30,7 +30,7 @@ import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
-import { FusionChartsModule, FusionChartsStatic } from '../angular2-fusioncharts';
+import { FusionChartsModule, FusionChartsStatic } from '../angular-fusioncharts';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // Load FusionCharts
