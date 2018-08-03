@@ -1,13 +1,19 @@
-<fusioncharts
-	dataFormat="xmlurl"
-	dataSource="./assets/data/data.xml"
-	type="column2d"
-	width="600"
-	height="400" >
-</fusioncharts>
+<div class="card shadow">
+	<div class="card-body chart-wrapper">
+		<div class="chart-wrapper-inner">
+			<fusioncharts
+				dataFormat="xmlurl"
+				dataSource="./assets/data/data.xml"
+				type="column2d"
+				width="100%"
+				height="400" >
+			</fusioncharts>
+		</div>
+	</div>
+</div>
 
-<tabs>
-    <tab tabTitle="JavaScript" title="JavaScript"><ng-prism class="codepreview language-javascript" >{{ sampleCode[demoId].js }}</ng-prism></tab>
-    <tab tabTitle="HTML" title="HTML"><ng-prism class="codepreview language-html" >{{ sampleCode[demoId].html }}</ng-prism></tab>
-    <tab tabTitle="Live" ><iframe style="width: 100%; height: 600px" src="https://embed.plnkr.co/HWVWjm" frameborder="0" allowfullscren="allowfullscren"></iframe></tab>
-</tabs>
+<tabbed-code 
+    moduleCode="{{sampleCode[demoId].module}}"
+    componentCode="{{sampleCode[demoId].component}}"
+    templateCode="{{sampleCode[demoId].template}}">
+</tabbed-code>

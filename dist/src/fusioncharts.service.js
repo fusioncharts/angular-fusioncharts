@@ -1,42 +1,69 @@
 import { Injectable } from '@angular/core';
-var FusionChartsStatic = (function () {
+var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
+    FusionChartsStatic.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsStatic.ctorParameters = function () { return []; };
     return FusionChartsStatic;
 }());
 export { FusionChartsStatic };
-FusionChartsStatic.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-FusionChartsStatic.ctorParameters = function () { return []; };
-var FusionChartsService = (function () {
+var FusionChartsService = /** @class */ (function () {
     function FusionChartsService(FCStatic) {
-        /* TODO: Need to remove this when FusionCharts becomes ES6 modules */
-        if (FCStatic.core && FCStatic.core.getCurrentRenderer &&
-            FCStatic.core.getCurrentRenderer() === 'javascript') {
-            this._fusionchartsStatice = FCStatic.core;
+        var fcRoot;
+        if (FusionChartsService.isFCRootSet()) {
+            fcRoot = FusionChartsService.getFCRoot();
         }
         else {
-            this._fusionchartsStatice = FCStatic.core();
+            fcRoot = {
+                core: FCStatic.core,
+                modules: FCStatic.modules
+            };
         }
-        if (FCStatic && FCStatic.modules) {
-            FCStatic.modules.forEach(function (FusionChartsModules) {
-                FusionChartsModules(FCStatic.core);
+        this.resolveFusionCharts(fcRoot.core, fcRoot.modules);
+    }
+    FusionChartsService.setFCRoot = function (fcRoot) {
+        FusionChartsService._fcRoot = fcRoot;
+    };
+    FusionChartsService.getFCRoot = function () {
+        return FusionChartsService._fcRoot;
+    };
+    FusionChartsService.isFCRootSet = function () {
+        return !!FusionChartsService._fcRoot;
+    };
+    FusionChartsService.prototype.resolveFusionCharts = function (core, modules) {
+        if (core && core.id &&
+            core.id === 'FusionCharts') {
+            this._fusionchartsStatice = core;
+        }
+        else {
+            this._fusionchartsStatice = core();
+        }
+        if (modules) {
+            modules.forEach(function (FusionChartsModules) {
+                if (FusionChartsModules.getName || FusionChartsModules.name) {
+                    core.addDep(FusionChartsModules);
+                }
+                else {
+                    FusionChartsModules(core);
+                }
             });
         }
-    }
+    };
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;
     };
+    FusionChartsService._fcRoot = null;
+    FusionChartsService.decorators = [
+        { type: Injectable },
+    ];
+    /** @nocollapse */
+    FusionChartsService.ctorParameters = function () { return [
+        { type: FusionChartsStatic, },
+    ]; };
     return FusionChartsService;
 }());
 export { FusionChartsService };
-FusionChartsService.decorators = [
-    { type: Injectable },
-];
-/** @nocollapse */
-FusionChartsService.ctorParameters = function () { return [
-    { type: FusionChartsStatic, },
-]; };
 //# sourceMappingURL=fusioncharts.service.js.map

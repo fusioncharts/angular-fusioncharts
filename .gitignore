@@ -40,8 +40,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Docs generated directory
-gh-pages/
-
 # rollup tmp files
 .tmp/
