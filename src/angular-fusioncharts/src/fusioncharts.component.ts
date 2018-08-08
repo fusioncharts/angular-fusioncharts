@@ -18,7 +18,7 @@ import EventsList from '../events/events';
 class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {
 
     chartObj: any;
-
+    
     @Input() placeholder: string;
     @Input() dataSource: Object;
     @Input() type: string;
@@ -289,6 +289,7 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
     constructor(element: ElementRef, fusionchartsService: FusionChartsService, private differs: KeyValueDiffers, private zone: NgZone) {
         this.element = element;
         this.fusionchartsService = fusionchartsService;
+        this.containerId = fusionchartsService.getNextItemCount();
     }
 
     // @ViewChild('samplediv') chartContainer: ElementRef;
