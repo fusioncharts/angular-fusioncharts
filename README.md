@@ -196,7 +196,7 @@ export class AppComponent {
   }
 
   changeLabel(){
-    this.chart.setChartAttribute('caption', 'Changed Label');
+    this.chart.setChartAttribute('caption', 'Changed caption');
   }
 
 }
