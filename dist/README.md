@@ -225,6 +225,8 @@ import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 ```
+Note: All other code for the component and template remain same as above.
+
 We have used `fusioncharts/fusioncharts.charts` file to use all the charts which come under FusionCharts XT.
 To know more about other charts and widgets, read this [link](https://www.fusioncharts.com/dev/getting-started/plain-javascript/install-using-plain-javascript)
 
