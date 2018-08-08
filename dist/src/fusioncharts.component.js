@@ -208,6 +208,7 @@ var FusionChartsComponent = /** @class */ (function () {
         };
         this.element = element;
         this.fusionchartsService = fusionchartsService;
+        this.containerId = fusionchartsService.getNextItemCount();
     }
     // @ViewChild('samplediv') chartContainer: ElementRef;
     FusionChartsComponent.prototype.ngOnInit = function () {
