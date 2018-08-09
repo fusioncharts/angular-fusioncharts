@@ -408,7 +408,12 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
         }
 
         if (configObj['type']) {
-            configObj['events'] = _this.generateEventsCallback(_this.eventList);
+            let events = _this.generateEventsCallback(_this.eventList);
+            if(!configObj['events']){
+                configObj['events'] = events;
+            } else {
+                configObj['events'] = Object.assign(events, configObj['events']);
+            }
             _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
             this.initialized.emit({ chart: _this.chartObj });
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
