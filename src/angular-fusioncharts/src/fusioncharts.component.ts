@@ -356,6 +356,8 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
         }
     }
 
+    /* 
+    // Removed as some events will be fired 
     attachChartEventListener(chartObj: any, eventName: string){
         chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
             let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
@@ -369,6 +371,20 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
         eventList.forEach(eventName => {
             this.attachChartEventListener(chartObj, eventName);
         });
+    }
+    */
+
+    generateEventsCallback(eventList:Array<string>){
+        let events = {};
+        eventList.forEach(eventName => {
+            events[eventName] = (eventObj:any, dataObj:any) => {
+                let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
+                if(eventObj) fEventObj.eventObj  = eventObj;
+                if(dataObj) fEventObj.dataObj = dataObj; 
+                this[eventName].emit(fEventObj);
+            }
+        });
+        return events;
     }
 
     ngAfterViewInit() {
@@ -392,7 +408,7 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
         }
 
         if (configObj['type']) {
-
+            configObj['events'] = _this.generateEventsCallback(_this.eventList);
             _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
             this.initialized.emit({ chart: _this.chartObj });
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
@@ -400,7 +416,6 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
 
             this.zone.runOutsideAngular(() => {
                 setTimeout(() => {
-                    _this.attachAllChartEvents(_this.chartObj, _this.eventList);
                     _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             })
