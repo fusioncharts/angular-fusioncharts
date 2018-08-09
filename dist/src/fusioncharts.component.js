@@ -208,6 +208,7 @@ var FusionChartsComponent = /** @class */ (function () {
         };
         this.element = element;
         this.fusionchartsService = fusionchartsService;
+        this.containerId = fusionchartsService.getNextItemCount();
     }
     // @ViewChild('samplediv') chartContainer: ElementRef;
     FusionChartsComponent.prototype.ngOnInit = function () {
@@ -257,22 +258,37 @@ var FusionChartsComponent = /** @class */ (function () {
             this.chartObj.chartType(this.type);
         }
     };
-    FusionChartsComponent.prototype.attachChartEventListener = function (chartObj, eventName) {
-        var _this_1 = this;
-        chartObj.addEventListener(eventName, function (eventObj, dataObj) {
-            var fEventObj = { eventObj: {}, dataObj: {} };
-            if (eventObj)
-                fEventObj.eventObj = eventObj;
-            if (dataObj)
-                fEventObj.dataObj = dataObj;
-            _this_1[eventName].emit(fEventObj);
+    /*
+    // Removed as some events will be fired
+    attachChartEventListener(chartObj: any, eventName: string){
+        chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
+            let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
+            if(eventObj) fEventObj.eventObj  = eventObj;
+            if(dataObj) fEventObj.dataObj = dataObj;
+            this[eventName].emit(fEventObj);
         });
-    };
-    FusionChartsComponent.prototype.attachAllChartEvents = function (chartObj, eventList) {
+    }
+
+    attachAllChartEvents(chartObj:any, eventList:Array<string>){
+        eventList.forEach(eventName => {
+            this.attachChartEventListener(chartObj, eventName);
+        });
+    }
+    */
+    FusionChartsComponent.prototype.generateEventsCallback = function (eventList) {
         var _this_1 = this;
+        var events = {};
         eventList.forEach(function (eventName) {
-            _this_1.attachChartEventListener(chartObj, eventName);
+            events[eventName] = function (eventObj, dataObj) {
+                var fEventObj = { eventObj: {}, dataObj: {} };
+                if (eventObj)
+                    fEventObj.eventObj = eventObj;
+                if (dataObj)
+                    fEventObj.dataObj = dataObj;
+                _this_1[eventName].emit(fEventObj);
+            };
         });
+        return events;
     };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
         var _this = this, params = _this.constructerParams, configObj = _this.configObj || (_this.configObj = {});
@@ -288,13 +304,19 @@ var FusionChartsComponent = /** @class */ (function () {
             }
         }
         if (configObj['type']) {
+            var events = _this.generateEventsCallback(_this.eventList);
+            if (!configObj['events']) {
+                configObj['events'] = events;
+            }
+            else {
+                configObj['events'] = Object.assign(events, configObj['events']);
+            }
             _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
             this.initialized.emit({ chart: _this.chartObj });
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
             // _this.containerId = _this.chartObj.id;
             this.zone.runOutsideAngular(function () {
                 setTimeout(function () {
-                    _this.attachAllChartEvents(_this.chartObj, _this.eventList);
                     _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             });
