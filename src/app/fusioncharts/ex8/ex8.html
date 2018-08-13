@@ -1,8 +1,11 @@
 <style >
-.btn.btn-outline-secondary.btn-sm:hover{
+.btn.btn-outline-secondary.btn-sm:hover,
+.btn.btn-outline-danger.btn-sm:hover,
+{
     color:white;
 }
-.btn.btn-outline-secondary.btn-sm:active{
+.btn.btn-outline-secondary.btn-sm:active,
+.btn.btn-outline-danger.btn-sm:active{
     color:gray;
 }
 .btn{
@@ -22,6 +25,7 @@
             <div style="display: flex; justify-content: center">
                 <a class="btn btn-outline-secondary btn-sm" (click)="changeBackgroundColor()">Change chart background color</a>
                 <a class="btn btn-outline-secondary btn-sm" (click)="changeCaptionTextAlignment()">Make Caption text left-aligned</a>
+                <a class="btn btn-outline-danger btn-sm" (click)="reset()">Reset</a>
             </div>
         </div>
     </div>

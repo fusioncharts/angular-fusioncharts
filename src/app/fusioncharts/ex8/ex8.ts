@@ -15,7 +15,7 @@ declare var Prism;
 export class Ex8 {
   demoId = 'ex8';
   sampleCode = fcDemos;
-  dataSource = {
+  dataSource:any = {
     "chart": {
       "caption": "Countries With Most Oil Reserves [2017-18]",
       "subCaption": "In MMbbl = One Million barrels",
@@ -58,6 +58,11 @@ export class Ex8 {
   changeCaptionTextAlignment = function () {
     this.dataSource.chart.captionAlignment = "left";
   };
+
+  reset(){
+    this.dataSource.chart.bgColor = "white";
+    this.dataSource.chart.captionAlignment = "center";
+  }
   
   constructor () {
     
