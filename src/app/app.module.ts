@@ -1,4 +1,5 @@
 import { NgModule, enableProdMode } from '@angular/core'
+
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
 import { AppComponent } from './app.component';
@@ -25,6 +26,14 @@ import { Ex11 } from './fusioncharts/ex11/ex11';
 import { Ex12 } from "./fusioncharts/ex12/ex12";
 import { Ex13 } from "./fusioncharts/ex13/ex13";
 import { Ex14 } from "./fusioncharts/ex14/ex14";
+import { Ex15 } from "./fusioncharts/ex15/ex15";
+import { Ex16 } from "./fusioncharts/ex16/ex16";
+import { Ex17 } from "./fusioncharts/ex17/ex17";
+import { Ex18 } from "./fusioncharts/ex18/ex18";
+import { Ex19 } from "./fusioncharts/ex19/ex19";
+import { Ex20 } from "./fusioncharts/ex20/ex20";
+import { Ex21 } from "./fusioncharts/ex21/ex21";
+import { Ex22 } from "./fusioncharts/ex22/ex22";
 import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component";
 
 import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
@@ -54,13 +63,32 @@ import * as WorldMap from 'fusioncharts/maps/fusioncharts.world';
 // Load Ocean theme
 import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 import * as Fint from 'fusioncharts/themes/fusioncharts.theme.fint';
+import * as Candy from 'fusioncharts/themes/fusioncharts.theme.candy';
+import * as Gammel from 'fusioncharts/themes/fusioncharts.theme.gammel';
+import * as Zune from 'fusioncharts/themes/fusioncharts.theme.zune';
+import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import * as Carbon from 'fusioncharts/themes/fusioncharts.theme.carbon';
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
 
 
-require('./themes/fusioncharts.theme.fusion.js');
-require('./themes/fusioncharts.theme.gammel.js');
+// require('./themes/fusioncharts.theme.fusion.js');
+// require('./themes/fusioncharts.theme.gammel.js');
 
-FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Maps, WorldMap, Fint)
+FusionChartsModule.fcRoot(
+  FusionCharts,
+  Charts,
+  PowerCharts,
+  Widgets, 
+  Maps, 
+  WorldMap, 
+  Ocean,
+  Fint,
+  Gammel,
+  Zune,
+  Fusion,
+  Candy,
+  Carbon
+)
 
 @NgModule({
   declarations: [
@@ -79,6 +107,14 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, Ocean, PowerCharts, Widgets, Map
     Ex12,
     Ex13,
     Ex14,
+    Ex15,
+    Ex16,
+    Ex17,
+    Ex18,
+    Ex19,
+    Ex20,
+    Ex21,
+    Ex22,
     Navigation, ObservingComponent, MyAppComponent,
     CodePrev,
     AppComponent,

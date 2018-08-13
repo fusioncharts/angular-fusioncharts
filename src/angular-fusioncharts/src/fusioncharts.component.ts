@@ -11,7 +11,7 @@ import FusionChartInstance from '../interfaces/FusionChartInstance';
 import EventsList from '../events/events';
 @Component({
     selector: 'fusioncharts',
-    template: `<div attr.id="container-{{containerId}}" >{{placeholder}}</div>
+    template: `<div attr.id="container-{{containerId}}" style='width:100%;height:100%'>{{placeholder}}</div>
     `,
     providers: [FusionChartsService],
 })

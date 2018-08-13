@@ -6,7 +6,7 @@
                 height="400"
                 type="column2d"
                 [dataSource]="dataSource"
-                [events]="events">
+                (dataplotRollOver)="update($event)">
             </fusioncharts>
             <p style="font-size:20px;font-weight: 300;">You're are currently hovering over <u>{{selectedLabel || "______"}}</u> whose value is <u>{{selectedValue || "_______"}} </u></p>
         </div>
