@@ -81,10 +81,18 @@
 <div class="card shadow">
   <div class="card-body chart-wrapper">
     <div class="chart-wrapper-inner">
-      <div id="#chart-container-ele" [ngStyle]="getStyle()">
-        <fusioncharts width="100%" height="100%" type="column2d" [dataSource]=dataSource (initialized)="initialized($event)">
-        </fusioncharts>
+      <div style="min-height: 450px;">
+        <div id="#chart-container-ele" [ngStyle]="getStyle()">
+          <fusioncharts 
+            width="100%" 
+            height="100%" 
+            type="column2d" 
+            [dataSource]=dataSource 
+            (initialized)="initialized($event)">
+          </fusioncharts>
+        </div>
       </div>
+      
       <div style='display: flex; justify-content: center'>
         <span id="select-text">Select size:</span>
         <div class="change-type">
