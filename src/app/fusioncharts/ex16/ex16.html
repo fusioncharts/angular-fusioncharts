@@ -10,7 +10,7 @@
         (dataplotDragStart)="dragStart($event)"
         (dataplotDragEnd)="dragEnd($event)">
       </fusioncharts>
-      <p style="padding: 10px;background:#f5f2f0">{{message}}</p>
+      <p style="padding: 10px;background:#f5f2f0" [innerHTML]="message | trustAsHtml"></p>
     </div>
   </div>
 </div>

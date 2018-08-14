@@ -21,7 +21,7 @@
           (initialized)="initialized($event)">
         </fusioncharts>
 
-      <p style="padding:10px; background: '#f5f2f0'">{{message}}</p>
+      <p style="padding:10px; background: #efefef" [innerHTML]="initMessage || message"></p>
       <p>
         <a class="btn btn-outline-secondary btn-sm" (click)="attachEvent()">Track Data Plot Clicks</a>
         <a class="btn btn-outline-secondary btn-sm" (click)="removeEvent()">Reset</a>

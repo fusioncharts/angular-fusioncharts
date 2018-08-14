@@ -25,7 +25,7 @@ export class Ex16 {
 
   // Format message
   getMessage(datasetname, startvalue, finalvalue){
-   return `You have dragged a plot of ${datasetname} dataset, its previous value was ${startvalue} and its current value is ${finalvalue}` 
+   return `You have dragged a plot of <b style='font-weight:bold;'>${datasetname || '______'}</b> dataset, its previous value was <b style='font-weight:bold'>${startvalue || '________'}</b> and its current value is <b style='font-weight:bold'>${finalvalue || '________'}</b>` 
   }
 
   constructor(private zone: NgZone) {
@@ -94,7 +94,9 @@ export class Ex16 {
           "value": "900000"
         }]
       }]
-    }
+    };
+
+    this.message = this.getMessage(null, null, null);
   }
 
 

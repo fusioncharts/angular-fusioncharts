@@ -1,3 +1,9 @@
+<style>
+    b{
+        font-weight: bold;
+    }
+</style>
+
 <div class="card shadow">
     <div class="card-body chart-wrapper">
         <div class="chart-wrapper-inner">
@@ -8,7 +14,7 @@
                 [dataSource]="dataSource"
                 (dataplotRollOver)="update($event)">
             </fusioncharts>
-            <p style="font-size:20px;font-weight: 300;">You're are currently hovering over <u>{{selectedLabel || "______"}}</u> whose value is <u>{{selectedValue || "_______"}} </u></p>
+            <p style="font-size:18px;font-weight: 300;padding:10px;background:#efefef">You're are currently hovering over <b >{{selectedLabel || "______"}}</b> whose value is <b>{{selectedValue || "_______"}} </b></p>
         </div>
     </div>
 </div>

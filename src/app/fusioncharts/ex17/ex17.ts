@@ -21,8 +21,14 @@ export class Ex17 {
   message: string;
   chartObj: any;
   handler:any;
+  initMessage:any;
+  iMsg:string;
+  clickPlotMsg:string;
   constructor(private zone: NgZone) {
-    this.message = 'Click on the plot to see the value along with the label';
+    this.iMsg = 'Click on <b>Track Data Plot Clicks</b> button to listen to dataplotclick event';
+    this.initMessage = this.iMsg;
+    this.clickPlotMsg = 'Click on the plot to see the value along with the label';
+    this.message = this.clickPlotMsg;
     this.dataSource = {
       "chart": {
           "caption": "Countries With Most Oil Reserves [2017-18]",
@@ -70,7 +76,7 @@ export class Ex17 {
   }
 
   getMessage(dataObj){
-    return `You have clicked on plot ${dataObj.categoryLabel} whose value is ${dataObj.displayValue}`
+    return `You have clicked on plot <b style='font-weight:bold'>${dataObj.categoryLabel}</b> whose value is <b style='font-weight:bold'>${dataObj.displayValue}</b>`
   }
 
   dataplotClickHandler(eventObj, dataObj){
@@ -85,10 +91,14 @@ export class Ex17 {
 
   attachEvent(){
     this.handler = this.dataplotClickHandler.bind(this);
+    this.initMessage = '';
+    this.message = this.clickPlotMsg;
     this.chartObj.addEventListener('dataplotClick',this.handler);
   }
 
   removeEvent(){
+    this.initMessage = this.iMsg;
+    this.message = this.clickPlotMsg;
     this.chartObj.removeEventListener('dataplotClick', this.handler);
   }
 

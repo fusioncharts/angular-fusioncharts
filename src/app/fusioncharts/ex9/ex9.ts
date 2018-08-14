@@ -58,7 +58,7 @@ export class Ex9 {
             this.zone.run(() => {
                 
                 let value = (arg.value / this.total * 100).toFixed(2);
-                this.logMessage = arg.categoryLabel + " is  " + value + "% of the total";
+                this.logMessage = `<b style='font-weight:bold'>${arg.categoryLabel}</b> is  <b style='font-weight:bold'>${value}%</b> of the total`
             })
         }
     }
