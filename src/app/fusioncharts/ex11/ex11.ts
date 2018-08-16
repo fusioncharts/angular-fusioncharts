@@ -20,6 +20,7 @@ export class Ex11 {
     
     initialized(e){
         this.chartInstance = e.chart;
+        // Configure the drill down chart
         this.chartInstance.configureLink({
             type: "pie2d",
             width: "100%",
@@ -29,7 +30,7 @@ export class Ex11 {
                 bgColor: 'FFEEEE',
                 borderColor: '660000'
             }
-        },0)
+        });
     }
     
     dataSource = {
