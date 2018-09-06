@@ -55,7 +55,12 @@ var FusionChartsService = /** @class */ (function () {
     FusionChartsService.prototype.getFusionChartsStatic = function () {
         return this._fusionchartsStatice;
     };
+    FusionChartsService.prototype.getNextItemCount = function () {
+        FusionChartsService.itemCount++;
+        return FusionChartsService.itemCount;
+    };
     FusionChartsService._fcRoot = null;
+    FusionChartsService.itemCount = 0;
     FusionChartsService.decorators = [
         { type: Injectable },
     ];

@@ -218,8 +218,7 @@ declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, After
     updateWidth(): void;
     updateHeight(): void;
     updateType(): void;
-    attachChartEventListener(chartObj: any, eventName: string): void;
-    attachAllChartEvents(chartObj: any, eventList: Array<string>): void;
+    generateEventsCallback(eventList: Array<string>): {};
     ngAfterViewInit(): void;
     ngOnDestroy(): void;
 }
