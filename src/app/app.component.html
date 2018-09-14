@@ -141,12 +141,13 @@
                 <div class="nav-item" (click)='openPage("/ex6")' [ngClass]="sampleCode['ex6'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex6'].title}}</div>
                 </div>
-                <div class="nav-item" (click)='openPage("/ex7")' [ngClass]="sampleCode['ex7'].title === selectedTitle ? 'selected' : ''">
-                  <div class="p">{{sampleCode['ex7'].title}}</div>
-                </div>
                 <div class="nav-item" (click)='openPage("/ex8")' [ngClass]="sampleCode['ex8'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex8'].title}}</div>
                 </div>
+                <div class="nav-item" (click)='openPage("/ex7")' [ngClass]="sampleCode['ex7'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex7'].title}}</div>
+                </div>
+             
                 <div class="nav-item" (click)='openPage("/ex9")' [ngClass]="sampleCode['ex9'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex9'].title}}</div>
                 </div>
@@ -162,8 +163,38 @@
                 <div class="nav-item" (click)='openPage("/ex13")' [ngClass]="sampleCode['ex13'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex13'].title}}</div>
                 </div>
-                <div class="nav-item" (click)='openPage("/ex14")' [ngClass]="sampleCode['ex14'].title === selectedTitle ? 'selected' : ''">
+                <!-- <div class="nav-item" (click)='openPage("/ex14")' [ngClass]="sampleCode['ex14'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex14'].title}}</div>
+                </div> -->
+                <!-- <div class="nav-item" (click)='openPage("/ex15")' [ngClass]="sampleCode['ex15'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex15'].title}}</div>
+                </div> -->
+                <div class="nav-item" (click)='openPage("/ex16")' [ngClass]="sampleCode['ex16'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex16'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex23")' [ngClass]="sampleCode['ex23'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex23'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex17")' [ngClass]="sampleCode['ex17'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex17'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex24")' [ngClass]="sampleCode['ex24'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex24'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex20")' [ngClass]="sampleCode['ex20'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex20'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex21")' [ngClass]="sampleCode['ex21'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex21'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex22")' [ngClass]="sampleCode['ex22'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex22'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex25")' [ngClass]="sampleCode['ex25'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex25'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex18")' [ngClass]="sampleCode['ex18'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex18'].title}}</div>
                 </div>
               </div>
             </div>
@@ -212,18 +243,20 @@
                     <div class="p item-desc">{{sampleCode['ex6'].description}}</div>
                   </div>
                 </a>
-                <a [routerLinkActive]="['active']" [routerLink]="['/ex7']" href="#/demos/ex7" (click)="updateId('ex7')">
-                  <div class="nav-item">
-                    <div class="h5">{{sampleCode['ex7'].title}}</div>
-                    <div class="p item-desc">{{sampleCode['ex7'].description}}</div>
-                  </div>
-                </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex8']" href="#/demos/ex8" (click)="updateId('ex8')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex8'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex8'].description}}</div>
                   </div>
                 </a>
+
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex7']" href="#/demos/ex7" (click)="updateId('ex7')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex7'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex7'].description}}</div>
+                  </div>
+                </a>
+                
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex9']" href="#/demos/ex9" (click)="updateId('ex9')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex9'].title}}</div>
@@ -232,7 +265,7 @@
                 </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex10']" href="#/demos/ex10" (click)="updateId('ex10')">
                   <div class="nav-item">
-                    <div class="h5">{{sampleCode['ex10'].title}}s</div>
+                    <div class="h5">{{sampleCode['ex10'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex10'].description}}</div>
                   </div>
                 </a>
@@ -254,12 +287,73 @@
                     <div class="p item-desc">{{sampleCode['ex13'].description}}</div>
                   </div>
                 </a>
-                <a [routerLinkActive]="['active']" [routerLink]="['/ex14']" href="#/demos/ex14" (click)="updateId('ex14')">
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex16']" href="#/demos/ex16" (click)="updateId('ex16')">
                   <div class="nav-item">
-                    <div class="h5">{{sampleCode['ex14'].title}}</div>
-                    <div class="p item-desc">{{sampleCode['ex14'].description}}</div>
+                    <div class="h5">{{sampleCode['ex16'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex16'].description}}</div>
                   </div>
                 </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex23']" href="#/demos/ex23" (click)="updateId('ex23')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex23'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex23'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex17']" href="#/demos/ex17" (click)="updateId('ex17')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex17'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex17'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex24']" href="#/demos/ex24" (click)="updateId('ex24')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex24'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex24'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex20']" href="#/demos/ex20" (click)="updateId('ex20')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex20'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex20'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex21']" href="#/demos/ex21" (click)="updateId('ex21')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex21'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex21'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex22']" href="#/demos/ex22" (click)="updateId('ex22')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex22'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex22'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex25']" href="#/demos/ex25" (click)="updateId('ex25')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex25'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex25'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex18']" href="#/demos/ex18" (click)="updateId('ex18')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex18'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex18'].description}}</div>
+                  </div>
+                </a>
+            
+                
+                
+                
+                <!-- <a [routerLinkActive]="['active']" [routerLink]="['/ex19']" href="#/demos/ex19" (click)="updateId('ex19')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex19'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex19'].description}}</div>
+                  </div>
+                </a> -->
+              
+                
+                
               </div>
             </div>
             <div class="col-md-9 col-12" ng-controller="DemoController">

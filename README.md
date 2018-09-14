@@ -24,12 +24,24 @@ import { AppComponent } from './app.component';
 import { FusionChartsModule } from 'angular-fusioncharts';
 
 // Import FusionCharts library and chart modules
-import FusionCharts from 'fusioncharts/core';
-import Column2d from 'fusioncharts/viz/column2d';
-import FusionTheme from 'fusioncharts/themes/es/fusioncharts.theme.fusion';
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+
+// For Powercharts , Widgets, and Maps
+// import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
+// import * as Widgets from 'fusioncharts/fusioncharts.widgets';
+// import * as Maps from 'fusioncharts/fusioncharts.maps';
+// To know more about suites,
+// read this https://www.fusioncharts.com/dev/getting-started/plain-javascript/install-using-plain-javascript
+
+
+// For Map definition files
+// import * as World from 'fusioncharts/maps/fusioncharts.world';
+
+import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
 
 // Pass the fusioncharts library and chart modules
-FusionChartsModule.fcRoot(FusionCharts, Column2d, FusionTheme);
+FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
 @NgModule({
   declarations: [
@@ -45,9 +57,6 @@ FusionChartsModule.fcRoot(FusionCharts, Column2d, FusionTheme);
 })
 export class AppModule { }
 ```
-NOTE : If you are using angular 2, please refer [Rendering chart in Angular 2](#Rendering-chart-in-Angular-2)
-
-
 Once the library is imported, you can use its components, directives in your Angular application:
 
 In your Angular AppComponent:
@@ -113,7 +122,7 @@ Usage in template :
   width="600"
   height="350"
   type="Column2D"
-  dataFormat="JSON"
+  dataFormat="json"
   [dataSource]="dataSource"
   (dataplotRollOver)="plotRollOver($event)">
 </fusioncharts>
@@ -192,7 +201,7 @@ export class AppComponent {
   }
 
   initialized($event){
-    this.chart = $event.chart;
+    this.chart = $event.chart; // Storing the chart instance
   }
 
   changeLabel(){
@@ -200,35 +209,7 @@ export class AppComponent {
   }
 
 }
-```
 
-## Rendering chart in Angular 2
-For angular version 2.x.x , we cannot use `'fusioncharts/core'` as it uses dynamic imports , which is not compatible with older version typescripts used by Angular 2.  
-To render a chart, we need to use the older way,
-
-```ts
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
-// Import angular-fusioncharts
-import { FusionChartsModule } from 'angular-fusioncharts';
-
-// Import FusionCharts library and chart modules
-import * as FusionCharts from 'fusioncharts'; // Change fusioncharts/core to fusioncharts and use `* as`  syntax
-import * as Charts from 'fusioncharts/fusioncharts.charts'; // Contains all the charts under FusionCharts XT , Read below for details
-
-import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
-
-// Pass the fusioncharts library and chart modules
-FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
-
-```
-Note: All other code for the component and template remain same as above.
-
-We have used `fusioncharts/fusioncharts.charts` file to use all the charts which come under FusionCharts XT.
-To know more about other charts and widgets, read this [link](https://www.fusioncharts.com/dev/getting-started/plain-javascript/install-using-plain-javascript)
 
 ## Development
 
