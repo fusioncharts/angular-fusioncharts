@@ -291,6 +291,7 @@ var FusionChartsComponent = /** @class */ (function () {
         return events;
     };
     FusionChartsComponent.prototype.ngAfterViewInit = function () {
+        var _this_1 = this;
         var _this = this, params = _this.constructerParams, configObj = _this.configObj || (_this.configObj = {});
         var _chartConfig = _this.chartConfig || {};
         if (typeof _chartConfig === 'string') {
@@ -311,12 +312,12 @@ var FusionChartsComponent = /** @class */ (function () {
             else {
                 configObj['events'] = Object.assign(events, configObj['events']);
             }
-            _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
-            this.initialized.emit({ chart: _this.chartObj });
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
             // _this.containerId = _this.chartObj.id;
             this.zone.runOutsideAngular(function () {
                 setTimeout(function () {
+                    _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
+                    _this_1.initialized.emit({ chart: _this.chartObj });
                     _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             });
