@@ -25,7 +25,7 @@ export class Ex16 {
 
   // Format message
   getMessage(datasetname, startvalue, finalvalue, label){
-   return `<b style='font-weight:bold';>${datasetname}</b> dataset, its previous value was <b style='font-weight:bold'>${startvalue}</b> and its current value is <b style='font-weight:bold'>${finalvalue}</b> for year ${label}`;
+   return `<b style='font-weight:bold';>${datasetname}</b> dataset, its previous value was <b style='font-weight:bold'>${startvalue}</b> and its current value is <b style='font-weight:bold'>${finalvalue}</b> for year <b>${label} </b>`;
   }
 
   constructor(private zone: NgZone) {
