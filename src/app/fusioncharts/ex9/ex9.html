@@ -8,6 +8,7 @@
         font-size: 20px;
         width: 100%;
         font-weight: 300;
+        background: #efefef;
     }    
 </style>
 <div class="card shadow">
@@ -20,7 +21,7 @@
                 [events]="events"
                 [dataSource]="dataSource">
             </fusioncharts>
-            <div class='log-pane'>{{logMessage}}</div>
+            <div class='log-pane' [innerHTML]="logMessage | trustAsHtml"></div>
         </div>
     </div>
 </div>

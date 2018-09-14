@@ -1,4 +1,7 @@
-import { Component, NgZone} from '@angular/core';
+import {
+  Component,
+  NgZone
+} from '@angular/core';
 
 import fcDemos from '../samplecode';
 import SelectedSingleton from '../services/selected.singleton';
@@ -13,9 +16,9 @@ declare var Prism;
 })
 export class Ex7 {
   demoId = 'ex7';
-  
+
   sampleCode = fcDemos;
-  
+
   dataSource = {
     "chart": {
       "caption": "Countries With Most Oil Reserves [2017-18]",
@@ -51,32 +54,26 @@ export class Ex7 {
       "value": "30"
     }]
   };
-  
+
   selectedLabel = "";
   selectedValue = "";
-  
-  update() {
-    return (eve, arg) => {            
-      this.zone.run(() => {
-        
-        this.selectedLabel = arg.categoryLabel;
-        this.selectedValue = arg.displayValue;
-      })
-    }
+
+  update($event) {
+    this.zone.run(() => {
+      this.selectedLabel = $event.dataObj.categoryLabel;
+      this.selectedValue = $event.dataObj.displayValue;
+    })
   }
-  
-  events = {
-    dataplotRollover: this.update()
-  }
-  
-  ngOnInit(){
+
+
+  ngOnInit() {
     setTimeout(() => {
       SelectedSingleton.change(this.sampleCode['ex7'].title);
     })
   }
-  constructor(private zone:NgZone){}
-  
+  constructor(private zone: NgZone) {}
+
   ngAfterViewInit() {
-        Prism && Prism.highlightAll();
-    }
+    Prism && Prism.highlightAll();
+  }
 }
