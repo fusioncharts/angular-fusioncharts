@@ -34,6 +34,9 @@ import { Ex19 } from "./fusioncharts/ex19/ex19";
 import { Ex20 } from "./fusioncharts/ex20/ex20";
 import { Ex21 } from "./fusioncharts/ex21/ex21";
 import { Ex22 } from "./fusioncharts/ex22/ex22";
+import { Ex23 } from "./fusioncharts/ex23/ex23";
+import { Ex24 } from "./fusioncharts/ex24/ex24";
+import { Ex25 } from "./fusioncharts/ex25/ex25";
 
 import { SafeHtmlPipe } from "./pipes/trustAsHtml";
 import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component";
@@ -117,6 +120,9 @@ FusionChartsModule.fcRoot(
     Ex20,
     Ex21,
     Ex22,
+    Ex23,
+    Ex24,
+    Ex25,
     SafeHtmlPipe,
     Navigation, ObservingComponent, MyAppComponent,
     CodePrev,

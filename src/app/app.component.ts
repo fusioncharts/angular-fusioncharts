@@ -2,7 +2,7 @@ import {Component, ViewEncapsulation} from '@angular/core';
 import { Router } from "@angular/router";
 import '../../node_modules/prismjs/prism.js';
 import 'codemirror/mode/javascript/javascript';
-import 'codemirror/mode/htmlembedded/htmlembedded';
+import 'codemirror/mode/xml/xml';
 import CodeSnippets from "./quickstart-snippet";
 import SelectedSingleton from './fusioncharts/services/selected.singleton';
 import SampleCode from './fusioncharts/samplecode';

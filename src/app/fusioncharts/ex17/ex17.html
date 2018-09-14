@@ -23,8 +23,8 @@
 
       <p style="padding:10px; background: #efefef" [innerHTML]="initMessage || message"></p>
       <p>
-        <a class="btn btn-outline-secondary btn-sm" (click)="attachEvent()">Track Data Plot Clicks</a>
-        <a class="btn btn-outline-secondary btn-sm" (click)="removeEvent()">Reset</a>
+        <button class="btn btn-outline-secondary btn-sm" (click)="attachEvent()" [disabled]="attached">ADD/LISTEN TO DATAPLOTCLICK EVENT</button>
+        <button class="btn btn-outline-secondary btn-sm" (click)="removeEvent()" [disabled]="!attached">REMOVE DATAPLOTCLICK EVENT</button>
       </p>
     </div>
   </div>

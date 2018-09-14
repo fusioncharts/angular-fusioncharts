@@ -24,79 +24,83 @@ export class Ex16 {
   message: any;
 
   // Format message
-  getMessage(datasetname, startvalue, finalvalue){
-   return `You have dragged a plot of <b style='font-weight:bold;'>${datasetname || '______'}</b> dataset, its previous value was <b style='font-weight:bold'>${startvalue || '________'}</b> and its current value is <b style='font-weight:bold'>${finalvalue || '________'}</b>` 
+  getMessage(datasetname, startvalue, finalvalue, label){
+   return `<b style='font-weight:bold';>${datasetname}</b> dataset, its previous value was <b style='font-weight:bold'>${startvalue}</b> and its current value is <b style='font-weight:bold'>${finalvalue}</b> for year ${label}`;
   }
 
   constructor(private zone: NgZone) {
     this.dataSource = {
       "chart": {
-        "caption": "App Publishing Trend",
-        "subCaption": "2012-2016",
-        "xAxisName": "Years",
-        "yAxisName": "Total number of apps in store",
-        "formatnumberscale": "1",
-        "drawCrossLine": "1",
-        "plotToolText": "<b>$dataValue</b> apps on $seriesName in $label",
-        "theme": "fusion"
+          "caption": "Android and iOS Devices Sales Projections",
+          "subCaption": "Drag the top of columns to adjust projections for 2017 & 2018",
+          "numberPrefix": "$",
+          "numberSuffix": "M",
+          "yaxismaxvalue": "200",
+          "theme": "fusion",
+          "plotToolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
       },
-
       "categories": [{
-        "category": [{
-          "label": "2012"
-        }, {
-          "label": "2013"
-        }, {
-          "label": "2014"
-        }, {
-          "label": "2015"
-        }, {
-          "label": "2016"
-        }]
+          "category": [{
+              "label": "2014",
+              "fontItalic": "0"
+          }, {
+              "label": "2015",
+              "fontItalic": "0"
+          }, {
+              "label": "2016",
+              "fontItalic": "0"
+          }, {
+              "label": "2017 (Projected)"
+          }, {
+              "label": "2018 (Projected)"
+          }]
       }],
       "dataset": [{
-        "seriesname": "iOS App Store",
-        "data": [{
-          "value": "125000"
-        }, {
-          "value": "300000"
-        }, {
-          "value": "480000"
-        }, {
-          "value": "800000"
-        }, {
-          "value": "1100000"
-        }]
+          "seriesname": "Android Devices",
+          "data": [{
+              "value": "73",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "80",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "97",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "110",
+              "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
+          }, {
+              "value": "180",
+              "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
+          }]
       }, {
-        "seriesname": "Google Play Store",
-        "data": [{
-          "value": "70000"
-        }, {
-          "value": "150000"
-        }, {
-          "value": "350000"
-        }, {
-          "value": "600000"
-        }, {
-          "value": "1400000"
-        }]
-      }, {
-        "seriesname": "Amazon AppStore",
-        "data": [{
-          "value": "10000"
-        }, {
-          "value": "100000"
-        }, {
-          "value": "300000"
-        }, {
-          "value": "600000"
-        }, {
-          "value": "900000"
-        }]
+          "seriesname": "iOS Devices",
+          "data": [{
+              "value": "63.2",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "68",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "82",
+              "alpha": "100",
+              "allowDrag": "0"
+          }, {
+              "value": "99",
+              "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
+          }, {
+              "value": "150",
+              "toolText": "<b>$label</b><br>$seriesName: <b>$dataValue</b>"
+          }]
       }]
     };
 
-    this.message = this.getMessage(null, null, null);
+    this.message = "Drag any column for years 2017 or 2018 to see updated value along with the label";
   }
 
 
@@ -110,8 +114,10 @@ export class Ex16 {
   dragEnd($event){
     let dataObj = $event.dataObj;
     this.finalvalue = dataObj.endValue;
+    let label = this.dataSource.categories[0].category[dataObj.dataIndex].label;
+    
     this.zone.run(() => {
-      this.message = this.getMessage(this.datasetname, this.startvalue.toFixed(2), this.finalvalue.toFixed(2));
+      this.message = this.getMessage(this.datasetname, this.startvalue.toFixed(2), this.finalvalue.toFixed(2), label);
     })
   }
 

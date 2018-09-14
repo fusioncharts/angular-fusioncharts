@@ -9,28 +9,18 @@ declare var Prism;
 
 @Component({
   selector: 'chart',
-  templateUrl: './ex17.html',
+  templateUrl: './ex23.html',
   styleUrls: [
     '../ex.css'
   ]
 })
-export class Ex17 {
-  demoId = 'ex17';
+export class Ex23 {
+  demoId = 'ex23';
   sampleCode = fcDemos;
   dataSource: any;
-  message: string;
-  chartObj: any;
-  handler:any;
-  initMessage:any;
-  iMsg:string;
-  clickPlotMsg:string;
-  attached: boolean;
+  temp_message:any = '';
+  message = 'You will see notifications here for the chart lifecycle events';
   constructor(private zone: NgZone) {
-    this.iMsg = 'Click on <b>Track Data Plot Clicks</b> button to listen to dataplotclick event';
-    this.initMessage = this.iMsg;
-    this.clickPlotMsg = 'Click on the plot to see the value along with the label';
-    this.message = this.clickPlotMsg;
-    this.attached = false;
     this.dataSource = {
       "chart": {
           "caption": "Countries With Most Oil Reserves [2017-18]",
@@ -75,40 +65,37 @@ export class Ex17 {
           }
       ]
     };
-  }
 
-  getMessage(dataObj){
-    return `You have clicked on plot <b style='font-weight:bold'>${dataObj.categoryLabel}</b> which has a value of <b style='font-weight:bold'>${dataObj.displayValue}</b>`
   }
-
-  dataplotClickHandler(eventObj, dataObj){
+  
+  beforeDataUpdate($event){
     this.zone.run(() => {
-      this.message = this.getMessage(dataObj);
+      this.message = 'Status: beforeDataUpdate';
     });
   }
 
-  initialized($event){
-    this.chartObj = $event.chart;
+  dataUpdated($event){
+    this.zone.run(() => {
+      this.message += ', dataUpdated';
+      
+    })
   }
 
-  attachEvent(){
-    this.handler = this.dataplotClickHandler.bind(this);
-    this.initMessage = '';
-    this.message = this.clickPlotMsg;
-    this.attached = true;
-    this.chartObj.addEventListener('dataplotClick',this.handler);
+  drawComplete($event){
+    this.zone.run(() => {
+      this.message += ', drawComplete';
+    });
   }
 
-  removeEvent(){
-    this.initMessage = this.iMsg;
-    this.message = this.clickPlotMsg;
-    this.attached = false;
-    this.chartObj.removeEventListener('dataplotClick', this.handler);
+  renderComplete($event){
+    this.zone.run(() => {
+      this.message += ', renderComplete';
+    })
   }
 
   ngOnInit() {
     setTimeout(() => {
-      SelectedSingleton.change(this.sampleCode['ex17'].title);
+      SelectedSingleton.change(this.sampleCode['ex23'].title);
     })
   }
 }

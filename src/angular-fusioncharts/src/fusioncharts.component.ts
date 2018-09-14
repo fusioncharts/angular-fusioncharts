@@ -414,13 +414,15 @@ class FusionChartsComponent implements OnInit, OnChanges, DoCheck, AfterViewInit
             } else {
                 configObj['events'] = Object.assign(events, configObj['events']);
             }
-            _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
-            this.initialized.emit({ chart: _this.chartObj });
+            
+            
             // configObj['renderAt'] = 'container-' + _this.chartObj.id;
             // _this.containerId = _this.chartObj.id;
 
             this.zone.runOutsideAngular(() => {
                 setTimeout(() => {
+                    _this.chartObj = FusionChartsConstructor(_this.fusionchartsService, configObj);
+                    this.initialized.emit({ chart: _this.chartObj });
                     _this.chartObj.render(_this.element.nativeElement.querySelector('div'));
                 }, 1);
             })
