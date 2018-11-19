@@ -259,22 +259,22 @@ var FusionChartsComponent = /** @class */ (function () {
         }
     };
     /*
-    // Removed as some events will be fired
-    attachChartEventListener(chartObj: any, eventName: string){
-        chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
-            let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
-            if(eventObj) fEventObj.eventObj  = eventObj;
-            if(dataObj) fEventObj.dataObj = dataObj;
-            this[eventName].emit(fEventObj);
-        });
-    }
-
-    attachAllChartEvents(chartObj:any, eventList:Array<string>){
-        eventList.forEach(eventName => {
-            this.attachChartEventListener(chartObj, eventName);
-        });
-    }
-    */
+      // Removed as some events will be fired
+      attachChartEventListener(chartObj: any, eventName: string){
+          chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
+              let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
+              if(eventObj) fEventObj.eventObj  = eventObj;
+              if(dataObj) fEventObj.dataObj = dataObj;
+              this[eventName].emit(fEventObj);
+          });
+      }
+  
+      attachAllChartEvents(chartObj:any, eventList:Array<string>){
+          eventList.forEach(eventName => {
+              this.attachChartEventListener(chartObj, eventName);
+          });
+      }
+      */
     FusionChartsComponent.prototype.generateEventsCallback = function (eventList) {
         var _this_1 = this;
         var events = {};
@@ -329,8 +329,8 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.decorators = [
         { type: Component, args: [{
                     selector: 'fusioncharts',
-                    template: "<div attr.id=\"container-{{containerId}}\" style='width:100%;height:100%'>{{placeholder}}</div>\n    ",
-                    providers: [FusionChartsService],
+                    template: "\n    <div attr.id=\"container-{{containerId}}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
+                    providers: [FusionChartsService]
                 },] },
     ];
     /** @nocollapse */

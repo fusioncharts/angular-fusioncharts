@@ -38,8 +38,7 @@ var FusionChartsService = /** @class */ (function () {
         return !!FusionChartsService._fcRoot;
     };
     FusionChartsService.prototype.resolveFusionCharts = function (core, modules) {
-        if (core && core.id &&
-            core.id === 'FusionCharts') {
+        if (core && core.id && core.id === 'FusionCharts') {
             this._fusionchartsStatice = core;
         }
         else {
@@ -47,7 +46,8 @@ var FusionChartsService = /** @class */ (function () {
         }
         if (modules) {
             modules.forEach(function (FusionChartsModules) {
-                if (FusionChartsModules.getName || FusionChartsModules.name) {
+                if ((FusionChartsModules.getName && FusionChartsModules.getType) ||
+                    (FusionChartsModules.name && FusionChartsModules.type)) {
                     core.addDep(FusionChartsModules);
                 }
                 else {
@@ -472,22 +472,22 @@ var FusionChartsComponent = /** @class */ (function () {
         }
     };
     /*
-    // Removed as some events will be fired
-    attachChartEventListener(chartObj: any, eventName: string){
-        chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
-            let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
-            if(eventObj) fEventObj.eventObj  = eventObj;
-            if(dataObj) fEventObj.dataObj = dataObj;
-            this[eventName].emit(fEventObj);
-        });
-    }
-
-    attachAllChartEvents(chartObj:any, eventList:Array<string>){
-        eventList.forEach(eventName => {
-            this.attachChartEventListener(chartObj, eventName);
-        });
-    }
-    */
+      // Removed as some events will be fired
+      attachChartEventListener(chartObj: any, eventName: string){
+          chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
+              let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
+              if(eventObj) fEventObj.eventObj  = eventObj;
+              if(dataObj) fEventObj.dataObj = dataObj;
+              this[eventName].emit(fEventObj);
+          });
+      }
+  
+      attachAllChartEvents(chartObj:any, eventList:Array<string>){
+          eventList.forEach(eventName => {
+              this.attachChartEventListener(chartObj, eventName);
+          });
+      }
+      */
     FusionChartsComponent.prototype.generateEventsCallback = function (eventList$$1) {
         var _this_1 = this;
         var events = {};
@@ -542,8 +542,8 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.decorators = [
         { type: _angular_core.Component, args: [{
                     selector: 'fusioncharts',
-                    template: "<div attr.id=\"container-{{containerId}}\" style='width:100%;height:100%'>{{placeholder}}</div>\n    ",
-                    providers: [FusionChartsService],
+                    template: "\n    <div attr.id=\"container-{{containerId}}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
+                    providers: [FusionChartsService]
                 },] },
     ];
     /** @nocollapse */
