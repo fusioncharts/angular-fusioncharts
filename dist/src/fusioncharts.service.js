@@ -34,8 +34,7 @@ var FusionChartsService = /** @class */ (function () {
         return !!FusionChartsService._fcRoot;
     };
     FusionChartsService.prototype.resolveFusionCharts = function (core, modules) {
-        if (core && core.id &&
-            core.id === 'FusionCharts') {
+        if (core && core.id && core.id === 'FusionCharts') {
             this._fusionchartsStatice = core;
         }
         else {
@@ -43,7 +42,8 @@ var FusionChartsService = /** @class */ (function () {
         }
         if (modules) {
             modules.forEach(function (FusionChartsModules) {
-                if (FusionChartsModules.getName || FusionChartsModules.name) {
+                if ((FusionChartsModules.getName && FusionChartsModules.getType) ||
+                    (FusionChartsModules.name && FusionChartsModules.type)) {
                     core.addDep(FusionChartsModules);
                 }
                 else {
