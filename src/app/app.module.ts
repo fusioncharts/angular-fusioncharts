@@ -1,4 +1,4 @@
-import { NgModule, enableProdMode } from '@angular/core'
+import { NgModule, enableProdMode } from '@angular/core';
 
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app.routes';
@@ -23,28 +23,37 @@ import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
 import { Ex10 } from './fusioncharts/ex10/ex10';
 import { Ex11 } from './fusioncharts/ex11/ex11';
-import { Ex12 } from "./fusioncharts/ex12/ex12";
-import { Ex13 } from "./fusioncharts/ex13/ex13";
-import { Ex14 } from "./fusioncharts/ex14/ex14";
-import { Ex15 } from "./fusioncharts/ex15/ex15";
-import { Ex16 } from "./fusioncharts/ex16/ex16";
-import { Ex17 } from "./fusioncharts/ex17/ex17";
-import { Ex18 } from "./fusioncharts/ex18/ex18";
-import { Ex19 } from "./fusioncharts/ex19/ex19";
-import { Ex20 } from "./fusioncharts/ex20/ex20";
-import { Ex21 } from "./fusioncharts/ex21/ex21";
-import { Ex22 } from "./fusioncharts/ex22/ex22";
-import { Ex23 } from "./fusioncharts/ex23/ex23";
-import { Ex24 } from "./fusioncharts/ex24/ex24";
-import { Ex25 } from "./fusioncharts/ex25/ex25";
+import { Ex12 } from './fusioncharts/ex12/ex12';
+import { Ex13 } from './fusioncharts/ex13/ex13';
+import { Ex14 } from './fusioncharts/ex14/ex14';
+import { Ex15 } from './fusioncharts/ex15/ex15';
+import { Ex16 } from './fusioncharts/ex16/ex16';
+import { Ex17 } from './fusioncharts/ex17/ex17';
+import { Ex18 } from './fusioncharts/ex18/ex18';
+import { Ex19 } from './fusioncharts/ex19/ex19';
+import { Ex20 } from './fusioncharts/ex20/ex20';
+import { Ex21 } from './fusioncharts/ex21/ex21';
+import { Ex22 } from './fusioncharts/ex22/ex22';
+import { Ex23 } from './fusioncharts/ex23/ex23';
+import { Ex24 } from './fusioncharts/ex24/ex24';
+import { Ex25 } from './fusioncharts/ex25/ex25';
+import { TimeSeries } from './fusioncharts/test-timeseries/timeseries';
 
-import { SafeHtmlPipe } from "./pipes/trustAsHtml";
-import { TabbedCode } from "./fusioncharts/tabbedComponent/tabbed.code.component";
+import { SafeHtmlPipe } from './pipes/trustAsHtml';
+import { TabbedCode } from './fusioncharts/tabbedComponent/tabbed.code.component';
 
-import { Navigation, NavService, ObservingComponent, MyAppComponent } from './observable/observable.component';
+import {
+  Navigation,
+  NavService,
+  ObservingComponent,
+  MyAppComponent
+} from './observable/observable.component';
 
 import { FusionChartsSample } from './fusioncharts/fusioncharts.component';
-import { FusionChartsModule, FusionChartsStatic } from '../angular-fusioncharts';
+import {
+  FusionChartsModule,
+  FusionChartsStatic
+} from '../angular-fusioncharts';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // Load FusionCharts
@@ -73,8 +82,8 @@ import * as Gammel from 'fusioncharts/themes/fusioncharts.theme.gammel';
 import * as Zune from 'fusioncharts/themes/fusioncharts.theme.zune';
 import * as Fusion from 'fusioncharts/themes/fusioncharts.theme.fusion';
 import * as Carbon from 'fusioncharts/themes/fusioncharts.theme.carbon';
+import * as TimeChart from 'fusioncharts/fusioncharts.timeseries';
 // import * as Ocean from 'fusioncharts/themes/fusioncharts.theme.ocean';
-
 
 // require('./themes/fusioncharts.theme.fusion.js');
 // require('./themes/fusioncharts.theme.gammel.js');
@@ -83,17 +92,18 @@ FusionChartsModule.fcRoot(
   FusionCharts,
   Charts,
   PowerCharts,
-  Widgets, 
-  Maps, 
-  WorldMap, 
+  Widgets,
+  Maps,
+  WorldMap,
   Ocean,
   Fint,
   Gammel,
   Zune,
   Fusion,
   Candy,
-  Carbon
-)
+  Carbon,
+  TimeChart
+);
 
 @NgModule({
   declarations: [
@@ -123,8 +133,11 @@ FusionChartsModule.fcRoot(
     Ex23,
     Ex24,
     Ex25,
+    TimeSeries,
     SafeHtmlPipe,
-    Navigation, ObservingComponent, MyAppComponent,
+    Navigation,
+    ObservingComponent,
+    MyAppComponent,
     CodePrev,
     AppComponent,
     FusionChartsSample,
@@ -139,11 +152,7 @@ FusionChartsModule.fcRoot(
     RouterModule.forRoot(rootRouterConfig, { useHash: true }),
     CodemirrorModule
   ],
-  providers: [
-    NavService
-  ],
-  bootstrap: [ AppComponent ]
+  providers: [NavService],
+  bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}

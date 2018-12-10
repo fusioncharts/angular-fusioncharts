@@ -33,7 +33,7 @@ class FusionChartsComponent
   chartObj: any;
 
   @Input() placeholder: string;
-  @Input() dataSource: Object;
+  @Input() dataSource: any;
   @Input() type: string;
   @Input() id: string;
   @Input() width: string;
@@ -312,8 +312,19 @@ class FusionChartsComponent
 
   // @ViewChild('samplediv') chartContainer: ElementRef;
 
+  checkIfDataTableExists(dataSource) {
+    if (dataSource && dataSource.data && dataSource.data._dataStore) {
+      return true;
+    }
+    return false;
+  }
+
   ngOnInit() {
-    this.oldDataSource = JSON.stringify(this.dataSource);
+    if (this.checkIfDataTableExists(this.dataSource)) {
+      this.oldDataSource = this.dataSource.data;
+    } else {
+      this.oldDataSource = JSON.stringify(this.dataSource);
+    }
     this.placeholder = this.placeholder || 'FusionCharts will render here';
   }
 
@@ -329,7 +340,12 @@ class FusionChartsComponent
   }
 
   ngDoCheck() {
-    const data = JSON.stringify(this.dataSource);
+    let data;
+    if (this.checkIfDataTableExists(this.dataSource)) {
+      data = this.dataSource.data;
+    } else {
+      data = JSON.stringify(this.dataSource);
+    }
     if (this.oldDataSource === data) {
     } else {
       this.updateChartData();
@@ -444,6 +460,8 @@ class FusionChartsComponent
   }
 
   ngOnDestroy() {
+    if (this.oldDataSource && this.oldDataSource._dataStore)
+      this.oldDataSource = null;
     this.chartObj.dispose();
   }
 }
