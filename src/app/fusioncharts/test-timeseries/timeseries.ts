@@ -55,4 +55,8 @@ export class TimeSeries {
       this.showChart = true;
     });
   }
+
+  updateMyChartData() {
+    this.dataSource.caption.text = 'NOTHING';
+  }
 }
