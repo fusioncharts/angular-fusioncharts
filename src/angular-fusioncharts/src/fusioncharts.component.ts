@@ -500,8 +500,6 @@ class FusionChartsComponent
   }
 
   ngOnDestroy() {
-    if (this.oldDataSource && this.oldDataSource._dataStore)
-      this.oldDataSource = null;
     this.chartObj.dispose();
   }
 }
