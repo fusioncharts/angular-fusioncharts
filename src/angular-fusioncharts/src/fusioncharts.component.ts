@@ -333,7 +333,7 @@ class FusionChartsComponent
       return obj;
     }
     if (Array.isArray(obj)) {
-      let arr = [];
+      let arr: any[] = [];
       for (let i = 0; i < obj.length; i++) {
         arr.push(this.cloneDataSource(obj[i]));
       }
