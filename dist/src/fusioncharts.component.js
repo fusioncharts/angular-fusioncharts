@@ -211,8 +211,55 @@ var FusionChartsComponent = /** @class */ (function () {
         this.containerId = fusionchartsService.getNextItemCount();
     }
     // @ViewChild('samplediv') chartContainer: ElementRef;
+    FusionChartsComponent.prototype.checkIfDataTableExists = function (dataSource) {
+        if (dataSource && dataSource.data && dataSource.data._dataStore) {
+            return true;
+        }
+        return false;
+    };
+    FusionChartsComponent.prototype.cloneDataSource = function (obj) {
+        var type = typeof obj;
+        if (type === 'string' ||
+            type === 'number' ||
+            type === 'function' ||
+            type === 'boolean') {
+            return obj;
+        }
+        if (obj === null || obj === undefined) {
+            return obj;
+        }
+        if (Array.isArray(obj)) {
+            var arr = [];
+            for (var i = 0; i < obj.length; i++) {
+                arr.push(this.cloneDataSource(obj[i]));
+            }
+            return arr;
+        }
+        if (typeof obj === 'object') {
+            var clonedObj = {};
+            for (var prop in obj) {
+                // Edge case handling for DataTable
+                if (prop === 'data') {
+                    if (obj[prop]._dataStore) {
+                        clonedObj[prop] = '-';
+                    }
+                    else {
+                        clonedObj[prop] = this.cloneDataSource(obj[prop]);
+                    }
+                    continue;
+                }
+                clonedObj[prop] = this.cloneDataSource(obj[prop]);
+            }
+            return clonedObj;
+        }
+    };
     FusionChartsComponent.prototype.ngOnInit = function () {
-        this.oldDataSource = JSON.stringify(this.dataSource);
+        if (this.checkIfDataTableExists(this.dataSource)) {
+            this.oldDataSource = JSON.stringify(this.cloneDataSource(this.dataSource));
+        }
+        else {
+            this.oldDataSource = JSON.stringify(this.dataSource);
+        }
         this.placeholder = this.placeholder || 'FusionCharts will render here';
     };
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
@@ -225,7 +272,13 @@ var FusionChartsComponent = /** @class */ (function () {
         }
     };
     FusionChartsComponent.prototype.ngDoCheck = function () {
-        var data = JSON.stringify(this.dataSource);
+        var data;
+        if (this.checkIfDataTableExists(this.dataSource)) {
+            data = JSON.stringify(this.cloneDataSource(this.dataSource));
+        }
+        else {
+            data = JSON.stringify(this.dataSource);
+        }
         if (this.oldDataSource === data) {
         }
         else {
