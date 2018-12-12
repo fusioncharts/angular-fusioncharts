@@ -22,7 +22,7 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
   - [Working with chart API](#working-with-apis)
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
-- [Usage/Integration of FusionTime](#usage-/-integration-of-fusionTime)
+- [Usage/Integration of FusionTime](#usage-and-integration-of-fusionTime)
 - [Going Beyond Charts](#going-beyond-charts)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
@@ -256,7 +256,7 @@ export class AppComponent {
 
 ```
 
-## Usage / Integration of FusionTime
+## Usage and Integration of FusionTime
 
 From fusioncharts@3.13.3 and angular-fusioncharts@2.0.5, You can visualize timeseries data easily with angular.
 
@@ -317,6 +317,7 @@ export class AppComponent {
   type: string;
   width: string;
   height: string;
+  showChart: boolean = false;
   constructor() {
     this.type = 'timeseries';
     this.width = '400';
@@ -330,6 +331,7 @@ export class AppComponent {
         text: 'Online Sales of a SuperStore in the US'
       }
     };
+    this.fetchData();
   }
 
   fetchData() {
@@ -345,6 +347,7 @@ export class AppComponent {
       ); // Instance of DataTable to be passed as data in dataSource
 
       this.dataSource.data = fusionTable;
+      this.showChart = true;
     });
   }
 }
@@ -353,7 +356,7 @@ export class AppComponent {
 ### Template Code
 
 ```html
-<div>
+<div *ngIf="showChart">
   <fusioncharts
     [type]="type"
     [width]="width"
