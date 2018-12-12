@@ -330,6 +330,7 @@ export class AppComponent {
         text: 'Online Sales of a SuperStore in the US'
       }
     };
+    this.fetchData();
   }
 
   fetchData() {
