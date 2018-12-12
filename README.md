@@ -317,7 +317,7 @@ export class AppComponent {
   type: string;
   width: string;
   height: string;
-  showChart = false;
+  showChart: boolean = false;
   constructor() {
     this.type = 'timeseries';
     this.width = '400';
