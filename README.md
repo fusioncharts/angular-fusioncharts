@@ -22,7 +22,7 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
   - [Working with chart API](#working-with-apis)
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
-- [Usage/Integration of FusionTime](#usage-/-integration-of-fusionTime)
+- [Usage/Integration of FusionTime](#usage-and-integration-of-fusionTime)
 - [Going Beyond Charts](#going-beyond-charts)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
@@ -256,7 +256,7 @@ export class AppComponent {
 
 ```
 
-## Usage / Integration of FusionTime
+## Usage and Integration of FusionTime
 
 From fusioncharts@3.13.3 and angular-fusioncharts@2.0.5, You can visualize timeseries data easily with angular.
 
