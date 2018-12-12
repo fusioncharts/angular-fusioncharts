@@ -317,6 +317,7 @@ export class AppComponent {
   type: string;
   width: string;
   height: string;
+  showChart = false;
   constructor() {
     this.type = 'timeseries';
     this.width = '400';
@@ -346,6 +347,7 @@ export class AppComponent {
       ); // Instance of DataTable to be passed as data in dataSource
 
       this.dataSource.data = fusionTable;
+      this.showChart = true;
     });
   }
 }
@@ -354,7 +356,7 @@ export class AppComponent {
 ### Template Code
 
 ```html
-<div>
+<div *ngIf="showChart">
   <fusioncharts
     [type]="type"
     [width]="width"
