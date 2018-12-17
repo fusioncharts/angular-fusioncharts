@@ -22,10 +22,11 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
   - [Working with chart API](#working-with-apis)
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
-- [Usage/Integration of FusionTime](#usage-and-integration-of-fusionTime)
 - [Going Beyond Charts](#going-beyond-charts)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
+
+<!-- - [Usage/Integration of FusionTime](#usage-and-integration-of-fusionTime) -->
 
 ## Getting Started
 
