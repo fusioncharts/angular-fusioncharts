@@ -23,6 +23,7 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
   - [Working with events](#working-with-events)
 - [Quick Start](#quick-start)
 - [Going Beyond Charts](#going-beyond-charts)
+- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
 - [For Contributors](#for-contributors)
 - [Licensing](#licensing)
 
@@ -254,6 +255,109 @@ export class AppComponent {
 }
 
 ```
+
+## Usage and integration of FusionTime
+
+From `fusioncharts@3.13.3-sr.1` and `angular-fusioncharts@3.0.0`, You can visualize timeseries data easily with angular.
+
+Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
+
+### Setup for FusionTime
+
+```typescript
+// app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+// Import angular-fusioncharts
+import { FusionChartsModule } from 'angular-fusioncharts';
+// Import FusionCharts library and chart modules
+import * as FusionCharts from 'fusioncharts';
+import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as TimeSeries from 'fusioncharts/fusioncharts.timeseries'; // Import timeseries
+// Pass the fusioncharts library and chart modules
+FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    // Specify FusionChartsModule as import
+    FusionChartsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
+
+### Component code
+
+```typescript
+// In app.component.ts
+import { Component } from '@angular/core';
+import * as FusionCharts from 'fusioncharts';
+const dataUrl =
+  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json';
+const schemaUrl =
+  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json';
+@Component({
+  selector: 'app',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+  dataSource: any;
+  type: string;
+  width: string;
+  height: string;
+  constructor() {
+    this.type = 'timeseries';
+    this.width = '400';
+    this.height = '400';
+    this.dataSource = {
+      data: null,
+      yAxis: {
+        plot: [{ value: 'Sales' }]
+      },
+      caption: {
+        text: 'Online Sales of a SuperStore in the US'
+      }
+    };
+    this.fetchData();
+  }
+  fetchData() {
+    let jsonify = res => res.json();
+    let dataFetch = fetch(dataUrl).then(jsonify);
+    let schemaFetch = fetch(schemaUrl).then(jsonify);
+    Promise.all([dataFetch, schemaFetch]).then(res => {
+      let data = res[0];
+      let schema = res[1];
+      let fusionTable = new FusionCharts.DataStore().createDataTable(
+        data,
+        schema
+      ); // Instance of DataTable to be passed as data in dataSource
+      this.dataSource.data = fusionTable;
+    });
+  }
+}
+```
+
+### Template Code
+
+```html
+<div>
+  <fusioncharts
+    [type]="type"
+    [width]="width"
+    [height]="height"
+    [dataSource]="dataSource"
+  ></fusioncharts>
+</div>
+```
+
+Useful links for FusionTime
+
+- [How FusionTime works](https://www.fusioncharts.com/dev/fusiontime/getting-started/how-fusion-time-works)
+- [Create your first chart](https://www.fusioncharts.com/dev/fusiontime/getting-started/create-your-first-chart-in-fusiontime)
 
 ## For Contributors
 

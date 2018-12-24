@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts",
-  "version": "2.0.4",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular-fusioncharts"
@@ -24,14 +24,14 @@
       "name": "Ashok Mandal",
       "email": "askipop@gmail.com",
       "url": "https://github.com/ashok1994"
+    },
+    {
+      "name": "Rohan Dey",
+      "email": "rohanoid5@gmail.com",
+      "url": "https://github.com/rohanoid5"
     }
   ],
-  "keywords": [
-    "angular",
-    "angular2",
-    "angular 2",
-    "FusionCharts"
-  ],
+  "keywords": ["angular", "angular2", "angular 2", "FusionCharts"],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
