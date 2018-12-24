@@ -22,7 +22,7 @@ import EventsList from '../events/events';
 @Component({
   selector: 'fusioncharts',
   template: `
-    <div attr.id="container-{{containerId}}" style="width:100%;height:100%">
+    <div attr.id="container-{{ containerId }}" style="width:100%;height:100%">
       {{ placeholder }}
     </div>
   `,
@@ -33,7 +33,7 @@ class FusionChartsComponent
   chartObj: any;
 
   @Input() placeholder: string;
-  @Input() dataSource: Object;
+  @Input() dataSource: any;
   @Input() type: string;
   @Input() id: string;
   @Input() width: string;
@@ -312,8 +312,59 @@ class FusionChartsComponent
 
   // @ViewChild('samplediv') chartContainer: ElementRef;
 
+  checkIfDataTableExists(dataSource) {
+    if (dataSource && dataSource.data && dataSource.data._dataStore) {
+      return true;
+    }
+    return false;
+  }
+
+  cloneDataSource(obj) {
+    let type = typeof obj;
+    if (
+      type === 'string' ||
+      type === 'number' ||
+      type === 'function' ||
+      type === 'boolean'
+    ) {
+      return obj;
+    }
+    if (obj === null || obj === undefined) {
+      return obj;
+    }
+    if (Array.isArray(obj)) {
+      let arr: any[] = [];
+      for (let i = 0; i < obj.length; i++) {
+        arr.push(this.cloneDataSource(obj[i]));
+      }
+      return arr;
+    }
+    if (typeof obj === 'object') {
+      let clonedObj = {};
+      for (let prop in obj) {
+        // Edge case handling for DataTable
+        if (prop === 'data') {
+          if (obj[prop]._dataStore) {
+            clonedObj[prop] = '-';
+          } else {
+            clonedObj[prop] = this.cloneDataSource(obj[prop]);
+          }
+          continue;
+        }
+        clonedObj[prop] = this.cloneDataSource(obj[prop]);
+      }
+      return clonedObj;
+    }
+  }
+
   ngOnInit() {
-    this.oldDataSource = JSON.stringify(this.dataSource);
+    if (this.checkIfDataTableExists(this.dataSource)) {
+      this.oldDataSource = JSON.stringify(
+        this.cloneDataSource(this.dataSource)
+      );
+    } else {
+      this.oldDataSource = JSON.stringify(this.dataSource);
+    }
     this.placeholder = this.placeholder || 'FusionCharts will render here';
   }
 
@@ -329,7 +380,12 @@ class FusionChartsComponent
   }
 
   ngDoCheck() {
-    const data = JSON.stringify(this.dataSource);
+    let data;
+    if (this.checkIfDataTableExists(this.dataSource)) {
+      data = JSON.stringify(this.cloneDataSource(this.dataSource));
+    } else {
+      data = JSON.stringify(this.dataSource);
+    }
     if (this.oldDataSource === data) {
     } else {
       this.updateChartData();
@@ -367,24 +423,6 @@ class FusionChartsComponent
       this.chartObj.chartType(this.type);
     }
   }
-
-  /* 
-    // Removed as some events will be fired 
-    attachChartEventListener(chartObj: any, eventName: string){
-        chartObj.addEventListener(eventName, (eventObj:any, dataObj:any) => {
-            let fEventObj:FusionChartsEvent = { eventObj:{}, dataObj:{} };
-            if(eventObj) fEventObj.eventObj  = eventObj;
-            if(dataObj) fEventObj.dataObj = dataObj; 
-            this[eventName].emit(fEventObj);
-        });
-    }
-
-    attachAllChartEvents(chartObj:any, eventList:Array<string>){
-        eventList.forEach(eventName => {
-            this.attachChartEventListener(chartObj, eventName);
-        });
-    }
-    */
 
   generateEventsCallback(eventList: Array<string>) {
     let events = {};
