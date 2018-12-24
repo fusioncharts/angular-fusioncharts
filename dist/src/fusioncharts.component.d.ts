@@ -7,7 +7,7 @@ declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, After
     private zone;
     chartObj: any;
     placeholder: string;
-    dataSource: Object;
+    dataSource: any;
     type: string;
     id: string;
     width: string;
@@ -211,6 +211,8 @@ declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, After
     element: ElementRef;
     fusionchartsService: FusionChartsService;
     constructor(element: ElementRef, fusionchartsService: FusionChartsService, differs: KeyValueDiffers, zone: NgZone);
+    checkIfDataTableExists(dataSource: any): boolean;
+    cloneDataSource(obj: any): any;
     ngOnInit(): void;
     ngOnChanges(changes: any): void;
     ngDoCheck(): void;
