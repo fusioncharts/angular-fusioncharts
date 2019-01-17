@@ -1,28 +1,22 @@
-import {
-  Component,
-  Input
-} from '@angular/core';
-
-
+import { Component, Input } from '@angular/core';
 
 @Component({
-  selector:'tabbed-code',
+  selector: 'tabbed-code',
   templateUrl: './tabbed.code.html'
 })
 export class TabbedCode {
   @Input() moduleCode;
   @Input() componentCode;
   @Input() templateCode;
+  @Input() schemaCode;
+  @Input() dataCode;
   cSelected = 'component';
 
-  constructor () {}
+  constructor() {}
 
-  ngOnInit(){
-  }
+  ngOnInit() {}
 
-  selectCode(type){
+  selectCode(type) {
     this.cSelected = type;
   }
-
-
 }
