@@ -54,13 +54,15 @@ export class Ex34 {
       // Afet that we simply mutated our timeseries datasource by attaching the above
       // DataTable into its data property.
       this.dataSource.data = fusionTable;
-      this.dataSource.yAxis = {
-        plot: 'Interest Rate',
-        format: {
-          suffix: '%'
-        },
-        title: 'Interest Rate'
-      };
+      this.dataSource.yAxis = [
+        {
+          plot: 'Interest Rate',
+          format: {
+            suffix: '%'
+          },
+          title: 'Interest Rate'
+        }
+      ];
       this.dataSource.xAxis = {
         plot: 'Time',
         timemarker: [
