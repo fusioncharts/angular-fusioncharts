@@ -27,21 +27,23 @@ export class Ex28 {
       // Initially data is set as null
       data: null,
       caption: {
-        text: 'Sales Analysis'
+        text: 'Web visits & downloads'
       },
       subcaption: {
-        text: 'Grocery'
+        text: 'since 2015'
       },
       yAxis: [
         {
-          plot: {
-            value: 'Grocery Sales Value',
-            type: 'line'
-          },
-          format: {
-            prefix: '$'
-          },
-          title: 'Sale Value'
+          plot: [
+            {
+              value: 'Downloads',
+              type: 'column'
+            },
+            {
+              value: 'Web Visits',
+              type: 'line'
+            }
+          ]
         }
       ]
     };
