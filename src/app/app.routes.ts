@@ -10,12 +10,12 @@ import { Ex6 } from './fusioncharts/ex6/ex6';
 import { Ex7 } from './fusioncharts/ex7/ex7';
 import { Ex8 } from './fusioncharts/ex8/ex8';
 import { Ex9 } from './fusioncharts/ex9/ex9';
-import { Ex10 } from "./fusioncharts/ex10/ex10";
+import { Ex10 } from './fusioncharts/ex10/ex10';
 import { Ex11 } from './fusioncharts/ex11/ex11';
 import { Ex12 } from './fusioncharts/ex12/ex12';
 import { Ex13 } from './fusioncharts/ex13/ex13';
 import { Ex14 } from './fusioncharts/ex14/ex14';
-import { Ex15} from './fusioncharts/ex15/ex15';
+import { Ex15 } from './fusioncharts/ex15/ex15';
 import { Ex16 } from './fusioncharts/ex16/ex16';
 import { Ex17 } from './fusioncharts/ex17/ex17';
 import { Ex18 } from './fusioncharts/ex18/ex18';
@@ -26,6 +26,18 @@ import { Ex22 } from './fusioncharts/ex22/ex22';
 import { Ex23 } from './fusioncharts/ex23/ex23';
 import { Ex24 } from './fusioncharts/ex24/ex24';
 import { Ex25 } from './fusioncharts/ex25/ex25';
+import { Ex26 } from './fusioncharts/ex26/ex26';
+import { Ex27 } from './fusioncharts/ex27/ex27';
+import { Ex28 } from './fusioncharts/ex28/ex28';
+import { Ex29 } from './fusioncharts/ex29/ex29';
+import { Ex30 } from './fusioncharts/ex30/ex30';
+import { Ex31 } from './fusioncharts/ex31/ex31';
+import { Ex32 } from './fusioncharts/ex32/ex32';
+import { Ex33 } from './fusioncharts/ex33/ex33';
+import { Ex34 } from './fusioncharts/ex34/ex34';
+import { Ex35 } from './fusioncharts/ex35/ex35';
+import { Ex36 } from './fusioncharts/ex36/ex36';
+
 // import { Ex10 } from './fusioncharts/ex10/ex10';
 import { MyAppComponent } from './observable/observable.component';
 
@@ -60,7 +72,17 @@ export const rootRouterConfig: Routes = [
   { path: 'ex23', component: Ex23 },
   { path: 'ex24', component: Ex24 },
   { path: 'ex25', component: Ex25 },
+  { path: 'ex26', component: Ex26 },
+  { path: 'ex27', component: Ex27 },
+  { path: 'ex28', component: Ex28 },
+  { path: 'ex29', component: Ex29 },
+  { path: 'ex30', component: Ex30 },
+  { path: 'ex31', component: Ex31 },
+  { path: 'ex32', component: Ex32 },
+  { path: 'ex33', component: Ex33 },
+  { path: 'ex34', component: Ex34 },
+  { path: 'ex35', component: Ex35 },
+  { path: 'ex36', component: Ex36 },
   { path: 'fusioncharts', component: MyAppComponent },
   { path: 'fusioncharts', component: FusionChartsSample }
 ];
-

@@ -1,45 +1,122 @@
 <div class="code-view mt-2">
-    <div class="card-shadow" style="background: #03040B;">
-      <div class="code-nav-btns btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'module' && 'selected'" (click)='selectCode("module")'>Module</button>
-        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'component' && 'selected'" (click)='selectCode("component")'>Component</button>
-        <button type="button" class="btn btn-code" [ngClass]="cSelected === 'template' && 'selected'" (click)='selectCode("template")'>Template</button>
-      </div>
-      <div class="card-body p-0">
-        <div class="code-panel">
-          <div class="code-panel-header">
-            <div id="chartCode">
-              <div [ngSwitch]="cSelected">
-                <div *ngSwitchCase="'module'">
-                  <codemirror [(ngModel)]="moduleCode" [config]="{ 
-                      lineNumbers: true,
-                      theme:'dracula', 
-                      tabSize: '4',
-                      smartIndent: true,
-                      readOnly: true,
-                      mode:'javascript'
-                  }"></codemirror>
-                </div>
-                <div *ngSwitchCase="'component'">
-                    <codemirror [(ngModel)]="componentCode" [config]="{ 
-                      lineNumbers: true,
-                      theme:'dracula', 
-                      tabSize: '4',
-                      smartIndent: true,
-                      readOnly: true,
-                      mode:'javascript'
-                  }"></codemirror>
-                </div>
-                <div *ngSwitchCase="'template'">
-                  <codemirror [(ngModel)]="templateCode" [config]="{ 
-                      lineNumbers: true,
-                      theme:'dracula', 
-                      tabSize: '4',
-                      smartIndent: true,
-                      readOnly: true,
-                      mode:'xml'
-                  }"></codemirror>
-                </div>
+  <div class="card-shadow" style="background: #03040B;">
+    <div
+      class="code-nav-btns btn-group"
+      role="group"
+      aria-label="Basic example"
+    >
+      <button
+        type="button"
+        class="btn btn-code"
+        [ngClass]="cSelected === 'module' && 'selected'"
+        (click)="selectCode('module')"
+      >
+        Module
+      </button>
+      <button
+        type="button"
+        class="btn btn-code"
+        [ngClass]="cSelected === 'component' && 'selected'"
+        (click)="selectCode('component')"
+      >
+        Component
+      </button>
+      <button
+        type="button"
+        class="btn btn-code"
+        [ngClass]="cSelected === 'template' && 'selected'"
+        (click)="selectCode('template')"
+      >
+        Template
+      </button>
+      <button
+        *ngIf="schemaCode"
+        type="button"
+        class="btn btn-code"
+        [ngClass]="cSelected === 'schema' && 'selected'"
+        (click)="selectCode('schema')"
+      >
+        Schema
+      </button>
+      <button
+        *ngIf="dataCode"
+        type="button"
+        class="btn btn-code"
+        [ngClass]="cSelected === 'data' && 'selected'"
+        (click)="selectCode('data')"
+      >
+        Data
+      </button>
+    </div>
+    <div class="card-body p-0">
+      <div class="code-panel">
+        <div class="code-panel-header">
+          <div id="chartCode">
+            <div [ngSwitch]="cSelected">
+              <div *ngSwitchCase="'module'">
+                <codemirror
+                  [(ngModel)]="moduleCode"
+                  [config]="{
+                    lineNumbers: true,
+                    theme: 'dracula',
+                    tabSize: '4',
+                    smartIndent: true,
+                    readOnly: true,
+                    mode: 'javascript'
+                  }"
+                ></codemirror>
+              </div>
+              <div *ngSwitchCase="'component'">
+                <codemirror
+                  [(ngModel)]="componentCode"
+                  [config]="{
+                    lineNumbers: true,
+                    theme: 'dracula',
+                    tabSize: '4',
+                    smartIndent: true,
+                    readOnly: true,
+                    mode: 'javascript'
+                  }"
+                ></codemirror>
+              </div>
+              <div *ngSwitchCase="'template'">
+                <codemirror
+                  [(ngModel)]="templateCode"
+                  [config]="{
+                    lineNumbers: true,
+                    theme: 'dracula',
+                    tabSize: '4',
+                    smartIndent: true,
+                    readOnly: true,
+                    mode: 'xml'
+                  }"
+                ></codemirror>
+              </div>
+              <div *ngSwitchCase="'schema'">
+                <codemirror
+                  [(ngModel)]="schemaCode"
+                  [config]="{
+                    lineNumbers: true,
+                    theme: 'dracula',
+                    tabSize: '4',
+                    smartIndent: true,
+                    readOnly: true,
+                    mode: 'javascript'
+                  }"
+                ></codemirror>
+              </div>
+              <div *ngSwitchCase="'data'">
+                <codemirror
+                  [(ngModel)]="dataCode"
+                  [config]="{
+                    lineNumbers: true,
+                    theme: 'dracula',
+                    tabSize: '4',
+                    smartIndent: true,
+                    readOnly: true,
+                    mode: 'javascript'
+                  }"
+                ></codemirror>
               </div>
             </div>
           </div>
@@ -47,3 +124,4 @@
       </div>
     </div>
   </div>
+</div>

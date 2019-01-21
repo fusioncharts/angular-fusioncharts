@@ -126,11 +126,56 @@
                     {{sampleCode['ex1'].title}}
                   </div>
                 </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex26'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p" (click)='openPage("/ex26")'>
+                      {{sampleCode['ex26'].title}}
+                    </div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex30'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p" (click)='openPage("/ex30")'>
+                      {{sampleCode['ex30'].title}}
+                    </div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex31'].title === selectedTitle ? 'selected' : ''">
+                    <div class="nav-group">
+                      <div class="p" (click)='openPage("/ex31")'>
+                        {{sampleCode['ex31'].title}}
+                      </div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+                </div>
                 <div class="nav-item" [ngClass]="sampleCode['ex2'].title === selectedTitle ? 'selected' : ''">
                   <div class="p" (click)='openPage("/ex2")'>{{sampleCode['ex2'].title}}</div>
                 </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex12'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p" (click)='openPage("/ex12")'>{{sampleCode['ex12'].title}}</div>
+                </div>
                 <div class="nav-item" [ngClass]="sampleCode['ex3'].title === selectedTitle ? 'selected' : ''">
                   <div class="p" (click)='openPage("/ex3")'>{{sampleCode['ex3'].title}}</div>
+                </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex28'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p" (click)='openPage("/ex28")'>{{sampleCode['ex28'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>div>
+                </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex27'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p" (click)='openPage("/ex27")'>{{sampleCode['ex27'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
+                <div class="nav-item" [ngClass]="sampleCode['ex29'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p" (click)='openPage("/ex29")'>{{sampleCode['ex29'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
                 </div>
                 <div class="nav-item" (click)='openPage("/ex5")' [ngClass]="sampleCode['ex5'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex5'].title}}</div>
@@ -147,7 +192,6 @@
                 <div class="nav-item" (click)='openPage("/ex7")' [ngClass]="sampleCode['ex7'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex7'].title}}</div>
                 </div>
-             
                 <div class="nav-item" (click)='openPage("/ex9")' [ngClass]="sampleCode['ex9'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex9'].title}}</div>
                 </div>
@@ -156,6 +200,27 @@
                 </div>
                 <div class="nav-item" (click)='openPage("/ex11")' [ngClass]="sampleCode['ex11'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex11'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex36")' [ngClass]="sampleCode['ex36'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p">{{sampleCode['ex36'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex33")' [ngClass]="sampleCode['ex33'].title === selectedTitle ? 'selected' : ''">
+                  <div class="p">{{sampleCode['ex33'].title}}</div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex34")' [ngClass]="sampleCode['ex34'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p">{{sampleCode['ex34'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
+                <div class="nav-item" (click)='openPage("/ex35")' [ngClass]="sampleCode['ex35'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p">{{sampleCode['ex35'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
                 </div>
                 <div class="nav-item" (click)='openPage("/ex12")' [ngClass]="sampleCode['ex12'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex12'].title}}</div>
@@ -196,6 +261,12 @@
                 <div class="nav-item" (click)='openPage("/ex18")' [ngClass]="sampleCode['ex18'].title === selectedTitle ? 'selected' : ''">
                   <div class="p">{{sampleCode['ex18'].title}}</div>
                 </div>
+                <div class="nav-item" (click)='openPage("/ex32")' [ngClass]="sampleCode['ex32'].title === selectedTitle ? 'selected' : ''">
+                  <div class="nav-group">
+                    <div class="p">{{sampleCode['ex32'].title}}</div>
+                    <div class="h5 badge badge-normal">FusionTime</div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -213,16 +284,76 @@
                     <div class="p item-desc">{{sampleCode['ex1'].description}}</div>
                   </div>
                 </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex26']" href="#/demos/ex26" (click)="updateId('ex26')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex26'].title}}</div>
+                        <div class="h5 badge badge-normal">FusionTime</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex26'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex30']" href="#/demos/ex30" (click)="updateId('ex30')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex30'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex30'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex30'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex31']" href="#/demos/ex31" (click)="updateId('ex31')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex31'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex31'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex31'].description}}</div>
+                  </div>
+                </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex2']" href="#/demos/ex2" (click)="updateId('ex2')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex2'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex2'].description}}</div>
                   </div>
                 </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex12']" href="#/demos/ex12" (click)="updateId('ex12')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex12'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex12'].description}}</div>
+                  </div>
+                </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex3']" href="#/demos/ex3" (click)="updateId('ex3')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex3'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex3'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex28']" href="#/demos/ex28" (click)="updateId('ex28')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex28'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex28'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex28'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex27']" href="#/demos/ex26" (click)="updateId('ex27')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex27'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex27'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex27'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex29']" href="#/demos/ex29" (click)="updateId('ex29')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex29'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex29'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex29'].description}}</div>
                   </div>
                 </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex5']" href="#/demos/ex5" (click)="updateId('ex5')">
@@ -249,24 +380,16 @@
                     <div class="p item-desc">{{sampleCode['ex8'].description}}</div>
                   </div>
                 </a>
-
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex7']" href="#/demos/ex7" (click)="updateId('ex7')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex7'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex7'].description}}</div>
                   </div>
                 </a>
-                
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex9']" href="#/demos/ex9" (click)="updateId('ex9')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex9'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex9'].description}}</div>
-                  </div>
-                </a>
-                <a [routerLinkActive]="['active']" [routerLink]="['/ex10']" href="#/demos/ex10" (click)="updateId('ex10')">
-                  <div class="nav-item">
-                    <div class="h5">{{sampleCode['ex10'].title}}</div>
-                    <div class="p item-desc">{{sampleCode['ex10'].description}}</div>
                   </div>
                 </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex11']" href="#/demos/ex11" (click)="updateId('ex11')">
@@ -275,10 +398,46 @@
                     <div class="p item-desc">{{sampleCode['ex11'].description}}</div>
                   </div>
                 </a>
-                <a [routerLinkActive]="['active']" [routerLink]="['/ex12']" href="#/demos/ex12" (click)="updateId('ex12')">
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex36']" href="#/demos/ex36" (click)="updateId('ex36')">
                   <div class="nav-item">
-                    <div class="h5">{{sampleCode['ex12'].title}}</div>
-                    <div class="p item-desc">{{sampleCode['ex12'].description}}</div>
+                    <div class="nav-group">
+                      <div class="h5">{{sampleCode['ex36'].title}}</div>
+                      <div class="h5 badge badge-normal">{{sampleCode['ex36'].type}}</div>
+                    </div>
+                    <div class="p item-desc">{{sampleCode['ex36'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex33']" href="#/demos/ex33" (click)="updateId('ex33')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex33'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex33'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex33'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex34']" href="#/demos/ex34" (click)="updateId('ex34')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex34'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex34'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex34'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex35']" href="#/demos/ex35" (click)="updateId('ex35')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex35'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex35'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex35'].description}}</div>
+                  </div>
+                </a>
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex10']" href="#/demos/ex10" (click)="updateId('ex10')">
+                  <div class="nav-item">
+                    <div class="h5">{{sampleCode['ex10'].title}}</div>
+                    <div class="p item-desc">{{sampleCode['ex10'].description}}</div>
                   </div>
                 </a>
                 <a [routerLinkActive]="['active']" [routerLink]="['/ex13']" href="#/demos/ex13" (click)="updateId('ex13')">
@@ -341,19 +500,21 @@
                     <div class="p item-desc">{{sampleCode['ex18'].description}}</div>
                   </div>
                 </a>
-            
-                
-                
-                
+                <a [routerLinkActive]="['active']" [routerLink]="['/ex32']" href="#/demos/ex32" (click)="updateId('ex32')">
+                  <div class="nav-item">
+                      <div class="nav-group">
+                        <div class="h5">{{sampleCode['ex32'].title}}</div>
+                        <div class="h5 badge badge-normal">{{sampleCode['ex32'].type}}</div>
+                      </div>
+                    <div class="p item-desc">{{sampleCode['ex32'].description}}</div>
+                  </div>
+                </a>
                 <!-- <a [routerLinkActive]="['active']" [routerLink]="['/ex19']" href="#/demos/ex19" (click)="updateId('ex19')">
                   <div class="nav-item">
                     <div class="h5">{{sampleCode['ex19'].title}}</div>
                     <div class="p item-desc">{{sampleCode['ex19'].description}}</div>
                   </div>
                 </a> -->
-              
-                
-                
               </div>
             </div>
             <div class="col-md-9 col-12" ng-controller="DemoController">
