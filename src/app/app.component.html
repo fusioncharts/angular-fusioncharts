@@ -687,10 +687,10 @@
             </div>
           </div>
         </div>
-        <p class="code-desc">In the template</p>
+        <p class="code-desc pt-1">In the template</p>
         <div class="row">
-          <div class="col-12 pt-1">
-            <div class="code-view mt-2">
+          <div class="col-12">
+            <div class="code-view">
               <div class="card-shadow">
                 <div class="card-body p-0">
                   <div class="code-panel">
@@ -712,6 +712,104 @@
           </div>
         </div>
 
+        <div class="row">
+            <div class="col">
+              <div class="h2 mt-2">Usage and integration of FusionTime</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <p class="code-desc">From <code>fusioncharts@3.13.3-sr.1</code> and <code>angular-fusioncharts@3.0.0</code>, You can visualize timeseries data easily with angular.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pt-3">
+              <div class="h5">
+                <span>Setup for FusionTime
+                </span>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="code-view mt-2">
+                <div class="card-shadow">
+                  <div class="card-body p-0">
+                    <div class="code-panel">
+                      <div class="codeMirrorDiv" id="c3">
+                        <codemirror [(ngModel)]="setupFusionTime" [config]="{ 
+                                      lineNumbers: true,
+                                      theme:'dracula', 
+                                      tabSize: '4',
+                                      smartIndent: true,
+                                      readOnly: true,
+                                      mode:'javascript'
+                                  }">
+                        </codemirror>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 pt-3">
+              <div class="h5">
+                <span>Component code
+                </span>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="code-view mt-2">
+                <div class="card-shadow">
+                  <div class="card-body p-0">
+                    <div class="code-panel">
+                      <div class="codeMirrorDiv" id="c3">
+                        <codemirror [(ngModel)]="fusionTimeComponentCode" [config]="{ 
+                          lineNumbers: true,
+                          theme:'dracula', 
+                          tabSize: '4',
+                          smartIndent: true,
+                          readOnly: true,
+                          mode:'javascript'
+                                      }">
+                        </codemirror>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-12 pt-3">
+                <div class="h5">
+                  <span>Template Code
+                  </span>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="code-view mt-2">
+                  <div class="card-shadow">
+                    <div class="card-body p-0">
+                      <div class="code-panel">
+                        <div class="codeMirrorDiv" id="c3">
+                          <codemirror [(ngModel)]="fusionTimeTemplateCode" [config]="{ 
+                            lineNumbers: true,
+                                        theme:'dracula', 
+                                        tabSize: '4',
+                                        smartIndent: true,
+                                        readOnly: true,
+                                        mode:'htmlembedded'
+                                        }">
+                          </codemirror>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         <div class="row">
           <div class="col-12 pt-3">
