@@ -482,7 +482,9 @@ class FusionChartsComponent
   }
 
   ngOnDestroy() {
-    this.chartObj.dispose();
+    if (this.chartObj) {
+      this.chartObj.dispose();
+    }
   }
 }
 export { FusionChartsComponent };
