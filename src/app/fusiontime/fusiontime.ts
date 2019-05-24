@@ -10,47 +10,78 @@ export class FusionTime {
   type: string;
   width: string;
   height: string;
-  showChart = false;
+  chartNum = 'first';
   constructor() {
-    console.log('timeseries called');
-    this.type = 'timeseries';
+    this.type = 'column2d';
     this.width = '400';
     this.height = '400';
     this.dataSource = {
-      data: null,
-      yAxis: null,
-      caption: null
+      chart: {
+        caption: 'Countries With Most Oil Reserves [2017-18]',
+        subCaption: 'In MMbbl = One Million barrels',
+        xAxisName: 'Country',
+        yAxisName: 'Reserves (MMbbl)',
+        numberSuffix: 'K',
+        theme: 'fusion'
+      },
+      data: [
+        {
+          label: 'Venezuela',
+          value: '290'
+        },
+        {
+          label: 'Saudi',
+          value: '260'
+        },
+        {
+          label: 'Canada',
+          value: '180'
+        },
+        {
+          label: 'Iran',
+          value: '140'
+        },
+        {
+          label: 'Russia',
+          value: '115'
+        },
+        {
+          label: 'UAE',
+          value: '100'
+        },
+        {
+          label: 'US',
+          value: '30'
+        },
+        {
+          label: 'China',
+          value: '30'
+        }
+      ]
     };
-    this.fetchData();
   }
 
-  fetchData() {
-    var jsonify = res => res.json();
-    var dataFetch = fetch(
-      'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json'
-    ).then(jsonify);
-    var schemaFetch = fetch(
-      'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json'
-    ).then(jsonify);
+  showChart(num) {
+    this.chartNum = num;
+  }
 
-    Promise.all([dataFetch, schemaFetch]).then(res => {
-      var data = res[0];
-      var schema = res[1];
-      const fusionStore = new FusionCharts.DataStore();
-      const fusionTable = fusionStore.createDataTable(data, schema);
-      this.dataSource.data = fusionTable;
-      this.dataSource.yAxis = {
-        plot: [
-          {
-            value: 'Sales ($)'
-          }
-        ]
-      };
-      this.dataSource.caption = {
-        text: 'Online Sales of a SuperStore in the US'
-      };
+  showChart1: boolean;
+  showChart2: boolean;
 
-      this.showChart = true;
-    });
+  ngOnInit() {
+    this.showChart1 = true;
+    setInterval(() => {
+      this.showChart2 ? this.onShowChart1() : this.onShowChart2();
+    }, 30); // Small timeout simulates quick charts switching and causes an error.
+  }
+
+  onShowChart1() {
+    this.showChart1 = true;
+    this.showChart2 = false;
+  }
+
+  onShowChart2() {
+    this.showChart1 = false;
+    this.showChart2 = true;
   }
 }

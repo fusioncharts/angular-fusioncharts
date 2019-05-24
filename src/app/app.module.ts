@@ -37,6 +37,18 @@ import { Ex22 } from './fusioncharts/ex22/ex22';
 import { Ex23 } from './fusioncharts/ex23/ex23';
 import { Ex24 } from './fusioncharts/ex24/ex24';
 import { Ex25 } from './fusioncharts/ex25/ex25';
+import { Ex26 } from './fusioncharts/ex26/ex26';
+import { Ex27 } from './fusioncharts/ex27/ex27';
+import { Ex28 } from './fusioncharts/ex28/ex28';
+import { Ex29 } from './fusioncharts/ex29/ex29';
+import { Ex30 } from './fusioncharts/ex30/ex30';
+import { Ex31 } from './fusioncharts/ex31/ex31';
+import { Ex32 } from './fusioncharts/ex32/ex32';
+import { Ex33 } from './fusioncharts/ex33/ex33';
+import { Ex34 } from './fusioncharts/ex34/ex34';
+import { Ex35 } from './fusioncharts/ex35/ex35';
+import { Ex36 } from './fusioncharts/ex36/ex36';
+
 import { FusionTime } from './fusiontime/fusiontime';
 
 import { SafeHtmlPipe } from './pipes/trustAsHtml';
@@ -93,6 +105,7 @@ import * as Carbon from 'fusioncharts/themes/fusioncharts.theme.carbon';
 FusionChartsModule.fcRoot(
   FusionCharts,
   Charts,
+  TimeSeries,
   PowerCharts,
   Widgets,
   Maps,
@@ -134,6 +147,17 @@ FusionChartsModule.fcRoot(
     Ex23,
     Ex24,
     Ex25,
+    Ex26,
+    Ex27,
+    Ex28,
+    Ex29,
+    Ex30,
+    Ex31,
+    Ex32,
+    Ex33,
+    Ex34,
+    Ex35,
+    Ex36,
     SafeHtmlPipe,
     Navigation,
     ObservingComponent,
