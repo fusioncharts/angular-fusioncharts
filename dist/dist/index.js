@@ -573,7 +573,7 @@ var FusionChartsComponent = /** @class */ (function () {
         }
     };
     FusionChartsComponent.prototype.ngOnDestroy = function () {
-        this.chartObj.dispose();
+        this.chartObj && this.chartObj.dispose();
     };
     FusionChartsComponent.decorators = [
         { type: _angular_core.Component, args: [{
