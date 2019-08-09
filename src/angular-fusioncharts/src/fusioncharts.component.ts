@@ -237,6 +237,7 @@ class FusionChartsComponent
   containerId: string;
   private configObj: any;
   private oldDataSource: any = this.dataSource;
+  private oldDataTable: any;
   private constructerParams = {
     type: true,
     id: true,
@@ -345,7 +346,7 @@ class FusionChartsComponent
         // Edge case handling for DataTable
         if (prop === 'data') {
           if (obj[prop]._dataStore) {
-            clonedObj[prop] = '-';
+            clonedObj[prop] = `-`;
           } else {
             clonedObj[prop] = this.cloneDataSource(obj[prop]);
           }
@@ -386,15 +387,21 @@ class FusionChartsComponent
     } else {
       data = JSON.stringify(this.dataSource);
     }
-    if (this.oldDataSource === data) {
-    } else {
-      this.updateChartData();
+    if (
+      this.oldDataSource !== data ||
+      this.oldDataTable !== this.dataSource.data
+    ) {
+      this.oldDataTable = this.dataSource && this.dataSource.data;
       this.oldDataSource = data;
+      this.updateChartData();
     }
   }
 
   updateChartData() {
-    const dataFormat = this.configObj.dataFormat || 'json',
+    const dataFormat =
+        this.configObj && this.configObj.dataFormat
+          ? this.configObj.dataFormat
+          : 'json',
       data = this.dataSource;
 
     if (this.chartObj) {

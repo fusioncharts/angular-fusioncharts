@@ -1,20 +1,10 @@
 <div>
-  <div>
-    <fusioncharts
-      *ngIf="showChart2"
-      [type]="type"
-      [width]="width"
-      [height]="height"
-      [dataSource]="dataSource"
-    ></fusioncharts>
-  </div>
-  <div>
-    <fusioncharts
-      *ngIf="showChart1"
-      [type]="type"
-      [width]="width"
-      [height]="height"
-      [dataSource]="dataSource"
-    ></fusioncharts>
-  </div>
+  <fusioncharts
+    [type]="type"
+    [width]="width"
+    [height]="height"
+    [dataSource]="dataSource"
+  ></fusioncharts>
 </div>
+
+<button (click)="updateMyChartData()">Click me to change data</button>
