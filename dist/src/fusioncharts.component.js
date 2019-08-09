@@ -241,7 +241,7 @@ var FusionChartsComponent = /** @class */ (function () {
                 // Edge case handling for DataTable
                 if (prop === 'data') {
                     if (obj[prop]._dataStore) {
-                        clonedObj[prop] = '-';
+                        clonedObj[prop] = "-";
                     }
                     else {
                         clonedObj[prop] = this.cloneDataSource(obj[prop]);
@@ -279,15 +279,17 @@ var FusionChartsComponent = /** @class */ (function () {
         else {
             data = JSON.stringify(this.dataSource);
         }
-        if (this.oldDataSource === data) {
-        }
-        else {
-            this.updateChartData();
+        if (this.oldDataSource !== data ||
+            this.oldDataTable !== this.dataSource.data) {
+            this.oldDataTable = this.dataSource && this.dataSource.data;
             this.oldDataSource = data;
+            this.updateChartData();
         }
     };
     FusionChartsComponent.prototype.updateChartData = function () {
-        var dataFormat = this.configObj.dataFormat || 'json', data = this.dataSource;
+        var dataFormat = this.configObj && this.configObj.dataFormat
+            ? this.configObj.dataFormat
+            : 'json', data = this.dataSource;
         if (this.chartObj) {
             this.chartObj.setChartData(data, dataFormat);
         }
