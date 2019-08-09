@@ -207,6 +207,7 @@ declare class FusionChartsComponent implements OnInit, OnChanges, DoCheck, After
     containerId: string;
     private configObj;
     private oldDataSource;
+    private oldDataTable;
     private constructerParams;
     element: ElementRef;
     fusionchartsService: FusionChartsService;
