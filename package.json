@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -80,7 +80,7 @@
     "@types/node": "~6.0.60",
     "codelyzer": "~3.0.1",
     "codemirror": "^5.39.2",
-    "fusioncharts": "^3.13.3-sr.1",
+    "fusioncharts": "^3.14.0-sr.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "^3.0.0",
