@@ -19,7 +19,6 @@ import { FusionChartsConstructor } from './fusioncharts.constructor';
 import FusionChartsEvent from '../interfaces/FusionChartsEvent';
 import FusionChartInstance from '../interfaces/FusionChartInstance';
 import EventsList from '../events/events';
-let count = 0;
 @Component({
   selector: 'fusioncharts',
   template: `
@@ -347,7 +346,7 @@ class FusionChartsComponent
         // Edge case handling for DataTable
         if (prop === 'data') {
           if (obj[prop]._dataStore) {
-            clonedObj[prop] = `-${count}`;
+            clonedObj[prop] = `-`;
           } else {
             clonedObj[prop] = this.cloneDataSource(obj[prop]);
           }
