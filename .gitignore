@@ -42,3 +42,7 @@ Thumbs.db
 
 # rollup tmp files
 .tmp/
+/.vs/angular-fusioncharts/config/applicationhost.config
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/.vs/angular-fusioncharts/v16/.suo
