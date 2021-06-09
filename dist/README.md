@@ -365,9 +365,19 @@ Useful links for FusionTime
 
 ```
 $ git clone https://github.com/fusioncharts/angular-fusioncharts.git
-$ cd angular-component
+$ cd angular-fusioncharts
 $ npm i
 $ npm start
+$ npm run build 
+
+```
+
+- For publishing
+
+```
+$ npm run build
+$ npm publish dist
+
 ```
 
 ## Going Beyond Charts
@@ -377,4 +387,4 @@ $ npm start
 
 ## Licensing
 
-The FusionCharts React component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).
+The FusionCharts Angular integration component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).

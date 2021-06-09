@@ -365,9 +365,19 @@ Useful links for FusionTime
 
 ```
 $ git clone https://github.com/fusioncharts/angular-fusioncharts.git
-$ cd angular-component
+$ cd angular-fusioncharts
 $ npm i
 $ npm start
+$ npm run build 
+
+```
+
+- For publishing
+
+```
+$ npm run build
+$ npm publish dist
+
 ```
 
 ## Going Beyond Charts
