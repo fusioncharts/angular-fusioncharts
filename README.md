@@ -372,6 +372,14 @@ $ npm run build
 
 ```
 
+- For publishing
+
+```
+$ npm run build
+$ npm publish dist
+
+```
+
 ## Going Beyond Charts
 
 - Explore 20+ pre-built business specific dashboards for different industries like energy and manufacturing to business functions like sales, marketing and operations [here](https://www.fusioncharts.com/explore/dashboards).
