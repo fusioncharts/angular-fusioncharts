@@ -171,7 +171,7 @@ FusionCharts.register("theme", {
         legendIconSides: "2",
         labelFontColor: "#666"
       },
-      data: function(b, a, c) {
+      data: function (b, a, c) {
         a = window.Math;
         return {
           alpha:
@@ -196,7 +196,7 @@ FusionCharts.register("theme", {
         labelDistance: "20",
         showPercentInTooltip: "0"
       },
-      data: function(b, a, c) {
+      data: function (b, a, c) {
         a = window.Math;
         return {
           alpha:
@@ -221,7 +221,7 @@ FusionCharts.register("theme", {
         centerLabelFontSize: "14",
         showPercentInTooltip: "0"
       },
-      data: function(b, a, c) {
+      data: function (b, a, c) {
         a = window.Math;
         return {
           alpha:
@@ -247,7 +247,7 @@ FusionCharts.register("theme", {
         centerLabelFontSize: "14",
         showPercentInTooltip: "0"
       },
-      data: function(b, a, c) {
+      data: function (b, a, c) {
         a = window.Math;
         return {
           alpha:
@@ -1690,6 +1690,14 @@ FusionCharts.register("theme", {
         gradient: "1",
         code: "#FFC533"
       }
-    }
+    },
+
+    // 95 multi-series stacked bar2d chart
+    msstackedbar2d: {
+      chart: {
+        showLegend: "1",
+        legendIconSides: "4"
+      }
+    },
   }
 });
