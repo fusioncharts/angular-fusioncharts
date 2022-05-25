@@ -42,9 +42,6 @@
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
   "main": "./dist/index.js",
-  "module_ivy_ngcc": "__ivy_ngcc__/index.js",
-  "module": "index.js",
-  "typings": "index.d.ts",
   "dependencies": {
     "@angular/animations": "4.0.0 - 13.x",
     "@angular/common": "4.0.0 - 13.x",
