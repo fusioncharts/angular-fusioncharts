@@ -45,8 +45,8 @@
   "dependencies": {
     "@angular/animations": "4.0.0 - 12.x",
     "@angular/common": "4.0.0 - 12.x",
-    "@angular/compiler": "4.0.0 - 12.x",
-    "@angular/core": "4.0.0 - 12.x",
+    "@angular/compiler": "4.0.0 - 11.x",
+    "@angular/core": "4.0.0 - 11.x",
     "@angular/forms": "4.0.0 - 12.x",
     "@angular/platform-browser": "4.0.0 - 12.x",
     "@angular/platform-browser-dynamic": "4.0.0 - 12.x",
