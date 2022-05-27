@@ -1,14 +1,46 @@
 {
-  "name": "angular-fusioncharts",
-  "version": "3.2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fusioncharts/angular-fusioncharts"
+  "_from": "angular-fusioncharts",
+  "_id": "angular-fusioncharts@3.2.0",
+  "_inBundle": false,
+  "_integrity": "sha1-q+XBQdmZ/ll3B+fCaunztMoMqk0=",
+  "_location": "/angular-fusioncharts",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "angular-fusioncharts",
+    "name": "angular-fusioncharts",
+    "escapedName": "angular-fusioncharts",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://fusioncharts.myget.org/F/fusion-charts/npm/angular-fusioncharts/-/angular-fusioncharts-3.2.0.tgz",
+  "_shasum": "abe5c141d999fe597707e7c26ae9f3b4ca0caa4d",
+  "_spec": "angular-fusioncharts",
+  "_where": "C:\\Users\\suresh.kumar\\Documents\\Sangra\\3.19\\angular-fc12",
   "author": {
     "name": "FusionCharts",
     "email": "support@fusioncharts.com"
   },
+  "bugs": {
+    "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@types/fusioncharts": "^3.11.0"
+  },
+  "deprecated": false,
+  "description": "A simple and lightweight official Angular component for FusionCharts JavaScript charting library. angular-fusioncharts enables you to add JavaScript charts in your Angular application without any hassle.",
+  "devDependencies": {},
+  "engines": {
+    "node": ">=4.4.1"
+  },
+  "homepage": "https://github.com/fusioncharts/angular-fusioncharts#readme",
   "keywords": [
     "angular",
     "angular-component",
@@ -23,31 +55,24 @@
     "dataviz"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
-  },
   "main": "dist/index.js",
   "module_ivy_ngcc": "__ivy_ngcc__/index.js",
   "module": "index.js",
-  "typings": "index.d.ts",
-  "dependencies": {
-    "fusioncharts": "3.18.0"
-  },
-  "devDependencies": {},
+  "name": "angular-fusioncharts",
   "peerDependencies": {
     "@angular/core": "^4.0.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.1",
     "zone.js": "^0.8.16"
   },
-  "engines": {
-    "node": ">=4.4.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fusioncharts/angular-fusioncharts.git"
   },
+  "typings": "index.d.ts",
+  "version": "3.2.1",
   "__processed_by_ivy_ngcc__": {
-    "module": "13.3.9",
-    "typings": "13.3.9"
-  },
-  "scripts": {
-    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
+    "module": "12.2.16",
+    "typings": "12.2.16"
   }
 }
