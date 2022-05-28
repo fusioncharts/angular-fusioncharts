@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts",
-  "version": "3.2.0",
+  "version": "3.2.0-Suresh",
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular-fusioncharts"
@@ -35,10 +35,10 @@
   },
   "devDependencies": {},
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
+    "@angular/core": "13.0.0",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.8.16"
+    "rxjs": "5.0.1 - 8.x",
+    "zone.js": "0.8.16 - 0.x"
   },
   "engines": {
     "node": ">=4.4.1"
