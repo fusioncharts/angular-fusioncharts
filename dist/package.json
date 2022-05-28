@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts",
-  "version": "3.1.0",
+  "version": "3.1.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular-fusioncharts"
@@ -27,6 +27,7 @@
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
   "main": "dist/index.js",
+  "module_ivy_ngcc": "__ivy_ngcc__/index.js",
   "module": "index.js",
   "typings": "index.d.ts",
   "dependencies": {
@@ -34,12 +35,19 @@
   },
   "devDependencies": {},
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
+    "@angular/core": "^12.0.0",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.8.16"
+    "rxjs": "5.0.1 - 8.x",
+    "zone.js": "0.8.16 - 0.x"
   },
   "engines": {
     "node": ">=4.4.1"
+  },
+  "__processed_by_ivy_ngcc__": {
+    "module": "12.0.3",
+    "typings": "12.0.3"
+  },
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by NGCC. This is not allowed.\\nPlease delete and rebuild the package, without compiling with NGCC, before attempting to publish.\\nNote that NGCC may have been run by importing this package into another project that is being built with Ivy enabled.\\n')\" && exit 1"
   }
 }

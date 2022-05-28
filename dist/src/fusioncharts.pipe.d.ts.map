@@ -1,0 +1,1 @@
+{"version":3,"file":"fusioncharts.pipe.d.ts","sources":["fusioncharts.pipe.d.ts"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;;AACA;AACA;;;;AACA","sourcesContent":["import { PipeTransform } from '@angular/core';\n/**\n * Transforms any input value\n */\nexport declare class FusionChartsPipe implements PipeTransform {\n    transform(value: any, args?: any[]): string;\n}\n"]}
