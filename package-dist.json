@@ -41,7 +41,7 @@
   "bugs": {
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
-  "main": "./dist/index.js",
+  "main": "dist/index.js",
   "module_ivy_ngcc": "dist/__ivy_ngcc__/index.js",
   "module": "dist/index.js",
   "dependencies": {
@@ -55,7 +55,6 @@
   },
   "devDependencies": {
   },
-  "typings": "dist/index.d.ts",
   "engines": {
     "node": ">=4.4.1"
   }
