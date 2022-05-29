@@ -1,6 +1,21 @@
 {
   "name": "angular-fusioncharts",
-  "version": "3.1.0",
+  "version": "4.0.0",
+  "description": "A Simple and Lightweight Angular component for FusionCharts JavaScript Charting Library",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "start-prod": "ng serve --prod",
+    "build": "rm -rf dist/ && node_modules/.bin/ngc -p tsconfig-aot.json && rollup -c rollup.config.js && cp package-dist.json dist/package.json && cp README.md dist/ && npm run uglify",
+    "docs": "ng build --prod && npm run build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "transpile": "ngc -p tsconfig-aot.json",
+    "tsc": "tsc",
+    "package": "rollup -c",
+    "uglify": "uglifyjs dist/dist/index.js --screw-ie8 --compress --mangle --comments --output dist/dist/index.min.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular-fusioncharts"
@@ -26,19 +41,21 @@
   "bugs": {
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "module_ivy_ngcc": "dist/__ivy_ngcc__/index.js",
   "module": "dist/index.js",
-  "typings": "index.d.ts",
   "dependencies": {
     "@types/fusioncharts": "^3.11.0"
   },
-  "devDependencies": {},
   "peerDependencies": {
     "@angular/core": "^12.0.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.1 - 8.x",
     "zone.js": "0.8.16 - 0.x"
   },
+  "devDependencies": {
+  },
+  "typings": "dist/index.d.ts",
   "engines": {
     "node": ">=4.4.1"
   }
