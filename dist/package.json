@@ -29,6 +29,7 @@
   "main": "dist/index.js",
   "module_ivy_ngcc": "__ivy_ngcc__/index.js",
   "module": "index.js",
+  "typings": "index.d.ts",
   "dependencies": {
     "@types/fusioncharts": "^3.11.0"
   },
