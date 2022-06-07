@@ -38,6 +38,13 @@
     "dataviz"
   ],
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Sanjay Bhan",
+      "email": "sanjay.bhan@idera.com",
+      "url": "https://github.com/SanjayBhan/"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
   },
