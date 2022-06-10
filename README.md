@@ -15,7 +15,7 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
 ---
 ## Validation and Verification
 
-The FusionCharts Angular integration component has been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13
+The FusionCharts Angular integration component have been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13
 
 
 ## Table of Contents
