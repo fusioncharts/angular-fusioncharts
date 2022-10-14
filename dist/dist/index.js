@@ -1,19 +1,36 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core'], factory) :
-	(factory((global.ng = global.ng || {}, global.ng['angular-fusioncharts'] = {}),global.ng.core));
-}(this, (function (exports,_angular_core) { 'use strict';
+'use strict';
+
+var i0 = require('@angular/core');
+
+function _interopNamespaceDefault(e) {
+    var n = Object.create(null);
+    if (e) {
+        Object.keys(e).forEach(function (k) {
+            if (k !== 'default') {
+                var d = Object.getOwnPropertyDescriptor(e, k);
+                Object.defineProperty(n, k, d.get ? d : {
+                    enumerable: true,
+                    get: function () { return e[k]; }
+                });
+            }
+        });
+    }
+    n.default = e;
+    return Object.freeze(n);
+}
+
+var i0__namespace = /*#__PURE__*/_interopNamespaceDefault(i0);
 
 var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
-    FusionChartsStatic.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    FusionChartsStatic.ctorParameters = function () { return []; };
+    FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(t) { return new (t || FusionChartsStatic)(); };
+    FusionChartsStatic.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsStatic, factory: FusionChartsStatic.ɵfac });
     return FusionChartsStatic;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsStatic, [{
+        type: i0.Injectable
+    }], null, null); })();
 var FusionChartsService = /** @class */ (function () {
     function FusionChartsService(FCStatic) {
         var fcRoot;
@@ -65,15 +82,13 @@ var FusionChartsService = /** @class */ (function () {
     };
     FusionChartsService._fcRoot = null;
     FusionChartsService.itemCount = 0;
-    FusionChartsService.decorators = [
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    FusionChartsService.ctorParameters = function () { return [
-        { type: FusionChartsStatic, },
-    ]; };
+    FusionChartsService.ɵfac = function FusionChartsService_Factory(t) { return new (t || FusionChartsService)(i0__namespace.ɵɵinject(FusionChartsStatic)); };
+    FusionChartsService.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsService, factory: FusionChartsService.ɵfac });
     return FusionChartsService;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsService, [{
+        type: i0.Injectable
+    }], function () { return [{ type: FusionChartsStatic }]; }, null); })();
 
 function FusionChartsConstructor(fusionchartsService, chartConfig) {
     var FusionCharts = fusionchartsService.getFusionChartsStatic();
@@ -226,140 +241,139 @@ var FusionChartsComponent = /** @class */ (function () {
         /**
          * All events emitter
          */
-        this.beforeLinkedItemOpen = new _angular_core.EventEmitter();
-        this.linkedItemOpened = new _angular_core.EventEmitter();
-        this.beforeLinkedItemClose = new _angular_core.EventEmitter();
-        this.linkedItemClosed = new _angular_core.EventEmitter();
-        this.printReadyStateChange = new _angular_core.EventEmitter();
-        this.dataLoadRequestCompleted = new _angular_core.EventEmitter();
-        this.dataLoadError = new _angular_core.EventEmitter();
-        this.dataLoadCancelled = new _angular_core.EventEmitter();
-        this.dataLoadRequestCancelled = new _angular_core.EventEmitter();
-        this.dataUpdated = new _angular_core.EventEmitter();
-        this.dataUpdateCancelled = new _angular_core.EventEmitter();
-        this.dataLoadRequested = new _angular_core.EventEmitter();
-        this.beforeDataUpdate = new _angular_core.EventEmitter();
-        this.realTimeUpdateComplete = new _angular_core.EventEmitter();
-        this.chartCleared = new _angular_core.EventEmitter();
-        this.slicingEnd = new _angular_core.EventEmitter();
-        this.slicingStart = new _angular_core.EventEmitter();
-        this.entityRollOut = new _angular_core.EventEmitter();
-        this.entityRollOver = new _angular_core.EventEmitter();
-        this.entityClick = new _angular_core.EventEmitter();
-        this.connectorRollOver = new _angular_core.EventEmitter();
-        this.connectorRollOut = new _angular_core.EventEmitter();
-        this.connectorClick = new _angular_core.EventEmitter();
-        this.markerRollOver = new _angular_core.EventEmitter();
-        this.markerRollOut = new _angular_core.EventEmitter();
-        this.markerClick = new _angular_core.EventEmitter();
-        this.pageNavigated = new _angular_core.EventEmitter();
-        this.rotationEnd = new _angular_core.EventEmitter();
-        this.rotationStart = new _angular_core.EventEmitter();
-        this.centerLabelRollover = new _angular_core.EventEmitter();
-        this.centerLabelRollout = new _angular_core.EventEmitter();
-        this.centerLabelClick = new _angular_core.EventEmitter();
-        this.centerLabelChanged = new _angular_core.EventEmitter();
-        this.chartClick = new _angular_core.EventEmitter();
-        this.chartMouseMove = new _angular_core.EventEmitter();
-        this.chartRollOver = new _angular_core.EventEmitter();
-        this.chartRollOut = new _angular_core.EventEmitter();
-        this.backgroundLoaded = new _angular_core.EventEmitter();
-        this.backgroundLoadError = new _angular_core.EventEmitter();
-        this.legendItemClicked = new _angular_core.EventEmitter();
-        this.legendItemRollover = new _angular_core.EventEmitter();
-        this.legendItemRollout = new _angular_core.EventEmitter();
-        this.logoRollover = new _angular_core.EventEmitter();
-        this.logoRollout = new _angular_core.EventEmitter();
-        this.logoClick = new _angular_core.EventEmitter();
-        this.logoLoaded = new _angular_core.EventEmitter();
-        this.logoLoadError = new _angular_core.EventEmitter();
-        this.beforeExport = new _angular_core.EventEmitter();
-        this.exported = new _angular_core.EventEmitter();
-        this.exportCancelled = new _angular_core.EventEmitter();
-        this.beforePrint = new _angular_core.EventEmitter();
-        this.printComplete = new _angular_core.EventEmitter();
-        this.printCancelled = new _angular_core.EventEmitter();
-        this.dataLabelClick = new _angular_core.EventEmitter();
-        this.dataLabelRollOver = new _angular_core.EventEmitter();
-        this.dataLabelRollOut = new _angular_core.EventEmitter();
-        this.scrollStart = new _angular_core.EventEmitter();
-        this.scrollEnd = new _angular_core.EventEmitter();
-        this.onScroll = new _angular_core.EventEmitter();
-        this.zoomReset = new _angular_core.EventEmitter();
-        this.zoomedOut = new _angular_core.EventEmitter();
-        this.zoomedIn = new _angular_core.EventEmitter();
-        this.zoomed = new _angular_core.EventEmitter();
-        this.zoomModeChanged = new _angular_core.EventEmitter();
-        this.pinned = new _angular_core.EventEmitter();
-        this.dataRestored = new _angular_core.EventEmitter();
-        this.beforeDataSubmit = new _angular_core.EventEmitter();
-        this.dataSubmitError = new _angular_core.EventEmitter();
-        this.dataSubmitted = new _angular_core.EventEmitter();
-        this.dataSubmitCancelled = new _angular_core.EventEmitter();
-        this.chartUpdated = new _angular_core.EventEmitter();
-        this.nodeAdded = new _angular_core.EventEmitter();
-        this.nodeUpdated = new _angular_core.EventEmitter();
-        this.nodeDeleted = new _angular_core.EventEmitter();
-        this.connectorAdded = new _angular_core.EventEmitter();
-        this.connectorUpdated = new _angular_core.EventEmitter();
-        this.connectorDeleted = new _angular_core.EventEmitter();
-        this.labelAdded = new _angular_core.EventEmitter();
-        this.labelDeleted = new _angular_core.EventEmitter();
-        this.selectionRemoved = new _angular_core.EventEmitter();
-        this.selectionStart = new _angular_core.EventEmitter();
-        this.selectionEnd = new _angular_core.EventEmitter();
-        this.labelClick = new _angular_core.EventEmitter();
-        this.labelRollOver = new _angular_core.EventEmitter();
-        this.labelRollOut = new _angular_core.EventEmitter();
-        this.labelDragStart = new _angular_core.EventEmitter();
-        this.labelDragEnd = new _angular_core.EventEmitter();
-        this.dataplotDragStart = new _angular_core.EventEmitter();
-        this.dataplotDragEnd = new _angular_core.EventEmitter();
-        this.processClick = new _angular_core.EventEmitter();
-        this.processRollOver = new _angular_core.EventEmitter();
-        this.processRollOut = new _angular_core.EventEmitter();
-        this.categoryClick = new _angular_core.EventEmitter();
-        this.categoryRollOver = new _angular_core.EventEmitter();
-        this.categoryRollOut = new _angular_core.EventEmitter();
-        this.milestoneClick = new _angular_core.EventEmitter();
-        this.milestoneRollOver = new _angular_core.EventEmitter();
-        this.milestoneRollOut = new _angular_core.EventEmitter();
-        this.chartTypeChanged = new _angular_core.EventEmitter();
-        this.overlayButtonClick = new _angular_core.EventEmitter();
-        this.loaded = new _angular_core.EventEmitter();
-        this.rendered = new _angular_core.EventEmitter();
-        this.drawComplete = new _angular_core.EventEmitter();
-        this.renderComplete = new _angular_core.EventEmitter();
-        this.dataInvalid = new _angular_core.EventEmitter();
-        this.dataXMLInvalid = new _angular_core.EventEmitter();
-        this.dataLoaded = new _angular_core.EventEmitter();
-        this.noDataToDisplay = new _angular_core.EventEmitter();
-        this.legendPointerDragStart = new _angular_core.EventEmitter();
-        this.legendPointerDragStop = new _angular_core.EventEmitter();
-        this.legendRangeUpdated = new _angular_core.EventEmitter();
-        this.alertComplete = new _angular_core.EventEmitter();
-        this.realTimeUpdateError = new _angular_core.EventEmitter();
-        this.dataplotRollOver = new _angular_core.EventEmitter();
-        this.dataplotRollOut = new _angular_core.EventEmitter();
-        this.dataplotClick = new _angular_core.EventEmitter();
-        this.linkClicked = new _angular_core.EventEmitter();
-        this.beforeRender = new _angular_core.EventEmitter();
-        this.renderCancelled = new _angular_core.EventEmitter();
-        this.beforeResize = new _angular_core.EventEmitter();
-        this.resized = new _angular_core.EventEmitter();
-        this.resizeCancelled = new _angular_core.EventEmitter();
-        this.beforeDispose = new _angular_core.EventEmitter();
-        this.disposed = new _angular_core.EventEmitter();
-        this.disposeCancelled = new _angular_core.EventEmitter();
-        this.linkedChartInvoked = new _angular_core.EventEmitter();
-        this.beforeDrillDown = new _angular_core.EventEmitter();
-        this.drillDown = new _angular_core.EventEmitter();
-        this.beforeDrillUp = new _angular_core.EventEmitter();
-        this.drillUp = new _angular_core.EventEmitter();
-        this.drillDownCancelled = new _angular_core.EventEmitter();
-        this.drillUpCancelled = new _angular_core.EventEmitter();
-        this.initialized = new _angular_core.EventEmitter();
-        this.oldDataSource = this.dataSource;
+        this.beforeLinkedItemOpen = new i0.EventEmitter();
+        this.linkedItemOpened = new i0.EventEmitter();
+        this.beforeLinkedItemClose = new i0.EventEmitter();
+        this.linkedItemClosed = new i0.EventEmitter();
+        this.printReadyStateChange = new i0.EventEmitter();
+        this.dataLoadRequestCompleted = new i0.EventEmitter();
+        this.dataLoadError = new i0.EventEmitter();
+        this.dataLoadCancelled = new i0.EventEmitter();
+        this.dataLoadRequestCancelled = new i0.EventEmitter();
+        this.dataUpdated = new i0.EventEmitter();
+        this.dataUpdateCancelled = new i0.EventEmitter();
+        this.dataLoadRequested = new i0.EventEmitter();
+        this.beforeDataUpdate = new i0.EventEmitter();
+        this.realTimeUpdateComplete = new i0.EventEmitter();
+        this.chartCleared = new i0.EventEmitter();
+        this.slicingEnd = new i0.EventEmitter();
+        this.slicingStart = new i0.EventEmitter();
+        this.entityRollOut = new i0.EventEmitter();
+        this.entityRollOver = new i0.EventEmitter();
+        this.entityClick = new i0.EventEmitter();
+        this.connectorRollOver = new i0.EventEmitter();
+        this.connectorRollOut = new i0.EventEmitter();
+        this.connectorClick = new i0.EventEmitter();
+        this.markerRollOver = new i0.EventEmitter();
+        this.markerRollOut = new i0.EventEmitter();
+        this.markerClick = new i0.EventEmitter();
+        this.pageNavigated = new i0.EventEmitter();
+        this.rotationEnd = new i0.EventEmitter();
+        this.rotationStart = new i0.EventEmitter();
+        this.centerLabelRollover = new i0.EventEmitter();
+        this.centerLabelRollout = new i0.EventEmitter();
+        this.centerLabelClick = new i0.EventEmitter();
+        this.centerLabelChanged = new i0.EventEmitter();
+        this.chartClick = new i0.EventEmitter();
+        this.chartMouseMove = new i0.EventEmitter();
+        this.chartRollOver = new i0.EventEmitter();
+        this.chartRollOut = new i0.EventEmitter();
+        this.backgroundLoaded = new i0.EventEmitter();
+        this.backgroundLoadError = new i0.EventEmitter();
+        this.legendItemClicked = new i0.EventEmitter();
+        this.legendItemRollover = new i0.EventEmitter();
+        this.legendItemRollout = new i0.EventEmitter();
+        this.logoRollover = new i0.EventEmitter();
+        this.logoRollout = new i0.EventEmitter();
+        this.logoClick = new i0.EventEmitter();
+        this.logoLoaded = new i0.EventEmitter();
+        this.logoLoadError = new i0.EventEmitter();
+        this.beforeExport = new i0.EventEmitter();
+        this.exported = new i0.EventEmitter();
+        this.exportCancelled = new i0.EventEmitter();
+        this.beforePrint = new i0.EventEmitter();
+        this.printComplete = new i0.EventEmitter();
+        this.printCancelled = new i0.EventEmitter();
+        this.dataLabelClick = new i0.EventEmitter();
+        this.dataLabelRollOver = new i0.EventEmitter();
+        this.dataLabelRollOut = new i0.EventEmitter();
+        this.scrollStart = new i0.EventEmitter();
+        this.scrollEnd = new i0.EventEmitter();
+        this.onScroll = new i0.EventEmitter();
+        this.zoomReset = new i0.EventEmitter();
+        this.zoomedOut = new i0.EventEmitter();
+        this.zoomedIn = new i0.EventEmitter();
+        this.zoomed = new i0.EventEmitter();
+        this.zoomModeChanged = new i0.EventEmitter();
+        this.pinned = new i0.EventEmitter();
+        this.dataRestored = new i0.EventEmitter();
+        this.beforeDataSubmit = new i0.EventEmitter();
+        this.dataSubmitError = new i0.EventEmitter();
+        this.dataSubmitted = new i0.EventEmitter();
+        this.dataSubmitCancelled = new i0.EventEmitter();
+        this.chartUpdated = new i0.EventEmitter();
+        this.nodeAdded = new i0.EventEmitter();
+        this.nodeUpdated = new i0.EventEmitter();
+        this.nodeDeleted = new i0.EventEmitter();
+        this.connectorAdded = new i0.EventEmitter();
+        this.connectorUpdated = new i0.EventEmitter();
+        this.connectorDeleted = new i0.EventEmitter();
+        this.labelAdded = new i0.EventEmitter();
+        this.labelDeleted = new i0.EventEmitter();
+        this.selectionRemoved = new i0.EventEmitter();
+        this.selectionStart = new i0.EventEmitter();
+        this.selectionEnd = new i0.EventEmitter();
+        this.labelClick = new i0.EventEmitter();
+        this.labelRollOver = new i0.EventEmitter();
+        this.labelRollOut = new i0.EventEmitter();
+        this.labelDragStart = new i0.EventEmitter();
+        this.labelDragEnd = new i0.EventEmitter();
+        this.dataplotDragStart = new i0.EventEmitter();
+        this.dataplotDragEnd = new i0.EventEmitter();
+        this.processClick = new i0.EventEmitter();
+        this.processRollOver = new i0.EventEmitter();
+        this.processRollOut = new i0.EventEmitter();
+        this.categoryClick = new i0.EventEmitter();
+        this.categoryRollOver = new i0.EventEmitter();
+        this.categoryRollOut = new i0.EventEmitter();
+        this.milestoneClick = new i0.EventEmitter();
+        this.milestoneRollOver = new i0.EventEmitter();
+        this.milestoneRollOut = new i0.EventEmitter();
+        this.chartTypeChanged = new i0.EventEmitter();
+        this.overlayButtonClick = new i0.EventEmitter();
+        this.loaded = new i0.EventEmitter();
+        this.rendered = new i0.EventEmitter();
+        this.drawComplete = new i0.EventEmitter();
+        this.renderComplete = new i0.EventEmitter();
+        this.dataInvalid = new i0.EventEmitter();
+        this.dataXMLInvalid = new i0.EventEmitter();
+        this.dataLoaded = new i0.EventEmitter();
+        this.noDataToDisplay = new i0.EventEmitter();
+        this.legendPointerDragStart = new i0.EventEmitter();
+        this.legendPointerDragStop = new i0.EventEmitter();
+        this.legendRangeUpdated = new i0.EventEmitter();
+        this.alertComplete = new i0.EventEmitter();
+        this.realTimeUpdateError = new i0.EventEmitter();
+        this.dataplotRollOver = new i0.EventEmitter();
+        this.dataplotRollOut = new i0.EventEmitter();
+        this.dataplotClick = new i0.EventEmitter();
+        this.linkClicked = new i0.EventEmitter();
+        this.beforeRender = new i0.EventEmitter();
+        this.renderCancelled = new i0.EventEmitter();
+        this.beforeResize = new i0.EventEmitter();
+        this.resized = new i0.EventEmitter();
+        this.resizeCancelled = new i0.EventEmitter();
+        this.beforeDispose = new i0.EventEmitter();
+        this.disposed = new i0.EventEmitter();
+        this.disposeCancelled = new i0.EventEmitter();
+        this.linkedChartInvoked = new i0.EventEmitter();
+        this.beforeDrillDown = new i0.EventEmitter();
+        this.drillDown = new i0.EventEmitter();
+        this.beforeDrillUp = new i0.EventEmitter();
+        this.drillUp = new i0.EventEmitter();
+        this.drillDownCancelled = new i0.EventEmitter();
+        this.drillUpCancelled = new i0.EventEmitter();
+        this.initialized = new i0.EventEmitter();
         this.constructerParams = {
             type: true,
             id: true,
@@ -478,7 +492,7 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
         for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
             var i = _a[_i];
-            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update" + key;
+            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update".concat(key);
             if (THIS[fnName]) {
                 THIS[fnName]();
             }
@@ -526,10 +540,10 @@ var FusionChartsComponent = /** @class */ (function () {
             this.chartObj.chartType(this.type);
         }
     };
-    FusionChartsComponent.prototype.generateEventsCallback = function (eventList$$1) {
+    FusionChartsComponent.prototype.generateEventsCallback = function (eventList) {
         var _this_1 = this;
         var events = {};
-        eventList$$1.forEach(function (eventName) {
+        eventList.forEach(function (eventName) {
             events[eventName] = function (eventObj, dataObj) {
                 var fEventObj = { eventObj: {}, dataObj: {} };
                 if (eventObj)
@@ -577,231 +591,423 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.prototype.ngOnDestroy = function () {
         this.chartObj && this.chartObj.dispose();
     };
-    FusionChartsComponent.decorators = [
-        { type: _angular_core.Component, args: [{
-                    selector: 'fusioncharts',
-                    template: "\n    <div attr.id=\"container-{{ containerId }}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
-                    providers: [FusionChartsService]
-                },] },
-    ];
-    /** @nocollapse */
-    FusionChartsComponent.ctorParameters = function () { return [
-        { type: _angular_core.ElementRef, },
-        { type: FusionChartsService, },
-        { type: _angular_core.KeyValueDiffers, },
-        { type: _angular_core.NgZone, },
-    ]; };
-    FusionChartsComponent.propDecorators = {
-        'placeholder': [{ type: _angular_core.Input },],
-        'dataSource': [{ type: _angular_core.Input },],
-        'type': [{ type: _angular_core.Input },],
-        'id': [{ type: _angular_core.Input },],
-        'width': [{ type: _angular_core.Input },],
-        'height': [{ type: _angular_core.Input },],
-        'renderAt': [{ type: _angular_core.Input },],
-        'dataFormat': [{ type: _angular_core.Input },],
-        'events': [{ type: _angular_core.Input },],
-        'link': [{ type: _angular_core.Input },],
-        'showDataLoadingMessage': [{ type: _angular_core.Input },],
-        'showChartLoadingMessage': [{ type: _angular_core.Input },],
-        'baseChartMessageFont': [{ type: _angular_core.Input },],
-        'baseChartMessageFontSize': [{ type: _angular_core.Input },],
-        'baseChartMessageColor': [{ type: _angular_core.Input },],
-        'dataLoadStartMessage': [{ type: _angular_core.Input },],
-        'dataLoadErrorMessage': [{ type: _angular_core.Input },],
-        'dataInvalidMessage': [{ type: _angular_core.Input },],
-        'dataEmptyMessage': [{ type: _angular_core.Input },],
-        'typeNotSupportedMessage': [{ type: _angular_core.Input },],
-        'loadMessage': [{ type: _angular_core.Input },],
-        'renderErrorMessage': [{ type: _angular_core.Input },],
-        'containerBackgroundColor': [{ type: _angular_core.Input },],
-        'containerBackgroundOpacity': [{ type: _angular_core.Input },],
-        'containerClassName': [{ type: _angular_core.Input },],
-        'baseChartMessageImageHAlign': [{ type: _angular_core.Input },],
-        'baseChartMessageImageVAlign': [{ type: _angular_core.Input },],
-        'baseChartMessageImageAlpha': [{ type: _angular_core.Input },],
-        'baseChartMessageImageScale': [{ type: _angular_core.Input },],
-        'typeNotSupportedMessageImageHAlign': [{ type: _angular_core.Input },],
-        'typeNotSupportedMessageImageVAlign': [{ type: _angular_core.Input },],
-        'typeNotSupportedMessageImageAlpha': [{ type: _angular_core.Input },],
-        'typeNotSupportedMessageImageScale': [{ type: _angular_core.Input },],
-        'dataLoadErrorMessageImageHAlign': [{ type: _angular_core.Input },],
-        'dataLoadErrorMessageImageVAlign': [{ type: _angular_core.Input },],
-        'dataLoadErrorMessageImageAlpha': [{ type: _angular_core.Input },],
-        'dataLoadErrorMessageImageScale': [{ type: _angular_core.Input },],
-        'dataLoadStartMessageImageHAlign': [{ type: _angular_core.Input },],
-        'dataLoadStartMessageImageVAlign': [{ type: _angular_core.Input },],
-        'dataLoadStartMessageImageAlpha': [{ type: _angular_core.Input },],
-        'dataLoadStartMessageImageScale': [{ type: _angular_core.Input },],
-        'dataInvalidMessageImageHAlign': [{ type: _angular_core.Input },],
-        'dataInvalidMessageImageVAlign': [{ type: _angular_core.Input },],
-        'dataInvalidMessageImageAlpha': [{ type: _angular_core.Input },],
-        'dataInvalidMessageImageScale': [{ type: _angular_core.Input },],
-        'dataEmptyMessageImageHAlign': [{ type: _angular_core.Input },],
-        'dataEmptyMessageImageVAlign': [{ type: _angular_core.Input },],
-        'dataEmptyMessageImageAlpha': [{ type: _angular_core.Input },],
-        'dataEmptyMessageImageScale': [{ type: _angular_core.Input },],
-        'renderErrorMessageImageHAlign': [{ type: _angular_core.Input },],
-        'renderErrorMessageImageVAlign': [{ type: _angular_core.Input },],
-        'renderErrorMessageImageAlpha': [{ type: _angular_core.Input },],
-        'renderErrorMessageImageScale': [{ type: _angular_core.Input },],
-        'loadMessageImageHAlign': [{ type: _angular_core.Input },],
-        'loadMessageImageVAlign': [{ type: _angular_core.Input },],
-        'loadMessageImageAlpha': [{ type: _angular_core.Input },],
-        'loadMessageImageScale': [{ type: _angular_core.Input },],
-        'chartConfig': [{ type: _angular_core.Input },],
-        'beforeLinkedItemOpen': [{ type: _angular_core.Output },],
-        'linkedItemOpened': [{ type: _angular_core.Output },],
-        'beforeLinkedItemClose': [{ type: _angular_core.Output },],
-        'linkedItemClosed': [{ type: _angular_core.Output },],
-        'printReadyStateChange': [{ type: _angular_core.Output },],
-        'dataLoadRequestCompleted': [{ type: _angular_core.Output },],
-        'dataLoadError': [{ type: _angular_core.Output },],
-        'dataLoadCancelled': [{ type: _angular_core.Output },],
-        'dataLoadRequestCancelled': [{ type: _angular_core.Output },],
-        'dataUpdated': [{ type: _angular_core.Output },],
-        'dataUpdateCancelled': [{ type: _angular_core.Output },],
-        'dataLoadRequested': [{ type: _angular_core.Output },],
-        'beforeDataUpdate': [{ type: _angular_core.Output },],
-        'realTimeUpdateComplete': [{ type: _angular_core.Output },],
-        'chartCleared': [{ type: _angular_core.Output },],
-        'slicingEnd': [{ type: _angular_core.Output },],
-        'slicingStart': [{ type: _angular_core.Output },],
-        'entityRollOut': [{ type: _angular_core.Output },],
-        'entityRollOver': [{ type: _angular_core.Output },],
-        'entityClick': [{ type: _angular_core.Output },],
-        'connectorRollOver': [{ type: _angular_core.Output },],
-        'connectorRollOut': [{ type: _angular_core.Output },],
-        'connectorClick': [{ type: _angular_core.Output },],
-        'markerRollOver': [{ type: _angular_core.Output },],
-        'markerRollOut': [{ type: _angular_core.Output },],
-        'markerClick': [{ type: _angular_core.Output },],
-        'pageNavigated': [{ type: _angular_core.Output },],
-        'rotationEnd': [{ type: _angular_core.Output },],
-        'rotationStart': [{ type: _angular_core.Output },],
-        'centerLabelRollover': [{ type: _angular_core.Output },],
-        'centerLabelRollout': [{ type: _angular_core.Output },],
-        'centerLabelClick': [{ type: _angular_core.Output },],
-        'centerLabelChanged': [{ type: _angular_core.Output },],
-        'chartClick': [{ type: _angular_core.Output },],
-        'chartMouseMove': [{ type: _angular_core.Output },],
-        'chartRollOver': [{ type: _angular_core.Output },],
-        'chartRollOut': [{ type: _angular_core.Output },],
-        'backgroundLoaded': [{ type: _angular_core.Output },],
-        'backgroundLoadError': [{ type: _angular_core.Output },],
-        'legendItemClicked': [{ type: _angular_core.Output },],
-        'legendItemRollover': [{ type: _angular_core.Output },],
-        'legendItemRollout': [{ type: _angular_core.Output },],
-        'logoRollover': [{ type: _angular_core.Output },],
-        'logoRollout': [{ type: _angular_core.Output },],
-        'logoClick': [{ type: _angular_core.Output },],
-        'logoLoaded': [{ type: _angular_core.Output },],
-        'logoLoadError': [{ type: _angular_core.Output },],
-        'beforeExport': [{ type: _angular_core.Output },],
-        'exported': [{ type: _angular_core.Output },],
-        'exportCancelled': [{ type: _angular_core.Output },],
-        'beforePrint': [{ type: _angular_core.Output },],
-        'printComplete': [{ type: _angular_core.Output },],
-        'printCancelled': [{ type: _angular_core.Output },],
-        'dataLabelClick': [{ type: _angular_core.Output },],
-        'dataLabelRollOver': [{ type: _angular_core.Output },],
-        'dataLabelRollOut': [{ type: _angular_core.Output },],
-        'scrollStart': [{ type: _angular_core.Output },],
-        'scrollEnd': [{ type: _angular_core.Output },],
-        'onScroll': [{ type: _angular_core.Output },],
-        'zoomReset': [{ type: _angular_core.Output },],
-        'zoomedOut': [{ type: _angular_core.Output },],
-        'zoomedIn': [{ type: _angular_core.Output },],
-        'zoomed': [{ type: _angular_core.Output },],
-        'zoomModeChanged': [{ type: _angular_core.Output },],
-        'pinned': [{ type: _angular_core.Output },],
-        'dataRestored': [{ type: _angular_core.Output },],
-        'beforeDataSubmit': [{ type: _angular_core.Output },],
-        'dataSubmitError': [{ type: _angular_core.Output },],
-        'dataSubmitted': [{ type: _angular_core.Output },],
-        'dataSubmitCancelled': [{ type: _angular_core.Output },],
-        'chartUpdated': [{ type: _angular_core.Output },],
-        'nodeAdded': [{ type: _angular_core.Output },],
-        'nodeUpdated': [{ type: _angular_core.Output },],
-        'nodeDeleted': [{ type: _angular_core.Output },],
-        'connectorAdded': [{ type: _angular_core.Output },],
-        'connectorUpdated': [{ type: _angular_core.Output },],
-        'connectorDeleted': [{ type: _angular_core.Output },],
-        'labelAdded': [{ type: _angular_core.Output },],
-        'labelDeleted': [{ type: _angular_core.Output },],
-        'selectionRemoved': [{ type: _angular_core.Output },],
-        'selectionStart': [{ type: _angular_core.Output },],
-        'selectionEnd': [{ type: _angular_core.Output },],
-        'labelClick': [{ type: _angular_core.Output },],
-        'labelRollOver': [{ type: _angular_core.Output },],
-        'labelRollOut': [{ type: _angular_core.Output },],
-        'labelDragStart': [{ type: _angular_core.Output },],
-        'labelDragEnd': [{ type: _angular_core.Output },],
-        'dataplotDragStart': [{ type: _angular_core.Output },],
-        'dataplotDragEnd': [{ type: _angular_core.Output },],
-        'processClick': [{ type: _angular_core.Output },],
-        'processRollOver': [{ type: _angular_core.Output },],
-        'processRollOut': [{ type: _angular_core.Output },],
-        'categoryClick': [{ type: _angular_core.Output },],
-        'categoryRollOver': [{ type: _angular_core.Output },],
-        'categoryRollOut': [{ type: _angular_core.Output },],
-        'milestoneClick': [{ type: _angular_core.Output },],
-        'milestoneRollOver': [{ type: _angular_core.Output },],
-        'milestoneRollOut': [{ type: _angular_core.Output },],
-        'chartTypeChanged': [{ type: _angular_core.Output },],
-        'overlayButtonClick': [{ type: _angular_core.Output },],
-        'loaded': [{ type: _angular_core.Output },],
-        'rendered': [{ type: _angular_core.Output },],
-        'drawComplete': [{ type: _angular_core.Output },],
-        'renderComplete': [{ type: _angular_core.Output },],
-        'dataInvalid': [{ type: _angular_core.Output },],
-        'dataXMLInvalid': [{ type: _angular_core.Output },],
-        'dataLoaded': [{ type: _angular_core.Output },],
-        'noDataToDisplay': [{ type: _angular_core.Output },],
-        'legendPointerDragStart': [{ type: _angular_core.Output },],
-        'legendPointerDragStop': [{ type: _angular_core.Output },],
-        'legendRangeUpdated': [{ type: _angular_core.Output },],
-        'alertComplete': [{ type: _angular_core.Output },],
-        'realTimeUpdateError': [{ type: _angular_core.Output },],
-        'dataplotRollOver': [{ type: _angular_core.Output },],
-        'dataplotRollOut': [{ type: _angular_core.Output },],
-        'dataplotClick': [{ type: _angular_core.Output },],
-        'linkClicked': [{ type: _angular_core.Output },],
-        'beforeRender': [{ type: _angular_core.Output },],
-        'renderCancelled': [{ type: _angular_core.Output },],
-        'beforeResize': [{ type: _angular_core.Output },],
-        'resized': [{ type: _angular_core.Output },],
-        'resizeCancelled': [{ type: _angular_core.Output },],
-        'beforeDispose': [{ type: _angular_core.Output },],
-        'disposed': [{ type: _angular_core.Output },],
-        'disposeCancelled': [{ type: _angular_core.Output },],
-        'linkedChartInvoked': [{ type: _angular_core.Output },],
-        'beforeDrillDown': [{ type: _angular_core.Output },],
-        'drillDown': [{ type: _angular_core.Output },],
-        'beforeDrillUp': [{ type: _angular_core.Output },],
-        'drillUp': [{ type: _angular_core.Output },],
-        'drillDownCancelled': [{ type: _angular_core.Output },],
-        'drillUpCancelled': [{ type: _angular_core.Output },],
-        'initialized': [{ type: _angular_core.Output },],
-    };
+    FusionChartsComponent.ɵfac = function FusionChartsComponent_Factory(t) { return new (t || FusionChartsComponent)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef), i0__namespace.ɵɵdirectiveInject(FusionChartsService), i0__namespace.ɵɵdirectiveInject(i0__namespace.KeyValueDiffers), i0__namespace.ɵɵdirectiveInject(i0__namespace.NgZone)); };
+    FusionChartsComponent.ɵcmp = /*@__PURE__*/ i0__namespace.ɵɵdefineComponent({ type: FusionChartsComponent, selectors: [["fusioncharts"]], inputs: { placeholder: "placeholder", dataSource: "dataSource", type: "type", id: "id", width: "width", height: "height", renderAt: "renderAt", dataFormat: "dataFormat", events: "events", link: "link", showDataLoadingMessage: "showDataLoadingMessage", showChartLoadingMessage: "showChartLoadingMessage", baseChartMessageFont: "baseChartMessageFont", baseChartMessageFontSize: "baseChartMessageFontSize", baseChartMessageColor: "baseChartMessageColor", dataLoadStartMessage: "dataLoadStartMessage", dataLoadErrorMessage: "dataLoadErrorMessage", dataInvalidMessage: "dataInvalidMessage", dataEmptyMessage: "dataEmptyMessage", typeNotSupportedMessage: "typeNotSupportedMessage", loadMessage: "loadMessage", renderErrorMessage: "renderErrorMessage", containerBackgroundColor: "containerBackgroundColor", containerBackgroundOpacity: "containerBackgroundOpacity", containerClassName: "containerClassName", baseChartMessageImageHAlign: "baseChartMessageImageHAlign", baseChartMessageImageVAlign: "baseChartMessageImageVAlign", baseChartMessageImageAlpha: "baseChartMessageImageAlpha", baseChartMessageImageScale: "baseChartMessageImageScale", typeNotSupportedMessageImageHAlign: "typeNotSupportedMessageImageHAlign", typeNotSupportedMessageImageVAlign: "typeNotSupportedMessageImageVAlign", typeNotSupportedMessageImageAlpha: "typeNotSupportedMessageImageAlpha", typeNotSupportedMessageImageScale: "typeNotSupportedMessageImageScale", dataLoadErrorMessageImageHAlign: "dataLoadErrorMessageImageHAlign", dataLoadErrorMessageImageVAlign: "dataLoadErrorMessageImageVAlign", dataLoadErrorMessageImageAlpha: "dataLoadErrorMessageImageAlpha", dataLoadErrorMessageImageScale: "dataLoadErrorMessageImageScale", dataLoadStartMessageImageHAlign: "dataLoadStartMessageImageHAlign", dataLoadStartMessageImageVAlign: "dataLoadStartMessageImageVAlign", dataLoadStartMessageImageAlpha: "dataLoadStartMessageImageAlpha", dataLoadStartMessageImageScale: "dataLoadStartMessageImageScale", dataInvalidMessageImageHAlign: "dataInvalidMessageImageHAlign", dataInvalidMessageImageVAlign: "dataInvalidMessageImageVAlign", dataInvalidMessageImageAlpha: "dataInvalidMessageImageAlpha", dataInvalidMessageImageScale: "dataInvalidMessageImageScale", dataEmptyMessageImageHAlign: "dataEmptyMessageImageHAlign", dataEmptyMessageImageVAlign: "dataEmptyMessageImageVAlign", dataEmptyMessageImageAlpha: "dataEmptyMessageImageAlpha", dataEmptyMessageImageScale: "dataEmptyMessageImageScale", renderErrorMessageImageHAlign: "renderErrorMessageImageHAlign", renderErrorMessageImageVAlign: "renderErrorMessageImageVAlign", renderErrorMessageImageAlpha: "renderErrorMessageImageAlpha", renderErrorMessageImageScale: "renderErrorMessageImageScale", loadMessageImageHAlign: "loadMessageImageHAlign", loadMessageImageVAlign: "loadMessageImageVAlign", loadMessageImageAlpha: "loadMessageImageAlpha", loadMessageImageScale: "loadMessageImageScale", chartConfig: "chartConfig" }, outputs: { beforeLinkedItemOpen: "beforeLinkedItemOpen", linkedItemOpened: "linkedItemOpened", beforeLinkedItemClose: "beforeLinkedItemClose", linkedItemClosed: "linkedItemClosed", printReadyStateChange: "printReadyStateChange", dataLoadRequestCompleted: "dataLoadRequestCompleted", dataLoadError: "dataLoadError", dataLoadCancelled: "dataLoadCancelled", dataLoadRequestCancelled: "dataLoadRequestCancelled", dataUpdated: "dataUpdated", dataUpdateCancelled: "dataUpdateCancelled", dataLoadRequested: "dataLoadRequested", beforeDataUpdate: "beforeDataUpdate", realTimeUpdateComplete: "realTimeUpdateComplete", chartCleared: "chartCleared", slicingEnd: "slicingEnd", slicingStart: "slicingStart", entityRollOut: "entityRollOut", entityRollOver: "entityRollOver", entityClick: "entityClick", connectorRollOver: "connectorRollOver", connectorRollOut: "connectorRollOut", connectorClick: "connectorClick", markerRollOver: "markerRollOver", markerRollOut: "markerRollOut", markerClick: "markerClick", pageNavigated: "pageNavigated", rotationEnd: "rotationEnd", rotationStart: "rotationStart", centerLabelRollover: "centerLabelRollover", centerLabelRollout: "centerLabelRollout", centerLabelClick: "centerLabelClick", centerLabelChanged: "centerLabelChanged", chartClick: "chartClick", chartMouseMove: "chartMouseMove", chartRollOver: "chartRollOver", chartRollOut: "chartRollOut", backgroundLoaded: "backgroundLoaded", backgroundLoadError: "backgroundLoadError", legendItemClicked: "legendItemClicked", legendItemRollover: "legendItemRollover", legendItemRollout: "legendItemRollout", logoRollover: "logoRollover", logoRollout: "logoRollout", logoClick: "logoClick", logoLoaded: "logoLoaded", logoLoadError: "logoLoadError", beforeExport: "beforeExport", exported: "exported", exportCancelled: "exportCancelled", beforePrint: "beforePrint", printComplete: "printComplete", printCancelled: "printCancelled", dataLabelClick: "dataLabelClick", dataLabelRollOver: "dataLabelRollOver", dataLabelRollOut: "dataLabelRollOut", scrollStart: "scrollStart", scrollEnd: "scrollEnd", onScroll: "onScroll", zoomReset: "zoomReset", zoomedOut: "zoomedOut", zoomedIn: "zoomedIn", zoomed: "zoomed", zoomModeChanged: "zoomModeChanged", pinned: "pinned", dataRestored: "dataRestored", beforeDataSubmit: "beforeDataSubmit", dataSubmitError: "dataSubmitError", dataSubmitted: "dataSubmitted", dataSubmitCancelled: "dataSubmitCancelled", chartUpdated: "chartUpdated", nodeAdded: "nodeAdded", nodeUpdated: "nodeUpdated", nodeDeleted: "nodeDeleted", connectorAdded: "connectorAdded", connectorUpdated: "connectorUpdated", connectorDeleted: "connectorDeleted", labelAdded: "labelAdded", labelDeleted: "labelDeleted", selectionRemoved: "selectionRemoved", selectionStart: "selectionStart", selectionEnd: "selectionEnd", labelClick: "labelClick", labelRollOver: "labelRollOver", labelRollOut: "labelRollOut", labelDragStart: "labelDragStart", labelDragEnd: "labelDragEnd", dataplotDragStart: "dataplotDragStart", dataplotDragEnd: "dataplotDragEnd", processClick: "processClick", processRollOver: "processRollOver", processRollOut: "processRollOut", categoryClick: "categoryClick", categoryRollOver: "categoryRollOver", categoryRollOut: "categoryRollOut", milestoneClick: "milestoneClick", milestoneRollOver: "milestoneRollOver", milestoneRollOut: "milestoneRollOut", chartTypeChanged: "chartTypeChanged", overlayButtonClick: "overlayButtonClick", loaded: "loaded", rendered: "rendered", drawComplete: "drawComplete", renderComplete: "renderComplete", dataInvalid: "dataInvalid", dataXMLInvalid: "dataXMLInvalid", dataLoaded: "dataLoaded", noDataToDisplay: "noDataToDisplay", legendPointerDragStart: "legendPointerDragStart", legendPointerDragStop: "legendPointerDragStop", legendRangeUpdated: "legendRangeUpdated", alertComplete: "alertComplete", realTimeUpdateError: "realTimeUpdateError", dataplotRollOver: "dataplotRollOver", dataplotRollOut: "dataplotRollOut", dataplotClick: "dataplotClick", linkClicked: "linkClicked", beforeRender: "beforeRender", renderCancelled: "renderCancelled", beforeResize: "beforeResize", resized: "resized", resizeCancelled: "resizeCancelled", beforeDispose: "beforeDispose", disposed: "disposed", disposeCancelled: "disposeCancelled", linkedChartInvoked: "linkedChartInvoked", beforeDrillDown: "beforeDrillDown", drillDown: "drillDown", beforeDrillUp: "beforeDrillUp", drillUp: "drillUp", drillDownCancelled: "drillDownCancelled", drillUpCancelled: "drillUpCancelled", initialized: "initialized" }, features: [i0__namespace.ɵɵProvidersFeature([FusionChartsService]), i0__namespace.ɵɵNgOnChangesFeature], decls: 2, vars: 2, consts: [[2, "width", "100%", "height", "100%"]], template: function FusionChartsComponent_Template(rf, ctx) { if (rf & 1) {
+            i0__namespace.ɵɵelementStart(0, "div", 0);
+            i0__namespace.ɵɵtext(1);
+            i0__namespace.ɵɵelementEnd();
+        } if (rf & 2) {
+            i0__namespace.ɵɵattributeInterpolate1("id", "container-", ctx.containerId, "");
+            i0__namespace.ɵɵadvance(1);
+            i0__namespace.ɵɵtextInterpolate1(" ", ctx.placeholder, " ");
+        } }, encapsulation: 2 });
     return FusionChartsComponent;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsComponent, [{
+        type: i0.Component,
+        args: [{
+                selector: 'fusioncharts',
+                template: "\n    <div attr.id=\"container-{{ containerId }}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
+                providers: [FusionChartsService]
+            }]
+    }], function () { return [{ type: i0__namespace.ElementRef }, { type: FusionChartsService }, { type: i0__namespace.KeyValueDiffers }, { type: i0__namespace.NgZone }]; }, { placeholder: [{
+            type: i0.Input
+        }], dataSource: [{
+            type: i0.Input
+        }], type: [{
+            type: i0.Input
+        }], id: [{
+            type: i0.Input
+        }], width: [{
+            type: i0.Input
+        }], height: [{
+            type: i0.Input
+        }], renderAt: [{
+            type: i0.Input
+        }], dataFormat: [{
+            type: i0.Input
+        }], events: [{
+            type: i0.Input
+        }], link: [{
+            type: i0.Input
+        }], showDataLoadingMessage: [{
+            type: i0.Input
+        }], showChartLoadingMessage: [{
+            type: i0.Input
+        }], baseChartMessageFont: [{
+            type: i0.Input
+        }], baseChartMessageFontSize: [{
+            type: i0.Input
+        }], baseChartMessageColor: [{
+            type: i0.Input
+        }], dataLoadStartMessage: [{
+            type: i0.Input
+        }], dataLoadErrorMessage: [{
+            type: i0.Input
+        }], dataInvalidMessage: [{
+            type: i0.Input
+        }], dataEmptyMessage: [{
+            type: i0.Input
+        }], typeNotSupportedMessage: [{
+            type: i0.Input
+        }], loadMessage: [{
+            type: i0.Input
+        }], renderErrorMessage: [{
+            type: i0.Input
+        }], containerBackgroundColor: [{
+            type: i0.Input
+        }], containerBackgroundOpacity: [{
+            type: i0.Input
+        }], containerClassName: [{
+            type: i0.Input
+        }], baseChartMessageImageHAlign: [{
+            type: i0.Input
+        }], baseChartMessageImageVAlign: [{
+            type: i0.Input
+        }], baseChartMessageImageAlpha: [{
+            type: i0.Input
+        }], baseChartMessageImageScale: [{
+            type: i0.Input
+        }], typeNotSupportedMessageImageHAlign: [{
+            type: i0.Input
+        }], typeNotSupportedMessageImageVAlign: [{
+            type: i0.Input
+        }], typeNotSupportedMessageImageAlpha: [{
+            type: i0.Input
+        }], typeNotSupportedMessageImageScale: [{
+            type: i0.Input
+        }], dataLoadErrorMessageImageHAlign: [{
+            type: i0.Input
+        }], dataLoadErrorMessageImageVAlign: [{
+            type: i0.Input
+        }], dataLoadErrorMessageImageAlpha: [{
+            type: i0.Input
+        }], dataLoadErrorMessageImageScale: [{
+            type: i0.Input
+        }], dataLoadStartMessageImageHAlign: [{
+            type: i0.Input
+        }], dataLoadStartMessageImageVAlign: [{
+            type: i0.Input
+        }], dataLoadStartMessageImageAlpha: [{
+            type: i0.Input
+        }], dataLoadStartMessageImageScale: [{
+            type: i0.Input
+        }], dataInvalidMessageImageHAlign: [{
+            type: i0.Input
+        }], dataInvalidMessageImageVAlign: [{
+            type: i0.Input
+        }], dataInvalidMessageImageAlpha: [{
+            type: i0.Input
+        }], dataInvalidMessageImageScale: [{
+            type: i0.Input
+        }], dataEmptyMessageImageHAlign: [{
+            type: i0.Input
+        }], dataEmptyMessageImageVAlign: [{
+            type: i0.Input
+        }], dataEmptyMessageImageAlpha: [{
+            type: i0.Input
+        }], dataEmptyMessageImageScale: [{
+            type: i0.Input
+        }], renderErrorMessageImageHAlign: [{
+            type: i0.Input
+        }], renderErrorMessageImageVAlign: [{
+            type: i0.Input
+        }], renderErrorMessageImageAlpha: [{
+            type: i0.Input
+        }], renderErrorMessageImageScale: [{
+            type: i0.Input
+        }], loadMessageImageHAlign: [{
+            type: i0.Input
+        }], loadMessageImageVAlign: [{
+            type: i0.Input
+        }], loadMessageImageAlpha: [{
+            type: i0.Input
+        }], loadMessageImageScale: [{
+            type: i0.Input
+        }], chartConfig: [{
+            type: i0.Input
+        }], beforeLinkedItemOpen: [{
+            type: i0.Output
+        }], linkedItemOpened: [{
+            type: i0.Output
+        }], beforeLinkedItemClose: [{
+            type: i0.Output
+        }], linkedItemClosed: [{
+            type: i0.Output
+        }], printReadyStateChange: [{
+            type: i0.Output
+        }], dataLoadRequestCompleted: [{
+            type: i0.Output
+        }], dataLoadError: [{
+            type: i0.Output
+        }], dataLoadCancelled: [{
+            type: i0.Output
+        }], dataLoadRequestCancelled: [{
+            type: i0.Output
+        }], dataUpdated: [{
+            type: i0.Output
+        }], dataUpdateCancelled: [{
+            type: i0.Output
+        }], dataLoadRequested: [{
+            type: i0.Output
+        }], beforeDataUpdate: [{
+            type: i0.Output
+        }], realTimeUpdateComplete: [{
+            type: i0.Output
+        }], chartCleared: [{
+            type: i0.Output
+        }], slicingEnd: [{
+            type: i0.Output
+        }], slicingStart: [{
+            type: i0.Output
+        }], entityRollOut: [{
+            type: i0.Output
+        }], entityRollOver: [{
+            type: i0.Output
+        }], entityClick: [{
+            type: i0.Output
+        }], connectorRollOver: [{
+            type: i0.Output
+        }], connectorRollOut: [{
+            type: i0.Output
+        }], connectorClick: [{
+            type: i0.Output
+        }], markerRollOver: [{
+            type: i0.Output
+        }], markerRollOut: [{
+            type: i0.Output
+        }], markerClick: [{
+            type: i0.Output
+        }], pageNavigated: [{
+            type: i0.Output
+        }], rotationEnd: [{
+            type: i0.Output
+        }], rotationStart: [{
+            type: i0.Output
+        }], centerLabelRollover: [{
+            type: i0.Output
+        }], centerLabelRollout: [{
+            type: i0.Output
+        }], centerLabelClick: [{
+            type: i0.Output
+        }], centerLabelChanged: [{
+            type: i0.Output
+        }], chartClick: [{
+            type: i0.Output
+        }], chartMouseMove: [{
+            type: i0.Output
+        }], chartRollOver: [{
+            type: i0.Output
+        }], chartRollOut: [{
+            type: i0.Output
+        }], backgroundLoaded: [{
+            type: i0.Output
+        }], backgroundLoadError: [{
+            type: i0.Output
+        }], legendItemClicked: [{
+            type: i0.Output
+        }], legendItemRollover: [{
+            type: i0.Output
+        }], legendItemRollout: [{
+            type: i0.Output
+        }], logoRollover: [{
+            type: i0.Output
+        }], logoRollout: [{
+            type: i0.Output
+        }], logoClick: [{
+            type: i0.Output
+        }], logoLoaded: [{
+            type: i0.Output
+        }], logoLoadError: [{
+            type: i0.Output
+        }], beforeExport: [{
+            type: i0.Output
+        }], exported: [{
+            type: i0.Output
+        }], exportCancelled: [{
+            type: i0.Output
+        }], beforePrint: [{
+            type: i0.Output
+        }], printComplete: [{
+            type: i0.Output
+        }], printCancelled: [{
+            type: i0.Output
+        }], dataLabelClick: [{
+            type: i0.Output
+        }], dataLabelRollOver: [{
+            type: i0.Output
+        }], dataLabelRollOut: [{
+            type: i0.Output
+        }], scrollStart: [{
+            type: i0.Output
+        }], scrollEnd: [{
+            type: i0.Output
+        }], onScroll: [{
+            type: i0.Output
+        }], zoomReset: [{
+            type: i0.Output
+        }], zoomedOut: [{
+            type: i0.Output
+        }], zoomedIn: [{
+            type: i0.Output
+        }], zoomed: [{
+            type: i0.Output
+        }], zoomModeChanged: [{
+            type: i0.Output
+        }], pinned: [{
+            type: i0.Output
+        }], dataRestored: [{
+            type: i0.Output
+        }], beforeDataSubmit: [{
+            type: i0.Output
+        }], dataSubmitError: [{
+            type: i0.Output
+        }], dataSubmitted: [{
+            type: i0.Output
+        }], dataSubmitCancelled: [{
+            type: i0.Output
+        }], chartUpdated: [{
+            type: i0.Output
+        }], nodeAdded: [{
+            type: i0.Output
+        }], nodeUpdated: [{
+            type: i0.Output
+        }], nodeDeleted: [{
+            type: i0.Output
+        }], connectorAdded: [{
+            type: i0.Output
+        }], connectorUpdated: [{
+            type: i0.Output
+        }], connectorDeleted: [{
+            type: i0.Output
+        }], labelAdded: [{
+            type: i0.Output
+        }], labelDeleted: [{
+            type: i0.Output
+        }], selectionRemoved: [{
+            type: i0.Output
+        }], selectionStart: [{
+            type: i0.Output
+        }], selectionEnd: [{
+            type: i0.Output
+        }], labelClick: [{
+            type: i0.Output
+        }], labelRollOver: [{
+            type: i0.Output
+        }], labelRollOut: [{
+            type: i0.Output
+        }], labelDragStart: [{
+            type: i0.Output
+        }], labelDragEnd: [{
+            type: i0.Output
+        }], dataplotDragStart: [{
+            type: i0.Output
+        }], dataplotDragEnd: [{
+            type: i0.Output
+        }], processClick: [{
+            type: i0.Output
+        }], processRollOver: [{
+            type: i0.Output
+        }], processRollOut: [{
+            type: i0.Output
+        }], categoryClick: [{
+            type: i0.Output
+        }], categoryRollOver: [{
+            type: i0.Output
+        }], categoryRollOut: [{
+            type: i0.Output
+        }], milestoneClick: [{
+            type: i0.Output
+        }], milestoneRollOver: [{
+            type: i0.Output
+        }], milestoneRollOut: [{
+            type: i0.Output
+        }], chartTypeChanged: [{
+            type: i0.Output
+        }], overlayButtonClick: [{
+            type: i0.Output
+        }], loaded: [{
+            type: i0.Output
+        }], rendered: [{
+            type: i0.Output
+        }], drawComplete: [{
+            type: i0.Output
+        }], renderComplete: [{
+            type: i0.Output
+        }], dataInvalid: [{
+            type: i0.Output
+        }], dataXMLInvalid: [{
+            type: i0.Output
+        }], dataLoaded: [{
+            type: i0.Output
+        }], noDataToDisplay: [{
+            type: i0.Output
+        }], legendPointerDragStart: [{
+            type: i0.Output
+        }], legendPointerDragStop: [{
+            type: i0.Output
+        }], legendRangeUpdated: [{
+            type: i0.Output
+        }], alertComplete: [{
+            type: i0.Output
+        }], realTimeUpdateError: [{
+            type: i0.Output
+        }], dataplotRollOver: [{
+            type: i0.Output
+        }], dataplotRollOut: [{
+            type: i0.Output
+        }], dataplotClick: [{
+            type: i0.Output
+        }], linkClicked: [{
+            type: i0.Output
+        }], beforeRender: [{
+            type: i0.Output
+        }], renderCancelled: [{
+            type: i0.Output
+        }], beforeResize: [{
+            type: i0.Output
+        }], resized: [{
+            type: i0.Output
+        }], resizeCancelled: [{
+            type: i0.Output
+        }], beforeDispose: [{
+            type: i0.Output
+        }], disposed: [{
+            type: i0.Output
+        }], disposeCancelled: [{
+            type: i0.Output
+        }], linkedChartInvoked: [{
+            type: i0.Output
+        }], beforeDrillDown: [{
+            type: i0.Output
+        }], drillDown: [{
+            type: i0.Output
+        }], beforeDrillUp: [{
+            type: i0.Output
+        }], drillUp: [{
+            type: i0.Output
+        }], drillDownCancelled: [{
+            type: i0.Output
+        }], drillUpCancelled: [{
+            type: i0.Output
+        }], initialized: [{
+            type: i0.Output
+        }] }); })();
 
 var FusionChartsDirective = /** @class */ (function () {
     function FusionChartsDirective(el) {
         this.el = el;
     }
-    FusionChartsDirective.decorators = [
-        { type: _angular_core.Directive, args: [{
-                    selector: '[appFusionchartsDirective]'
-                },] },
-    ];
-    /** @nocollapse */
-    FusionChartsDirective.ctorParameters = function () { return [
-        { type: _angular_core.ElementRef, },
-    ]; };
+    FusionChartsDirective.ɵfac = function FusionChartsDirective_Factory(t) { return new (t || FusionChartsDirective)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef)); };
+    FusionChartsDirective.ɵdir = /*@__PURE__*/ i0__namespace.ɵɵdefineDirective({ type: FusionChartsDirective, selectors: [["", "appFusionchartsDirective", ""]] });
     return FusionChartsDirective;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsDirective, [{
+        type: i0.Directive,
+        args: [{
+                selector: '[appFusionchartsDirective]'
+            }]
+    }], function () { return [{ type: i0__namespace.ElementRef }]; }, null); })();
 
 /**
  * Transforms any input value
@@ -812,16 +1018,19 @@ var FusionChartsPipe = /** @class */ (function () {
     FusionChartsPipe.prototype.transform = function (value, args) {
         return value;
     };
-    FusionChartsPipe.decorators = [
-        { type: _angular_core.Pipe, args: [{
-                    name: 'fusionchartsPipe'
-                },] },
-        { type: _angular_core.Injectable },
-    ];
-    /** @nocollapse */
-    FusionChartsPipe.ctorParameters = function () { return []; };
+    FusionChartsPipe.ɵfac = function FusionChartsPipe_Factory(t) { return new (t || FusionChartsPipe)(); };
+    FusionChartsPipe.ɵpipe = /*@__PURE__*/ i0__namespace.ɵɵdefinePipe({ name: "fusionchartsPipe", type: FusionChartsPipe, pure: true });
+    FusionChartsPipe.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsPipe, factory: FusionChartsPipe.ɵfac });
     return FusionChartsPipe;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsPipe, [{
+        type: i0.Pipe,
+        args: [{
+                name: 'fusionchartsPipe'
+            }]
+    }, {
+        type: i0.Injectable
+    }], null, null); })();
 
 var FusionChartsModule = /** @class */ (function () {
     function FusionChartsModule() {
@@ -853,35 +1062,41 @@ var FusionChartsModule = /** @class */ (function () {
             modules: fcModules
         });
     };
-    FusionChartsModule.decorators = [
-        { type: _angular_core.NgModule, args: [{
-                    declarations: [
-                        FusionChartsComponent,
-                        FusionChartsDirective,
-                        FusionChartsPipe
-                    ],
-                    exports: [
-                        FusionChartsComponent,
-                        FusionChartsDirective,
-                        FusionChartsPipe
-                    ],
-                    providers: [
-                        FusionChartsService,
-                        FusionChartsStatic
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    FusionChartsModule.ctorParameters = function () { return []; };
+    FusionChartsModule.ɵfac = function FusionChartsModule_Factory(t) { return new (t || FusionChartsModule)(); };
+    FusionChartsModule.ɵmod = /*@__PURE__*/ i0__namespace.ɵɵdefineNgModule({ type: FusionChartsModule });
+    FusionChartsModule.ɵinj = /*@__PURE__*/ i0__namespace.ɵɵdefineInjector({ providers: [
+            FusionChartsService,
+            FusionChartsStatic
+        ] });
     return FusionChartsModule;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsModule, [{
+        type: i0.NgModule,
+        args: [{
+                declarations: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ],
+                exports: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ],
+                providers: [
+                    FusionChartsService,
+                    FusionChartsStatic
+                ]
+            }]
+    }], null, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0__namespace.ɵɵsetNgModuleScope(FusionChartsModule, { declarations: [FusionChartsComponent,
+        FusionChartsDirective,
+        FusionChartsPipe], exports: [FusionChartsComponent,
+        FusionChartsDirective,
+        FusionChartsPipe] }); })();
 
 exports.FusionChartsComponent = FusionChartsComponent;
 exports.FusionChartsDirective = FusionChartsDirective;
+exports.FusionChartsModule = FusionChartsModule;
 exports.FusionChartsPipe = FusionChartsPipe;
 exports.FusionChartsStatic = FusionChartsStatic;
-exports.FusionChartsModule = FusionChartsModule;
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-})));

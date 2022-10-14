@@ -1,7 +1,9 @@
-import { Component, Input, ElementRef, KeyValueDiffers, NgZone, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FusionChartsService } from './fusioncharts.service';
 import { FusionChartsConstructor } from './fusioncharts.constructor';
 import EventsList from '../events/events';
+import * as i0 from "@angular/core";
+import * as i1 from "./fusioncharts.service";
 var FusionChartsComponent = /** @class */ (function () {
     function FusionChartsComponent(element, fusionchartsService, differs, zone) {
         this.differs = differs;
@@ -146,7 +148,6 @@ var FusionChartsComponent = /** @class */ (function () {
         this.drillDownCancelled = new EventEmitter();
         this.drillUpCancelled = new EventEmitter();
         this.initialized = new EventEmitter();
-        this.oldDataSource = this.dataSource;
         this.constructerParams = {
             type: true,
             id: true,
@@ -265,7 +266,7 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.prototype.ngOnChanges = function (changes) {
         for (var _i = 0, _a = Object.keys(changes); _i < _a.length; _i++) {
             var i = _a[_i];
-            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update" + key;
+            var key = i.charAt(0).toUpperCase() + i.slice(1), THIS = this, fnName = "update".concat(key);
             if (THIS[fnName]) {
                 THIS[fnName]();
             }
@@ -364,214 +365,407 @@ var FusionChartsComponent = /** @class */ (function () {
     FusionChartsComponent.prototype.ngOnDestroy = function () {
         this.chartObj && this.chartObj.dispose();
     };
-    FusionChartsComponent.decorators = [
-        { type: Component, args: [{
-                    selector: 'fusioncharts',
-                    template: "\n    <div attr.id=\"container-{{ containerId }}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
-                    providers: [FusionChartsService]
-                },] },
-    ];
-    /** @nocollapse */
-    FusionChartsComponent.ctorParameters = function () { return [
-        { type: ElementRef, },
-        { type: FusionChartsService, },
-        { type: KeyValueDiffers, },
-        { type: NgZone, },
-    ]; };
-    FusionChartsComponent.propDecorators = {
-        'placeholder': [{ type: Input },],
-        'dataSource': [{ type: Input },],
-        'type': [{ type: Input },],
-        'id': [{ type: Input },],
-        'width': [{ type: Input },],
-        'height': [{ type: Input },],
-        'renderAt': [{ type: Input },],
-        'dataFormat': [{ type: Input },],
-        'events': [{ type: Input },],
-        'link': [{ type: Input },],
-        'showDataLoadingMessage': [{ type: Input },],
-        'showChartLoadingMessage': [{ type: Input },],
-        'baseChartMessageFont': [{ type: Input },],
-        'baseChartMessageFontSize': [{ type: Input },],
-        'baseChartMessageColor': [{ type: Input },],
-        'dataLoadStartMessage': [{ type: Input },],
-        'dataLoadErrorMessage': [{ type: Input },],
-        'dataInvalidMessage': [{ type: Input },],
-        'dataEmptyMessage': [{ type: Input },],
-        'typeNotSupportedMessage': [{ type: Input },],
-        'loadMessage': [{ type: Input },],
-        'renderErrorMessage': [{ type: Input },],
-        'containerBackgroundColor': [{ type: Input },],
-        'containerBackgroundOpacity': [{ type: Input },],
-        'containerClassName': [{ type: Input },],
-        'baseChartMessageImageHAlign': [{ type: Input },],
-        'baseChartMessageImageVAlign': [{ type: Input },],
-        'baseChartMessageImageAlpha': [{ type: Input },],
-        'baseChartMessageImageScale': [{ type: Input },],
-        'typeNotSupportedMessageImageHAlign': [{ type: Input },],
-        'typeNotSupportedMessageImageVAlign': [{ type: Input },],
-        'typeNotSupportedMessageImageAlpha': [{ type: Input },],
-        'typeNotSupportedMessageImageScale': [{ type: Input },],
-        'dataLoadErrorMessageImageHAlign': [{ type: Input },],
-        'dataLoadErrorMessageImageVAlign': [{ type: Input },],
-        'dataLoadErrorMessageImageAlpha': [{ type: Input },],
-        'dataLoadErrorMessageImageScale': [{ type: Input },],
-        'dataLoadStartMessageImageHAlign': [{ type: Input },],
-        'dataLoadStartMessageImageVAlign': [{ type: Input },],
-        'dataLoadStartMessageImageAlpha': [{ type: Input },],
-        'dataLoadStartMessageImageScale': [{ type: Input },],
-        'dataInvalidMessageImageHAlign': [{ type: Input },],
-        'dataInvalidMessageImageVAlign': [{ type: Input },],
-        'dataInvalidMessageImageAlpha': [{ type: Input },],
-        'dataInvalidMessageImageScale': [{ type: Input },],
-        'dataEmptyMessageImageHAlign': [{ type: Input },],
-        'dataEmptyMessageImageVAlign': [{ type: Input },],
-        'dataEmptyMessageImageAlpha': [{ type: Input },],
-        'dataEmptyMessageImageScale': [{ type: Input },],
-        'renderErrorMessageImageHAlign': [{ type: Input },],
-        'renderErrorMessageImageVAlign': [{ type: Input },],
-        'renderErrorMessageImageAlpha': [{ type: Input },],
-        'renderErrorMessageImageScale': [{ type: Input },],
-        'loadMessageImageHAlign': [{ type: Input },],
-        'loadMessageImageVAlign': [{ type: Input },],
-        'loadMessageImageAlpha': [{ type: Input },],
-        'loadMessageImageScale': [{ type: Input },],
-        'chartConfig': [{ type: Input },],
-        'beforeLinkedItemOpen': [{ type: Output },],
-        'linkedItemOpened': [{ type: Output },],
-        'beforeLinkedItemClose': [{ type: Output },],
-        'linkedItemClosed': [{ type: Output },],
-        'printReadyStateChange': [{ type: Output },],
-        'dataLoadRequestCompleted': [{ type: Output },],
-        'dataLoadError': [{ type: Output },],
-        'dataLoadCancelled': [{ type: Output },],
-        'dataLoadRequestCancelled': [{ type: Output },],
-        'dataUpdated': [{ type: Output },],
-        'dataUpdateCancelled': [{ type: Output },],
-        'dataLoadRequested': [{ type: Output },],
-        'beforeDataUpdate': [{ type: Output },],
-        'realTimeUpdateComplete': [{ type: Output },],
-        'chartCleared': [{ type: Output },],
-        'slicingEnd': [{ type: Output },],
-        'slicingStart': [{ type: Output },],
-        'entityRollOut': [{ type: Output },],
-        'entityRollOver': [{ type: Output },],
-        'entityClick': [{ type: Output },],
-        'connectorRollOver': [{ type: Output },],
-        'connectorRollOut': [{ type: Output },],
-        'connectorClick': [{ type: Output },],
-        'markerRollOver': [{ type: Output },],
-        'markerRollOut': [{ type: Output },],
-        'markerClick': [{ type: Output },],
-        'pageNavigated': [{ type: Output },],
-        'rotationEnd': [{ type: Output },],
-        'rotationStart': [{ type: Output },],
-        'centerLabelRollover': [{ type: Output },],
-        'centerLabelRollout': [{ type: Output },],
-        'centerLabelClick': [{ type: Output },],
-        'centerLabelChanged': [{ type: Output },],
-        'chartClick': [{ type: Output },],
-        'chartMouseMove': [{ type: Output },],
-        'chartRollOver': [{ type: Output },],
-        'chartRollOut': [{ type: Output },],
-        'backgroundLoaded': [{ type: Output },],
-        'backgroundLoadError': [{ type: Output },],
-        'legendItemClicked': [{ type: Output },],
-        'legendItemRollover': [{ type: Output },],
-        'legendItemRollout': [{ type: Output },],
-        'logoRollover': [{ type: Output },],
-        'logoRollout': [{ type: Output },],
-        'logoClick': [{ type: Output },],
-        'logoLoaded': [{ type: Output },],
-        'logoLoadError': [{ type: Output },],
-        'beforeExport': [{ type: Output },],
-        'exported': [{ type: Output },],
-        'exportCancelled': [{ type: Output },],
-        'beforePrint': [{ type: Output },],
-        'printComplete': [{ type: Output },],
-        'printCancelled': [{ type: Output },],
-        'dataLabelClick': [{ type: Output },],
-        'dataLabelRollOver': [{ type: Output },],
-        'dataLabelRollOut': [{ type: Output },],
-        'scrollStart': [{ type: Output },],
-        'scrollEnd': [{ type: Output },],
-        'onScroll': [{ type: Output },],
-        'zoomReset': [{ type: Output },],
-        'zoomedOut': [{ type: Output },],
-        'zoomedIn': [{ type: Output },],
-        'zoomed': [{ type: Output },],
-        'zoomModeChanged': [{ type: Output },],
-        'pinned': [{ type: Output },],
-        'dataRestored': [{ type: Output },],
-        'beforeDataSubmit': [{ type: Output },],
-        'dataSubmitError': [{ type: Output },],
-        'dataSubmitted': [{ type: Output },],
-        'dataSubmitCancelled': [{ type: Output },],
-        'chartUpdated': [{ type: Output },],
-        'nodeAdded': [{ type: Output },],
-        'nodeUpdated': [{ type: Output },],
-        'nodeDeleted': [{ type: Output },],
-        'connectorAdded': [{ type: Output },],
-        'connectorUpdated': [{ type: Output },],
-        'connectorDeleted': [{ type: Output },],
-        'labelAdded': [{ type: Output },],
-        'labelDeleted': [{ type: Output },],
-        'selectionRemoved': [{ type: Output },],
-        'selectionStart': [{ type: Output },],
-        'selectionEnd': [{ type: Output },],
-        'labelClick': [{ type: Output },],
-        'labelRollOver': [{ type: Output },],
-        'labelRollOut': [{ type: Output },],
-        'labelDragStart': [{ type: Output },],
-        'labelDragEnd': [{ type: Output },],
-        'dataplotDragStart': [{ type: Output },],
-        'dataplotDragEnd': [{ type: Output },],
-        'processClick': [{ type: Output },],
-        'processRollOver': [{ type: Output },],
-        'processRollOut': [{ type: Output },],
-        'categoryClick': [{ type: Output },],
-        'categoryRollOver': [{ type: Output },],
-        'categoryRollOut': [{ type: Output },],
-        'milestoneClick': [{ type: Output },],
-        'milestoneRollOver': [{ type: Output },],
-        'milestoneRollOut': [{ type: Output },],
-        'chartTypeChanged': [{ type: Output },],
-        'overlayButtonClick': [{ type: Output },],
-        'loaded': [{ type: Output },],
-        'rendered': [{ type: Output },],
-        'drawComplete': [{ type: Output },],
-        'renderComplete': [{ type: Output },],
-        'dataInvalid': [{ type: Output },],
-        'dataXMLInvalid': [{ type: Output },],
-        'dataLoaded': [{ type: Output },],
-        'noDataToDisplay': [{ type: Output },],
-        'legendPointerDragStart': [{ type: Output },],
-        'legendPointerDragStop': [{ type: Output },],
-        'legendRangeUpdated': [{ type: Output },],
-        'alertComplete': [{ type: Output },],
-        'realTimeUpdateError': [{ type: Output },],
-        'dataplotRollOver': [{ type: Output },],
-        'dataplotRollOut': [{ type: Output },],
-        'dataplotClick': [{ type: Output },],
-        'linkClicked': [{ type: Output },],
-        'beforeRender': [{ type: Output },],
-        'renderCancelled': [{ type: Output },],
-        'beforeResize': [{ type: Output },],
-        'resized': [{ type: Output },],
-        'resizeCancelled': [{ type: Output },],
-        'beforeDispose': [{ type: Output },],
-        'disposed': [{ type: Output },],
-        'disposeCancelled': [{ type: Output },],
-        'linkedChartInvoked': [{ type: Output },],
-        'beforeDrillDown': [{ type: Output },],
-        'drillDown': [{ type: Output },],
-        'beforeDrillUp': [{ type: Output },],
-        'drillUp': [{ type: Output },],
-        'drillDownCancelled': [{ type: Output },],
-        'drillUpCancelled': [{ type: Output },],
-        'initialized': [{ type: Output },],
-    };
+    FusionChartsComponent.ɵfac = function FusionChartsComponent_Factory(t) { return new (t || FusionChartsComponent)(i0.ɵɵdirectiveInject(i0.ElementRef), i0.ɵɵdirectiveInject(i1.FusionChartsService), i0.ɵɵdirectiveInject(i0.KeyValueDiffers), i0.ɵɵdirectiveInject(i0.NgZone)); };
+    FusionChartsComponent.ɵcmp = /*@__PURE__*/ i0.ɵɵdefineComponent({ type: FusionChartsComponent, selectors: [["fusioncharts"]], inputs: { placeholder: "placeholder", dataSource: "dataSource", type: "type", id: "id", width: "width", height: "height", renderAt: "renderAt", dataFormat: "dataFormat", events: "events", link: "link", showDataLoadingMessage: "showDataLoadingMessage", showChartLoadingMessage: "showChartLoadingMessage", baseChartMessageFont: "baseChartMessageFont", baseChartMessageFontSize: "baseChartMessageFontSize", baseChartMessageColor: "baseChartMessageColor", dataLoadStartMessage: "dataLoadStartMessage", dataLoadErrorMessage: "dataLoadErrorMessage", dataInvalidMessage: "dataInvalidMessage", dataEmptyMessage: "dataEmptyMessage", typeNotSupportedMessage: "typeNotSupportedMessage", loadMessage: "loadMessage", renderErrorMessage: "renderErrorMessage", containerBackgroundColor: "containerBackgroundColor", containerBackgroundOpacity: "containerBackgroundOpacity", containerClassName: "containerClassName", baseChartMessageImageHAlign: "baseChartMessageImageHAlign", baseChartMessageImageVAlign: "baseChartMessageImageVAlign", baseChartMessageImageAlpha: "baseChartMessageImageAlpha", baseChartMessageImageScale: "baseChartMessageImageScale", typeNotSupportedMessageImageHAlign: "typeNotSupportedMessageImageHAlign", typeNotSupportedMessageImageVAlign: "typeNotSupportedMessageImageVAlign", typeNotSupportedMessageImageAlpha: "typeNotSupportedMessageImageAlpha", typeNotSupportedMessageImageScale: "typeNotSupportedMessageImageScale", dataLoadErrorMessageImageHAlign: "dataLoadErrorMessageImageHAlign", dataLoadErrorMessageImageVAlign: "dataLoadErrorMessageImageVAlign", dataLoadErrorMessageImageAlpha: "dataLoadErrorMessageImageAlpha", dataLoadErrorMessageImageScale: "dataLoadErrorMessageImageScale", dataLoadStartMessageImageHAlign: "dataLoadStartMessageImageHAlign", dataLoadStartMessageImageVAlign: "dataLoadStartMessageImageVAlign", dataLoadStartMessageImageAlpha: "dataLoadStartMessageImageAlpha", dataLoadStartMessageImageScale: "dataLoadStartMessageImageScale", dataInvalidMessageImageHAlign: "dataInvalidMessageImageHAlign", dataInvalidMessageImageVAlign: "dataInvalidMessageImageVAlign", dataInvalidMessageImageAlpha: "dataInvalidMessageImageAlpha", dataInvalidMessageImageScale: "dataInvalidMessageImageScale", dataEmptyMessageImageHAlign: "dataEmptyMessageImageHAlign", dataEmptyMessageImageVAlign: "dataEmptyMessageImageVAlign", dataEmptyMessageImageAlpha: "dataEmptyMessageImageAlpha", dataEmptyMessageImageScale: "dataEmptyMessageImageScale", renderErrorMessageImageHAlign: "renderErrorMessageImageHAlign", renderErrorMessageImageVAlign: "renderErrorMessageImageVAlign", renderErrorMessageImageAlpha: "renderErrorMessageImageAlpha", renderErrorMessageImageScale: "renderErrorMessageImageScale", loadMessageImageHAlign: "loadMessageImageHAlign", loadMessageImageVAlign: "loadMessageImageVAlign", loadMessageImageAlpha: "loadMessageImageAlpha", loadMessageImageScale: "loadMessageImageScale", chartConfig: "chartConfig" }, outputs: { beforeLinkedItemOpen: "beforeLinkedItemOpen", linkedItemOpened: "linkedItemOpened", beforeLinkedItemClose: "beforeLinkedItemClose", linkedItemClosed: "linkedItemClosed", printReadyStateChange: "printReadyStateChange", dataLoadRequestCompleted: "dataLoadRequestCompleted", dataLoadError: "dataLoadError", dataLoadCancelled: "dataLoadCancelled", dataLoadRequestCancelled: "dataLoadRequestCancelled", dataUpdated: "dataUpdated", dataUpdateCancelled: "dataUpdateCancelled", dataLoadRequested: "dataLoadRequested", beforeDataUpdate: "beforeDataUpdate", realTimeUpdateComplete: "realTimeUpdateComplete", chartCleared: "chartCleared", slicingEnd: "slicingEnd", slicingStart: "slicingStart", entityRollOut: "entityRollOut", entityRollOver: "entityRollOver", entityClick: "entityClick", connectorRollOver: "connectorRollOver", connectorRollOut: "connectorRollOut", connectorClick: "connectorClick", markerRollOver: "markerRollOver", markerRollOut: "markerRollOut", markerClick: "markerClick", pageNavigated: "pageNavigated", rotationEnd: "rotationEnd", rotationStart: "rotationStart", centerLabelRollover: "centerLabelRollover", centerLabelRollout: "centerLabelRollout", centerLabelClick: "centerLabelClick", centerLabelChanged: "centerLabelChanged", chartClick: "chartClick", chartMouseMove: "chartMouseMove", chartRollOver: "chartRollOver", chartRollOut: "chartRollOut", backgroundLoaded: "backgroundLoaded", backgroundLoadError: "backgroundLoadError", legendItemClicked: "legendItemClicked", legendItemRollover: "legendItemRollover", legendItemRollout: "legendItemRollout", logoRollover: "logoRollover", logoRollout: "logoRollout", logoClick: "logoClick", logoLoaded: "logoLoaded", logoLoadError: "logoLoadError", beforeExport: "beforeExport", exported: "exported", exportCancelled: "exportCancelled", beforePrint: "beforePrint", printComplete: "printComplete", printCancelled: "printCancelled", dataLabelClick: "dataLabelClick", dataLabelRollOver: "dataLabelRollOver", dataLabelRollOut: "dataLabelRollOut", scrollStart: "scrollStart", scrollEnd: "scrollEnd", onScroll: "onScroll", zoomReset: "zoomReset", zoomedOut: "zoomedOut", zoomedIn: "zoomedIn", zoomed: "zoomed", zoomModeChanged: "zoomModeChanged", pinned: "pinned", dataRestored: "dataRestored", beforeDataSubmit: "beforeDataSubmit", dataSubmitError: "dataSubmitError", dataSubmitted: "dataSubmitted", dataSubmitCancelled: "dataSubmitCancelled", chartUpdated: "chartUpdated", nodeAdded: "nodeAdded", nodeUpdated: "nodeUpdated", nodeDeleted: "nodeDeleted", connectorAdded: "connectorAdded", connectorUpdated: "connectorUpdated", connectorDeleted: "connectorDeleted", labelAdded: "labelAdded", labelDeleted: "labelDeleted", selectionRemoved: "selectionRemoved", selectionStart: "selectionStart", selectionEnd: "selectionEnd", labelClick: "labelClick", labelRollOver: "labelRollOver", labelRollOut: "labelRollOut", labelDragStart: "labelDragStart", labelDragEnd: "labelDragEnd", dataplotDragStart: "dataplotDragStart", dataplotDragEnd: "dataplotDragEnd", processClick: "processClick", processRollOver: "processRollOver", processRollOut: "processRollOut", categoryClick: "categoryClick", categoryRollOver: "categoryRollOver", categoryRollOut: "categoryRollOut", milestoneClick: "milestoneClick", milestoneRollOver: "milestoneRollOver", milestoneRollOut: "milestoneRollOut", chartTypeChanged: "chartTypeChanged", overlayButtonClick: "overlayButtonClick", loaded: "loaded", rendered: "rendered", drawComplete: "drawComplete", renderComplete: "renderComplete", dataInvalid: "dataInvalid", dataXMLInvalid: "dataXMLInvalid", dataLoaded: "dataLoaded", noDataToDisplay: "noDataToDisplay", legendPointerDragStart: "legendPointerDragStart", legendPointerDragStop: "legendPointerDragStop", legendRangeUpdated: "legendRangeUpdated", alertComplete: "alertComplete", realTimeUpdateError: "realTimeUpdateError", dataplotRollOver: "dataplotRollOver", dataplotRollOut: "dataplotRollOut", dataplotClick: "dataplotClick", linkClicked: "linkClicked", beforeRender: "beforeRender", renderCancelled: "renderCancelled", beforeResize: "beforeResize", resized: "resized", resizeCancelled: "resizeCancelled", beforeDispose: "beforeDispose", disposed: "disposed", disposeCancelled: "disposeCancelled", linkedChartInvoked: "linkedChartInvoked", beforeDrillDown: "beforeDrillDown", drillDown: "drillDown", beforeDrillUp: "beforeDrillUp", drillUp: "drillUp", drillDownCancelled: "drillDownCancelled", drillUpCancelled: "drillUpCancelled", initialized: "initialized" }, features: [i0.ɵɵProvidersFeature([FusionChartsService]), i0.ɵɵNgOnChangesFeature], decls: 2, vars: 2, consts: [[2, "width", "100%", "height", "100%"]], template: function FusionChartsComponent_Template(rf, ctx) { if (rf & 1) {
+            i0.ɵɵelementStart(0, "div", 0);
+            i0.ɵɵtext(1);
+            i0.ɵɵelementEnd();
+        } if (rf & 2) {
+            i0.ɵɵattributeInterpolate1("id", "container-", ctx.containerId, "");
+            i0.ɵɵadvance(1);
+            i0.ɵɵtextInterpolate1(" ", ctx.placeholder, " ");
+        } }, encapsulation: 2 });
     return FusionChartsComponent;
 }());
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(FusionChartsComponent, [{
+        type: Component,
+        args: [{
+                selector: 'fusioncharts',
+                template: "\n    <div attr.id=\"container-{{ containerId }}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
+                providers: [FusionChartsService]
+            }]
+    }], function () { return [{ type: i0.ElementRef }, { type: i1.FusionChartsService }, { type: i0.KeyValueDiffers }, { type: i0.NgZone }]; }, { placeholder: [{
+            type: Input
+        }], dataSource: [{
+            type: Input
+        }], type: [{
+            type: Input
+        }], id: [{
+            type: Input
+        }], width: [{
+            type: Input
+        }], height: [{
+            type: Input
+        }], renderAt: [{
+            type: Input
+        }], dataFormat: [{
+            type: Input
+        }], events: [{
+            type: Input
+        }], link: [{
+            type: Input
+        }], showDataLoadingMessage: [{
+            type: Input
+        }], showChartLoadingMessage: [{
+            type: Input
+        }], baseChartMessageFont: [{
+            type: Input
+        }], baseChartMessageFontSize: [{
+            type: Input
+        }], baseChartMessageColor: [{
+            type: Input
+        }], dataLoadStartMessage: [{
+            type: Input
+        }], dataLoadErrorMessage: [{
+            type: Input
+        }], dataInvalidMessage: [{
+            type: Input
+        }], dataEmptyMessage: [{
+            type: Input
+        }], typeNotSupportedMessage: [{
+            type: Input
+        }], loadMessage: [{
+            type: Input
+        }], renderErrorMessage: [{
+            type: Input
+        }], containerBackgroundColor: [{
+            type: Input
+        }], containerBackgroundOpacity: [{
+            type: Input
+        }], containerClassName: [{
+            type: Input
+        }], baseChartMessageImageHAlign: [{
+            type: Input
+        }], baseChartMessageImageVAlign: [{
+            type: Input
+        }], baseChartMessageImageAlpha: [{
+            type: Input
+        }], baseChartMessageImageScale: [{
+            type: Input
+        }], typeNotSupportedMessageImageHAlign: [{
+            type: Input
+        }], typeNotSupportedMessageImageVAlign: [{
+            type: Input
+        }], typeNotSupportedMessageImageAlpha: [{
+            type: Input
+        }], typeNotSupportedMessageImageScale: [{
+            type: Input
+        }], dataLoadErrorMessageImageHAlign: [{
+            type: Input
+        }], dataLoadErrorMessageImageVAlign: [{
+            type: Input
+        }], dataLoadErrorMessageImageAlpha: [{
+            type: Input
+        }], dataLoadErrorMessageImageScale: [{
+            type: Input
+        }], dataLoadStartMessageImageHAlign: [{
+            type: Input
+        }], dataLoadStartMessageImageVAlign: [{
+            type: Input
+        }], dataLoadStartMessageImageAlpha: [{
+            type: Input
+        }], dataLoadStartMessageImageScale: [{
+            type: Input
+        }], dataInvalidMessageImageHAlign: [{
+            type: Input
+        }], dataInvalidMessageImageVAlign: [{
+            type: Input
+        }], dataInvalidMessageImageAlpha: [{
+            type: Input
+        }], dataInvalidMessageImageScale: [{
+            type: Input
+        }], dataEmptyMessageImageHAlign: [{
+            type: Input
+        }], dataEmptyMessageImageVAlign: [{
+            type: Input
+        }], dataEmptyMessageImageAlpha: [{
+            type: Input
+        }], dataEmptyMessageImageScale: [{
+            type: Input
+        }], renderErrorMessageImageHAlign: [{
+            type: Input
+        }], renderErrorMessageImageVAlign: [{
+            type: Input
+        }], renderErrorMessageImageAlpha: [{
+            type: Input
+        }], renderErrorMessageImageScale: [{
+            type: Input
+        }], loadMessageImageHAlign: [{
+            type: Input
+        }], loadMessageImageVAlign: [{
+            type: Input
+        }], loadMessageImageAlpha: [{
+            type: Input
+        }], loadMessageImageScale: [{
+            type: Input
+        }], chartConfig: [{
+            type: Input
+        }], beforeLinkedItemOpen: [{
+            type: Output
+        }], linkedItemOpened: [{
+            type: Output
+        }], beforeLinkedItemClose: [{
+            type: Output
+        }], linkedItemClosed: [{
+            type: Output
+        }], printReadyStateChange: [{
+            type: Output
+        }], dataLoadRequestCompleted: [{
+            type: Output
+        }], dataLoadError: [{
+            type: Output
+        }], dataLoadCancelled: [{
+            type: Output
+        }], dataLoadRequestCancelled: [{
+            type: Output
+        }], dataUpdated: [{
+            type: Output
+        }], dataUpdateCancelled: [{
+            type: Output
+        }], dataLoadRequested: [{
+            type: Output
+        }], beforeDataUpdate: [{
+            type: Output
+        }], realTimeUpdateComplete: [{
+            type: Output
+        }], chartCleared: [{
+            type: Output
+        }], slicingEnd: [{
+            type: Output
+        }], slicingStart: [{
+            type: Output
+        }], entityRollOut: [{
+            type: Output
+        }], entityRollOver: [{
+            type: Output
+        }], entityClick: [{
+            type: Output
+        }], connectorRollOver: [{
+            type: Output
+        }], connectorRollOut: [{
+            type: Output
+        }], connectorClick: [{
+            type: Output
+        }], markerRollOver: [{
+            type: Output
+        }], markerRollOut: [{
+            type: Output
+        }], markerClick: [{
+            type: Output
+        }], pageNavigated: [{
+            type: Output
+        }], rotationEnd: [{
+            type: Output
+        }], rotationStart: [{
+            type: Output
+        }], centerLabelRollover: [{
+            type: Output
+        }], centerLabelRollout: [{
+            type: Output
+        }], centerLabelClick: [{
+            type: Output
+        }], centerLabelChanged: [{
+            type: Output
+        }], chartClick: [{
+            type: Output
+        }], chartMouseMove: [{
+            type: Output
+        }], chartRollOver: [{
+            type: Output
+        }], chartRollOut: [{
+            type: Output
+        }], backgroundLoaded: [{
+            type: Output
+        }], backgroundLoadError: [{
+            type: Output
+        }], legendItemClicked: [{
+            type: Output
+        }], legendItemRollover: [{
+            type: Output
+        }], legendItemRollout: [{
+            type: Output
+        }], logoRollover: [{
+            type: Output
+        }], logoRollout: [{
+            type: Output
+        }], logoClick: [{
+            type: Output
+        }], logoLoaded: [{
+            type: Output
+        }], logoLoadError: [{
+            type: Output
+        }], beforeExport: [{
+            type: Output
+        }], exported: [{
+            type: Output
+        }], exportCancelled: [{
+            type: Output
+        }], beforePrint: [{
+            type: Output
+        }], printComplete: [{
+            type: Output
+        }], printCancelled: [{
+            type: Output
+        }], dataLabelClick: [{
+            type: Output
+        }], dataLabelRollOver: [{
+            type: Output
+        }], dataLabelRollOut: [{
+            type: Output
+        }], scrollStart: [{
+            type: Output
+        }], scrollEnd: [{
+            type: Output
+        }], onScroll: [{
+            type: Output
+        }], zoomReset: [{
+            type: Output
+        }], zoomedOut: [{
+            type: Output
+        }], zoomedIn: [{
+            type: Output
+        }], zoomed: [{
+            type: Output
+        }], zoomModeChanged: [{
+            type: Output
+        }], pinned: [{
+            type: Output
+        }], dataRestored: [{
+            type: Output
+        }], beforeDataSubmit: [{
+            type: Output
+        }], dataSubmitError: [{
+            type: Output
+        }], dataSubmitted: [{
+            type: Output
+        }], dataSubmitCancelled: [{
+            type: Output
+        }], chartUpdated: [{
+            type: Output
+        }], nodeAdded: [{
+            type: Output
+        }], nodeUpdated: [{
+            type: Output
+        }], nodeDeleted: [{
+            type: Output
+        }], connectorAdded: [{
+            type: Output
+        }], connectorUpdated: [{
+            type: Output
+        }], connectorDeleted: [{
+            type: Output
+        }], labelAdded: [{
+            type: Output
+        }], labelDeleted: [{
+            type: Output
+        }], selectionRemoved: [{
+            type: Output
+        }], selectionStart: [{
+            type: Output
+        }], selectionEnd: [{
+            type: Output
+        }], labelClick: [{
+            type: Output
+        }], labelRollOver: [{
+            type: Output
+        }], labelRollOut: [{
+            type: Output
+        }], labelDragStart: [{
+            type: Output
+        }], labelDragEnd: [{
+            type: Output
+        }], dataplotDragStart: [{
+            type: Output
+        }], dataplotDragEnd: [{
+            type: Output
+        }], processClick: [{
+            type: Output
+        }], processRollOver: [{
+            type: Output
+        }], processRollOut: [{
+            type: Output
+        }], categoryClick: [{
+            type: Output
+        }], categoryRollOver: [{
+            type: Output
+        }], categoryRollOut: [{
+            type: Output
+        }], milestoneClick: [{
+            type: Output
+        }], milestoneRollOver: [{
+            type: Output
+        }], milestoneRollOut: [{
+            type: Output
+        }], chartTypeChanged: [{
+            type: Output
+        }], overlayButtonClick: [{
+            type: Output
+        }], loaded: [{
+            type: Output
+        }], rendered: [{
+            type: Output
+        }], drawComplete: [{
+            type: Output
+        }], renderComplete: [{
+            type: Output
+        }], dataInvalid: [{
+            type: Output
+        }], dataXMLInvalid: [{
+            type: Output
+        }], dataLoaded: [{
+            type: Output
+        }], noDataToDisplay: [{
+            type: Output
+        }], legendPointerDragStart: [{
+            type: Output
+        }], legendPointerDragStop: [{
+            type: Output
+        }], legendRangeUpdated: [{
+            type: Output
+        }], alertComplete: [{
+            type: Output
+        }], realTimeUpdateError: [{
+            type: Output
+        }], dataplotRollOver: [{
+            type: Output
+        }], dataplotRollOut: [{
+            type: Output
+        }], dataplotClick: [{
+            type: Output
+        }], linkClicked: [{
+            type: Output
+        }], beforeRender: [{
+            type: Output
+        }], renderCancelled: [{
+            type: Output
+        }], beforeResize: [{
+            type: Output
+        }], resized: [{
+            type: Output
+        }], resizeCancelled: [{
+            type: Output
+        }], beforeDispose: [{
+            type: Output
+        }], disposed: [{
+            type: Output
+        }], disposeCancelled: [{
+            type: Output
+        }], linkedChartInvoked: [{
+            type: Output
+        }], beforeDrillDown: [{
+            type: Output
+        }], drillDown: [{
+            type: Output
+        }], beforeDrillUp: [{
+            type: Output
+        }], drillUp: [{
+            type: Output
+        }], drillDownCancelled: [{
+            type: Output
+        }], drillUpCancelled: [{
+            type: Output
+        }], initialized: [{
+            type: Output
+        }] }); })();
 export { FusionChartsComponent };
 //# sourceMappingURL=fusioncharts.component.js.map

@@ -13,6 +13,10 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
 - Issues: [https://github.com/fusioncharts/angular-fusioncharts/issues](https://github.com/fusioncharts/angular-fusioncharts/issues)
 
 ---
+## Validation and Verification
+
+The FusionCharts Angular integration component have been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13
+
 
 ## Table of Contents
 
