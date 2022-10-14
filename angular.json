@@ -1,0 +1,79 @@
+{
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "version": 1,
+  "newProjectRoot": "src",
+  "projects": {
+    "undefined": {
+      "root": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "docs",
+            "main": "src\\main.ts",
+            "tsConfig": "src\\tsconfig.app.json",
+            "serviceWorker": false,
+            "index": "src\\index.html",
+            "assets": [
+              { "glob": "**/*", "input": "src\\assets", "output": "assets" },
+              { "glob": "favicon.ico", "input": "", "output": "favicon.ico" }
+            ],
+            "styles": ["src\\styles.css"],
+            "scripts": [],
+            "polyfills": "src\\polyfills.ts"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "src": "src\\environments\\environment.ts",
+                  "replaceWith": "src\\environments\\environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src\\test.ts",
+            "polyfills": "src\\polyfills.ts",
+            "tsConfig": "src\\tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js",
+            "styles": [],
+            "scripts": [],
+            "assets": []
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": { "browserTarget": "undefined:build" },
+          "configurations": {
+            "production": { "browserTarget": "undefined:build:production" }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": { "browserTarget": "undefined:build" }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["src\\tsconfig.app.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
+    }
+  }
+}
