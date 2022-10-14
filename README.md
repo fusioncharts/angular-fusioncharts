@@ -15,21 +15,28 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
 ---
 ## Validation and Verification
 
-The FusionCharts Angular integration component have been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13
+The FusionCharts Angular integration component have been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13/14.
 
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [Working with chart API](#working-with-apis)
-  - [Working with events](#working-with-events)
-- [Quick Start](#quick-start)
-- [Going Beyond Charts](#going-beyond-charts)
-- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
-- [For Contributors](#for-contributors)
-- [Licensing](#licensing)
+- [angular-fusioncharts](#angular-fusioncharts)
+  - [Demo](#demo)
+  - [Validation and Verification](#validation-and-verification)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
+  - [Quick Start](#quick-start)
+  - [Working with Events](#working-with-events)
+  - [Working with APIs](#working-with-apis)
+  - [Usage and integration of FusionTime](#usage-and-integration-of-fusiontime)
+    - [Setup for FusionTime](#setup-for-fusiontime)
+    - [Component code](#component-code)
+    - [Template Code](#template-code)
+  - [For Contributors](#for-contributors)
+  - [Going Beyond Charts](#going-beyond-charts)
+  - [Licensing](#licensing)
 
 ## Getting Started
 
