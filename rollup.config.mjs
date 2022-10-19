@@ -5,8 +5,6 @@ export default {
     format: 'cjs'
   },
   sourceMap: false,
-  format: "umd",
-  moduleName: "ng.angular-fusioncharts",
   globals: {
     "@angular/core": "ng.core",
   },
