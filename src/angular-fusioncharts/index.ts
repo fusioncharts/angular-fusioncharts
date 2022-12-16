@@ -34,7 +34,7 @@ export {
 
 export class FusionChartsModule {
     // Keep this for backward compatible
-    static forRoot(fcCore?: any, ...fcModules: any[]): ModuleWithProviders {
+    static forRoot(fcCore?: any, ...fcModules: any[]): ModuleWithProviders<FusionChartsModule> {
         return {
             ngModule: FusionChartsModule,
             providers: [{
