@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
 import { CodemirrorModule } from 'ng2-codemirror';
@@ -172,7 +172,7 @@ FusionChartsModule.fcRoot(
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     FusionChartsModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: true }),
     CodemirrorModule
