@@ -54,32 +54,33 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "@angular/animations": "^4.0.0",
+    "@angular/animations": "^8.2.14",
     "@angular/common": "^8.2.14",
-    "@angular/compiler": "^7.2.16",
+    "@angular/compiler": "^8.2.14",
     "@angular/core": "^8.2.14",
     "@angular/forms": "^8.2.14",
     "@angular/platform-browser": "^8.2.14",
-    "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular/router": "^8.2.14",
     "angularjs2-tabs": "0.0.1-beta.1",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "prismjs": "^1.6.0",
-    "rxjs": "^5.4.1",
+    "rxjs": "^6.6.7",
     "tslib": "^1.9.0",
-    "zone.js": "^0.8.14"
+    "zone.js": "~0.9.1",
+    "rxjs-compat": "^6.0.0-rc.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.13.0",
-    "@angular/cli": "^7.3.10",
-    "@angular/compiler-cli": "^4.0.0",
-    "@angular/language-service": "^4.0.0",
+    "@angular-devkit/build-angular": "~0.803.29",
+    "@angular/cli": "^8.3.29",
+    "@angular/compiler-cli": "^8.2.14",
+    "@angular/language-service": "^8.2.14",
     "@types/codemirror": "0.0.58",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
-    "codelyzer": "~3.0.1",
+    "codelyzer": "^5.0.1",
     "codemirror": "^5.39.2",
     "fusioncharts": "^3.14.0-sr.1",
     "jasmine-core": "~2.6.2",
@@ -96,7 +97,7 @@
     "rollup": "^0.45.2",
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
-    "typescript": "2.9.2"
+    "typescript": "3.5.3"
   },
   "engines": {
     "node": ">=4.4.1"
