@@ -236,7 +236,7 @@ class FusionChartsComponent
 
   containerId: string;
   private configObj: any;
-  private oldDataSource: any = this.dataSource;
+  oldDataSource: any;
   private oldDataTable: any;
   private constructerParams = {
     type: true,
@@ -359,6 +359,7 @@ class FusionChartsComponent
   }
 
   ngOnInit() {
+    this.oldDataSource = this.dataSource;
     if (this.checkIfDataTableExists(this.dataSource)) {
       this.oldDataSource = JSON.stringify(
         this.cloneDataSource(this.dataSource)
