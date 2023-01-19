@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"FusionChartsEvent.js","sourceRoot":"","sourcesContent":[]}
+{"version":3,"file":"FusionChartsEvent.js","sourceRoot":"","sources":["../../src/angular-fusioncharts/interfaces/FusionChartsEvent.ts"],"names":[],"mappings":"","sourcesContent":["interface FusionChartsEvent{\n  eventObj: Object;\n  dataObj: Object;\n}\nexport default FusionChartsEvent;"]}

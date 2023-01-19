@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
+import * as i0 from "@angular/core";
 var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
-    FusionChartsStatic.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    FusionChartsStatic.ctorParameters = function () { return []; };
+    FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(t) { return new (t || FusionChartsStatic)(); };
+    FusionChartsStatic.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: FusionChartsStatic, factory: FusionChartsStatic.ɵfac });
     return FusionChartsStatic;
 }());
 export { FusionChartsStatic };
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(FusionChartsStatic, [{
+        type: Injectable
+    }], null, null); })();
 var FusionChartsService = /** @class */ (function () {
     function FusionChartsService(FCStatic) {
         var fcRoot;
@@ -61,14 +62,12 @@ var FusionChartsService = /** @class */ (function () {
     };
     FusionChartsService._fcRoot = null;
     FusionChartsService.itemCount = 0;
-    FusionChartsService.decorators = [
-        { type: Injectable },
-    ];
-    /** @nocollapse */
-    FusionChartsService.ctorParameters = function () { return [
-        { type: FusionChartsStatic, },
-    ]; };
+    FusionChartsService.ɵfac = function FusionChartsService_Factory(t) { return new (t || FusionChartsService)(i0.ɵɵinject(FusionChartsStatic)); };
+    FusionChartsService.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: FusionChartsService, factory: FusionChartsService.ɵfac });
     return FusionChartsService;
 }());
 export { FusionChartsService };
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(FusionChartsService, [{
+        type: Injectable
+    }], function () { return [{ type: FusionChartsStatic }]; }, null); })();
 //# sourceMappingURL=fusioncharts.service.js.map

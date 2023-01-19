@@ -3,6 +3,7 @@ import { FusionChartsComponent } from './src/fusioncharts.component';
 import { FusionChartsDirective } from './src/fusioncharts.directive';
 import { FusionChartsPipe } from './src/fusioncharts.pipe';
 import { FusionChartsStatic, FusionChartsService } from './src/fusioncharts.service';
+import * as i0 from "@angular/core";
 export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic };
 var FusionChartsModule = /** @class */ (function () {
     function FusionChartsModule() {
@@ -34,27 +35,37 @@ var FusionChartsModule = /** @class */ (function () {
             modules: fcModules
         });
     };
-    FusionChartsModule.decorators = [
-        { type: NgModule, args: [{
-                    declarations: [
-                        FusionChartsComponent,
-                        FusionChartsDirective,
-                        FusionChartsPipe
-                    ],
-                    exports: [
-                        FusionChartsComponent,
-                        FusionChartsDirective,
-                        FusionChartsPipe
-                    ],
-                    providers: [
-                        FusionChartsService,
-                        FusionChartsStatic
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    FusionChartsModule.ctorParameters = function () { return []; };
+    FusionChartsModule.ɵfac = function FusionChartsModule_Factory(t) { return new (t || FusionChartsModule)(); };
+    FusionChartsModule.ɵmod = /*@__PURE__*/ i0.ɵɵdefineNgModule({ type: FusionChartsModule });
+    FusionChartsModule.ɵinj = /*@__PURE__*/ i0.ɵɵdefineInjector({ providers: [
+            FusionChartsService,
+            FusionChartsStatic
+        ] });
     return FusionChartsModule;
 }());
 export { FusionChartsModule };
+(function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0.ɵsetClassMetadata(FusionChartsModule, [{
+        type: NgModule,
+        args: [{
+                declarations: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ],
+                exports: [
+                    FusionChartsComponent,
+                    FusionChartsDirective,
+                    FusionChartsPipe
+                ],
+                providers: [
+                    FusionChartsService,
+                    FusionChartsStatic
+                ]
+            }]
+    }], null, null); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(FusionChartsModule, { declarations: [FusionChartsComponent,
+        FusionChartsDirective,
+        FusionChartsPipe], exports: [FusionChartsComponent,
+        FusionChartsDirective,
+        FusionChartsPipe] }); })();
 //# sourceMappingURL=index.js.map
