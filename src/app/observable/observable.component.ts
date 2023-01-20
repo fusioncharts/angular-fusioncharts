@@ -1,12 +1,13 @@
-import {Component, Input, ElementRef, AfterViewInit, OnInit, KeyValueDiffers, SimpleChange} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Observer} from 'rxjs/Observer';
+
+import {share} from 'rxjs/operators';
+import {Component} from '@angular/core';
+import {Observable, Observer} from 'rxjs';
 
 import * as FusionCharts from 'fusioncharts';
 
 
 
-import 'rxjs/add/operator/share';
+
 
 export class NavService {
     // Data store 
@@ -16,7 +17,7 @@ export class NavService {
     private _observer: Observer<Object>;
     
     constructor() {
-        this.navChange$ = new Observable(observer => this._observer = observer ).share();
+        this.navChange$ = new Observable(observer => this._observer = observer ).pipe(share());
         this.dataStore = {
             name: "Rohit",
             lname: "Kumar"

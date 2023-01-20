@@ -13,10 +13,6 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
 - Issues: [https://github.com/fusioncharts/angular-fusioncharts/issues](https://github.com/fusioncharts/angular-fusioncharts/issues)
 
 ---
-## Validation and Verification
-
-The FusionCharts Angular integration component have been verified and validated with different versions of Fusioncharts (3.19 / 3.18 / 3.17) with Angular versions 11/12/13
-
 
 ## Table of Contents
 
@@ -369,19 +365,9 @@ Useful links for FusionTime
 
 ```
 $ git clone https://github.com/fusioncharts/angular-fusioncharts.git
-$ cd angular-fusioncharts
+$ cd angular-component
 $ npm i
 $ npm start
-$ npm run build 
-
-```
-
-- For publishing
-
-```
-$ npm run build
-$ npm publish dist
-
 ```
 
 ## Going Beyond Charts
@@ -391,4 +377,4 @@ $ npm publish dist
 
 ## Licensing
 
-The FusionCharts Angular integration component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).
+The FusionCharts React component is open-source and distributed under the terms of the MIT/X11 License. However, you will need to download and include FusionCharts library in your page separately, which has a [separate license](https://www.fusioncharts.com/buy).
