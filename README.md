@@ -2,6 +2,8 @@
 
 A simple and lightweight official Angular component for FusionCharts JavaScript charting library. angular-fusioncharts enables you to add JavaScript charts in your Angular application without any hassle.
 
+With the latest version of angular-fusioncharts@4.0.1, we are now supporting Angular 14 & Angular 15 applications as well which was not supported till angular-fusioncharts@4.0.0 The angular-fusioncharts 4.0.1 can be used with all the versions of FusionCharts till the v3.20.0.
+
 ## [Demo](https://fusioncharts.github.io/angular-fusioncharts/)
 
 - Github Repo: [https://github.com/fusioncharts/angular-fusioncharts](https://github.com/fusioncharts/angular-fusioncharts)
@@ -16,16 +18,22 @@ A simple and lightweight official Angular component for FusionCharts JavaScript 
 
 ## Table of Contents
 
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-  - [Installation](#installation)
-  - [Working with chart API](#working-with-apis)
-  - [Working with events](#working-with-events)
-- [Quick Start](#quick-start)
-- [Going Beyond Charts](#going-beyond-charts)
-- [Usage and Integration of FusionTime](#usage-and-integration-of-fusionTime)
-- [For Contributors](#for-contributors)
-- [Licensing](#licensing)
+- [angular-fusioncharts](#angular-fusioncharts)
+  - [Demo](#demo)
+  - [Table of Contents](#table-of-contents)
+  - [Getting Started](#getting-started)
+    - [Requirements](#requirements)
+    - [Installation](#installation)
+  - [Quick Start](#quick-start)
+  - [Working with Events](#working-with-events)
+  - [Working with APIs](#working-with-apis)
+  - [Usage and integration of FusionTime](#usage-and-integration-of-fusiontime)
+    - [Setup for FusionTime](#setup-for-fusiontime)
+    - [Component code](#component-code)
+    - [Template Code](#template-code)
+  - [For Contributors](#for-contributors)
+  - [Going Beyond Charts](#going-beyond-charts)
+  - [Licensing](#licensing)
 
 ## Getting Started
 

@@ -6,6 +6,6 @@ import * as i0 from "@angular/core";
 export declare class FusionChartsPipe implements PipeTransform {
     transform(value: any, args?: any[]): string;
     static ɵfac: i0.ɵɵFactoryDeclaration<FusionChartsPipe, never>;
-    static ɵpipe: i0.ɵɵPipeDeclaration<FusionChartsPipe, "fusionchartsPipe">;
+    static ɵpipe: i0.ɵɵPipeDeclaration<FusionChartsPipe, "fusionchartsPipe", false>;
     static ɵprov: i0.ɵɵInjectableDeclaration<FusionChartsPipe>;
 }

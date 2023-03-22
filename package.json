@@ -1,11 +1,11 @@
 {
   "name": "angular-fusioncharts",
-  "version": "3.0.4",
+  "version": "4.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "start-prod": "ng serve --configuration production",
-    "build": "rm -rf dist/ && node_modules/.bin/ngc -p tsconfig-aot.json && rollup -c rollup.config.js && cp package-dist.json dist/package.json && cp README.md dist/ && npm run uglify",
+    "build": "rm -rf dist/ && node_modules/.bin/ngc -p tsconfig-aot.json && rollup -c rollup.config.js && cp package-dist.json dist/package.json && cp README.md dist/ && cp LICENSE.md dist/ && npm run uglify",
     "docs": "ng build --configuration production && npm run build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,7 +13,7 @@
     "transpile": "ngc -p tsconfig-aot.json",
     "tsc": "tsc",
     "package": "rollup -c",
-    "uglify": "uglifyjs dist/dist/index.js --screw-ie8 --compress --mangle --comments --output dist/dist/index.min.js"
+    "uglify": "uglifyjs dist/dist/index.js  --compress --mangle --comments --output dist/dist/index.min.js"
   },
   "repository": {
     "type": "git",
@@ -87,7 +87,7 @@
     "@types/node": "6.0.60 - 17.x",
     "codelyzer": "^6.0.0",
     "codemirror": "^5.65.10",
-    "fusioncharts": "^3.18.0",
+    "fusioncharts": "^3.20.0",
     "jasmine-core": "2.6.2 - 4.x",
     "jasmine-spec-reporter": "4.1.0 - 7.x",
     "karma": "3.0.0 - 6.x",
@@ -102,7 +102,8 @@
     "rollup": "0.45.2 - 2.x",
     "ts-node": "3.0.4 - 10.x",
     "tslint": "5.3.2 - 6.x",
-    "typescript": "2.9.2 - 4.x"
+    "typescript": "2.9.2 - 4.x",
+    "uglify-js": "^3.17.4"
   },
   "engines": {
     "node": ">=4.4.1"
