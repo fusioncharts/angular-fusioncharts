@@ -44,10 +44,7 @@
   },
   "devDependencies": {},
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "^5.0.1",
-    "zone.js": "^0.8.16"
+    "@angular/core": ">=4.0.0"
   },
   "engines": {
     "node": ">=4.4.1"
