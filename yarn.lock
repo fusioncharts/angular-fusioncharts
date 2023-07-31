@@ -1305,7 +1305,7 @@
     "@babel/runtime" "^7.9.2"
     "@fusioncharts/utils" "^1.7.0"
     "core-js" "^3.0.1"
-    "ramda" "^0.25.0"
+    "ramda" "^0.29.0"
 
 "@fusioncharts/datatable@^1.7.0":
   "integrity" "sha512-MaAiRKEEzj7rG7iRBBNCxn3e4msAIwuBezgnVyCczUWb/NrXKJVPzXPr5bqgLpmW7dpso3Q+7zfd+4ZWs4VBWg=="
@@ -1335,7 +1335,7 @@
     "@fusioncharts/core" "^1.7.0"
     "@fusioncharts/datatable" "^1.7.0"
     "@fusioncharts/utils" "^1.7.0"
-    "ramda" "^0.25.0"
+    "ramda" "^0.29.0"
 
 "@fusioncharts/maps@^3.20.0":
   "integrity" "sha512-oHz36nYhxR2wJDSoL0LNOH1a4tQ959tLTCPQ1POqjxVscs/F/J/KTQp7CeuoDpBR7lMH4k/XZCVxeeklSrmjEA=="
@@ -1363,7 +1363,7 @@
   "version" "1.7.0"
   dependencies:
     "@babel/runtime" "^7.9.2"
-    "ramda" "^0.25.0"
+    "ramda" "^0.29.0"
 
 "@fusioncharts/widgets@^3.20.0":
   "integrity" "sha512-xEKJ6EJRbdScXPbD3hVU4FLgzXl0FvKs25g/6LP+m4QYHsBdHyEsGTQM5UYALvYRIqfvj69spnmU3qN+7nsw6Q=="
@@ -5916,10 +5916,10 @@
   dependencies:
     "performance-now" "^2.1.0"
 
-"ramda@^0.25.0":
+"ramda@^0.29.0":
   "integrity" "sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ=="
-  "resolved" "https://registry.npmjs.org/ramda/-/ramda-0.25.0.tgz"
-  "version" "0.25.0"
+  "resolved" "https://registry.npmjs.org/ramda/-/ramda-0.29.0.tgz"
+  "version" "0.29.0"
 
 "randombytes@^2.1.0":
   "integrity" "sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ=="
