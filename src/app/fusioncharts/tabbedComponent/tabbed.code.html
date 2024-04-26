@@ -54,9 +54,9 @@
           <div id="chartCode">
             <div [ngSwitch]="cSelected">
               <div *ngSwitchCase="'module'">
-                <codemirror
+                <ngx-codemirror
                   [(ngModel)]="moduleCode"
-                  [config]="{
+                  [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
                     tabSize: '4',
@@ -64,12 +64,12 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></codemirror>
+                ></ngx-codemirror>
               </div>
               <div *ngSwitchCase="'component'">
-                <codemirror
+                <ngx-codemirror
                   [(ngModel)]="componentCode"
-                  [config]="{
+                  [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
                     tabSize: '4',
@@ -77,12 +77,12 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></codemirror>
+                ></ngx-codemirror>
               </div>
               <div *ngSwitchCase="'template'">
-                <codemirror
+                <ngx-codemirror
                   [(ngModel)]="templateCode"
-                  [config]="{
+                  [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
                     tabSize: '4',
@@ -90,12 +90,12 @@
                     readOnly: true,
                     mode: 'xml'
                   }"
-                ></codemirror>
+                ></ngx-codemirror>
               </div>
               <div *ngSwitchCase="'schema'">
-                <codemirror
+                <ngx-codemirror
                   [(ngModel)]="schemaCode"
-                  [config]="{
+                  [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
                     tabSize: '4',
@@ -103,12 +103,12 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></codemirror>
+                ></ngx-codemirror>
               </div>
               <div *ngSwitchCase="'data'">
-                <codemirror
+                <ngx-codemirror
                   [(ngModel)]="dataCode"
-                  [config]="{
+                  [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
                     tabSize: '4',
@@ -116,7 +116,7 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></codemirror>
+                ></ngx-codemirror>
               </div>
             </div>
           </div>

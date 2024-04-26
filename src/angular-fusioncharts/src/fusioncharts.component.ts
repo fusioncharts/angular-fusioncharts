@@ -89,7 +89,7 @@ class FusionChartsComponent
   @Input() loadMessageImageVAlign: string;
   @Input() loadMessageImageAlpha: number;
   @Input() loadMessageImageScale: number;
-  @Input() chartConfig: string;
+  @Input() chartConfig: any;
 
   /**
    * All Events List

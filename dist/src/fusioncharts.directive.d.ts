@@ -4,5 +4,5 @@ export declare class FusionChartsDirective {
     private el;
     constructor(el: ElementRef);
     static ɵfac: i0.ɵɵFactoryDeclaration<FusionChartsDirective, never>;
-    static ɵdir: i0.ɵɵDirectiveDeclaration<FusionChartsDirective, "[appFusionchartsDirective]", never, {}, {}, never, never, false>;
+    static ɵdir: i0.ɵɵDirectiveDeclaration<FusionChartsDirective, "[appFusionchartsDirective]", never, {}, {}, never, never, false, never>;
 }
