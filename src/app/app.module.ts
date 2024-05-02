@@ -9,7 +9,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { CodePrev } from './fusioncharts/codepreview';
-import { CodemirrorModule } from 'ng2-codemirror';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 import { Ex1 } from './fusioncharts/ex1/ex1';
 import { Ex2 } from './fusioncharts/ex2/ex2';

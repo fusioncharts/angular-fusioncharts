@@ -1,10 +1,13 @@
 export default {
-  entry: 'dist/index.js',
-  dest: 'dist/dist/index.js',
-  sourceMap: false,
-  format: 'umd',
-  moduleName: 'ng.angular-fusioncharts',
-  globals: {
-    '@angular/core': 'ng.core'
-  }
+	input: 'dist/index.js',
+  external: ['@angular/core'],
+  output: {
+		file: 'dist/dist/index.js',
+		format: 'umd',
+    name: 'ng.angular-fusioncharts',
+    sourcemap: false,
+    globals: {
+      '@angular/core': 'ng.core'
+    },
+	},
 }

@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-fusioncharts:build"
+            "buildTarget": "angular-fusioncharts:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-fusioncharts:build:production"
+              "buildTarget": "angular-fusioncharts:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-fusioncharts:build"
+            "buildTarget": "angular-fusioncharts:build"
           }
         },
         "test": {
@@ -120,5 +120,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

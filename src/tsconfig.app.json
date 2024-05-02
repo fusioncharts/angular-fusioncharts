@@ -8,9 +8,7 @@
       // add path to @types
       "node_modules/@types"
     ],
-    "types": [
-      "node"
-    ]
+    "types": []
   },
   "exclude": [
     "test.ts",
