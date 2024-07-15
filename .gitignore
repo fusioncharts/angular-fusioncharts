@@ -25,6 +25,8 @@
 
 # misc
 /.angular/cache
+/examples/ng-app-17/.angular/cache
+/examples/ng-app-18/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage

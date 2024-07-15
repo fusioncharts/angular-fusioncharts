@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'fc-angular-chart-demo' title`, () => {
+  it(`should have the 'ng-app-17' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('fc-angular-chart-demo');
+    expect(app.title).toEqual('ng-app-17');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, fc-angular-chart-demo');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, ng-app-17');
   });
 });

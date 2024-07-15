@@ -1,7 +1,6 @@
-# FcAngularChartDemo
+# NgApp17
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
-It demonstrates how to use angular-fusioncharts library. For more info click [here](https://www.fusioncharts.com/dev/getting-started/angular/angular/your-first-chart-using-angular)
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
 ## Development server
 

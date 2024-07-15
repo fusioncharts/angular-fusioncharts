@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/fusioncharts/angular-fusioncharts"
@@ -11,24 +11,8 @@
   },
   "contributors": [
     {
-      "name": "Rohit Kumar",
-      "email": "rohit.kr001@gmail.com",
-      "url": "https://github.com/rohitkr"
-    },
-    {
-      "name": "Rousan Ali",
-      "email": "rousanali786@gmail.com",
-      "url": "https://github.com/ariyankhan"
-    },
-    {
-      "name": "Ashok Mandal",
-      "email": "askipop@gmail.com",
-      "url": "https://github.com/ashok1994"
-    },
-    {
-      "name": "Rohan Dey",
-      "email": "rohanoid5@gmail.com",
-      "url": "https://github.com/rohanoid5"
+      "name": "Meher Howji",
+      "url": "https://github.com/meherhowji"
     }
   ],
   "keywords": ["angular", "angular2", "angular 2", "FusionCharts"],
