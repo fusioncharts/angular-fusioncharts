@@ -7,7 +7,8 @@ import SelectedSingleton from '../services/selected.singleton';
 
 @Component({
     selector: 'chart',
-    templateUrl: 'ex2.html'
+    templateUrl: 'ex2.html',
+    standalone: false
 })
 
 export class Ex2 {

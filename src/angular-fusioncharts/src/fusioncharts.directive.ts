@@ -1,7 +1,8 @@
 import {Directive, ElementRef} from '@angular/core';
 
 @Directive({
-  selector: '[appFusionchartsDirective]'
+    selector: '[appFusionchartsDirective]',
+    standalone: false
 })
 export class FusionChartsDirective {
 

@@ -8,17 +8,18 @@ import SelectedSingleton from './fusioncharts/services/selected.singleton';
 import SampleCode from './fusioncharts/samplecode';
 
 @Component({
-  selector: 'app',
-  styleUrls: [
-    './app.component.css',
-    '../../node_modules/prismjs/themes/prism.css',
-    './themes/fusioncharts.theme.fusion.css',
-    './themes/github-css/codemirror.css',
-    './themes/github-css/dracula.css',
-    './themes/github-css/style.css'
-  ],
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: './app.component.html'
+    selector: 'app',
+    styleUrls: [
+        './app.component.css',
+        '../../node_modules/prismjs/themes/prism.css',
+        './themes/fusioncharts.theme.fusion.css',
+        './themes/github-css/codemirror.css',
+        './themes/github-css/dracula.css',
+        './themes/github-css/style.css'
+    ],
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: './app.component.html',
+    standalone: false
 })
 export class AppComponent {
   installCode = CodeSnippets.installCode;

@@ -39,7 +39,8 @@ export class NavService {
 
 @Component({
     selector: 'obs-comp',
-    template: `obs component, item: {{item.name}}`
+    template: `obs component, item: {{item.name}}`,
+    standalone: false
 })
 export class ObservingComponent {
     item: any;
@@ -66,10 +67,11 @@ export class ObservingComponent {
 
 @Component({
     selector: 'my-nav',
-    template:`
+    template: `
         <div class="nav-item" (click)="selectedNavItem('John')">nav 1 (Jhon)</div>
         <div class="nav-item" (click)="selectedNavItem('Michael')">nav 2 (Michael)</div>
     `,
+    standalone: false
 })
 export class Navigation {
     item: {
@@ -97,7 +99,8 @@ export class Navigation {
     <div *ngIf='showObsComp'>
         <obs-comp></obs-comp>
     </div>
-    `
+    `,
+    standalone: false
 })
 export class MyAppComponent {
     title = "Angular 2 - event delegation";

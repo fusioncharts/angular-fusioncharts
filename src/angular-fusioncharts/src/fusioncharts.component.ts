@@ -20,13 +20,14 @@ import FusionChartsEvent from '../interfaces/FusionChartsEvent';
 import FusionChartInstance from '../interfaces/FusionChartInstance';
 import EventsList from '../events/events';
 @Component({
-  selector: 'fusioncharts',
-  template: `
+    selector: 'fusioncharts',
+    template: `
     <div attr.id="container-{{ containerId }}" style="width:100%;height:100%">
       {{ placeholder }}
     </div>
   `,
-  providers: [FusionChartsService]
+    providers: [FusionChartsService],
+    standalone: false
 })
 class FusionChartsComponent
   implements OnInit, OnChanges, DoCheck, AfterViewInit, OnDestroy {

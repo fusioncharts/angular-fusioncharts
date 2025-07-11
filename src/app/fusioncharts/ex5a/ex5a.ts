@@ -6,7 +6,8 @@ declare var Prism;
 
 @Component({
     selector: 'chart',
-    templateUrl: 'ex5a.html'
+    templateUrl: 'ex5a.html',
+    standalone: false
 })
 
 export class Ex5a {

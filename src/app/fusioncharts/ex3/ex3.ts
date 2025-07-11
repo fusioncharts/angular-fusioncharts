@@ -5,8 +5,9 @@ import SelectedSingleton from '../services/selected.singleton';
 declare var Prism;
 
 @Component({
-  selector: 'chart',
-  templateUrl: 'ex3.html'
+    selector: 'chart',
+    templateUrl: 'ex3.html',
+    standalone: false
 })
 
 export class Ex3 {

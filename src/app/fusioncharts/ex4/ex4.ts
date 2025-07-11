@@ -5,14 +5,15 @@ import fcDemos from '../samplecode';
 declare var Prism;
 import SelectedSingleton from '../services/selected.singleton';
 @Component({
-  selector: 'chart',
-  encapsulation: ViewEncapsulation.None,
-  templateUrl: 'ex4.html',
-  styles: [`
+    selector: 'chart',
+    encapsulation: ViewEncapsulation.None,
+    templateUrl: 'ex4.html',
+    styles: [`
   .chart1 div {
     float: left;
   }
-  `]
+  `],
+    standalone: false
 })
 
 export class Ex4 {

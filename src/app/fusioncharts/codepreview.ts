@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'ng-prism',
-  	template: '<pre><code><ng-content></ng-content></code></pre>'
+    selector: 'ng-prism',
+    template: '<pre><code><ng-content></ng-content></code></pre>',
+    standalone: false
 })
 
 export class CodePrev {

@@ -4,7 +4,8 @@ import {Injectable, PipeTransform, Pipe} from '@angular/core';
  * Transforms any input value
  */
 @Pipe({
-  name: 'fusionchartsPipe'
+    name: 'fusionchartsPipe',
+    standalone: false
 })
 @Injectable()
 export class FusionChartsPipe implements PipeTransform {
