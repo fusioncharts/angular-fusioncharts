@@ -299,18 +299,10 @@ var require_codemirror = __commonJS({
         return -1;
       }
       var scrollerGap = 50;
-      var Pass = {
-        toString: function() {
-          return "CodeMirror.Pass";
-        }
-      };
-      var sel_dontScroll = {
-        scroll: false
-      }, sel_mouse = {
-        origin: "*mouse"
-      }, sel_move = {
-        origin: "+move"
-      };
+      var Pass = { toString: function() {
+        return "CodeMirror.Pass";
+      } };
+      var sel_dontScroll = { scroll: false }, sel_mouse = { origin: "*mouse" }, sel_move = { origin: "+move" };
       function findColumn(string, goal, tabSize) {
         for (var pos = 0, col = 0; ; ) {
           var nextTab = string.indexOf("	", pos);
@@ -652,12 +644,9 @@ var require_codemirror = __commonJS({
       }
       function signalDOMEvent(cm, e, override) {
         if (typeof e == "string") {
-          e = {
-            type: e,
-            preventDefault: function() {
-              this.defaultPrevented = true;
-            }
-          };
+          e = { type: e, preventDefault: function() {
+            this.defaultPrevented = true;
+          } };
         }
         signal(cm, override || e.type, cm, e);
         return e_defaultPrevented(e) || e.codemirrorIgnore;
@@ -831,9 +820,7 @@ var require_codemirror = __commonJS({
         } else if (spec && typeof spec.name == "string" && mimeModes.hasOwnProperty(spec.name)) {
           var found = mimeModes[spec.name];
           if (typeof found == "string") {
-            found = {
-              name: found
-            };
+            found = { name: found };
           }
           spec = createObj(found, spec);
           spec.name = found.name;
@@ -843,13 +830,9 @@ var require_codemirror = __commonJS({
           return resolveMode("application/json");
         }
         if (typeof spec == "string") {
-          return {
-            name: spec
-          };
+          return { name: spec };
         } else {
-          return spec || {
-            name: "null"
-          };
+          return spec || { name: "null" };
         }
       }
       function getMode(options, spec) {
@@ -914,10 +897,7 @@ var require_codemirror = __commonJS({
           state = info.state;
           mode = info.mode;
         }
-        return info || {
-          mode,
-          state
-        };
+        return info || { mode, state };
       }
       function startState(mode, a1, a2) {
         return mode.startState ? mode.startState(a1, a2) : true;
@@ -1233,9 +1213,17 @@ var require_codemirror = __commonJS({
       };
       function highlightLine(cm, line, context, forceToEnd) {
         var st = [cm.state.modeGen], lineClasses = {};
-        runMode(cm, line.text, cm.doc.mode, context, function(end, style) {
-          return st.push(end, style);
-        }, lineClasses, forceToEnd);
+        runMode(
+          cm,
+          line.text,
+          cm.doc.mode,
+          context,
+          function(end, style) {
+            return st.push(end, style);
+          },
+          lineClasses,
+          forceToEnd
+        );
         var state = context.state;
         var loop = function(o2) {
           context.baseTokens = st;
@@ -1269,10 +1257,7 @@ var require_codemirror = __commonJS({
           context.baseTokenPos = 1;
         };
         for (var o = 0; o < cm.state.overlays.length; ++o) loop(o);
-        return {
-          styles: st,
-          classes: lineClasses.bgClass || lineClasses.textClass ? lineClasses : null
-        };
+        return { styles: st, classes: lineClasses.bgClass || lineClasses.textClass ? lineClasses : null };
       }
       function getLineStyles(cm, line, updateFrontier) {
         if (!line.styles || line.styles[0] != cm.state.modeGen) {
@@ -1534,7 +1519,11 @@ var require_codemirror = __commonJS({
             var endsAfter = span.to == null || (marker.inclusiveRight ? span.to >= endCh : span.to > endCh);
             if (endsAfter || span.from == endCh && marker.type == "bookmark" && (!isInsert || span.marker.insertLeft)) {
               var startsBefore = span.from == null || (marker.inclusiveLeft ? span.from <= endCh : span.from < endCh);
-              (nw || (nw = [])).push(new MarkedSpan(marker, startsBefore ? null : span.from - endCh, span.to == null ? null : span.to - endCh));
+              (nw || (nw = [])).push(new MarkedSpan(
+                marker,
+                startsBefore ? null : span.from - endCh,
+                span.to == null ? null : span.to - endCh
+              ));
             }
           }
         }
@@ -1638,10 +1627,7 @@ var require_codemirror = __commonJS({
         if (!markers) {
           return null;
         }
-        var parts = [{
-          from,
-          to
-        }];
+        var parts = [{ from, to }];
         for (var i2 = 0; i2 < markers.length; ++i2) {
           var mk = markers[i2], m = mk.find(0);
           for (var j = 0; j < parts.length; ++j) {
@@ -1651,16 +1637,10 @@ var require_codemirror = __commonJS({
             }
             var newParts = [j, 1], dfrom = cmp(p.from, m.from), dto = cmp(p.to, m.to);
             if (dfrom < 0 || !mk.inclusiveLeft && !dfrom) {
-              newParts.push({
-                from: p.from,
-                to: m.from
-              });
+              newParts.push({ from: p.from, to: m.from });
             }
             if (dto > 0 || !mk.inclusiveRight && !dto) {
-              newParts.push({
-                from: m.to,
-                to: p.to
-              });
+              newParts.push({ from: m.to, to: p.to });
             }
             parts.splice.apply(parts, newParts);
             j += newParts.length - 3;
@@ -2194,7 +2174,12 @@ var require_codemirror = __commonJS({
               }
             }
             if (collapsed && (collapsed.from || 0) == pos) {
-              buildCollapsedSpan(builder, (collapsed.to == null ? len + 1 : collapsed.to) - pos, collapsed.marker, collapsed.from == null);
+              buildCollapsedSpan(
+                builder,
+                (collapsed.to == null ? len + 1 : collapsed.to) - pos,
+                collapsed.marker,
+                collapsed.from == null
+              );
               if (collapsed.to == null) {
                 return;
               }
@@ -2212,7 +2197,15 @@ var require_codemirror = __commonJS({
               var end = pos + text.length;
               if (!collapsed) {
                 var tokenText = end > upto ? text.slice(0, upto - pos) : text;
-                builder.addToken(builder, tokenText, style ? style + spanStyle : spanStyle, spanStartStyle, pos + tokenText.length == nextChange ? spanEndStyle : "", css, attributes);
+                builder.addToken(
+                  builder,
+                  tokenText,
+                  style ? style + spanStyle : spanStyle,
+                  spanStartStyle,
+                  pos + tokenText.length == nextChange ? spanEndStyle : "",
+                  css,
+                  attributes
+                );
               }
               if (end >= upto) {
                 text = text.slice(upto - pos);
@@ -2302,7 +2295,8 @@ var require_codemirror = __commonJS({
             return arr[i3].apply(null, args);
           });
         };
-        for (var i2 = 0; i2 < arr.length; ++i2) loop(i2);
+        for (var i2 = 0; i2 < arr.length; ++i2)
+          loop(i2);
       }
       function fireOrphanDelayed() {
         var delayed = orphanDelayedCallbacks;
@@ -2403,7 +2397,12 @@ var require_codemirror = __commonJS({
         }
         if (lineView.line.gutterClass) {
           var wrap = ensureLineWrapped(lineView);
-          lineView.gutterBackground = elt("div", null, "CodeMirror-gutter-background " + lineView.line.gutterClass, "left: " + (cm.options.fixedGutter ? dims.fixedPos : -dims.gutterTotalWidth) + "px; width: " + dims.gutterTotalWidth + "px");
+          lineView.gutterBackground = elt(
+            "div",
+            null,
+            "CodeMirror-gutter-background " + lineView.line.gutterClass,
+            "left: " + (cm.options.fixedGutter ? dims.fixedPos : -dims.gutterTotalWidth) + "px; width: " + dims.gutterTotalWidth + "px"
+          );
           cm.display.input.setUneditable(lineView.gutterBackground);
           wrap.insertBefore(lineView.gutterBackground, lineView.text);
         }
@@ -2418,13 +2417,25 @@ var require_codemirror = __commonJS({
             gutterWrap.className += " " + lineView.line.gutterClass;
           }
           if (cm.options.lineNumbers && (!markers || !markers["CodeMirror-linenumbers"])) {
-            lineView.lineNumber = gutterWrap.appendChild(elt("div", lineNumberFor(cm.options, lineN), "CodeMirror-linenumber CodeMirror-gutter-elt", "left: " + dims.gutterLeft["CodeMirror-linenumbers"] + "px; width: " + cm.display.lineNumInnerWidth + "px"));
+            lineView.lineNumber = gutterWrap.appendChild(
+              elt(
+                "div",
+                lineNumberFor(cm.options, lineN),
+                "CodeMirror-linenumber CodeMirror-gutter-elt",
+                "left: " + dims.gutterLeft["CodeMirror-linenumbers"] + "px; width: " + cm.display.lineNumInnerWidth + "px"
+              )
+            );
           }
           if (markers) {
             for (var k = 0; k < cm.display.gutterSpecs.length; ++k) {
               var id = cm.display.gutterSpecs[k].className, found = markers.hasOwnProperty(id) && markers[id];
               if (found) {
-                gutterWrap.appendChild(elt("div", [found], "CodeMirror-gutter-elt", "left: " + dims.gutterLeft[id] + "px; width: " + dims.gutterWidth[id] + "px"));
+                gutterWrap.appendChild(elt(
+                  "div",
+                  [found],
+                  "CodeMirror-gutter-elt",
+                  "left: " + dims.gutterLeft[id] + "px; width: " + dims.gutterWidth[id] + "px"
+                ));
               }
             }
           }
@@ -2543,10 +2554,7 @@ var require_codemirror = __commonJS({
         }
         var e = removeChildrenAndAdd(display.measure, elt("pre", "x", "CodeMirror-line-like"));
         var style = window.getComputedStyle ? window.getComputedStyle(e) : e.currentStyle;
-        var data = {
-          left: parseInt(style.paddingLeft),
-          right: parseInt(style.paddingRight)
-        };
+        var data = { left: parseInt(style.paddingLeft), right: parseInt(style.paddingRight) };
         if (!isNaN(data.left) && !isNaN(data.right)) {
           display.cachedPaddingH = data;
         }
@@ -2581,27 +2589,17 @@ var require_codemirror = __commonJS({
       }
       function mapFromLineView(lineView, line, lineN) {
         if (lineView.line == line) {
-          return {
-            map: lineView.measure.map,
-            cache: lineView.measure.cache
-          };
+          return { map: lineView.measure.map, cache: lineView.measure.cache };
         }
         if (lineView.rest) {
           for (var i2 = 0; i2 < lineView.rest.length; i2++) {
             if (lineView.rest[i2] == line) {
-              return {
-                map: lineView.measure.maps[i2],
-                cache: lineView.measure.caches[i2]
-              };
+              return { map: lineView.measure.maps[i2], cache: lineView.measure.caches[i2] };
             }
           }
           for (var i$12 = 0; i$12 < lineView.rest.length; i$12++) {
             if (lineNo(lineView.rest[i$12]) > lineN) {
-              return {
-                map: lineView.measure.maps[i$12],
-                cache: lineView.measure.caches[i$12],
-                before: true
-              };
+              return { map: lineView.measure.maps[i$12], cache: lineView.measure.caches[i$12], before: true };
             }
           }
         }
@@ -2678,12 +2676,7 @@ var require_codemirror = __commonJS({
           bottom: varHeight ? found.rbottom : found.bottom
         };
       }
-      var nullRect = {
-        left: 0,
-        right: 0,
-        top: 0,
-        bottom: 0
-      };
+      var nullRect = { left: 0, right: 0, top: 0, bottom: 0 };
       function nodeAndOffsetInLineMap(map2, ch, bias) {
         var node, start, end, collapse, mStart, mEnd;
         for (var i2 = 0; i2 < map2.length; i2 += 3) {
@@ -2723,14 +2716,7 @@ var require_codemirror = __commonJS({
             break;
           }
         }
-        return {
-          node,
-          start,
-          end,
-          collapse,
-          coverStart: mStart,
-          coverEnd: mEnd
-        };
+        return { node, start, end, collapse, coverStart: mStart, coverEnd: mEnd };
       }
       function getUsefulRect(rects, bias) {
         var rect = nullRect;
@@ -2790,12 +2776,7 @@ var require_codemirror = __commonJS({
         if (ie && ie_version < 9 && !start && (!rect || !rect.left && !rect.right)) {
           var rSpan = node.parentNode.getClientRects()[0];
           if (rSpan) {
-            rect = {
-              left: rSpan.left,
-              right: rSpan.left + charWidth(cm.display),
-              top: rSpan.top,
-              bottom: rSpan.bottom
-            };
+            rect = { left: rSpan.left, right: rSpan.left + charWidth(cm.display), top: rSpan.top, bottom: rSpan.bottom };
           } else {
             rect = nullRect;
           }
@@ -2932,10 +2913,7 @@ var require_codemirror = __commonJS({
           top += localBox.top;
         }
         var lineSpaceBox = cm.display.lineSpace.getBoundingClientRect();
-        return {
-          left: left - lineSpaceBox.left,
-          top: top - lineSpaceBox.top
-        };
+        return { left: left - lineSpaceBox.left, top: top - lineSpaceBox.top };
       }
       function charCoords(cm, pos, context, lineObj, bias) {
         if (!lineObj) {
@@ -2988,12 +2966,7 @@ var require_codemirror = __commonJS({
         }
         var lineObj = getLine(cm.doc, pos.line);
         var top = heightAtLine(lineObj) + paddingTop(cm.display);
-        return {
-          left,
-          right: left,
-          top,
-          bottom: top + lineObj.height
-        };
+        return { left, right: left, top, bottom: top + lineObj.height };
       }
       function PosWithInfo(line, ch, sticky, outside, xRel) {
         var pos = Pos(line, ch, sticky);
@@ -3039,10 +3012,7 @@ var require_codemirror = __commonJS({
         end = findFirst(function(ch) {
           return measureCharPrepared(cm, preparedMeasure, ch).top > y;
         }, begin, end);
-        return {
-          begin,
-          end
-        };
+        return { begin, end };
       }
       function wrappedLineExtentChar(cm, lineObj, preparedMeasure, target) {
         if (!preparedMeasure) {
@@ -3101,12 +3071,24 @@ var require_codemirror = __commonJS({
       function coordsBidiPart(cm, lineObj, lineNo2, preparedMeasure, order, x, y) {
         var index = findFirst(function(i2) {
           var part2 = order[i2], ltr2 = part2.level != 1;
-          return boxIsAfter(cursorCoords(cm, Pos(lineNo2, ltr2 ? part2.to : part2.from, ltr2 ? "before" : "after"), "line", lineObj, preparedMeasure), x, y, true);
+          return boxIsAfter(cursorCoords(
+            cm,
+            Pos(lineNo2, ltr2 ? part2.to : part2.from, ltr2 ? "before" : "after"),
+            "line",
+            lineObj,
+            preparedMeasure
+          ), x, y, true);
         }, 0, order.length - 1);
         var part = order[index];
         if (index > 0) {
           var ltr = part.level != 1;
-          var start = cursorCoords(cm, Pos(lineNo2, ltr ? part.from : part.to, ltr ? "after" : "before"), "line", lineObj, preparedMeasure);
+          var start = cursorCoords(
+            cm,
+            Pos(lineNo2, ltr ? part.from : part.to, ltr ? "after" : "before"),
+            "line",
+            lineObj,
+            preparedMeasure
+          );
           if (boxIsAfter(start, x, y, true) && start.top > y) {
             part = order[index - 1];
           }
@@ -3138,18 +3120,10 @@ var require_codemirror = __commonJS({
           part = order[order.length - 1];
         }
         if (part.from < begin) {
-          part = {
-            from: begin,
-            to: part.to,
-            level: part.level
-          };
+          part = { from: begin, to: part.to, level: part.level };
         }
         if (part.to > end) {
-          part = {
-            from: part.from,
-            to: end,
-            level: part.level
-          };
+          part = { from: part.from, to: end, level: part.level };
         }
         return part;
       }
@@ -3362,10 +3336,7 @@ var require_codemirror = __commonJS({
       function viewCuttingPoint(cm, oldN, newN, dir) {
         var index = findViewIndex(cm, oldN), diff, view = cm.display.view;
         if (!sawCollapsedSpans || newN == cm.doc.first + cm.doc.size) {
-          return {
-            index,
-            lineN: newN
-          };
+          return { index, lineN: newN };
         }
         var n = cm.display.viewFrom;
         for (var i2 = 0; i2 < index; i2++) {
@@ -3391,10 +3362,7 @@ var require_codemirror = __commonJS({
           newN += dir * view[index - (dir < 0 ? 1 : 0)].size;
           index += dir;
         }
-        return {
-          index,
-          lineN: newN
-        };
+        return { index, lineN: newN };
       }
       function adjustView(cm, from, to) {
         var display = cm.display, view = display.view;
@@ -3555,10 +3523,7 @@ var require_codemirror = __commonJS({
               end = toPos;
             }
           });
-          return {
-            start,
-            end
-          };
+          return { start, end };
         }
         var sFrom = range2.from(), sTo = range2.to();
         if (sFrom.line == sTo.line) {
@@ -3734,10 +3699,7 @@ var require_codemirror = __commonJS({
             to = ensureTo;
           }
         }
-        return {
-          from,
-          to: Math.max(to, from + 1)
-        };
+        return { from, to: Math.max(to, from + 1) };
       }
       function maybeScrollWindow(cm, rect) {
         if (signalDOMEvent(cm, "scrollCursorIntoView")) {
@@ -3851,11 +3813,7 @@ var require_codemirror = __commonJS({
       function ensureCursorVisible(cm) {
         resolveScrollToPos(cm);
         var cur = cm.getCursor();
-        cm.curOp.scrollToPos = {
-          from: cur,
-          to: cur,
-          margin: cm.options.cursorScrollMargin
-        };
+        cm.curOp.scrollToPos = { from: cur, to: cur, margin: cm.options.cursorScrollMargin };
       }
       function scrollToCoords(cm, x, y) {
         if (x != null || y != null) {
@@ -3894,9 +3852,7 @@ var require_codemirror = __commonJS({
           return;
         }
         if (!gecko) {
-          updateDisplaySimple(cm, {
-            top: val
-          });
+          updateDisplaySimple(cm, { top: val });
         }
         setScrollTop(cm, val, true);
         if (gecko) {
@@ -3995,10 +3951,7 @@ var require_codemirror = __commonJS({
           }
           this.checkedZeroWidth = true;
         }
-        return {
-          right: needsV ? sWidth : 0,
-          bottom: needsH ? sWidth : 0
-        };
+        return { right: needsV ? sWidth : 0, bottom: needsH ? sWidth : 0 };
       };
       NativeScrollbars.prototype.setScrollLeft = function(pos) {
         if (this.horiz.scrollLeft != pos) {
@@ -4044,10 +3997,7 @@ var require_codemirror = __commonJS({
       var NullScrollbars = function() {
       };
       NullScrollbars.prototype.update = function() {
-        return {
-          bottom: 0,
-          right: 0
-        };
+        return { bottom: 0, right: 0 };
       };
       NullScrollbars.prototype.setScrollLeft = function() {
       };
@@ -4091,10 +4041,7 @@ var require_codemirror = __commonJS({
           d.gutterFiller.style.display = "";
         }
       }
-      var scrollbarModel = {
-        "native": NativeScrollbars,
-        "null": NullScrollbars
-      };
+      var scrollbarModel = { "native": NativeScrollbars, "null": NullScrollbars };
       function initScrollbars(cm) {
         if (cm.display.scrollbars) {
           cm.display.scrollbars.clear();
@@ -4196,10 +4143,7 @@ var require_codemirror = __commonJS({
           findMaxLine(cm);
         }
         op.mustUpdate = op.viewChanged || op.forceUpdate || op.scrollTop != null || op.scrollToPos && (op.scrollToPos.from.line < display.viewFrom || op.scrollToPos.to.line >= display.viewTo) || display.maxLineChanged && cm.options.lineWrapping;
-        op.update = op.mustUpdate && new DisplayUpdate(cm, op.mustUpdate && {
-          top: op.scrollTop,
-          ensure: op.scrollToPos
-        }, op.forceUpdate);
+        op.update = op.mustUpdate && new DisplayUpdate(cm, op.mustUpdate && { top: op.scrollTop, ensure: op.scrollToPos }, op.forceUpdate);
       }
       function endOperation_W1(op) {
         op.updatedDisplay = op.mustUpdate && updateDisplayIfNeeded(op.cm, op.update);
@@ -4264,7 +4208,12 @@ var require_codemirror = __commonJS({
           setScrollLeft(cm, op.scrollLeft, true, true);
         }
         if (op.scrollToPos) {
-          var rect = scrollPosIntoView(cm, clipPos(doc2, op.scrollToPos.from), clipPos(doc2, op.scrollToPos.to), op.scrollToPos.margin);
+          var rect = scrollPosIntoView(
+            cm,
+            clipPos(doc2, op.scrollToPos.from),
+            clipPos(doc2, op.scrollToPos.to),
+            op.scrollToPos.margin
+          );
           maybeScrollWindow(cm, rect);
         }
         var hidden = op.maybeHiddenMarkers, unhidden = op.maybeUnhiddenMarkers;
@@ -4442,9 +4391,7 @@ var require_codemirror = __commonJS({
         if (!active || !contains(cm.display.lineDiv, active)) {
           return null;
         }
-        var result = {
-          activeElt: active
-        };
+        var result = { activeElt: active };
         if (window.getSelection) {
           var sel = win(cm).getSelection();
           if (sel.anchorNode && sel.extend && contains(cm.display.lineDiv, sel.anchorNode)) {
@@ -4531,9 +4478,7 @@ var require_codemirror = __commonJS({
         for (var first = true; ; first = false) {
           if (!first || !cm.options.lineWrapping || update.oldDisplayWidth == displayWidth(cm)) {
             if (viewport && viewport.top != null) {
-              viewport = {
-                top: Math.min(cm.doc.height + paddingVert(cm.display) - displayHeight(cm), viewport.top)
-              };
+              viewport = { top: Math.min(cm.doc.height + paddingVert(cm.display) - displayHeight(cm), viewport.top) };
             }
             update.visible = visibleLines(cm.display, cm.doc, viewport);
             if (update.visible.from >= cm.display.viewFrom && update.visible.to <= cm.display.viewTo) {
@@ -4658,7 +4603,11 @@ var require_codemirror = __commonJS({
         }
         var doc2 = cm.doc, last = lineNumberFor(cm.options, doc2.first + doc2.size - 1), display = cm.display;
         if (last.length != display.lineNumChars) {
-          var test = display.measure.appendChild(elt("div", [elt("div", last)], "CodeMirror-linenumber CodeMirror-gutter-elt"));
+          var test = display.measure.appendChild(elt(
+            "div",
+            [elt("div", last)],
+            "CodeMirror-linenumber CodeMirror-gutter-elt"
+          ));
           var innerW = test.firstChild.offsetWidth, padding = test.offsetWidth - innerW;
           display.lineGutter.style.width = "";
           display.lineNumInnerWidth = Math.max(innerW, display.lineGutter.offsetWidth - padding) + 1;
@@ -4685,16 +4634,10 @@ var require_codemirror = __commonJS({
               sawLineNumbers = true;
             }
           }
-          result.push({
-            className: name,
-            style
-          });
+          result.push({ className: name, style });
         }
         if (lineNumbers && !sawLineNumbers) {
-          result.push({
-            className: "CodeMirror-linenumbers",
-            style: null
-          });
+          result.push({ className: "CodeMirror-linenumbers", style: null });
         }
         return result;
       }
@@ -4735,7 +4678,12 @@ var require_codemirror = __commonJS({
         d.cursorDiv = elt("div", null, "CodeMirror-cursors");
         d.measure = elt("div", null, "CodeMirror-measure");
         d.lineMeasure = elt("div", null, "CodeMirror-measure");
-        d.lineSpace = eltP("div", [d.measure, d.lineMeasure, d.selectionDiv, d.cursorDiv, d.lineDiv], null, "position: relative; outline: none");
+        d.lineSpace = eltP(
+          "div",
+          [d.measure, d.lineMeasure, d.selectionDiv, d.cursorDiv, d.lineDiv],
+          null,
+          "position: relative; outline: none"
+        );
         var lines = eltP("div", [d.lineSpace], "CodeMirror-lines");
         d.mover = elt("div", [lines], null, "position: relative");
         d.sizer = elt("div", [d.mover], "CodeMirror-sizer");
@@ -4808,10 +4756,7 @@ var require_codemirror = __commonJS({
         } else if (dy == null) {
           dy = e.wheelDelta;
         }
-        return {
-          x: dx,
-          y: dy
-        };
+        return { x: dx, y: dy };
       }
       function wheelEventPixels(e) {
         var delta = wheelEventDelta(e);
@@ -4873,10 +4818,7 @@ var require_codemirror = __commonJS({
           } else {
             bot = Math.min(cm.doc.height, bot + pixels + 50);
           }
-          updateDisplaySimple(cm, {
-            top,
-            bottom: bot
-          });
+          updateDisplaySimple(cm, { top, bottom: bot });
         }
         if (wheelSamples < 20 && e.deltaMode !== 0) {
           if (display.wheelStartX == null) {
@@ -4994,7 +4936,10 @@ var require_codemirror = __commonJS({
         if (!change.text) {
           return change.to;
         }
-        return Pos(change.from.line + change.text.length - 1, lst(change.text).length + (change.text.length == 1 ? change.from.ch : 0));
+        return Pos(
+          change.from.line + change.text.length - 1,
+          lst(change.text).length + (change.text.length == 1 ? change.from.ch : 0)
+        );
       }
       function adjustForChange(pos, change) {
         if (cmp(pos, change.from) < 0) {
@@ -5013,7 +4958,10 @@ var require_codemirror = __commonJS({
         var out = [];
         for (var i2 = 0; i2 < doc2.sel.ranges.length; i2++) {
           var range2 = doc2.sel.ranges[i2];
-          out.push(new Range(adjustForChange(range2.anchor, change), adjustForChange(range2.head, change)));
+          out.push(new Range(
+            adjustForChange(range2.anchor, change),
+            adjustForChange(range2.head, change)
+          ));
         }
         return normalizeSelection(doc2.cm, out, doc2.sel.primIndex);
       }
@@ -5172,11 +5120,7 @@ var require_codemirror = __commonJS({
         this.generation = this.maxGeneration = prev ? prev.maxGeneration : 1;
       }
       function historyChangeFromChange(doc2, change) {
-        var histChange = {
-          from: copyPos(change.from),
-          to: changeEnd(change),
-          text: getBetween(doc2, change.from, change.to)
-        };
+        var histChange = { from: copyPos(change.from), to: changeEnd(change), text: getBetween(doc2, change.from, change.to) };
         attachLocalSpans(doc2, histChange, change.from.line, change.to.line + 1);
         linkedDocs(doc2, function(doc3) {
           return attachLocalSpans(doc3, histChange, change.from.line, change.to.line + 1);
@@ -5338,16 +5282,10 @@ var require_codemirror = __commonJS({
             continue;
           }
           var changes = event.changes, newChanges = [];
-          copy.push({
-            changes: newChanges
-          });
+          copy.push({ changes: newChanges });
           for (var j = 0; j < changes.length; ++j) {
             var change = changes[j], m = void 0;
-            newChanges.push({
-              from: change.from,
-              to: change.to,
-              text: change.text
-            });
+            newChanges.push({ from: change.from, to: change.to, text: change.text });
             if (newGroup) {
               for (var prop2 in change) {
                 if (m = prop2.match(/^spans_(\d+)$/)) {
@@ -5408,7 +5346,10 @@ var require_codemirror = __commonJS({
           update: function(ranges) {
             this.ranges = [];
             for (var i2 = 0; i2 < ranges.length; i2++) {
-              this.ranges[i2] = new Range(clipPos(doc2, ranges[i2].anchor), clipPos(doc2, ranges[i2].head));
+              this.ranges[i2] = new Range(
+                clipPos(doc2, ranges[i2].anchor),
+                clipPos(doc2, ranges[i2].head)
+              );
             }
           },
           origin: options && options.origin
@@ -5584,12 +5525,7 @@ var require_codemirror = __commonJS({
           }
           return null;
         }
-        return {
-          from: obj.from,
-          to: obj.to,
-          text: obj.text,
-          origin: obj.origin
-        };
+        return { from: obj.from, to: obj.to, text: obj.text, origin: obj.origin };
       }
       function makeChange(doc2, change, ignoreReadOnly) {
         if (doc2.cm) {
@@ -5609,12 +5545,7 @@ var require_codemirror = __commonJS({
         var split = sawReadOnlySpans && !ignoreReadOnly && removeReadOnlyRanges(doc2, change.from, change.to);
         if (split) {
           for (var i2 = split.length - 1; i2 >= 0; --i2) {
-            makeChangeInner(doc2, {
-              from: split[i2].from,
-              to: split[i2].to,
-              text: i2 ? [""] : change.text,
-              origin: change.origin
-            });
+            makeChangeInner(doc2, { from: split[i2].from, to: split[i2].to, text: i2 ? [""] : change.text, origin: change.origin });
           }
         } else {
           makeChangeInner(doc2, change);
@@ -5659,9 +5590,7 @@ var require_codemirror = __commonJS({
           if (event.ranges) {
             pushSelectionToHistory(event, dest);
             if (allowSelectionOnly && !event.equals(doc2.sel)) {
-              setSelection(doc2, event, {
-                clearRedo: false
-              });
+              setSelection(doc2, event, { clearRedo: false });
               return;
             }
             selAfter = event;
@@ -5674,10 +5603,7 @@ var require_codemirror = __commonJS({
         }
         var antiChanges = [];
         pushSelectionToHistory(selAfter, dest);
-        dest.push({
-          changes: antiChanges,
-          generation: hist.generation
-        });
+        dest.push({ changes: antiChanges, generation: hist.generation });
         hist.generation = event.generation || ++hist.maxGeneration;
         var filter = hasHandler(doc2, "beforeChange") || doc2.cm && hasHandler(doc2.cm, "beforeChange");
         var loop = function(i3) {
@@ -5691,10 +5617,7 @@ var require_codemirror = __commonJS({
           var after = i3 ? computeSelAfterChange(doc2, change) : lst(source);
           makeChangeSingleDoc(doc2, change, after, mergeOldSpans(doc2, change));
           if (!i3 && doc2.cm) {
-            doc2.cm.scrollIntoView({
-              from: change.from,
-              to: changeEnd(change)
-            });
+            doc2.cm.scrollIntoView({ from: change.from, to: changeEnd(change) });
           }
           var rebased = [];
           linkedDocs(doc2, function(doc3, sharedHist) {
@@ -5716,7 +5639,10 @@ var require_codemirror = __commonJS({
         }
         doc2.first += distance;
         doc2.sel = new Selection(map(doc2.sel.ranges, function(range2) {
-          return new Range(Pos(range2.anchor.line + distance, range2.anchor.ch), Pos(range2.head.line + distance, range2.head.ch));
+          return new Range(
+            Pos(range2.anchor.line + distance, range2.anchor.ch),
+            Pos(range2.head.line + distance, range2.head.ch)
+          );
         }), doc2.sel.primIndex);
         if (doc2.cm) {
           regChange(doc2.cm, doc2.first, doc2.first - distance, distance);
@@ -5838,12 +5764,7 @@ var require_codemirror = __commonJS({
         if (typeof code == "string") {
           code = doc2.splitLines(code);
         }
-        makeChange(doc2, {
-          from,
-          to,
-          text: code,
-          origin
-        });
+        makeChange(doc2, { from, to, text: code, origin });
       }
       function rebaseHistSelSingle(pos, from, to, diff) {
         if (to < pos.line) {
@@ -6243,10 +6164,7 @@ var require_codemirror = __commonJS({
             }
           }
         }
-        return from && {
-          from,
-          to
-        };
+        return from && { from, to };
       };
       TextMarker.prototype.changed = function() {
         var this$1 = this;
@@ -6321,11 +6239,7 @@ var require_codemirror = __commonJS({
           seeCollapsedSpans();
         }
         if (marker.addToHistory) {
-          addChangeToHistory(doc2, {
-            from,
-            to,
-            origin: "markText"
-          }, doc2.sel, NaN);
+          addChangeToHistory(doc2, { from, to, origin: "markText" }, doc2.sel, NaN);
         }
         var curLine = from.line, cm = doc2.cm, updateMaxLine;
         doc2.iter(curLine, to.line + 1, function(line) {
@@ -6335,7 +6249,11 @@ var require_codemirror = __commonJS({
           if (marker.collapsed && curLine != from.line) {
             updateLineHeight(line, 0);
           }
-          addMarkedSpan(line, new MarkedSpan(marker, curLine == from.line ? from.ch : null, curLine == to.line ? to.ch : null), doc2.cm && doc2.cm.curOp);
+          addMarkedSpan(line, new MarkedSpan(
+            marker,
+            curLine == from.line ? from.ch : null,
+            curLine == to.line ? to.ch : null
+          ), doc2.cm && doc2.cm.curOp);
           ++curLine;
         });
         if (marker.collapsed) {
@@ -6475,11 +6393,7 @@ var require_codemirror = __commonJS({
         if (typeof text == "string") {
           text = this.splitLines(text);
         }
-        updateDoc(this, {
-          from: start,
-          to: start,
-          text
-        });
+        updateDoc(this, { from: start, to: start, text });
         setSelection(this, simpleSelection(start), sel_dontScroll);
       };
       Doc.prototype = createObj(BranchChunk.prototype, {
@@ -6615,7 +6529,10 @@ var require_codemirror = __commonJS({
           }
           var out = [];
           for (var i2 = 0; i2 < ranges.length; i2++) {
-            out[i2] = new Range(clipPos(this, ranges[i2].anchor), clipPos(this, ranges[i2].head || ranges[i2].anchor));
+            out[i2] = new Range(
+              clipPos(this, ranges[i2].anchor),
+              clipPos(this, ranges[i2].head || ranges[i2].anchor)
+            );
           }
           if (primary == null) {
             primary = Math.min(ranges.length - 1, this.sel.primIndex);
@@ -6661,12 +6578,7 @@ var require_codemirror = __commonJS({
           var changes = [], sel = this.sel;
           for (var i2 = 0; i2 < sel.ranges.length; i2++) {
             var range2 = sel.ranges[i2];
-            changes[i2] = {
-              from: range2.from(),
-              to: range2.to(),
-              text: this.splitLines(code[i2]),
-              origin
-            };
+            changes[i2] = { from: range2.from(), to: range2.to(), text: this.splitLines(code[i2]), origin };
           }
           var newSel = collapse && collapse != "end" && computeReplacedSel(this, changes, collapse);
           for (var i$12 = changes.length - 1; i$12 >= 0; i$12--) {
@@ -6708,10 +6620,7 @@ var require_codemirror = __commonJS({
               ++undone;
             }
           }
-          return {
-            undo: done,
-            redo: undone
-          };
+          return { undo: done, redo: undone };
         },
         clearHistory: function() {
           var this$1 = this;
@@ -6918,7 +6827,13 @@ var require_codemirror = __commonJS({
           return index;
         },
         copy: function(copyHistory) {
-          var doc2 = new Doc(getLines(this, this.first, this.first + this.size), this.modeOption, this.first, this.lineSep, this.direction);
+          var doc2 = new Doc(
+            getLines(this, this.first, this.first + this.size),
+            this.modeOption,
+            this.first,
+            this.lineSep,
+            this.direction
+          );
           doc2.scrollTop = this.scrollTop;
           doc2.scrollLeft = this.scrollLeft;
           doc2.sel = this.sel;
@@ -6944,15 +6859,8 @@ var require_codemirror = __commonJS({
           if (options.sharedHist) {
             copy.history = this.history;
           }
-          (this.linked || (this.linked = [])).push({
-            doc: copy,
-            sharedHist: options.sharedHist
-          });
-          copy.linked = [{
-            doc: this,
-            isParent: true,
-            sharedHist: options.sharedHist
-          }];
+          (this.linked || (this.linked = [])).push({ doc: copy, sharedHist: options.sharedHist });
+          copy.linked = [{ doc: this, isParent: true, sharedHist: options.sharedHist }];
           copySharedMarkers(copy, findSharedMarkers(this));
           return copy;
         },
@@ -7041,9 +6949,11 @@ var require_codemirror = __commonJS({
                 var change = {
                   from: pos,
                   to: pos,
-                  text: cm.doc.splitLines(text.filter(function(t) {
-                    return t != null;
-                  }).join(cm.doc.lineSeparator())),
+                  text: cm.doc.splitLines(
+                    text.filter(function(t) {
+                      return t != null;
+                    }).join(cm.doc.lineSeparator())
+                  ),
                   origin: "paste"
                 };
                 makeChange(cm.doc, change);
@@ -7565,10 +7475,7 @@ var require_codemirror = __commonJS({
         var prep;
         var getWrappedLineExtent = function(ch2) {
           if (!cm.options.lineWrapping) {
-            return {
-              begin: 0,
-              end: line.text.length
-            };
+            return { begin: 0, end: line.text.length };
           }
           prep = prep || prepareMeasureForLine(cm, line);
           return wrappedLineExtentChar(cm, line, prep, ch2);
@@ -7622,21 +7529,12 @@ var require_codemirror = __commonJS({
             if (range2.empty()) {
               var len = getLine(cm.doc, range2.head.line).text.length;
               if (range2.head.ch == len && range2.head.line < cm.lastLine()) {
-                return {
-                  from: range2.head,
-                  to: Pos(range2.head.line + 1, 0)
-                };
+                return { from: range2.head, to: Pos(range2.head.line + 1, 0) };
               } else {
-                return {
-                  from: range2.head,
-                  to: Pos(range2.head.line, len)
-                };
+                return { from: range2.head, to: Pos(range2.head.line, len) };
               }
             } else {
-              return {
-                from: range2.from(),
-                to: range2.to()
-              };
+              return { from: range2.from(), to: range2.to() };
             }
           });
         },
@@ -7659,27 +7557,15 @@ var require_codemirror = __commonJS({
         delWrappedLineLeft: function(cm) {
           return deleteNearSelection(cm, function(range2) {
             var top = cm.charCoords(range2.head, "div").top + 5;
-            var leftPos = cm.coordsChar({
-              left: 0,
-              top
-            }, "div");
-            return {
-              from: leftPos,
-              to: range2.from()
-            };
+            var leftPos = cm.coordsChar({ left: 0, top }, "div");
+            return { from: leftPos, to: range2.from() };
           });
         },
         delWrappedLineRight: function(cm) {
           return deleteNearSelection(cm, function(range2) {
             var top = cm.charCoords(range2.head, "div").top + 5;
-            var rightPos = cm.coordsChar({
-              left: cm.display.lineDiv.offsetWidth + 100,
-              top
-            }, "div");
-            return {
-              from: range2.from(),
-              to: rightPos
-            };
+            var rightPos = cm.coordsChar({ left: cm.display.lineDiv.offsetWidth + 100, top }, "div");
+            return { from: range2.from(), to: rightPos };
           });
         },
         undo: function(cm) {
@@ -7701,54 +7587,45 @@ var require_codemirror = __commonJS({
           return cm.extendSelection(Pos(cm.lastLine()));
         },
         goLineStart: function(cm) {
-          return cm.extendSelectionsBy(function(range2) {
-            return lineStart(cm, range2.head.line);
-          }, {
-            origin: "+move",
-            bias: 1
-          });
+          return cm.extendSelectionsBy(
+            function(range2) {
+              return lineStart(cm, range2.head.line);
+            },
+            { origin: "+move", bias: 1 }
+          );
         },
         goLineStartSmart: function(cm) {
-          return cm.extendSelectionsBy(function(range2) {
-            return lineStartSmart(cm, range2.head);
-          }, {
-            origin: "+move",
-            bias: 1
-          });
+          return cm.extendSelectionsBy(
+            function(range2) {
+              return lineStartSmart(cm, range2.head);
+            },
+            { origin: "+move", bias: 1 }
+          );
         },
         goLineEnd: function(cm) {
-          return cm.extendSelectionsBy(function(range2) {
-            return lineEnd(cm, range2.head.line);
-          }, {
-            origin: "+move",
-            bias: -1
-          });
+          return cm.extendSelectionsBy(
+            function(range2) {
+              return lineEnd(cm, range2.head.line);
+            },
+            { origin: "+move", bias: -1 }
+          );
         },
         goLineRight: function(cm) {
           return cm.extendSelectionsBy(function(range2) {
             var top = cm.cursorCoords(range2.head, "div").top + 5;
-            return cm.coordsChar({
-              left: cm.display.lineDiv.offsetWidth + 100,
-              top
-            }, "div");
+            return cm.coordsChar({ left: cm.display.lineDiv.offsetWidth + 100, top }, "div");
           }, sel_move);
         },
         goLineLeft: function(cm) {
           return cm.extendSelectionsBy(function(range2) {
             var top = cm.cursorCoords(range2.head, "div").top + 5;
-            return cm.coordsChar({
-              left: 0,
-              top
-            }, "div");
+            return cm.coordsChar({ left: 0, top }, "div");
           }, sel_move);
         },
         goLineLeftSmart: function(cm) {
           return cm.extendSelectionsBy(function(range2) {
             var top = cm.cursorCoords(range2.head, "div").top + 5;
-            var pos = cm.coordsChar({
-              left: 0,
-              top
-            }, "div");
+            var pos = cm.coordsChar({ left: 0, top }, "div");
             if (pos.ch < cm.getLine(pos.line).search(/\S/)) {
               return lineStartSmart(cm, range2.head);
             }
@@ -7858,12 +7735,22 @@ var require_codemirror = __commonJS({
                 }
                 if (cur.ch > 0) {
                   cur = new Pos(cur.line, cur.ch + 1);
-                  cm.replaceRange(line.charAt(cur.ch - 1) + line.charAt(cur.ch - 2), Pos(cur.line, cur.ch - 2), cur, "+transpose");
+                  cm.replaceRange(
+                    line.charAt(cur.ch - 1) + line.charAt(cur.ch - 2),
+                    Pos(cur.line, cur.ch - 2),
+                    cur,
+                    "+transpose"
+                  );
                 } else if (cur.line > cm.doc.first) {
                   var prev = getLine(cm.doc, cur.line - 1).text;
                   if (prev) {
                     cur = new Pos(cur.line, 1);
-                    cm.replaceRange(line.charAt(0) + cm.doc.lineSeparator() + prev.charAt(prev.length - 1), Pos(cur.line - 1, prev.length - 1), cur, "+transpose");
+                    cm.replaceRange(
+                      line.charAt(0) + cm.doc.lineSeparator() + prev.charAt(prev.length - 1),
+                      Pos(cur.line - 1, prev.length - 1),
+                      cur,
+                      "+transpose"
+                    );
                   }
                 }
               }
@@ -8243,9 +8130,7 @@ var require_codemirror = __commonJS({
             }
             if (webkit && !safari || ie && ie_version == 9) {
               setTimeout(function() {
-                display.wrapper.ownerDocument.body.focus({
-                  preventScroll: true
-                });
+                display.wrapper.ownerDocument.body.focus({ preventScroll: true });
                 display.input.focus();
               }, 20);
             } else {
@@ -8327,15 +8212,17 @@ var require_codemirror = __commonJS({
           startSel = doc$1.sel;
         } else if (ourIndex == -1) {
           ourIndex = ranges.length;
-          setSelection(doc$1, normalizeSelection(cm, ranges.concat([ourRange]), ourIndex), {
-            scroll: false,
-            origin: "*mouse"
-          });
+          setSelection(
+            doc$1,
+            normalizeSelection(cm, ranges.concat([ourRange]), ourIndex),
+            { scroll: false, origin: "*mouse" }
+          );
         } else if (ranges.length > 1 && ranges[ourIndex].empty() && behavior.unit == "char" && !behavior.extend) {
-          setSelection(doc$1, normalizeSelection(cm, ranges.slice(0, ourIndex).concat(ranges.slice(ourIndex + 1)), 0), {
-            scroll: false,
-            origin: "*mouse"
-          });
+          setSelection(
+            doc$1,
+            normalizeSelection(cm, ranges.slice(0, ourIndex).concat(ranges.slice(ourIndex + 1)), 0),
+            { scroll: false, origin: "*mouse" }
+          );
           startSel = doc$1.sel;
         } else {
           replaceOneSelection(doc$1, ourIndex, ourRange, sel_mouse);
@@ -8362,10 +8249,11 @@ var require_codemirror = __commonJS({
             if (!ranges2.length) {
               ranges2.push(new Range(start, start));
             }
-            setSelection(doc$1, normalizeSelection(cm, startSel.ranges.slice(0, ourIndex).concat(ranges2), ourIndex), {
-              origin: "*mouse",
-              scroll: false
-            });
+            setSelection(
+              doc$1,
+              normalizeSelection(cm, startSel.ranges.slice(0, ourIndex).concat(ranges2), ourIndex),
+              { origin: "*mouse", scroll: false }
+            );
             cm.scrollIntoView(pos);
           } else {
             var oldRange = ourRange;
@@ -8533,11 +8421,9 @@ var require_codemirror = __commonJS({
         cm.display.wrapper.className = cm.display.wrapper.className.replace(/\s*cm-s-\S+/g, "") + cm.options.theme.replace(/(^|\s)\s*/g, " cm-s-");
         clearCaches(cm);
       }
-      var Init = {
-        toString: function() {
-          return "CodeMirror.Init";
-        }
-      };
+      var Init = { toString: function() {
+        return "CodeMirror.Init";
+      } };
       var defaults = {};
       var optionHandlers = {};
       function defineOptions(CodeMirror2) {
@@ -8853,9 +8739,7 @@ var require_codemirror = __commonJS({
             onContextMenu(cm, e);
           }
         });
-        var touchFinished, prevTouch = {
-          end: 0
-        };
+        var touchFinished, prevTouch = { end: 0 };
         function finishTouch() {
           if (d.activeTouch) {
             touchFinished = setTimeout(function() {
@@ -9146,17 +9030,11 @@ var require_codemirror = __commonJS({
         var text = [], ranges = [];
         for (var i2 = 0; i2 < cm.doc.sel.ranges.length; i2++) {
           var line = cm.doc.sel.ranges[i2].head.line;
-          var lineRange = {
-            anchor: Pos(line, 0),
-            head: Pos(line + 1, 0)
-          };
+          var lineRange = { anchor: Pos(line, 0), head: Pos(line + 1, 0) };
           ranges.push(lineRange);
           text.push(cm.getRange(lineRange.anchor, lineRange.head));
         }
-        return {
-          text,
-          ranges
-        };
+        return { text, ranges };
       }
       function disableBrowserMagic(field, spellcheck, autocorrect, autocapitalize) {
         field.setAttribute("autocorrect", autocorrect ? "" : "off");
@@ -9220,14 +9098,18 @@ var require_codemirror = __commonJS({
             if (mode.startState) {
               throw new Error("Overlays may not be stateful.");
             }
-            insertSorted(this.state.overlays, {
-              mode,
-              modeSpec: spec,
-              opaque: options && options.opaque,
-              priority: options && options.priority || 0
-            }, function(overlay) {
-              return overlay.priority;
-            });
+            insertSorted(
+              this.state.overlays,
+              {
+                mode,
+                modeSpec: spec,
+                opaque: options && options.opaque,
+                priority: options && options.priority || 0
+              },
+              function(overlay) {
+                return overlay.priority;
+              }
+            );
             this.state.modeGen++;
             regChange(this);
           }),
@@ -9374,10 +9256,7 @@ var require_codemirror = __commonJS({
             return coordsChar(this, coords.left, coords.top);
           },
           lineAtHeight: function(height, mode) {
-            height = fromCoordSystem(this, {
-              top: height,
-              left: 0
-            }, mode || "page").top;
+            height = fromCoordSystem(this, { top: height, left: 0 }, mode || "page").top;
             return lineAtHeight(this.doc, height + this.display.viewOffset);
           },
           heightAtLine: function(line, mode, includeWidgets) {
@@ -9394,10 +9273,7 @@ var require_codemirror = __commonJS({
             } else {
               lineObj = line;
             }
-            return intoCoordSystem(this, lineObj, {
-              top: 0,
-              left: 0
-            }, mode || "page", includeWidgets || end).top + (end ? this.doc.height - heightAtLine(lineObj) : 0);
+            return intoCoordSystem(this, lineObj, { top: 0, left: 0 }, mode || "page", includeWidgets || end).top + (end ? this.doc.height - heightAtLine(lineObj) : 0);
           },
           defaultTextHeight: function() {
             return textHeight(this.display);
@@ -9406,10 +9282,7 @@ var require_codemirror = __commonJS({
             return charWidth(this.display);
           },
           getViewport: function() {
-            return {
-              from: this.display.viewFrom,
-              to: this.display.viewTo
-            };
+            return { from: this.display.viewFrom, to: this.display.viewTo };
           },
           addWidget: function(pos, node, scroll, vert, horiz) {
             var display = this.display;
@@ -9446,12 +9319,7 @@ var require_codemirror = __commonJS({
               node.style.left = left + "px";
             }
             if (scroll) {
-              scrollIntoView(this, {
-                left,
-                top,
-                right: left + node.offsetWidth,
-                bottom: top + node.offsetHeight
-              });
+              scrollIntoView(this, { left, top, right: left + node.offsetWidth, bottom: top + node.offsetHeight });
             }
           },
           triggerOnKeyDown: methodOp(onKeyDown),
@@ -9498,13 +9366,7 @@ var require_codemirror = __commonJS({
             } else {
               deleteNearSelection(this, function(range2) {
                 var other = findPosH(doc2, range2.head, dir, unit, false);
-                return dir < 0 ? {
-                  from: other,
-                  to: range2.head
-                } : {
-                  from: range2.head,
-                  to: other
-                };
+                return dir < 0 ? { from: other, to: range2.head } : { from: range2.head, to: other };
               });
             }
           }),
@@ -9615,23 +9477,14 @@ var require_codemirror = __commonJS({
           },
           scrollIntoView: methodOp(function(range2, margin) {
             if (range2 == null) {
-              range2 = {
-                from: this.doc.sel.primary().head,
-                to: null
-              };
+              range2 = { from: this.doc.sel.primary().head, to: null };
               if (margin == null) {
                 margin = this.options.cursorScrollMargin;
               }
             } else if (typeof range2 == "number") {
-              range2 = {
-                from: Pos(range2, 0),
-                to: null
-              };
+              range2 = { from: Pos(range2, 0), to: null };
             } else if (range2.from == null) {
-              range2 = {
-                from: range2,
-                to: null
-              };
+              range2 = { from: range2, to: null };
             }
             if (!range2.to) {
               range2.to = range2.from;
@@ -9727,18 +9580,13 @@ var require_codemirror = __commonJS({
         eventMixin(CodeMirror2);
         CodeMirror2.registerHelper = function(type, name, value) {
           if (!helpers.hasOwnProperty(type)) {
-            helpers[type] = CodeMirror2[type] = {
-              _global: []
-            };
+            helpers[type] = CodeMirror2[type] = { _global: [] };
           }
           helpers[type][name] = value;
         };
         CodeMirror2.registerGlobalHelper = function(type, name, predicate, value) {
           CodeMirror2.registerHelper(type, name, value);
-          helpers[type]._global.push({
-            pred: predicate,
-            val: value
-          });
+          helpers[type]._global.push({ pred: predicate, val: value });
         };
       }
       function findPosH(doc2, pos, dir, unit, visually) {
@@ -9877,17 +9725,11 @@ var require_codemirror = __commonJS({
           }
         });
         on(div, "compositionstart", function(e) {
-          this$1.composing = {
-            data: e.data,
-            done: false
-          };
+          this$1.composing = { data: e.data, done: false };
         });
         on(div, "compositionupdate", function(e) {
           if (!this$1.composing) {
-            this$1.composing = {
-              data: e.data,
-              done: false
-            };
+            this$1.composing = { data: e.data, done: false };
           }
         });
         on(div, "compositionend", function(e) {
@@ -9911,10 +9753,7 @@ var require_codemirror = __commonJS({
             return;
           }
           if (cm.somethingSelected()) {
-            setLastCopied({
-              lineWise: false,
-              text: cm.getSelections()
-            });
+            setLastCopied({ lineWise: false, text: cm.getSelections() });
             if (e.type == "cut") {
               cm.replaceSelection("", null, "cut");
             }
@@ -9922,10 +9761,7 @@ var require_codemirror = __commonJS({
             return;
           } else {
             var ranges = copyableRanges(cm);
-            setLastCopied({
-              lineWise: true,
-              text: ranges.text
-            });
+            setLastCopied({ lineWise: true, text: ranges.text });
             if (e.type == "cut") {
               cm.operation(function() {
                 cm.setSelections(ranges.ranges, 0, sel_dontScroll);
@@ -9995,18 +9831,12 @@ var require_codemirror = __commonJS({
           return;
         }
         var view = cm.display.view;
-        var start = from.line >= cm.display.viewFrom && posToDOM(cm, from) || {
-          node: view[0].measure.map[2],
-          offset: 0
-        };
+        var start = from.line >= cm.display.viewFrom && posToDOM(cm, from) || { node: view[0].measure.map[2], offset: 0 };
         var end = to.line < cm.display.viewTo && posToDOM(cm, to);
         if (!end) {
           var measure = view[view.length - 1].measure;
           var map2 = measure.maps ? measure.maps[measure.maps.length - 1] : measure.map;
-          end = {
-            node: map2[map2.length - 1],
-            offset: map2[map2.length - 2] - map2[map2.length - 3]
-          };
+          end = { node: map2[map2.length - 1], offset: map2[map2.length - 2] - map2[map2.length - 3] };
         }
         if (!start || !end) {
           sel.removeAllRanges();
@@ -10114,11 +9944,7 @@ var require_codemirror = __commonJS({
         }
         var sel = this.getSelection(), cm = this.cm;
         if (android && chrome && this.cm.display.gutterSpecs.length && isInGutter(sel.anchorNode)) {
-          this.cm.triggerOnKeyDown({
-            type: "keydown",
-            keyCode: 8,
-            preventDefault: Math.abs
-          });
+          this.cm.triggerOnKeyDown({ type: "keydown", keyCode: 8, preventDefault: Math.abs });
           this.blur();
           this.focus();
           return;
@@ -10195,7 +10021,10 @@ var require_codemirror = __commonJS({
           ++cutFront;
         }
         var newBot = lst(newText), oldBot = lst(oldText);
-        var maxCutEnd = Math.min(newBot.length - (newText.length == 1 ? cutFront : 0), oldBot.length - (oldText.length == 1 ? cutFront : 0));
+        var maxCutEnd = Math.min(
+          newBot.length - (newText.length == 1 ? cutFront : 0),
+          oldBot.length - (oldText.length == 1 ? cutFront : 0)
+        );
         while (cutEnd < maxCutEnd && newBot.charCodeAt(newBot.length - cutEnd - 1) == oldBot.charCodeAt(oldBot.length - cutEnd - 1)) {
           ++cutEnd;
         }
@@ -10499,18 +10328,12 @@ var require_codemirror = __commonJS({
             return;
           }
           if (cm.somethingSelected()) {
-            setLastCopied({
-              lineWise: false,
-              text: cm.getSelections()
-            });
+            setLastCopied({ lineWise: false, text: cm.getSelections() });
           } else if (!cm.options.lineWiseCopyCut) {
             return;
           } else {
             var ranges = copyableRanges(cm);
-            setLastCopied({
-              lineWise: true,
-              text: ranges.text
-            });
+            setLastCopied({ lineWise: true, text: ranges.text });
             if (e.type == "cut") {
               cm.setSelections(ranges.ranges, null, sel_dontScroll);
             } else {
@@ -10550,9 +10373,7 @@ var require_codemirror = __commonJS({
           }
           input.composing = {
             start,
-            range: cm.markText(start, cm.getCursor("to"), {
-              className: "CodeMirror-composing"
-            })
+            range: cm.markText(start, cm.getCursor("to"), { className: "CodeMirror-composing" })
           };
         });
         on(te, "compositionend", function() {
@@ -10580,8 +10401,14 @@ var require_codemirror = __commonJS({
         if (cm.options.moveInputWithCursor) {
           var headPos = cursorCoords(cm, doc2.sel.primary().head, "div");
           var wrapOff = display.wrapper.getBoundingClientRect(), lineOff = display.lineDiv.getBoundingClientRect();
-          result.teTop = Math.max(0, Math.min(display.wrapper.clientHeight - 10, headPos.top + lineOff.top - wrapOff.top));
-          result.teLeft = Math.max(0, Math.min(display.wrapper.clientWidth - 10, headPos.left + lineOff.left - wrapOff.left));
+          result.teTop = Math.max(0, Math.min(
+            display.wrapper.clientHeight - 10,
+            headPos.top + lineOff.top - wrapOff.top
+          ));
+          result.teLeft = Math.max(0, Math.min(
+            display.wrapper.clientWidth - 10,
+            headPos.left + lineOff.left - wrapOff.left
+          ));
         }
         return result;
       };
@@ -10697,7 +10524,13 @@ var require_codemirror = __commonJS({
           ++same;
         }
         runInOp(cm, function() {
-          applyTextInput(cm, text.slice(same), prevInput.length - same, null, this$1.composing ? "*compose" : null);
+          applyTextInput(
+            cm,
+            text.slice(same),
+            prevInput.length - same,
+            null,
+            this$1.composing ? "*compose" : null
+          );
           if (text.length > 1e3 || text.indexOf("\n") > -1) {
             input.value = this$1.prevInput = "";
           } else {
@@ -10705,9 +10538,11 @@ var require_codemirror = __commonJS({
           }
           if (this$1.composing) {
             this$1.composing.range.clear();
-            this$1.composing.range = cm.markText(this$1.composing.start, cm.getCursor("to"), {
-              className: "CodeMirror-composing"
-            });
+            this$1.composing.range = cm.markText(
+              this$1.composing.start,
+              cm.getCursor("to"),
+              { className: "CodeMirror-composing" }
+            );
           }
         });
         return true;
@@ -10870,9 +10705,12 @@ var require_codemirror = __commonJS({
           };
         };
         textarea.style.display = "none";
-        var cm = CodeMirror(function(node) {
-          return textarea.parentNode.insertBefore(node, textarea.nextSibling);
-        }, options);
+        var cm = CodeMirror(
+          function(node) {
+            return textarea.parentNode.insertBefore(node, textarea.nextSibling);
+          },
+          options
+        );
         return cm;
       }
       function addLegacyProps(CodeMirror2) {
@@ -10931,10 +10769,7 @@ var require_codemirror = __commonJS({
         }
       }
       eventMixin(Doc);
-      CodeMirror.inputStyles = {
-        "textarea": TextareaInput,
-        "contenteditable": ContentEditableInput
-      };
+      CodeMirror.inputStyles = { "textarea": TextareaInput, "contenteditable": ContentEditableInput };
       CodeMirror.defineMode = function(name) {
         if (!CodeMirror.defaults.mode && name != "null") {
           CodeMirror.defaults.mode = name;
@@ -10943,11 +10778,9 @@ var require_codemirror = __commonJS({
       };
       CodeMirror.defineMIME = defineMIME;
       CodeMirror.defineMode("null", function() {
-        return {
-          token: function(stream) {
-            return stream.skipToEnd();
-          }
-        };
+        return { token: function(stream) {
+          return stream.skipToEnd();
+        } };
       });
       CodeMirror.defineMIME("text/plain", "null");
       CodeMirror.defineExtension = function(name, func) {
@@ -10973,4 +10806,4 @@ export {
   __async,
   require_codemirror
 };
-//# sourceMappingURL=chunk-XMUS34OK.js.map
+//# sourceMappingURL=chunk-6RHKFTCQ.js.map

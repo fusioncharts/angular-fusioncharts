@@ -94,11 +94,13 @@ export class Navigation {
     selector: 'my-app',
     template: `{{title}}
     <p>
-    <my-nav></my-nav>
-    <button (click)="showObsComp = !showObsComp">toggle ObservingComponent</button>
-    <div *ngIf='showObsComp'>
-        <obs-comp></obs-comp>
-    </div>
+      <my-nav></my-nav>
+      <button (click)="showObsComp = !showObsComp">toggle ObservingComponent</button>
+      @if (showObsComp) {
+        <div>
+          <obs-comp></obs-comp>
+        </div>
+      }
     `,
     standalone: false
 })

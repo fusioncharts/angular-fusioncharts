@@ -4,13 +4,13 @@
       class="code-nav-btns btn-group"
       role="group"
       aria-label="Basic example"
-    >
+      >
       <button
         type="button"
         class="btn btn-code"
         [ngClass]="cSelected === 'module' && 'selected'"
         (click)="selectCode('module')"
-      >
+        >
         Module
       </button>
       <button
@@ -18,7 +18,7 @@
         class="btn btn-code"
         [ngClass]="cSelected === 'component' && 'selected'"
         (click)="selectCode('component')"
-      >
+        >
         Component
       </button>
       <button
@@ -26,36 +26,40 @@
         class="btn btn-code"
         [ngClass]="cSelected === 'template' && 'selected'"
         (click)="selectCode('template')"
-      >
+        >
         Template
       </button>
-      <button
-        *ngIf="schemaCode"
-        type="button"
-        class="btn btn-code"
-        [ngClass]="cSelected === 'schema' && 'selected'"
-        (click)="selectCode('schema')"
-      >
-        Schema
-      </button>
-      <button
-        *ngIf="dataCode"
-        type="button"
-        class="btn btn-code"
-        [ngClass]="cSelected === 'data' && 'selected'"
-        (click)="selectCode('data')"
-      >
-        Data
-      </button>
+      @if (schemaCode) {
+        <button
+          type="button"
+          class="btn btn-code"
+          [ngClass]="cSelected === 'schema' && 'selected'"
+          (click)="selectCode('schema')"
+          >
+          Schema
+        </button>
+      }
+      @if (dataCode) {
+        <button
+          type="button"
+          class="btn btn-code"
+          [ngClass]="cSelected === 'data' && 'selected'"
+          (click)="selectCode('data')"
+          >
+          Data
+        </button>
+      }
     </div>
     <div class="card-body p-0">
       <div class="code-panel">
         <div class="code-panel-header">
           <div id="chartCode">
-            <div [ngSwitch]="cSelected">
-              <div *ngSwitchCase="'module'">
-                <ngx-codemirror
-                  [(ngModel)]="moduleCode"
+            <div>
+              @switch (cSelected) {
+                @case ('module') {
+                  <div>
+                    <ngx-codemirror
+                      [(ngModel)]="moduleCode"
                   [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
@@ -64,11 +68,13 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></ngx-codemirror>
-              </div>
-              <div *ngSwitchCase="'component'">
-                <ngx-codemirror
-                  [(ngModel)]="componentCode"
+                    ></ngx-codemirror>
+                  </div>
+                }
+                @case ('component') {
+                  <div>
+                    <ngx-codemirror
+                      [(ngModel)]="componentCode"
                   [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
@@ -77,11 +83,13 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></ngx-codemirror>
-              </div>
-              <div *ngSwitchCase="'template'">
-                <ngx-codemirror
-                  [(ngModel)]="templateCode"
+                    ></ngx-codemirror>
+                  </div>
+                }
+                @case ('template') {
+                  <div>
+                    <ngx-codemirror
+                      [(ngModel)]="templateCode"
                   [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
@@ -90,11 +98,13 @@
                     readOnly: true,
                     mode: 'xml'
                   }"
-                ></ngx-codemirror>
-              </div>
-              <div *ngSwitchCase="'schema'">
-                <ngx-codemirror
-                  [(ngModel)]="schemaCode"
+                    ></ngx-codemirror>
+                  </div>
+                }
+                @case ('schema') {
+                  <div>
+                    <ngx-codemirror
+                      [(ngModel)]="schemaCode"
                   [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
@@ -103,11 +113,13 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></ngx-codemirror>
-              </div>
-              <div *ngSwitchCase="'data'">
-                <ngx-codemirror
-                  [(ngModel)]="dataCode"
+                    ></ngx-codemirror>
+                  </div>
+                }
+                @case ('data') {
+                  <div>
+                    <ngx-codemirror
+                      [(ngModel)]="dataCode"
                   [options]="{
                     lineNumbers: true,
                     theme: 'dracula',
@@ -116,8 +128,10 @@
                     readOnly: true,
                     mode: 'javascript'
                   }"
-                ></ngx-codemirror>
-              </div>
+                    ></ngx-codemirror>
+                  </div>
+                }
+              }
             </div>
           </div>
         </div>
