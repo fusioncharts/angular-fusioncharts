@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { Ex1 } from './fusioncharts/ex1/ex1';
 import { Ex2 } from './fusioncharts/ex2/ex2';
 import { Ex3 } from './fusioncharts/ex3/ex3';

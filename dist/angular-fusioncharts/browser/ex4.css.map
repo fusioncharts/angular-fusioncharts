@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;907fea6362cb0a2444b16718711f5500dd67cd1bf633eec79fba4100e99bc778;C:\\FusionCharts\\develop\\angular-fusioncharts\\src\\app\\fusioncharts\\ex4\\ex4.ts"],
+  "sourcesContent": ["\n  .chart1 div {\n    float: left;\n  }\n  "],
+  "mappings": ";AACE,CAAC,OAAO;AACN,SAAO;AACT;",
+  "names": []
+}

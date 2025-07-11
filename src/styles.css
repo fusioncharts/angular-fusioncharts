@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'https://s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css';
-@import "~codemirror/lib/codemirror.css";
-@import "~codemirror/theme/material.css";
+@import "codemirror/lib/codemirror.css";
+@import "codemirror/theme/material.css";
 
 .demo-list > a.active > .nav-item{
   color: #FFFFFF;

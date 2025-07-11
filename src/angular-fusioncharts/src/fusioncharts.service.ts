@@ -45,14 +45,19 @@ export class FusionChartsService {
     }
 
     if (modules) {
-      modules.forEach((FusionChartsModules: any) => {
+      modules.forEach((FusionChartsModule: any) => {
+        // Handle both function and object-with-default (ESM interop)
+        let moduleFn = FusionChartsModule;
+        if (FusionChartsModule && typeof FusionChartsModule === 'object' && FusionChartsModule.default) {
+          moduleFn = FusionChartsModule.default;
+        }
         if (
-          (FusionChartsModules.getName && FusionChartsModules.getType) ||
-          (FusionChartsModules.name && FusionChartsModules.type)
+          (moduleFn.getName && moduleFn.getType) ||
+          (moduleFn.name && moduleFn.type)
         ) {
-          core.addDep(FusionChartsModules);
-        } else {
-          FusionChartsModules(core);
+          core.addDep(moduleFn);
+        } else if (typeof moduleFn === 'function') {
+          moduleFn(core);
         }
       });
     }
