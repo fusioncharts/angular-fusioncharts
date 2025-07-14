@@ -142910,7 +142910,7 @@ Ex3 = __decorate([
 var ex4_default = '<div class="card shadow">\r\n  <div class="card-body chart-wrapper">\r\n    <div class="chart-wrapper-inner">\r\n      <fusioncharts width="300" height="200" type="column2d" class="chart1" [dataSource]=dataSource>\r\n      </fusioncharts>\r\n\r\n      <fusioncharts width="300" height="200" type="column2d" [dataSource]=dataSource>\r\n      </fusioncharts>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<tabbed-code \r\n    moduleCode="{{sampleCode[demoId].module}}"\r\n    componentCode="{{sampleCode[demoId].component}}"\r\n    templateCode="{{sampleCode[demoId].template}}">\r\n</tabbed-code>\r\n';
 
 // angular:jit:style:inline:src\app\fusioncharts\ex4\ex4.ts;CiAgLmNoYXJ0MSBkaXYgewogICAgZmxvYXQ6IGxlZnQ7CiAgfQogIA==
-var ex4_default2 = "/* angular:styles/component:css;907fea6362cb0a2444b16718711f5500dd67cd1bf633eec79fba4100e99bc778;C:\\FusionCharts\\develop\\angular-fusioncharts\\src\\app\\fusioncharts\\ex4\\ex4.ts */\n.chart1 div {\n  float: left;\n}\n/*# sourceMappingURL=ex4.css.map */\n";
+var ex4_default2 = "/* angular:styles/component:css;907fea6362cb0a2444b16718711f5500dd67cd1bf633eec79fba4100e99bc778;C:\\FusionCharts\\angular-fusioncharts\\src\\app\\fusioncharts\\ex4\\ex4.ts */\n.chart1 div {\n  float: left;\n}\n/*# sourceMappingURL=ex4.css.map */\n";
 
 // src/app/fusioncharts/ex4/ex4.ts
 var Ex4 = class Ex42 {
@@ -153830,68 +153830,68 @@ SafeHtmlPipe = __decorate([
 ], SafeHtmlPipe);
 
 // angular:jit:template:src\app\fusioncharts\tabbedComponent\tabbed.code.html
-var tabbed_code_default = `<div class="code-view mt-2">
-  <div class="card-shadow" style="background: #03040B;">
-    <div
-      class="code-nav-btns btn-group"
-      role="group"
-      aria-label="Basic example"
-      >
-      <button
-        type="button"
-        class="btn btn-code"
-        [ngClass]="cSelected === 'module' && 'selected'"
-        (click)="selectCode('module')"
-        >
-        Module
-      </button>
-      <button
-        type="button"
-        class="btn btn-code"
-        [ngClass]="cSelected === 'component' && 'selected'"
-        (click)="selectCode('component')"
-        >
-        Component
-      </button>
-      <button
-        type="button"
-        class="btn btn-code"
-        [ngClass]="cSelected === 'template' && 'selected'"
-        (click)="selectCode('template')"
-        >
-        Template
-      </button>
-      @if (schemaCode) {
-        <button
-          type="button"
-          class="btn btn-code"
-          [ngClass]="cSelected === 'schema' && 'selected'"
-          (click)="selectCode('schema')"
-          >
-          Schema
-        </button>
-      }
-      @if (dataCode) {
-        <button
-          type="button"
-          class="btn btn-code"
-          [ngClass]="cSelected === 'data' && 'selected'"
-          (click)="selectCode('data')"
-          >
-          Data
-        </button>
-      }
-    </div>
-    <div class="card-body p-0">
-      <div class="code-panel">
-        <div class="code-panel-header">
-          <div id="chartCode">
-            <div>
-              @switch (cSelected) {
-                @case ('module') {
-                  <div>
-                    <ngx-codemirror
-                      [(ngModel)]="moduleCode"
+var tabbed_code_default = `<div class="code-view mt-2">\r
+  <div class="card-shadow" style="background: #03040B;">\r
+    <div\r
+      class="code-nav-btns btn-group"\r
+      role="group"\r
+      aria-label="Basic example"\r
+      >\r
+      <button\r
+        type="button"\r
+        class="btn btn-code"\r
+        [ngClass]="cSelected === 'module' && 'selected'"\r
+        (click)="selectCode('module')"\r
+        >\r
+        Module\r
+      </button>\r
+      <button\r
+        type="button"\r
+        class="btn btn-code"\r
+        [ngClass]="cSelected === 'component' && 'selected'"\r
+        (click)="selectCode('component')"\r
+        >\r
+        Component\r
+      </button>\r
+      <button\r
+        type="button"\r
+        class="btn btn-code"\r
+        [ngClass]="cSelected === 'template' && 'selected'"\r
+        (click)="selectCode('template')"\r
+        >\r
+        Template\r
+      </button>\r
+      @if (schemaCode) {\r
+        <button\r
+          type="button"\r
+          class="btn btn-code"\r
+          [ngClass]="cSelected === 'schema' && 'selected'"\r
+          (click)="selectCode('schema')"\r
+          >\r
+          Schema\r
+        </button>\r
+      }\r
+      @if (dataCode) {\r
+        <button\r
+          type="button"\r
+          class="btn btn-code"\r
+          [ngClass]="cSelected === 'data' && 'selected'"\r
+          (click)="selectCode('data')"\r
+          >\r
+          Data\r
+        </button>\r
+      }\r
+    </div>\r
+    <div class="card-body p-0">\r
+      <div class="code-panel">\r
+        <div class="code-panel-header">\r
+          <div id="chartCode">\r
+            <div>\r
+              @switch (cSelected) {\r
+                @case ('module') {\r
+                  <div>\r
+                    <ngx-codemirror\r
+                      [(ngModel)]="moduleCode"\r
                   [options]="{\r
                     lineNumbers: true,\r
                     theme: 'dracula',\r
@@ -153900,13 +153900,13 @@ var tabbed_code_default = `<div class="code-view mt-2">
                     readOnly: true,\r
                     mode: 'javascript'\r
                   }"\r
-                    ></ngx-codemirror>
-                  </div>
-                }
-                @case ('component') {
-                  <div>
-                    <ngx-codemirror
-                      [(ngModel)]="componentCode"
+                    ></ngx-codemirror>\r
+                  </div>\r
+                }\r
+                @case ('component') {\r
+                  <div>\r
+                    <ngx-codemirror\r
+                      [(ngModel)]="componentCode"\r
                   [options]="{\r
                     lineNumbers: true,\r
                     theme: 'dracula',\r
@@ -153915,13 +153915,13 @@ var tabbed_code_default = `<div class="code-view mt-2">
                     readOnly: true,\r
                     mode: 'javascript'\r
                   }"\r
-                    ></ngx-codemirror>
-                  </div>
-                }
-                @case ('template') {
-                  <div>
-                    <ngx-codemirror
-                      [(ngModel)]="templateCode"
+                    ></ngx-codemirror>\r
+                  </div>\r
+                }\r
+                @case ('template') {\r
+                  <div>\r
+                    <ngx-codemirror\r
+                      [(ngModel)]="templateCode"\r
                   [options]="{\r
                     lineNumbers: true,\r
                     theme: 'dracula',\r
@@ -153930,13 +153930,13 @@ var tabbed_code_default = `<div class="code-view mt-2">
                     readOnly: true,\r
                     mode: 'xml'\r
                   }"\r
-                    ></ngx-codemirror>
-                  </div>
-                }
-                @case ('schema') {
-                  <div>
-                    <ngx-codemirror
-                      [(ngModel)]="schemaCode"
+                    ></ngx-codemirror>\r
+                  </div>\r
+                }\r
+                @case ('schema') {\r
+                  <div>\r
+                    <ngx-codemirror\r
+                      [(ngModel)]="schemaCode"\r
                   [options]="{\r
                     lineNumbers: true,\r
                     theme: 'dracula',\r
@@ -153945,13 +153945,13 @@ var tabbed_code_default = `<div class="code-view mt-2">
                     readOnly: true,\r
                     mode: 'javascript'\r
                   }"\r
-                    ></ngx-codemirror>
-                  </div>
-                }
-                @case ('data') {
-                  <div>
-                    <ngx-codemirror
-                      [(ngModel)]="dataCode"
+                    ></ngx-codemirror>\r
+                  </div>\r
+                }\r
+                @case ('data') {\r
+                  <div>\r
+                    <ngx-codemirror\r
+                      [(ngModel)]="dataCode"\r
                   [options]="{\r
                     lineNumbers: true,\r
                     theme: 'dracula',\r
@@ -153960,17 +153960,17 @@ var tabbed_code_default = `<div class="code-view mt-2">
                     readOnly: true,\r
                     mode: 'javascript'\r
                   }"\r
-                    ></ngx-codemirror>
-                  </div>
-                }
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                    ></ngx-codemirror>\r
+                  </div>\r
+                }\r
+              }\r
+            </div>\r
+          </div>\r
+        </div>\r
+      </div>\r
+    </div>\r
+  </div>\r
+</div>\r
 `;
 
 // src/app/fusioncharts/tabbedComponent/tabbed.code.component.ts
