@@ -3,7 +3,7 @@ import * as i0 from "@angular/core";
 var FusionChartsStatic = /** @class */ (function () {
     function FusionChartsStatic() {
     }
-    FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(t) { return new (t || FusionChartsStatic)(); };
+    FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsStatic)(); };
     FusionChartsStatic.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: FusionChartsStatic, factory: FusionChartsStatic.ɵfac });
     return FusionChartsStatic;
 }());
@@ -42,13 +42,18 @@ var FusionChartsService = /** @class */ (function () {
             this._fusionchartsStatice = core();
         }
         if (modules) {
-            modules.forEach(function (FusionChartsModules) {
-                if ((FusionChartsModules.getName && FusionChartsModules.getType) ||
-                    (FusionChartsModules.name && FusionChartsModules.type)) {
-                    core.addDep(FusionChartsModules);
+            modules.forEach(function (FusionChartsModule) {
+                // Handle both function and object-with-default (ESM interop)
+                var moduleFn = FusionChartsModule;
+                if (FusionChartsModule && typeof FusionChartsModule === 'object' && FusionChartsModule.default) {
+                    moduleFn = FusionChartsModule.default;
                 }
-                else {
-                    FusionChartsModules(core);
+                if ((moduleFn.getName && moduleFn.getType) ||
+                    (moduleFn.name && moduleFn.type)) {
+                    core.addDep(moduleFn);
+                }
+                else if (typeof moduleFn === 'function') {
+                    moduleFn(core);
                 }
             });
         }
@@ -62,7 +67,7 @@ var FusionChartsService = /** @class */ (function () {
     };
     FusionChartsService._fcRoot = null;
     FusionChartsService.itemCount = 0;
-    FusionChartsService.ɵfac = function FusionChartsService_Factory(t) { return new (t || FusionChartsService)(i0.ɵɵinject(FusionChartsStatic)); };
+    FusionChartsService.ɵfac = function FusionChartsService_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsService)(i0.ɵɵinject(FusionChartsStatic)); };
     FusionChartsService.ɵprov = /*@__PURE__*/ i0.ɵɵdefineInjectable({ token: FusionChartsService, factory: FusionChartsService.ɵfac });
     return FusionChartsService;
 }());

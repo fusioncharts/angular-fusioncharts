@@ -1,7 +1,7 @@
 
 
 import { FusionChartsService } from './fusioncharts.service';
-import { getModuleFn } from '../../app/fusioncharts/getModuleFn';
+import { getModuleFn } from './getModuleFn';
 
 
 export function FusionChartsConstructor(fusionchartsService: any, chartConfig: Object) {
