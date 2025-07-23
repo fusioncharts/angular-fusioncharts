@@ -8,11 +8,12 @@ import SelectedSingleton from '../services/selected.singleton';
 declare var Prism;
 
 @Component({
-  selector: 'chart',
-  templateUrl: './ex16.html',
-  styleUrls: [
-    '../ex.css'
-  ]
+    selector: 'chart',
+    templateUrl: './ex16.html',
+    styleUrls: [
+        '../ex.css'
+    ],
+    standalone: false
 })
 export class Ex16 {
   demoId = 'ex16';

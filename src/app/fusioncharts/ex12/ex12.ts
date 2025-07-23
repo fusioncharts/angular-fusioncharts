@@ -9,7 +9,8 @@ declare var Prism;
     templateUrl: 'ex12.html',
     styleUrls: [
         '../ex.css'
-    ]
+    ],
+    standalone: false
 })
 export class Ex12 {
     demoId = 'ex12';

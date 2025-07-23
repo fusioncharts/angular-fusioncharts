@@ -9,8 +9,9 @@ import SelectedSingleton from '../services/selected.singleton';
 declare var Prism;
 
 @Component({
-  selector: 'chart',
-  templateUrl: 'ex1.html'
+    selector: 'chart',
+    templateUrl: 'ex1.html',
+    standalone: false
 })
 
 export class Ex1 implements AfterViewInit {

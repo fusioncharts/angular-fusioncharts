@@ -14,13 +14,14 @@ var config = {
 }
 
 @Component({
-  	selector: 'chart',
-  	template: `
+    selector: 'chart',
+    template: `
               <fusioncharts [chartConfig]=chartConf> </fusioncharts>
               <fusioncharts type="Spline" [chartConfig]="chartConf"> </fusioncharts>
               <fusioncharts type="Pyramid" [chartConfig]=chartConf> </fusioncharts>
               <fusioncharts type="World" [chartConfig]=chartConf> Column2D chart will render here... </fusioncharts>
-          `
+          `,
+    standalone: false
 })
 
 export class FusionChartsSample {

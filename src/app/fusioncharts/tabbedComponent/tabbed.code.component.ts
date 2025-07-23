@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'tabbed-code',
-  templateUrl: './tabbed.code.html'
+    selector: 'tabbed-code',
+    templateUrl: './tabbed.code.html',
+    standalone: false
 })
 export class TabbedCode {
   @Input() moduleCode;

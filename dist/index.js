@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { FusionChartsComponent } from './src/fusioncharts.component';
-import { FusionChartsDirective } from './src/fusioncharts.directive';
-import { FusionChartsPipe } from './src/fusioncharts.pipe';
-import { FusionChartsStatic, FusionChartsService } from './src/fusioncharts.service';
+import { NgModule } from "@angular/core";
+import { FusionChartsComponent } from "./src/fusioncharts.component";
+import { FusionChartsDirective } from "./src/fusioncharts.directive";
+import { FusionChartsPipe } from "./src/fusioncharts.pipe";
+import { FusionChartsStatic, FusionChartsService, } from "./src/fusioncharts.service";
 import * as i0 from "@angular/core";
-export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic };
+export { FusionChartsComponent, FusionChartsDirective, FusionChartsPipe, FusionChartsStatic, };
 var FusionChartsModule = /** @class */ (function () {
     function FusionChartsModule() {
     }
@@ -16,13 +16,15 @@ var FusionChartsModule = /** @class */ (function () {
         }
         return {
             ngModule: FusionChartsModule,
-            providers: [{
+            providers: [
+                {
                     provide: FusionChartsStatic,
                     useValue: {
                         core: fcCore,
-                        modules: fcModules
-                    }
-                }]
+                        modules: fcModules,
+                    },
+                },
+            ],
         };
     };
     FusionChartsModule.fcRoot = function (fcCore) {
@@ -32,15 +34,12 @@ var FusionChartsModule = /** @class */ (function () {
         }
         FusionChartsService.setFCRoot({
             core: fcCore,
-            modules: fcModules
+            modules: fcModules,
         });
     };
-    FusionChartsModule.ɵfac = function FusionChartsModule_Factory(t) { return new (t || FusionChartsModule)(); };
+    FusionChartsModule.ɵfac = function FusionChartsModule_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsModule)(); };
     FusionChartsModule.ɵmod = /*@__PURE__*/ i0.ɵɵdefineNgModule({ type: FusionChartsModule });
-    FusionChartsModule.ɵinj = /*@__PURE__*/ i0.ɵɵdefineInjector({ providers: [
-            FusionChartsService,
-            FusionChartsStatic
-        ] });
+    FusionChartsModule.ɵinj = /*@__PURE__*/ i0.ɵɵdefineInjector({ providers: [FusionChartsService, FusionChartsStatic] });
     return FusionChartsModule;
 }());
 export { FusionChartsModule };
@@ -50,22 +49,13 @@ export { FusionChartsModule };
                 declarations: [
                     FusionChartsComponent,
                     FusionChartsDirective,
-                    FusionChartsPipe
+                    FusionChartsPipe,
                 ],
-                exports: [
-                    FusionChartsComponent,
-                    FusionChartsDirective,
-                    FusionChartsPipe
-                ],
-                providers: [
-                    FusionChartsService,
-                    FusionChartsStatic
-                ]
+                exports: [FusionChartsComponent, FusionChartsDirective, FusionChartsPipe],
+                providers: [FusionChartsService, FusionChartsStatic],
             }]
     }], null, null); })();
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0.ɵɵsetNgModuleScope(FusionChartsModule, { declarations: [FusionChartsComponent,
         FusionChartsDirective,
-        FusionChartsPipe], exports: [FusionChartsComponent,
-        FusionChartsDirective,
-        FusionChartsPipe] }); })();
+        FusionChartsPipe], exports: [FusionChartsComponent, FusionChartsDirective, FusionChartsPipe] }); })();
 //# sourceMappingURL=index.js.map

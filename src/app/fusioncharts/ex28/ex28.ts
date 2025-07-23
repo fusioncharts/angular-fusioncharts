@@ -7,9 +7,10 @@ import * as FusionCharts from 'fusioncharts';
 declare var Prism;
 
 @Component({
-  selector: 'chart',
-  templateUrl: './ex28.html',
-  styleUrls: ['../ex.css']
+    selector: 'chart',
+    templateUrl: './ex28.html',
+    styleUrls: ['../ex.css'],
+    standalone: false
 })
 export class Ex28 {
   demoId = 'ex28';

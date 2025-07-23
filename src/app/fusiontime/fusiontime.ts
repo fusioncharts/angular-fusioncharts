@@ -80,8 +80,9 @@ const updatedDataSource = [
 ];
 
 @Component({
-  selector: 'fusiontime',
-  templateUrl: './fusiontime.html'
+    selector: 'fusiontime',
+    templateUrl: './fusiontime.html',
+    standalone: false
 })
 export class FusionTime {
   dataSource: any;

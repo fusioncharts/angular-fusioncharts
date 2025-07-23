@@ -27,7 +27,7 @@
     var FusionChartsStatic = /** @class */ (function () {
         function FusionChartsStatic() {
         }
-        FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(t) { return new (t || FusionChartsStatic)(); };
+        FusionChartsStatic.ɵfac = function FusionChartsStatic_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsStatic)(); };
         FusionChartsStatic.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsStatic, factory: FusionChartsStatic.ɵfac });
         return FusionChartsStatic;
     }());
@@ -65,13 +65,18 @@
                 this._fusionchartsStatice = core();
             }
             if (modules) {
-                modules.forEach(function (FusionChartsModules) {
-                    if ((FusionChartsModules.getName && FusionChartsModules.getType) ||
-                        (FusionChartsModules.name && FusionChartsModules.type)) {
-                        core.addDep(FusionChartsModules);
+                modules.forEach(function (FusionChartsModule) {
+                    // Handle both function and object-with-default (ESM interop)
+                    var moduleFn = FusionChartsModule;
+                    if (FusionChartsModule && typeof FusionChartsModule === 'object' && FusionChartsModule.default) {
+                        moduleFn = FusionChartsModule.default;
                     }
-                    else {
-                        FusionChartsModules(core);
+                    if ((moduleFn.getName && moduleFn.getType) ||
+                        (moduleFn.name && moduleFn.type)) {
+                        core.addDep(moduleFn);
+                    }
+                    else if (typeof moduleFn === 'function') {
+                        moduleFn(core);
                     }
                 });
             }
@@ -85,7 +90,7 @@
         };
         FusionChartsService._fcRoot = null;
         FusionChartsService.itemCount = 0;
-        FusionChartsService.ɵfac = function FusionChartsService_Factory(t) { return new (t || FusionChartsService)(i0__namespace.ɵɵinject(FusionChartsStatic)); };
+        FusionChartsService.ɵfac = function FusionChartsService_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsService)(i0__namespace.ɵɵinject(FusionChartsStatic)); };
         FusionChartsService.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsService, factory: FusionChartsService.ɵfac });
         return FusionChartsService;
     }());
@@ -93,8 +98,14 @@
             type: i0.Injectable
         }], function () { return [{ type: FusionChartsStatic }]; }, null); })();
 
+    // Utility to unwrap .default from ESM/CommonJS interop
+    function getModuleFn(mod) {
+        return (mod && typeof mod === 'object' && mod.default) ? mod.default : mod;
+    }
+
     function FusionChartsConstructor(fusionchartsService, chartConfig) {
         var FusionCharts = fusionchartsService.getFusionChartsStatic();
+        FusionCharts = getModuleFn(FusionCharts);
         return new FusionCharts(chartConfig);
     }
 
@@ -595,15 +606,15 @@
         FusionChartsComponent.prototype.ngOnDestroy = function () {
             this.chartObj && this.chartObj.dispose();
         };
-        FusionChartsComponent.ɵfac = function FusionChartsComponent_Factory(t) { return new (t || FusionChartsComponent)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef), i0__namespace.ɵɵdirectiveInject(FusionChartsService), i0__namespace.ɵɵdirectiveInject(i0__namespace.KeyValueDiffers), i0__namespace.ɵɵdirectiveInject(i0__namespace.NgZone)); };
-        FusionChartsComponent.ɵcmp = /*@__PURE__*/ i0__namespace.ɵɵdefineComponent({ type: FusionChartsComponent, selectors: [["fusioncharts"]], inputs: { placeholder: "placeholder", dataSource: "dataSource", type: "type", id: "id", width: "width", height: "height", renderAt: "renderAt", dataFormat: "dataFormat", events: "events", link: "link", showDataLoadingMessage: "showDataLoadingMessage", showChartLoadingMessage: "showChartLoadingMessage", baseChartMessageFont: "baseChartMessageFont", baseChartMessageFontSize: "baseChartMessageFontSize", baseChartMessageColor: "baseChartMessageColor", dataLoadStartMessage: "dataLoadStartMessage", dataLoadErrorMessage: "dataLoadErrorMessage", dataInvalidMessage: "dataInvalidMessage", dataEmptyMessage: "dataEmptyMessage", typeNotSupportedMessage: "typeNotSupportedMessage", loadMessage: "loadMessage", renderErrorMessage: "renderErrorMessage", containerBackgroundColor: "containerBackgroundColor", containerBackgroundOpacity: "containerBackgroundOpacity", containerClassName: "containerClassName", baseChartMessageImageHAlign: "baseChartMessageImageHAlign", baseChartMessageImageVAlign: "baseChartMessageImageVAlign", baseChartMessageImageAlpha: "baseChartMessageImageAlpha", baseChartMessageImageScale: "baseChartMessageImageScale", typeNotSupportedMessageImageHAlign: "typeNotSupportedMessageImageHAlign", typeNotSupportedMessageImageVAlign: "typeNotSupportedMessageImageVAlign", typeNotSupportedMessageImageAlpha: "typeNotSupportedMessageImageAlpha", typeNotSupportedMessageImageScale: "typeNotSupportedMessageImageScale", dataLoadErrorMessageImageHAlign: "dataLoadErrorMessageImageHAlign", dataLoadErrorMessageImageVAlign: "dataLoadErrorMessageImageVAlign", dataLoadErrorMessageImageAlpha: "dataLoadErrorMessageImageAlpha", dataLoadErrorMessageImageScale: "dataLoadErrorMessageImageScale", dataLoadStartMessageImageHAlign: "dataLoadStartMessageImageHAlign", dataLoadStartMessageImageVAlign: "dataLoadStartMessageImageVAlign", dataLoadStartMessageImageAlpha: "dataLoadStartMessageImageAlpha", dataLoadStartMessageImageScale: "dataLoadStartMessageImageScale", dataInvalidMessageImageHAlign: "dataInvalidMessageImageHAlign", dataInvalidMessageImageVAlign: "dataInvalidMessageImageVAlign", dataInvalidMessageImageAlpha: "dataInvalidMessageImageAlpha", dataInvalidMessageImageScale: "dataInvalidMessageImageScale", dataEmptyMessageImageHAlign: "dataEmptyMessageImageHAlign", dataEmptyMessageImageVAlign: "dataEmptyMessageImageVAlign", dataEmptyMessageImageAlpha: "dataEmptyMessageImageAlpha", dataEmptyMessageImageScale: "dataEmptyMessageImageScale", renderErrorMessageImageHAlign: "renderErrorMessageImageHAlign", renderErrorMessageImageVAlign: "renderErrorMessageImageVAlign", renderErrorMessageImageAlpha: "renderErrorMessageImageAlpha", renderErrorMessageImageScale: "renderErrorMessageImageScale", loadMessageImageHAlign: "loadMessageImageHAlign", loadMessageImageVAlign: "loadMessageImageVAlign", loadMessageImageAlpha: "loadMessageImageAlpha", loadMessageImageScale: "loadMessageImageScale", chartConfig: "chartConfig" }, outputs: { beforeLinkedItemOpen: "beforeLinkedItemOpen", linkedItemOpened: "linkedItemOpened", beforeLinkedItemClose: "beforeLinkedItemClose", linkedItemClosed: "linkedItemClosed", printReadyStateChange: "printReadyStateChange", dataLoadRequestCompleted: "dataLoadRequestCompleted", dataLoadError: "dataLoadError", dataLoadCancelled: "dataLoadCancelled", dataLoadRequestCancelled: "dataLoadRequestCancelled", dataUpdated: "dataUpdated", dataUpdateCancelled: "dataUpdateCancelled", dataLoadRequested: "dataLoadRequested", beforeDataUpdate: "beforeDataUpdate", realTimeUpdateComplete: "realTimeUpdateComplete", chartCleared: "chartCleared", slicingEnd: "slicingEnd", slicingStart: "slicingStart", entityRollOut: "entityRollOut", entityRollOver: "entityRollOver", entityClick: "entityClick", connectorRollOver: "connectorRollOver", connectorRollOut: "connectorRollOut", connectorClick: "connectorClick", markerRollOver: "markerRollOver", markerRollOut: "markerRollOut", markerClick: "markerClick", pageNavigated: "pageNavigated", rotationEnd: "rotationEnd", rotationStart: "rotationStart", centerLabelRollover: "centerLabelRollover", centerLabelRollout: "centerLabelRollout", centerLabelClick: "centerLabelClick", centerLabelChanged: "centerLabelChanged", chartClick: "chartClick", chartMouseMove: "chartMouseMove", chartRollOver: "chartRollOver", chartRollOut: "chartRollOut", backgroundLoaded: "backgroundLoaded", backgroundLoadError: "backgroundLoadError", legendItemClicked: "legendItemClicked", legendItemRollover: "legendItemRollover", legendItemRollout: "legendItemRollout", logoRollover: "logoRollover", logoRollout: "logoRollout", logoClick: "logoClick", logoLoaded: "logoLoaded", logoLoadError: "logoLoadError", beforeExport: "beforeExport", exported: "exported", exportCancelled: "exportCancelled", beforePrint: "beforePrint", printComplete: "printComplete", printCancelled: "printCancelled", dataLabelClick: "dataLabelClick", dataLabelRollOver: "dataLabelRollOver", dataLabelRollOut: "dataLabelRollOut", scrollStart: "scrollStart", scrollEnd: "scrollEnd", onScroll: "onScroll", zoomReset: "zoomReset", zoomedOut: "zoomedOut", zoomedIn: "zoomedIn", zoomed: "zoomed", zoomModeChanged: "zoomModeChanged", pinned: "pinned", dataRestored: "dataRestored", beforeDataSubmit: "beforeDataSubmit", dataSubmitError: "dataSubmitError", dataSubmitted: "dataSubmitted", dataSubmitCancelled: "dataSubmitCancelled", chartUpdated: "chartUpdated", nodeAdded: "nodeAdded", nodeUpdated: "nodeUpdated", nodeDeleted: "nodeDeleted", connectorAdded: "connectorAdded", connectorUpdated: "connectorUpdated", connectorDeleted: "connectorDeleted", labelAdded: "labelAdded", labelDeleted: "labelDeleted", selectionRemoved: "selectionRemoved", selectionStart: "selectionStart", selectionEnd: "selectionEnd", labelClick: "labelClick", labelRollOver: "labelRollOver", labelRollOut: "labelRollOut", labelDragStart: "labelDragStart", labelDragEnd: "labelDragEnd", dataplotDragStart: "dataplotDragStart", dataplotDragEnd: "dataplotDragEnd", processClick: "processClick", processRollOver: "processRollOver", processRollOut: "processRollOut", categoryClick: "categoryClick", categoryRollOver: "categoryRollOver", categoryRollOut: "categoryRollOut", milestoneClick: "milestoneClick", milestoneRollOver: "milestoneRollOver", milestoneRollOut: "milestoneRollOut", chartTypeChanged: "chartTypeChanged", overlayButtonClick: "overlayButtonClick", loaded: "loaded", rendered: "rendered", drawComplete: "drawComplete", renderComplete: "renderComplete", dataInvalid: "dataInvalid", dataXMLInvalid: "dataXMLInvalid", dataLoaded: "dataLoaded", noDataToDisplay: "noDataToDisplay", legendPointerDragStart: "legendPointerDragStart", legendPointerDragStop: "legendPointerDragStop", legendRangeUpdated: "legendRangeUpdated", alertComplete: "alertComplete", realTimeUpdateError: "realTimeUpdateError", dataplotRollOver: "dataplotRollOver", dataplotRollOut: "dataplotRollOut", dataplotClick: "dataplotClick", linkClicked: "linkClicked", beforeRender: "beforeRender", renderCancelled: "renderCancelled", beforeResize: "beforeResize", resized: "resized", resizeCancelled: "resizeCancelled", beforeDispose: "beforeDispose", disposed: "disposed", disposeCancelled: "disposeCancelled", linkedChartInvoked: "linkedChartInvoked", beforeDrillDown: "beforeDrillDown", drillDown: "drillDown", beforeDrillUp: "beforeDrillUp", drillUp: "drillUp", drillDownCancelled: "drillDownCancelled", drillUpCancelled: "drillUpCancelled", initialized: "initialized" }, features: [i0__namespace.ɵɵProvidersFeature([FusionChartsService]), i0__namespace.ɵɵNgOnChangesFeature], decls: 2, vars: 3, consts: [[2, "width", "100%", "height", "100%"]], template: function FusionChartsComponent_Template(rf, ctx) { if (rf & 1) {
+        FusionChartsComponent.ɵfac = function FusionChartsComponent_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsComponent)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef), i0__namespace.ɵɵdirectiveInject(FusionChartsService), i0__namespace.ɵɵdirectiveInject(i0__namespace.KeyValueDiffers), i0__namespace.ɵɵdirectiveInject(i0__namespace.NgZone)); };
+        FusionChartsComponent.ɵcmp = /*@__PURE__*/ i0__namespace.ɵɵdefineComponent({ type: FusionChartsComponent, selectors: [["fusioncharts"]], inputs: { placeholder: "placeholder", dataSource: "dataSource", type: "type", id: "id", width: "width", height: "height", renderAt: "renderAt", dataFormat: "dataFormat", events: "events", link: "link", showDataLoadingMessage: "showDataLoadingMessage", showChartLoadingMessage: "showChartLoadingMessage", baseChartMessageFont: "baseChartMessageFont", baseChartMessageFontSize: "baseChartMessageFontSize", baseChartMessageColor: "baseChartMessageColor", dataLoadStartMessage: "dataLoadStartMessage", dataLoadErrorMessage: "dataLoadErrorMessage", dataInvalidMessage: "dataInvalidMessage", dataEmptyMessage: "dataEmptyMessage", typeNotSupportedMessage: "typeNotSupportedMessage", loadMessage: "loadMessage", renderErrorMessage: "renderErrorMessage", containerBackgroundColor: "containerBackgroundColor", containerBackgroundOpacity: "containerBackgroundOpacity", containerClassName: "containerClassName", baseChartMessageImageHAlign: "baseChartMessageImageHAlign", baseChartMessageImageVAlign: "baseChartMessageImageVAlign", baseChartMessageImageAlpha: "baseChartMessageImageAlpha", baseChartMessageImageScale: "baseChartMessageImageScale", typeNotSupportedMessageImageHAlign: "typeNotSupportedMessageImageHAlign", typeNotSupportedMessageImageVAlign: "typeNotSupportedMessageImageVAlign", typeNotSupportedMessageImageAlpha: "typeNotSupportedMessageImageAlpha", typeNotSupportedMessageImageScale: "typeNotSupportedMessageImageScale", dataLoadErrorMessageImageHAlign: "dataLoadErrorMessageImageHAlign", dataLoadErrorMessageImageVAlign: "dataLoadErrorMessageImageVAlign", dataLoadErrorMessageImageAlpha: "dataLoadErrorMessageImageAlpha", dataLoadErrorMessageImageScale: "dataLoadErrorMessageImageScale", dataLoadStartMessageImageHAlign: "dataLoadStartMessageImageHAlign", dataLoadStartMessageImageVAlign: "dataLoadStartMessageImageVAlign", dataLoadStartMessageImageAlpha: "dataLoadStartMessageImageAlpha", dataLoadStartMessageImageScale: "dataLoadStartMessageImageScale", dataInvalidMessageImageHAlign: "dataInvalidMessageImageHAlign", dataInvalidMessageImageVAlign: "dataInvalidMessageImageVAlign", dataInvalidMessageImageAlpha: "dataInvalidMessageImageAlpha", dataInvalidMessageImageScale: "dataInvalidMessageImageScale", dataEmptyMessageImageHAlign: "dataEmptyMessageImageHAlign", dataEmptyMessageImageVAlign: "dataEmptyMessageImageVAlign", dataEmptyMessageImageAlpha: "dataEmptyMessageImageAlpha", dataEmptyMessageImageScale: "dataEmptyMessageImageScale", renderErrorMessageImageHAlign: "renderErrorMessageImageHAlign", renderErrorMessageImageVAlign: "renderErrorMessageImageVAlign", renderErrorMessageImageAlpha: "renderErrorMessageImageAlpha", renderErrorMessageImageScale: "renderErrorMessageImageScale", loadMessageImageHAlign: "loadMessageImageHAlign", loadMessageImageVAlign: "loadMessageImageVAlign", loadMessageImageAlpha: "loadMessageImageAlpha", loadMessageImageScale: "loadMessageImageScale", chartConfig: "chartConfig" }, outputs: { beforeLinkedItemOpen: "beforeLinkedItemOpen", linkedItemOpened: "linkedItemOpened", beforeLinkedItemClose: "beforeLinkedItemClose", linkedItemClosed: "linkedItemClosed", printReadyStateChange: "printReadyStateChange", dataLoadRequestCompleted: "dataLoadRequestCompleted", dataLoadError: "dataLoadError", dataLoadCancelled: "dataLoadCancelled", dataLoadRequestCancelled: "dataLoadRequestCancelled", dataUpdated: "dataUpdated", dataUpdateCancelled: "dataUpdateCancelled", dataLoadRequested: "dataLoadRequested", beforeDataUpdate: "beforeDataUpdate", realTimeUpdateComplete: "realTimeUpdateComplete", chartCleared: "chartCleared", slicingEnd: "slicingEnd", slicingStart: "slicingStart", entityRollOut: "entityRollOut", entityRollOver: "entityRollOver", entityClick: "entityClick", connectorRollOver: "connectorRollOver", connectorRollOut: "connectorRollOut", connectorClick: "connectorClick", markerRollOver: "markerRollOver", markerRollOut: "markerRollOut", markerClick: "markerClick", pageNavigated: "pageNavigated", rotationEnd: "rotationEnd", rotationStart: "rotationStart", centerLabelRollover: "centerLabelRollover", centerLabelRollout: "centerLabelRollout", centerLabelClick: "centerLabelClick", centerLabelChanged: "centerLabelChanged", chartClick: "chartClick", chartMouseMove: "chartMouseMove", chartRollOver: "chartRollOver", chartRollOut: "chartRollOut", backgroundLoaded: "backgroundLoaded", backgroundLoadError: "backgroundLoadError", legendItemClicked: "legendItemClicked", legendItemRollover: "legendItemRollover", legendItemRollout: "legendItemRollout", logoRollover: "logoRollover", logoRollout: "logoRollout", logoClick: "logoClick", logoLoaded: "logoLoaded", logoLoadError: "logoLoadError", beforeExport: "beforeExport", exported: "exported", exportCancelled: "exportCancelled", beforePrint: "beforePrint", printComplete: "printComplete", printCancelled: "printCancelled", dataLabelClick: "dataLabelClick", dataLabelRollOver: "dataLabelRollOver", dataLabelRollOut: "dataLabelRollOut", scrollStart: "scrollStart", scrollEnd: "scrollEnd", onScroll: "onScroll", zoomReset: "zoomReset", zoomedOut: "zoomedOut", zoomedIn: "zoomedIn", zoomed: "zoomed", zoomModeChanged: "zoomModeChanged", pinned: "pinned", dataRestored: "dataRestored", beforeDataSubmit: "beforeDataSubmit", dataSubmitError: "dataSubmitError", dataSubmitted: "dataSubmitted", dataSubmitCancelled: "dataSubmitCancelled", chartUpdated: "chartUpdated", nodeAdded: "nodeAdded", nodeUpdated: "nodeUpdated", nodeDeleted: "nodeDeleted", connectorAdded: "connectorAdded", connectorUpdated: "connectorUpdated", connectorDeleted: "connectorDeleted", labelAdded: "labelAdded", labelDeleted: "labelDeleted", selectionRemoved: "selectionRemoved", selectionStart: "selectionStart", selectionEnd: "selectionEnd", labelClick: "labelClick", labelRollOver: "labelRollOver", labelRollOut: "labelRollOut", labelDragStart: "labelDragStart", labelDragEnd: "labelDragEnd", dataplotDragStart: "dataplotDragStart", dataplotDragEnd: "dataplotDragEnd", processClick: "processClick", processRollOver: "processRollOver", processRollOut: "processRollOut", categoryClick: "categoryClick", categoryRollOver: "categoryRollOver", categoryRollOut: "categoryRollOut", milestoneClick: "milestoneClick", milestoneRollOver: "milestoneRollOver", milestoneRollOut: "milestoneRollOut", chartTypeChanged: "chartTypeChanged", overlayButtonClick: "overlayButtonClick", loaded: "loaded", rendered: "rendered", drawComplete: "drawComplete", renderComplete: "renderComplete", dataInvalid: "dataInvalid", dataXMLInvalid: "dataXMLInvalid", dataLoaded: "dataLoaded", noDataToDisplay: "noDataToDisplay", legendPointerDragStart: "legendPointerDragStart", legendPointerDragStop: "legendPointerDragStop", legendRangeUpdated: "legendRangeUpdated", alertComplete: "alertComplete", realTimeUpdateError: "realTimeUpdateError", dataplotRollOver: "dataplotRollOver", dataplotRollOut: "dataplotRollOut", dataplotClick: "dataplotClick", linkClicked: "linkClicked", beforeRender: "beforeRender", renderCancelled: "renderCancelled", beforeResize: "beforeResize", resized: "resized", resizeCancelled: "resizeCancelled", beforeDispose: "beforeDispose", disposed: "disposed", disposeCancelled: "disposeCancelled", linkedChartInvoked: "linkedChartInvoked", beforeDrillDown: "beforeDrillDown", drillDown: "drillDown", beforeDrillUp: "beforeDrillUp", drillUp: "drillUp", drillDownCancelled: "drillDownCancelled", drillUpCancelled: "drillUpCancelled", initialized: "initialized" }, standalone: false, features: [i0__namespace.ɵɵProvidersFeature([FusionChartsService]), i0__namespace.ɵɵNgOnChangesFeature], decls: 2, vars: 2, consts: [[2, "width", "100%", "height", "100%"]], template: function FusionChartsComponent_Template(rf, ctx) { if (rf & 1) {
                 i0__namespace.ɵɵelementStart(0, "div", 0);
                 i0__namespace.ɵɵtext(1);
                 i0__namespace.ɵɵelementEnd();
             } if (rf & 2) {
-                i0__namespace.ɵɵattributeInterpolate1("id", "container-", ctx.containerId, "");
+                i0__namespace.ɵɵattribute("id", "container-" + ctx.containerId);
                 i0__namespace.ɵɵadvance();
-                i0__namespace.ɵɵtextInterpolate1(" ", ctx.placeholder, " ");
+                i0__namespace.ɵɵtextInterpolate(ctx.placeholder);
             } }, encapsulation: 2 });
         return FusionChartsComponent;
     }());
@@ -611,8 +622,9 @@
             type: i0.Component,
             args: [{
                     selector: 'fusioncharts',
-                    template: "\n    <div attr.id=\"container-{{ containerId }}\" style=\"width:100%;height:100%\">\n      {{ placeholder }}\n    </div>\n  ",
-                    providers: [FusionChartsService]
+                    template: "<div [attr.id]=\"'container-' + containerId\" style=\"width:100%;height:100%\">{{ placeholder }}</div>",
+                    providers: [FusionChartsService],
+                    standalone: false
                 }]
         }], function () { return [{ type: i0__namespace.ElementRef }, { type: FusionChartsService }, { type: i0__namespace.KeyValueDiffers }, { type: i0__namespace.NgZone }]; }, { placeholder: [{
                 type: i0.Input
@@ -997,20 +1009,21 @@
             }], initialized: [{
                 type: i0.Output
             }] }); })();
-    (function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassDebugInfo(FusionChartsComponent, { className: "FusionChartsComponent" }); })();
+    (function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassDebugInfo(FusionChartsComponent, { className: "FusionChartsComponent", filePath: "src/fusioncharts.component.ts", lineNumber: 28 }); })();
 
     var FusionChartsDirective = /** @class */ (function () {
         function FusionChartsDirective(el) {
             this.el = el;
         }
-        FusionChartsDirective.ɵfac = function FusionChartsDirective_Factory(t) { return new (t || FusionChartsDirective)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef)); };
-        FusionChartsDirective.ɵdir = /*@__PURE__*/ i0__namespace.ɵɵdefineDirective({ type: FusionChartsDirective, selectors: [["", "appFusionchartsDirective", ""]] });
+        FusionChartsDirective.ɵfac = function FusionChartsDirective_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsDirective)(i0__namespace.ɵɵdirectiveInject(i0__namespace.ElementRef)); };
+        FusionChartsDirective.ɵdir = /*@__PURE__*/ i0__namespace.ɵɵdefineDirective({ type: FusionChartsDirective, selectors: [["", "appFusionchartsDirective", ""]], standalone: false });
         return FusionChartsDirective;
     }());
     (function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsDirective, [{
             type: i0.Directive,
             args: [{
-                    selector: '[appFusionchartsDirective]'
+                    selector: '[appFusionchartsDirective]',
+                    standalone: false
                 }]
         }], function () { return [{ type: i0__namespace.ElementRef }]; }, null); })();
 
@@ -1023,15 +1036,16 @@
         FusionChartsPipe.prototype.transform = function (value, args) {
             return value;
         };
-        FusionChartsPipe.ɵfac = function FusionChartsPipe_Factory(t) { return new (t || FusionChartsPipe)(); };
-        FusionChartsPipe.ɵpipe = /*@__PURE__*/ i0__namespace.ɵɵdefinePipe({ name: "fusionchartsPipe", type: FusionChartsPipe, pure: true });
+        FusionChartsPipe.ɵfac = function FusionChartsPipe_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsPipe)(); };
+        FusionChartsPipe.ɵpipe = /*@__PURE__*/ i0__namespace.ɵɵdefinePipe({ name: "fusionchartsPipe", type: FusionChartsPipe, pure: true, standalone: false });
         FusionChartsPipe.ɵprov = /*@__PURE__*/ i0__namespace.ɵɵdefineInjectable({ token: FusionChartsPipe, factory: FusionChartsPipe.ɵfac });
         return FusionChartsPipe;
     }());
     (function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsPipe, [{
             type: i0.Pipe,
             args: [{
-                    name: 'fusionchartsPipe'
+                    name: 'fusionchartsPipe',
+                    standalone: false
                 }]
         }, {
             type: i0.Injectable
@@ -1048,13 +1062,15 @@
             }
             return {
                 ngModule: FusionChartsModule,
-                providers: [{
+                providers: [
+                    {
                         provide: FusionChartsStatic,
                         useValue: {
                             core: fcCore,
-                            modules: fcModules
-                        }
-                    }]
+                            modules: fcModules,
+                        },
+                    },
+                ],
             };
         };
         FusionChartsModule.fcRoot = function (fcCore) {
@@ -1064,15 +1080,12 @@
             }
             FusionChartsService.setFCRoot({
                 core: fcCore,
-                modules: fcModules
+                modules: fcModules,
             });
         };
-        FusionChartsModule.ɵfac = function FusionChartsModule_Factory(t) { return new (t || FusionChartsModule)(); };
+        FusionChartsModule.ɵfac = function FusionChartsModule_Factory(__ngFactoryType__) { return new (__ngFactoryType__ || FusionChartsModule)(); };
         FusionChartsModule.ɵmod = /*@__PURE__*/ i0__namespace.ɵɵdefineNgModule({ type: FusionChartsModule });
-        FusionChartsModule.ɵinj = /*@__PURE__*/ i0__namespace.ɵɵdefineInjector({ providers: [
-                FusionChartsService,
-                FusionChartsStatic
-            ] });
+        FusionChartsModule.ɵinj = /*@__PURE__*/ i0__namespace.ɵɵdefineInjector({ providers: [FusionChartsService, FusionChartsStatic] });
         return FusionChartsModule;
     }());
     (function () { (typeof ngDevMode === "undefined" || ngDevMode) && i0__namespace.ɵsetClassMetadata(FusionChartsModule, [{
@@ -1081,24 +1094,15 @@
                     declarations: [
                         FusionChartsComponent,
                         FusionChartsDirective,
-                        FusionChartsPipe
+                        FusionChartsPipe,
                     ],
-                    exports: [
-                        FusionChartsComponent,
-                        FusionChartsDirective,
-                        FusionChartsPipe
-                    ],
-                    providers: [
-                        FusionChartsService,
-                        FusionChartsStatic
-                    ]
+                    exports: [FusionChartsComponent, FusionChartsDirective, FusionChartsPipe],
+                    providers: [FusionChartsService, FusionChartsStatic],
                 }]
         }], null, null); })();
     (function () { (typeof ngJitMode === "undefined" || ngJitMode) && i0__namespace.ɵɵsetNgModuleScope(FusionChartsModule, { declarations: [FusionChartsComponent,
             FusionChartsDirective,
-            FusionChartsPipe], exports: [FusionChartsComponent,
-            FusionChartsDirective,
-            FusionChartsPipe] }); })();
+            FusionChartsPipe], exports: [FusionChartsComponent, FusionChartsDirective, FusionChartsPipe] }); })();
 
     exports.FusionChartsComponent = FusionChartsComponent;
     exports.FusionChartsDirective = FusionChartsDirective;
