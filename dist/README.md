@@ -1,8 +1,10 @@
-# angular-fusioncharts
+# Angular Fusioncharts
 
 A simple and lightweight official Angular component for FusionCharts JavaScript charting library. angular-fusioncharts enables you to add JavaScript charts in your Angular application without any hassle.
 
-With the latest version of angular-fusioncharts@4.1.0, we are now supporting Angular 17 applications as well which were not supported till angular-fusioncharts@4.0.3 The angular-fusioncharts 4.1.0 can be used with all the versions of FusionCharts till the v3.23.0.
+## What's New
+
+Angular FusionCharts v4.2 now provides compatibility with Angular versions 17, 18, 19, and 20. This release also introduces support for Angular’s new build system, ensuring seamless integration with the latest Angular features.
 
 ## [Demo](https://fusioncharts.github.io/angular-fusioncharts/)
 
@@ -13,8 +15,6 @@ With the latest version of angular-fusioncharts@4.1.0, we are now supporting Ang
   - Official Website: [https://www.fusioncharts.com/](https://www.fusioncharts.com/)
   - Official NPM Package: [https://www.npmjs.com/package/fusioncharts](https://www.npmjs.com/package/fusioncharts)
 - Issues: [https://github.com/fusioncharts/angular-fusioncharts/issues](https://github.com/fusioncharts/angular-fusioncharts/issues)
-
----
 
 ## Table of Contents
 
@@ -48,13 +48,13 @@ With the latest version of angular-fusioncharts@4.1.0, we are now supporting Ang
 To install `angular-fusioncharts` library, run:
 
 ```bash
-$ npm install angular-fusioncharts --save
+npm install angular-fusioncharts --save
 ```
 
 To install `fusioncharts` library:
 
 ```bash
-$ npm install fusioncharts --save
+npm install fusioncharts --save
 ```
 
 ## Quick Start
@@ -64,17 +64,17 @@ Here is a basic sample that shows how to create a chart using `angular-fusioncha
 Add this in your Angular `AppModule`:
 
 ```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
 // Import angular-fusioncharts
-import { FusionChartsModule } from 'angular-fusioncharts';
+import { FusionChartsModule } from "angular-fusioncharts";
 
 // Import FusionCharts library and chart modules
-import * as FusionCharts from 'fusioncharts';
-import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as FusionCharts from "fusioncharts";
+import * as Charts from "fusioncharts/fusioncharts.charts";
 
 // For Powercharts , Widgets, and Maps
 // import * as PowerCharts from 'fusioncharts/fusioncharts.powercharts';
@@ -86,7 +86,7 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 // For Map definition files
 // import * as World from 'fusioncharts/maps/fusioncharts.world';
 
-import * as FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
+import * as FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
@@ -96,10 +96,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
   imports: [
     BrowserModule,
     // Specify FusionChartsModule as import
-    FusionChartsModule
+    FusionChartsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -109,38 +109,38 @@ Once the library is imported, you can use its components, directives in your Ang
 In your Angular AppComponent:
 
 ```javascript
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html'
+  selector: "my-app",
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
   dataSource: Object;
   title: string;
 
   constructor() {
-    this.title = 'Angular  FusionCharts Sample';
+    this.title = "Angular  FusionCharts Sample";
 
     this.dataSource = {
       chart: {
-        caption: 'Countries With Most Oil Reserves [2017-18]',
-        subCaption: 'In MMbbl = One Million barrels',
-        xAxisName: 'Country',
-        yAxisName: 'Reserves (MMbbl)',
-        numberSuffix: 'K',
-        theme: 'fusion'
+        caption: "Countries With Most Oil Reserves [2017-18]",
+        subCaption: "In MMbbl = One Million barrels",
+        xAxisName: "Country",
+        yAxisName: "Reserves (MMbbl)",
+        numberSuffix: "K",
+        theme: "fusion",
       },
       data: [
-        { label: 'Venezuela', value: '290' },
-        { label: 'Saudi', value: '260' },
-        { label: 'Canada', value: '180' },
-        { label: 'Iran', value: '140' },
-        { label: 'Russia', value: '115' },
-        { label: 'UAE', value: '100' },
-        { label: 'US', value: '30' },
-        { label: 'China', value: '30' }
-      ]
+        { label: "Venezuela", value: "290" },
+        { label: "Saudi", value: "260" },
+        { label: "Canada", value: "180" },
+        { label: "Iran", value: "140" },
+        { label: "Russia", value: "115" },
+        { label: "UAE", value: "100" },
+        { label: "US", value: "30" },
+        { label: "China", value: "30" },
+      ],
     };
   }
 }
@@ -274,15 +274,15 @@ Learn more about FusionTime [here](https://www.fusioncharts.com/fusiontime).
 
 ```typescript
 // app.module.ts
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { AppComponent } from "./app.component";
 // Import angular-fusioncharts
-import { FusionChartsModule } from 'angular-fusioncharts';
+import { FusionChartsModule } from "angular-fusioncharts";
 // Import FusionCharts library and chart modules
-import * as FusionCharts from 'fusioncharts';
-import * as Charts from 'fusioncharts/fusioncharts.charts';
-import * as TimeSeries from 'fusioncharts/fusioncharts.timeseries'; // Import timeseries
+import * as FusionCharts from "fusioncharts";
+import * as Charts from "fusioncharts/fusioncharts.charts";
+import * as TimeSeries from "fusioncharts/fusioncharts.timeseries"; // Import timeseries
 // Pass the fusioncharts library and chart modules
 FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
 @NgModule({
@@ -290,10 +290,10 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
   imports: [
     BrowserModule,
     // Specify FusionChartsModule as import
-    FusionChartsModule
+    FusionChartsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
 ```
@@ -302,15 +302,13 @@ export class AppModule {}
 
 ```typescript
 // In app.component.ts
-import { Component } from '@angular/core';
-import * as FusionCharts from 'fusioncharts';
-const dataUrl =
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json';
-const schemaUrl =
-  'https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json';
+import { Component } from "@angular/core";
+import * as FusionCharts from "fusioncharts";
+const dataUrl = "https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/data.json";
+const schemaUrl = "https://raw.githubusercontent.com/fusioncharts/dev_centre_docs/fusiontime-beta-release/charts-resources/fusiontime/online-sales-single-series/schema.json";
 @Component({
-  selector: 'app',
-  templateUrl: './app.component.html'
+  selector: "app",
+  templateUrl: "./app.component.html",
 })
 export class AppComponent {
   dataSource: any;
@@ -318,31 +316,28 @@ export class AppComponent {
   width: string;
   height: string;
   constructor() {
-    this.type = 'timeseries';
-    this.width = '400';
-    this.height = '400';
+    this.type = "timeseries";
+    this.width = "400";
+    this.height = "400";
     this.dataSource = {
       data: null,
       yAxis: {
-        plot: [{ value: 'Sales' }]
+        plot: [{ value: "Sales" }],
       },
       caption: {
-        text: 'Online Sales of a SuperStore in the US'
-      }
+        text: "Online Sales of a SuperStore in the US",
+      },
     };
     this.fetchData();
   }
   fetchData() {
-    let jsonify = res => res.json();
+    let jsonify = (res) => res.json();
     let dataFetch = fetch(dataUrl).then(jsonify);
     let schemaFetch = fetch(schemaUrl).then(jsonify);
-    Promise.all([dataFetch, schemaFetch]).then(res => {
+    Promise.all([dataFetch, schemaFetch]).then((res) => {
       let data = res[0];
       let schema = res[1];
-      let fusionTable = new FusionCharts.DataStore().createDataTable(
-        data,
-        schema
-      ); // Instance of DataTable to be passed as data in dataSource
+      let fusionTable = new FusionCharts.DataStore().createDataTable(data, schema); // Instance of DataTable to be passed as data in dataSource
       this.dataSource.data = fusionTable;
     });
   }
@@ -353,12 +348,7 @@ export class AppComponent {
 
 ```html
 <div>
-  <fusioncharts
-    [type]="type"
-    [width]="width"
-    [height]="height"
-    [dataSource]="dataSource"
-  ></fusioncharts>
+  <fusioncharts [type]="type" [width]="width" [height]="height" [dataSource]="dataSource"></fusioncharts>
 </div>
 ```
 
@@ -372,10 +362,10 @@ Useful links for FusionTime
 - Clone the repository and install dependencies
 
 ```
-$ git clone https://github.com/fusioncharts/angular-fusioncharts.git
-$ cd angular-component
-$ npm i
-$ npm start
+git clone https://github.com/fusioncharts/angular-fusioncharts.git
+cd angular-component
+npm i
+npm start
 ```
 
 ## Going Beyond Charts
