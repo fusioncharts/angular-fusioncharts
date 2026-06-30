@@ -1,0 +1,33 @@
+{
+  "name": "angular-fusioncharts",
+  "version": "5.0.0",
+  "description": "Angular component for FusionCharts JavaScript charting library",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fusioncharts/angular-fusioncharts"
+  },
+  "author": {
+    "name": "FusionCharts",
+    "email": "support@fusioncharts.com"
+  },
+  "contributors": [
+    { "name": "Meher Howji", "url": "https://github.com/meherhowji" }
+  ],
+  "keywords": ["angular", "fusioncharts", "charts", "data-visualization"],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fusioncharts/angular-fusioncharts/issues"
+  },
+  "homepage": "https://www.fusioncharts.com",
+  "peerDependencies": {
+    "@angular/core": "^20.0.0 || ^21.0.0 || ^22.0.0",
+    "fusioncharts": "^3.0.0 || ^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "fusioncharts": { "optional": false }
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
