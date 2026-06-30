@@ -387,7 +387,7 @@ class FusionChartsComponent
     }
     if (
       this.oldDataSource !== data ||
-      this.oldDataTable !== this.dataSource.data
+      this.oldDataTable !== (this.dataSource && this.dataSource.data)
     ) {
       this.oldDataTable = this.dataSource && this.dataSource.data;
       this.oldDataSource = data;

@@ -9,7 +9,7 @@
     "build": "ng build angular-fusioncharts",
     "build:dev": "ng build angular-fusioncharts --configuration development",
     "pack": "npm run build && cd dist/angular-fusioncharts && npm pack",
-    "test": "vitest run"
+    "test": "ng test angular-fusioncharts"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,12 @@
     "@angular/compiler": "^20.1.0",
     "@angular/compiler-cli": "^20.1.0",
     "@angular/core": "^20.1.0",
+    "@angular/platform-browser": "^20.1.0",
     "@angular/build": "^20.1.0",
     "@types/fusioncharts": "^3.11.0",
     "ng-packagr": "^20.1.0",
     "rxjs": "^7.8.0",
+    "jsdom": "^26.0.0",
     "tslib": "^2.3.0",
     "typescript": "~5.8.3",
     "vitest": "^3.0.0",

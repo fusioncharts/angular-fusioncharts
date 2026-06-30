@@ -4,7 +4,8 @@
   "description": "Angular component for FusionCharts JavaScript charting library",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fusioncharts/angular-fusioncharts"
+    "url": "git+https://github.com/fusioncharts/angular-fusioncharts.git",
+    "directory": "projects/angular-fusioncharts"
   },
   "author": {
     "name": "FusionCharts",
@@ -23,11 +24,11 @@
     "@angular/core": "^20.0.0 || ^21.0.0 || ^22.0.0",
     "fusioncharts": "^3.0.0 || ^4.0.0"
   },
-  "peerDependenciesMeta": {
-    "fusioncharts": { "optional": false }
-  },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "engines": {
+    "node": "^20.19 || ^22.12 || ^24 || ^26"
   },
   "sideEffects": false
 }

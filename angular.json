@@ -23,6 +23,15 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "angular-fusioncharts:build:development",
+            "tsConfig": "projects/angular-fusioncharts/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["projects/angular-fusioncharts/src/test-setup.ts"]
+          }
         }
       }
     }

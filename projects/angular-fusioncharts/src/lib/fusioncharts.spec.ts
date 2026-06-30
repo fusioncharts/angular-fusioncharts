@@ -49,7 +49,7 @@ describe('FusionChartsService', () => {
   it('resolves an id-based core and registers modules via addDep', () => {
     const { core, added } = makeFakeCore();
     const mod = { getName: () => 'x', getType: () => 'y' };
-    const svc = new FusionChartsService({ core, modules: [mod] } as FusionChartsStatic);
+    const svc = new FusionChartsService({ core, modules: [mod] } as any);
     expect(svc.getFusionChartsStatic()).toBe(core);
     expect(added).toContain(mod);
   });
@@ -58,13 +58,13 @@ describe('FusionChartsService', () => {
     const { core } = makeFakeCore();
     let calledWith: any = null;
     const fnModule = (c: any) => { calledWith = c; };
-    new FusionChartsService({ core, modules: [fnModule] } as FusionChartsStatic);
+    new FusionChartsService({ core, modules: [fnModule] } as any);
     expect(calledWith).toBe(core);
   });
 
   it('getNextItemCount() increments a shared counter', () => {
     const { core } = makeFakeCore();
-    const svc = new FusionChartsService({ core, modules: [] } as FusionChartsStatic);
+    const svc = new FusionChartsService({ core, modules: [] } as any);
     const a = svc.getNextItemCount();
     const b = svc.getNextItemCount();
     expect(b).toBe(a + 1);
