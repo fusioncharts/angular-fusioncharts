@@ -250,7 +250,7 @@ What changed:
 
 ## For Contributors
 
-This repository is an Angular library workspace. The library lives in `projects/angular-fusioncharts/`; consumer validation apps live in `examples/ng-app-20|21|22`.
+This repository is an Angular library workspace. The library lives in `projects/angular-fusioncharts/`; consumer validation apps live under `examples/` (`ng-app-20-using-fusioncharts-v4`, `ng-app-21-using-fusioncharts-v4`, `ng-app-22-using-fusioncharts-v4`).
 
 ```bash
 git clone https://github.com/fusioncharts/angular-fusioncharts.git
@@ -264,7 +264,7 @@ To validate against a specific Angular major, pack the build and install the tar
 
 ```bash
 npm run pack                          # creates dist/angular-fusioncharts/angular-fusioncharts-<v>.tgz
-cd examples/ng-app-22 && npm install && npm run build
+cd examples/ng-app-22-using-fusioncharts-v4 && npm install && npm run build
 ```
 
 > **Important — pack first.** The example apps install the library from the packed tarball

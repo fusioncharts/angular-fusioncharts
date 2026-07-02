@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-app-21": {
+    "ng-app-21-using-fusioncharts-v4": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
@@ -12,7 +12,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/ng-app-21",
+            "outputPath": "dist/ng-app-21-using-fusioncharts-v4",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -35,7 +35,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
-          "options": { "buildTarget": "ng-app-21:build:development", "port": 4221 }
+          "options": { "buildTarget": "ng-app-21-using-fusioncharts-v4:build:development", "port": 4221 }
         }
       }
     }
