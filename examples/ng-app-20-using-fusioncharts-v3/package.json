@@ -1,0 +1,28 @@
+{
+  "name": "ng-app-20-using-fusioncharts-v3",
+  "version": "0.0.0",
+  "description": "Angular 20 consumer validation app for angular-fusioncharts v5",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "angular-fusioncharts": "file:../../dist/angular-fusioncharts/angular-fusioncharts-5.0.0.tgz",
+    "fusioncharts": "3.23.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "typescript": "~5.8.0"
+  }
+}
