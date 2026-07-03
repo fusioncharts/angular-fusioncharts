@@ -78,7 +78,9 @@ describe('FusionChartsComponent', () => {
     await flush();
     cmp.dataSource = { chart: { caption: 'New' }, data: [{ label: 'China', value: '1161' }] };
     cmp.ngDoCheck();
-    expect(fc.instances[0].lastData).toBeTruthy();
+    expect(fc.instances[0].lastData).toBe(cmp.dataSource);          // same object handed to setChartData
+    expect(fc.instances[0].lastData.data[0].label).toBe('China');   // the new data landed
+    expect(fc.instances[0].lastFormat).toBe('json');                // default dataFormat
   });
 
   it('changes chart type via chartType()', () => {
@@ -94,7 +96,7 @@ describe('FusionChartsComponent', () => {
     (cmp as any).chartObj = new (fc.FusionCharts as any)({});
     cmp.width = '500';
     cmp.updateWidth();
-    expect((cmp as any).chartObj.lastSize).toBeTruthy();
+    expect((cmp as any).chartObj.lastSize).toEqual({ w: '500' });   // updateWidth() -> resizeTo({ w })
   });
 
   it('routes a FusionCharts event to the matching @Output', () => {
