@@ -4,7 +4,7 @@ All notable changes to `angular-fusioncharts` are documented here.
 
 ## 5.0.0
 
-Major release: multi-version Angular support and vulnerability remediation. **No application code changes are required** — the `<fusioncharts>` component, its inputs/outputs, and `fcRoot`/`forRoot` are unchanged.
+Major release: multi-version Angular support and vulnerability remediation. **No application code changes are required**: the `<fusioncharts>` component, its inputs/outputs, and `fcRoot`/`forRoot` are unchanged.
 
 ### Added
 - Support for **Angular 20, 21, and 22** from a single published package (peer range `@angular/core ^20.0.0 || ^21.0.0 || ^22.0.0`).
@@ -30,4 +30,4 @@ Major release: multi-version Angular support and vulnerability remediation. **No
 
 ## 4.x
 
-See the [4.x release history](https://github.com/fusioncharts/angular-fusioncharts/releases) — Angular 17–19 support.
+See the [4.x release history](https://github.com/fusioncharts/angular-fusioncharts/releases), Angular 17-19 support.
