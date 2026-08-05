@@ -40,6 +40,7 @@ function buildSource(caption: string, data: object[]) {
       yAxisName: "Reserves (MMbbl)",
       numberSuffix: "K",
       theme: "fusion",
+      exportEnabled: "1",
     },
     data,
   };

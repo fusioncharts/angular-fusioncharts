@@ -13,7 +13,7 @@
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
-    "angular-fusioncharts": "file:../../dist/angular-fusioncharts/angular-fusioncharts-5.0.0.tgz",
+    "angular-fusioncharts": "^5.0.0-rc.0",
     "fusioncharts": "3.23.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
