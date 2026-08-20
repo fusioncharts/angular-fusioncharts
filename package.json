@@ -8,8 +8,9 @@
     "ng": "ng",
     "build": "ng build angular-fusioncharts",
     "build:dev": "ng build angular-fusioncharts --configuration development",
-    "pack": "npm run build && cd dist/angular-fusioncharts && npm pack --pack-destination ../_artifact",
-    "test": "ng test angular-fusioncharts"
+    "pack": "npm run build && mkdir -p dist/_artifact && cd dist/angular-fusioncharts && npm pack --pack-destination ../_artifact",
+    "test": "ng test angular-fusioncharts",
+    "verify:package": "node scripts/verify-package.mjs"
   },
   "repository": {
     "type": "git",
