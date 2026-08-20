@@ -1,0 +1,207 @@
+name: Angular compatibility and release checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: angular-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  # Single version lanes use the newest supported line rather than the oldest,
+  # because the Angular 22 CLI declares node ^22.22.3 || ^24.15.0 || >=26 and
+  # the 20 line is outside that.
+  NODE_VERSION: 24
+
+jobs:
+  library:
+    name: Library · build, test, package · node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # The workspace runs the Angular 20 CLI, whose floor is
+        # ^20.19.0 || ^22.12.0 || >=24.0.0. All three supported lines get a lane
+        # because the library is the artifact every consumer installs.
+        node: [20, 22, 24]
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Configure Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - name: Install locked workspace dependencies
+        run: npm ci
+      - name: Build the library with ng-packagr
+        run: npm run build
+      - name: Run the unit suite
+        run: npm test
+      # `npm run pack` is the actual release command, rebuild included, so this
+      # validates the path a releaser takes rather than an approximation of it.
+      - name: Pack the publishable artifact
+        run: npm run pack
+      - name: Assert what the tarball ships
+        run: npm run verify:package
+
+  examples:
+    name: Example · ${{ matrix.app }} · node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        # Per app rather than one shared list. @angular/cli@22 declares node
+        # ^22.22.3 || ^24.15.0 || >=26, so the Angular 22 app gets no 20 lane.
+        # Measured, not assumed: that app does currently build on node 20.20.2
+        # with no warning, because the CLI only enforces the minor floor of a
+        # major it recognises. Asserting a combination Angular does not support
+        # would create an obligation nobody owns, so the lane stays out.
+        #
+        # The same check does reject node 24.5.0 outright, so the 22 and 24
+        # lanes must resolve to the newest patch in their line and never be
+        # pinned to an older one.
+        include:
+          - { app: ng-app-20-using-fusioncharts-v3, node: 20 }
+          - { app: ng-app-20-using-fusioncharts-v3, node: 22 }
+          - { app: ng-app-20-using-fusioncharts-v3, node: 24 }
+          - { app: ng-app-20-using-fusioncharts-v4, node: 20 }
+          - { app: ng-app-20-using-fusioncharts-v4, node: 22 }
+          - { app: ng-app-20-using-fusioncharts-v4, node: 24 }
+          - { app: ng-app-21-using-fusioncharts-v4, node: 20 }
+          - { app: ng-app-21-using-fusioncharts-v4, node: 22 }
+          - { app: ng-app-21-using-fusioncharts-v4, node: 24 }
+          - { app: ng-app-22-using-fusioncharts-v4, node: 22 }
+          - { app: ng-app-22-using-fusioncharts-v4, node: 24 }
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Configure Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          # Both, because this job installs the example for pass 1 and the
+          # workspace for pass 2.
+          cache-dependency-path: |
+            examples/${{ matrix.app }}/package-lock.json
+            package-lock.json
+
+      # Pass 1 is the shipped contract: the lockfile is in sync, the wrapper
+      # resolves from the registry, and the app builds against the version a
+      # real consumer installs.
+      - name: Install locked dependencies from the registry
+        working-directory: examples/${{ matrix.app }}
+        run: npm ci
+      - name: Assert the wrapper came from the registry, not a local path
+        working-directory: examples/${{ matrix.app }}
+        run: |
+          if [ -L node_modules/angular-fusioncharts ]; then
+            echo "angular-fusioncharts is a symlink; the lockfile still points at a local path"
+            exit 1
+          fi
+          grep -q 'registry.npmjs.org/angular-fusioncharts' package-lock.json
+      - name: Build against the published wrapper
+        working-directory: examples/${{ matrix.app }}
+        run: npm run build
+
+      # Pass 2 is the one that tests this branch: the same app rebuilt against
+      # a tarball packed from the working tree.
+      - name: Build and pack the workspace
+        run: |
+          npm ci
+          npm run pack
+          shopt -s nullglob
+          packed=("$GITHUB_WORKSPACE"/dist/_artifact/angular-fusioncharts-*.tgz)
+          if [ "${#packed[@]}" -ne 1 ]; then
+            echo "expected exactly one packed tarball, found ${#packed[@]}"
+            exit 1
+          fi
+          echo "TARBALL=${packed[0]}" >> "$GITHUB_ENV"
+      - name: Reinstall the wrapper from the packed tarball
+        working-directory: examples/${{ matrix.app }}
+        run: |
+          npm install "$TARBALL" --no-save
+          # The Angular CLI caches compiled output per project. Without this
+          # the rebuild can serve what pass 1 produced against the registry
+          # copy.
+          rm -rf .angular/cache dist
+      # Without this, pass 2 is unfalsifiable: the tarball carries the same
+      # version string as the registry copy and `npm ls` keeps reporting the
+      # registry URL out of the lockfile even after a successful swap, so a no
+      # op install would leave the lane green while building the published
+      # package twice.
+      - name: Assert the installed wrapper is this working tree
+        working-directory: examples/${{ matrix.app }}
+        run: node "$GITHUB_WORKSPACE/scripts/verify-swap.mjs" "$TARBALL" node_modules/angular-fusioncharts
+      - name: Rebuild against the working tree
+        working-directory: examples/${{ matrix.app }}
+        run: npm run build
+
+  standalone:
+    name: Self sufficiency · an example outside the repo
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Configure Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # The claim is that every example is self sufficient. Grepping all four
+      # covers the claim cheaply; one of them is then actually installed and
+      # built outside the checkout, which is what proves the grep means
+      # something.
+      - name: Assert no example points back into the repo
+        run: |
+          if grep -nE '"file:|\.\./\.\.' examples/*/package.json examples/*/package-lock.json; then
+            echo "Found a path back into the repo"
+            exit 1
+          fi
+          echo "all four examples are free of file: and ../.. paths"
+      - name: Copy the Angular 22 example outside the checkout
+        run: cp -R examples/ng-app-22-using-fusioncharts-v4 "$RUNNER_TEMP/standalone-ng22"
+      - name: Install and build standalone
+        working-directory: ${{ runner.temp }}/standalone-ng22
+        run: |
+          rm -rf node_modules .angular dist
+          npm ci
+          npm run build
+
+  audit:
+    name: Dependency audit · workspace and all examples
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Configure Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      # Coarse per PR gate. osv-scanner stays authoritative and is run per
+      # release into deliverables/angular/security/. The two disagree
+      # routinely: they read different databases and are run on different
+      # dates, so treat a difference as drift to investigate, not as one of
+      # them being wrong. Fails on high and critical only, so an accepted
+      # Category C medium does not block a PR.
+      # No install step: npm audit reads the lockfile.
+      - name: Audit every lockfile in the repo
+        run: |
+          rc=0
+          for dir in . examples/*/; do
+            echo "::group::npm audit $dir"
+            (cd "$dir" && npm audit --audit-level=high) || rc=1
+            echo "::endgroup::"
+          done
+          exit $rc
