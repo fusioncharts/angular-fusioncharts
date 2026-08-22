@@ -1,0 +1,7 @@
+body { font-family: system-ui, -apple-system, sans-serif; margin: 24px; color: #1a1a1a; }
+.wrap { max-width: 760px; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+.controls button { padding: 6px 12px; border: 1px solid #ccc; border-radius: 6px; background: #fff; cursor: pointer; }
+.controls button:disabled { opacity: 0.4; cursor: default; }
+.log { font-family: ui-monospace, monospace; font-size: 13px; background: #f6f6f6; border-radius: 6px; padding: 10px 16px; }
+.disposed { color: #999; font-style: italic; }

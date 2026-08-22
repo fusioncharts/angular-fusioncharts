@@ -1,0 +1,28 @@
+{
+  "name": "ng-app-22-using-fusioncharts-v4",
+  "version": "0.0.0",
+  "description": "Angular 22 consumer validation app for angular-fusioncharts v5",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve --port 4222",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "angular-fusioncharts": "^5.0.0-rc.0",
+    "fusioncharts": "^4.2.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.0.0",
+    "@angular/cli": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
+    "typescript": "~6.0.0"
+  }
+}
