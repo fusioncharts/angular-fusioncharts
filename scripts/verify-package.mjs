@@ -168,6 +168,24 @@ try {
   else if (/Google/i.test(license)) fail("LICENSE.md still carries the Angular scaffold placeholder");
   else done("LICENSE.md names FusionCharts");
 
+  // The npm page renders projects/angular-fusioncharts/README.md, not the root
+  // one. The two drifted once: the root copy was corrected in 1c7db989 and the
+  // library copy was not, so 5.0.0-rc.0 shipped instructions telling consumers
+  // to run `npm run pack` before installing an example, which had stopped being
+  // true. Nothing caught it, because no build step reads prose. Keeping the two
+  // byte-identical is the cheapest guarantee that what renders on npm is what
+  // was reviewed on GitHub.
+  const shippedReadme = readFileSync(join(pkgDir, "README.md"), "utf8");
+  const rootReadme = readFileSync(join(repoRoot, "README.md"), "utf8");
+  if (shippedReadme !== rootReadme) {
+    fail(
+      "README.md in the tarball differs from the repository root README.md. " +
+        "The npm page comes from projects/angular-fusioncharts/README.md; update both together.",
+    );
+  } else {
+    done("README.md in the tarball matches the root README.md");
+  }
+
   // @angular/core must stay an external import. If ng-packagr ever inlines it
   // the consumer ends up with two copies of Angular.
   const fesm = readFileSync(join(pkgDir, "fesm2022/angular-fusioncharts.mjs"), "utf8");

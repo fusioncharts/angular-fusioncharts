@@ -1,10 +1,10 @@
-# angular-fusioncharts
+# Angular FusionCharts
 
 A simple and lightweight official Angular component for the FusionCharts JavaScript charting library. `angular-fusioncharts` lets you add JavaScript charts to your Angular application without any hassle.
 
 > **angular-fusioncharts v5** ships as a modern Angular library (Angular Package Format, partial-Ivy / FESM2022) and supports **Angular 20, 21, and 22** from a single package. It works with **FusionCharts v3 and v4** (validated against FusionCharts **4.2.2**).
 
-- Documentation: [https://www.fusioncharts.com/dev/getting-started/angular/your-first-chart-using-angular](https://www.fusioncharts.com/dev/getting-started/angular/your-first-chart-using-angular)
+- Documentation: [https://www.fusioncharts.com/dev/getting-started/angular/angular/your-first-chart-using-angular](https://www.fusioncharts.com/dev/getting-started/angular/angular/your-first-chart-using-angular)
 - Support: [https://www.fusioncharts.com/contact-support](https://www.fusioncharts.com/contact-support)
 - Github Repo: [https://github.com/fusioncharts/angular-fusioncharts](https://github.com/fusioncharts/angular-fusioncharts)
 - FusionCharts Official Website: [https://www.fusioncharts.com/](https://www.fusioncharts.com/)
@@ -28,6 +28,7 @@ A simple and lightweight official Angular component for the FusionCharts JavaScr
 - [Consuming outside the Angular CLI](#consuming-outside-the-angular-cli)
 - [Migrating to v5](#migrating-to-v5)
 - [For Contributors](#for-contributors)
+  - [Trying a local build of the library inside an example](#trying-a-local-build-of-the-library-inside-an-example)
 - [Going Beyond Charts](#going-beyond-charts)
 - [Licensing](#licensing)
 
@@ -55,7 +56,7 @@ Applications on Angular ≤ 19 should remain on `angular-fusioncharts@4.x`.
 Install the wrapper and FusionCharts together:
 
 ```bash
-npm install angular-fusioncharts fusioncharts --save
+npm install angular-fusioncharts fusioncharts
 ```
 
 `@angular/core` and `fusioncharts` are declared as peer dependencies:
@@ -274,7 +275,7 @@ What changed:
 
 - **Angular floor raised to 20.** Apps on Angular ≤ 19 stay on `angular-fusioncharts@4.x`. Peer range is now `@angular/core ^20 || ^21 || ^22`.
 - **`fusioncharts` is now a peer dependency.** Install it alongside the wrapper (`npm install fusioncharts`). Most projects already did this.
-- **The legacy UMD bundle (`dist/dist/index.js`) is removed.** The package is ESM-only (FESM2022). Standard `npm install` + `import` consumers are unaffected. Only consumers that loaded the UMD file directly (by file path, via `<script>`, or SystemJS) are impacted, switch to the npm package import.
+- **The legacy UMD bundle (`angular-fusioncharts/dist/index.js`) is removed.** The package is ESM-only (FESM2022). Standard `npm install` + `import` consumers are unaffected. Only consumers that loaded the UMD file directly (by file path, via `<script>`, or SystemJS) are impacted, switch to the npm package import.
 
 ## For Contributors
 
