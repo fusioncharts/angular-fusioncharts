@@ -19,7 +19,7 @@ A simple and lightweight official Angular component for the FusionCharts JavaScr
   - [Requirements](#requirements)
   - [Installation](#installation)
 - [Quick Start](#quick-start)
-  - [Standalone application (Angular 17+ default)](#standalone-application-angular-17-default)
+  - [Standalone application (recommended)](#standalone-application-recommended)
   - [NgModule application](#ngmodule-application)
 - [Working with Events](#working-with-events)
 - [Working with APIs](#working-with-apis)
@@ -72,7 +72,7 @@ npm install angular-fusioncharts fusioncharts
 
 The component API is unchanged from v4, `<fusioncharts>` with the same inputs/outputs. The only difference in v5 is packaging.
 
-### Standalone application (Angular 17+ default)
+### Standalone application (recommended)
 
 Since Angular 17, new apps are standalone by default. Import `FusionChartsModule` into your standalone component's `imports`, and register the FusionCharts library once via `fcRoot`:
 
