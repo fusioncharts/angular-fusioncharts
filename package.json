@@ -1,6 +1,6 @@
 {
   "name": "angular-fusioncharts-workspace",
-  "version": "5.0.0-rc.0",
+  "version": "5.0.0",
   "description": "Workspace for the angular-fusioncharts library (dev-only; not published).",
   "private": true,
   "license": "MIT",

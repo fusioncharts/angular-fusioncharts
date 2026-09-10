@@ -23,7 +23,7 @@ Major release: multi-version Angular support and vulnerability remediation. **No
 - The legacy demo application and its dependency toolchain (`tslint`, `codelyzer`, `protractor`, `bootstrap`, `prismjs`, `ng2-codemirror`, etc.).
 
 ### Security
-- Remediated all Critical and High vulnerabilities **repo-wide**: from a baseline of **6 Critical / 34 High** down to **0 Critical / 0 High** (osv-scanner). The shipped artifact depends only on `tslib` at runtime (plus peers), which has no known vulnerabilities.
+- Addressed known OSV advisories in the dependency graph.
 
 ### Compatibility
 - Applications on Angular ≤ 19 should remain on `angular-fusioncharts@4.x`.
