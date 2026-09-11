@@ -1,0 +1,34 @@
+<div class="wrap">
+  <h2>angular-fusioncharts v5 — Angular 20 validation</h2>
+
+  <div class="controls">
+    <button (click)="updateData()">Update data</button>
+    <button (click)="changeType()">Change type</button>
+    <button (click)="resize()">Resize</button>
+    <button (click)="exportChart()">Export</button>
+    <button (click)="dispose()" [disabled]="!chartVisible">Dispose</button>
+    <button (click)="recreate()" [disabled]="chartVisible">Recreate</button>
+  </div>
+
+  @if (chartVisible) {
+    <fusioncharts
+      [width]="width"
+      [height]="height"
+      [type]="chartType"
+      [dataSource]="dataSource"
+      (initialized)="onInitialized($event)"
+      (rendered)="onRendered($event)"
+      (dataplotClick)="onDataPlotClick($event)"
+    >
+    </fusioncharts>
+  } @else {
+    <p class="disposed">Chart disposed (ngOnDestroy ran). Click “Recreate”.</p>
+  }
+
+  <h3>Event log</h3>
+  <ul class="log">
+    @for (entry of log; track $index) {
+      <li>{{ entry }}</li>
+    }
+  </ul>
+</div>

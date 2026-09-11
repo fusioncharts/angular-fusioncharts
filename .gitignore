@@ -1,8 +1,12 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+/dist
 /tmp
 /out-tsc
+
+# packed tarballs
+*.tgz
 
 # dependencies
 /node_modules
@@ -25,8 +29,6 @@
 
 # misc
 /.angular/cache
-/examples/ng-app-17/.angular/cache
-/examples/ng-app-18/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -45,3 +47,8 @@ Thumbs.db
 
 # rollup tmp files
 .tmp/
+
+# example app build artifacts
+examples/**/node_modules
+examples/**/dist
+examples/**/.angular
