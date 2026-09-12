@@ -11,7 +11,7 @@
   "dependencies": {
     "@angular/common": "^21.0.0",
     "@angular/compiler": "^21.0.0",
-    "@angular/core": "^21.0.0",
+    "@angular/core": "^21.2.20",
     "@angular/platform-browser": "^21.0.0",
     "angular-fusioncharts": "^5.0.0-rc.0",
     "fusioncharts": "^4.2.2",
