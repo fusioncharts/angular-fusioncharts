@@ -23,7 +23,7 @@
     "@angular/compiler-cli": "^20.1.0",
     "@angular/core": "^20.1.0",
     "@angular/platform-browser": "^20.1.0",
-    "@angular/build": "^20.1.0",
+    "@angular/build": "^22.2.1",
     "@types/fusioncharts": "^3.11.0",
     "ng-packagr": "^20.1.0",
     "rxjs": "^7.8.0",
